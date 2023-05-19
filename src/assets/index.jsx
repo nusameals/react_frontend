@@ -1,5 +1,3 @@
-// import Image from "./images/image.jpg";
-// import ReactLogo from "./images/react.svg";
-// import Thingking from "./images/Thingking.svg";
+import Logo from './icons/logoNusaMeals.svg'
 
-// export { Image, ReactLogo, Thingking };
+export { Logo };
