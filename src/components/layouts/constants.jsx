@@ -1,39 +1,29 @@
 import { Button } from "antd";
 import { Link } from "react-router-dom";
+import "./Header/header.css"
 
 export const MENU_ITEM = [
   {
-    label: <Link to="/product">Search Exp</Link>,
-    key: "/product",
+    label: "Home",
+    key: "1",
   },
   {
-    label: <Link to="/form-crud">Form-CRUD</Link>,
-    key: "/form-crud",
+    label: "Services",
+    key: "2",
   },
   {
-    label: <Link to="/form-crud-exp">Form-CRUD Graph</Link>,
-    key: "/form-crud-exp",
+    label: "Menus",
+    key: "3",
   },
   {
-    label: <Link to="/portfolio">Portfolio</Link>,
-    key: "/portfolio",
+    label: "Contact",
+    key: "4",
   },
-  {
-    label: <Link to="/about-me">About Me</Link>,
-    key: "/about-me",
-  },
-
   {
     label: (
       <Link to="/">
-        <Button
-          type="primary"
-          onClick={() => {
-            localStorage.removeItem("token");
-          }}
-          danger
-        >
-          Logout
+        <Button shape="round" size="middle" className="btn-get">
+          Get the app
         </Button>
       </Link>
     ),
