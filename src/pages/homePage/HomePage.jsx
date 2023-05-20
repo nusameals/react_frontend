@@ -89,14 +89,14 @@ const HomePage = () => {
           <Col
             xs={24}
             sm={24}
-            md={20}
-            lg={20}
-            xl={20}
+            md={24}
+            lg={24}
+            xl={24}
             className="cont-container"
           >
             <Space direction="horizontal">
-              <Row gutter={12} justify="space-between" className="">
-                <Col span={18}>
+              <Row gutter={12} justify="center">
+                <Col xs={24} sm={24} md={16} lg={16} xl={16}>
                   <Space direction="vertical" className="container-col-contact">
                     <img src={Logo} alt="logo" className="contact-nusa" />
                     <span className="text-experience">
@@ -128,11 +128,11 @@ const HomePage = () => {
                     </Row>
                   </Space>
                 </Col>
-                <Col span={6}>
+                <Col xs={24} sm={24} md={8} lg={8} xl={8} >
                   <Space direction="vertical" className="container-col-contact">
                     <Button className="btn-google" />
                     <Row gutter={12}>
-                      <Col span={10}>
+                      <Col span={8}>
                         <ul style={{ paddingLeft: "0px" }}>
                           <li className="list-btn-contact">
                             <Button className="btn-list" type="text">
@@ -156,7 +156,7 @@ const HomePage = () => {
                           </li>
                         </ul>
                       </Col>
-                      <Col span={14}>
+                      <Col span={16}>
                         <ul style={{ paddingLeft: "0px" }}>
                           <li className="list-btn-contact">
                             <Button className="btn-list" type="text">
@@ -180,32 +180,32 @@ const HomePage = () => {
                               className="container-btn-social"
                             >
                               <Button
-                              className="btn-social"
+                                className="btn-social"
                                 icon={
                                   <FacebookOutlined className="icon-social" />
                                 }
                               />
 
                               <Button
-                              className="btn-social"
+                                className="btn-social"
                                 icon={
                                   <InstagramOutlined className="icon-social" />
                                 }
                               />
                               <Button
-                              className="btn-social"
+                                className="btn-social"
                                 icon={
                                   <TwitterOutlined className="icon-social" />
                                 }
                               />
                               <Button
-                              className="btn-social"
+                                className="btn-social"
                                 icon={
                                   <YoutubeOutlined className="icon-social" />
                                 }
                               />
                               <Button
-                              className="btn-social"
+                                className="btn-social"
                                 icon={<PhoneOutlined className="icon-social" />}
                               />
                             </Space>
