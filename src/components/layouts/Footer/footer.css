@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.divider{
+    background-color: #ffffff;
+    width: auto;
+    height: 2px;
+    border-radius: 5px;
+}
+
+.footer-text {
+  width: 187px;
+  height: 30px;
+
+  /* SubHeading/B-20 */
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 30px;
+  /* identical to box height */
+
+  text-align: center;
+
+  /* Design System/White/white-100 */
+
+  color: #ffffff;
+}

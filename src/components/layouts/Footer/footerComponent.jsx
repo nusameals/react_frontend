@@ -1,5 +1,7 @@
 import React from "react";
-import { Layout } from "antd";
+import { Layout, Row, Col, Space } from "antd";
+import "./footer.css";
+
 
 const FooterComponent = () => {
   const { Footer } = Layout;
@@ -7,9 +9,17 @@ const FooterComponent = () => {
     <Footer
       style={{
         textAlign: "center",
+        background: "#0669BD",
       }}
     >
-      Ant Design ©2023 Created by Ant UED
+
+        <Row justify="center" align="middle">
+          <Col xs={24} sm={24} md={20} lg={16} xl={16}>
+            <Space direction="vertical">
+              <span className="footer-text">© 2023 NusaMeals</span>
+            </Space>
+          </Col>
+        </Row>
     </Footer>
   );
 };
