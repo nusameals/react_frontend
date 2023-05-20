@@ -1,69 +1,72 @@
-import React from "react";
+import React, { useState } from "react";
 // import reactLogo from "../../assets/images/react.svg";
-import { Button, Space } from "antd";
+import { Button, Space, Col, Row, Card, Radio } from "antd";
 import { CancelButton } from "../../components/buttonComponent/ButtonComponent";
 import "./homePage.css";
 import Gap from "../../components/gap/Gap";
+import { menu, service } from "./constant";
 
 const HomePage = () => {
-    // const user = {
-    //   name: "Dengklek",
-    //   avatarURL:
-    //     "https://akcdn.detik.net.id/visual/2019/05/10/7ac541ac -2c34-46b3-a999-70d2251648ea_43.jpeg?w=900&q=90",
-    //   aboutMe: "lorem ipsum",
-    //   imageLocal: reactLogo,
-    // };
+
+  // radio button
+  const [section, setSection] = useState('food')
 
   return (
     <div>
-      <div>
-        {/* <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a> */}
-      </div>
-      <h1>Vite + React</h1>
 
-      <div className="homepage">Home Page</div>
-      <div className="about-me">About Me Page</div>
+      <section className="SERVICE">
+        <h2 className="titleS">Our Special Service <br />from Nusantara Meals</h2>
+        <div>
+          <Row>
+            {service.map((item) => (
+              <Col className="service">
+                <img className="imgS" src={item.logo} alt="logo" />
+                <div className="juduldescS">
+                  <p className="judulS">{item.judul}</p>
+                  <p className="descS">{item.desc}</p>
+                </div>
+              </Col>
+            ))}
+          </Row>
+        </div>
+      </section>
 
-      <div className="card">
-        {/* <img src={DesignerImage} alt="" /> */}
-        {/* <div>{user.name}</div> */}
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <section className="MENU">
+        <h2 className="titleM">This Month Hottest Menu</h2>
+        <p className="descM">the best of Indonesia's culinary treasures, all in one place</p>
+        <div>
+          <Row>
+            <Radio.Group
+              defaultValue='food'
+              buttonStyle="solid"
+              value={section}>
+              <Radio.Button className="food" value='food' style={{ zIndex: 0 }}>Food's</Radio.Button>
+              <Radio.Button className="drink" value='drink'>Drink's</Radio.Button>
+            </Radio.Group>
+          </Row>
+        </div>
+        <p className="lihat">Lihat Semua</p>
+        <div>
+          <Row gutter={15}>
+            {menu.map((item) => (
+              <Col span={6}>
+                <Card className="cardM"
+                  cover={<img className="imgM" alt="example" src={item.foto} />}
+                >
 
-      <br />
-      <br />
+                  <p className="judulM">{item.judul}</p>
+                  <p className="kotaM">{item.kota}</p>
+                  <div className="hargakalor">
+                    <p className="hargaM">{item.harga}</p>
+                    <p className="kalori">{item.kalor}</p>
+                  </div>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </div>
+      </section>
 
-      {/* AntD Component */}
-      <Space wrap>
-        <Button type="primary" href="/login">
-          Coba Button
-        </Button>
-        <Button>Default Button</Button>
-        <Button type="dashed">Dashed Button</Button>
-        <Button type="text" href="/login">
-          Text Button
-        </Button>
-        <Button type="link" href="/login">
-          Link Button
-        </Button>
-      </Space>
-
-      <Space wrap>
-        <Button type="primary">Submit</Button>
-        <CancelButton text="Cancel" />
-      </Space>
-
-      <Button type="primary">Ini Button</Button>
     </div>
   );
 };
