@@ -5,10 +5,7 @@ import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 import { CancelButton } from "../../components/buttonComponent/ButtonComponent";
 import "./homePage.css";
 import Gap from "../../components/gap/Gap";
-<<<<<<< HEAD
 import { menu, service, minum } from "./constant";
-=======
-import { menu, service } from "./constant";
 import { GoogleButton, Logo } from "../../assets/index";
 import {
   PhoneOutlined,
@@ -18,25 +15,13 @@ import {
   YoutubeOutlined,
   TwitterOutlined,
 } from "@ant-design/icons";
-<<<<<<< HEAD
->>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
 
 const HomePage = () => {
   // radio button
-<<<<<<< HEAD
   const [section, setSection] = useState('food')
   const onChange = ({ target: { value } }) => {
     setSection(value);
   };
-=======
-  const [section, setSection] = useState("food");
->>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
-=======
-
-const HomePage = () => {
-  // radio button
-  const [section, setSection] = useState("food");
->>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
 
   return (
     <div>
@@ -68,18 +53,7 @@ const HomePage = () => {
         <div>
           <Row className='rowM'>
             <Radio.Group
-<<<<<<< HEAD
-<<<<<<< HEAD
-              defaultValue='food'
-              onChange={onChange}
-              value={section}>
-              <Radio.Button className="food" value='food' style={{ zIndex: 0 }}>Food's</Radio.Button>
-              <Radio.Button className="drink" value='drink'>Drink's</Radio.Button>
-=======
-=======
->>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
               defaultValue="food"
-              buttonStyle="solid"
               value={section}
             >
               <Radio.Button className="food" value="food" style={{ zIndex: 0 }}>
@@ -88,37 +62,11 @@ const HomePage = () => {
               <Radio.Button className="drink" value="drink">
                 Drink's
               </Radio.Button>
-<<<<<<< HEAD
->>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
-=======
->>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
             </Radio.Group>
           </Row>
         </div>
         <p className="lihat">Lihat Semua</p>
-<<<<<<< HEAD
         <div>{section === 'food' ? <FoodMenu /> : <DrinkMenu />}</div>
-      </section>
-=======
-        <div>
-          <Row gutter={15}>
-            {menu.map((item) => (
-              <Col span={6}>
-                <Card
-                  className="cardM"
-                  cover={<img className="imgM" alt="example" src={item.foto} />}
-                >
-                  <p className="judulM">{item.judul}</p>
-                  <p className="kotaM">{item.kota}</p>
-                  <div className="hargakalor">
-                    <p className="hargaM">{item.harga}</p>
-                    <p className="kalori">{item.kalor}</p>
-                  </div>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </div>
       </section>
 
       <section className="CONTACT">
@@ -257,10 +205,7 @@ const HomePage = () => {
           </Col>
         </Row>
       </section>
-<<<<<<< HEAD
->>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
-=======
->>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
+
     </div>
   );
 }

@@ -15,13 +15,9 @@ const LayoutComponent = ({ children }) => {
         {/* Content */}
         <Content
           className="site-layout"
-<<<<<<< Updated upstream
           style={{
             padding: "0px",
           }}
-=======
-
->>>>>>> Stashed changes
         >
           <div
             style={{
