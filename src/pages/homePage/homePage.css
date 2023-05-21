@@ -1,3 +1,83 @@
+<<<<<<< HEAD
+@media screen and (width: 768px) {
+  .service {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px;
+    gap: 16px;
+
+    width: 380px;
+    height: 132px;
+
+    /* Dark-Light/Light-1 */
+
+    background: #FFFFFF;
+    /* Elevation-2 */
+
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+  }
+
+  .rowM {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+
+    width: 348px;
+    height: 48px;
+
+  }
+
+  .cardM {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+
+    width: 220px;
+    height: 248.75px;
+
+    /* Dark-Light/Light-1 */
+
+    background: #FFFFFF;
+    /* Elevation-2 */
+
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+  }
+=======
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+.divider {
+  background-color: #ffffff;
+  width: auto;
+  height: 2px;
+  border-radius: 5px;
+}
+
+.footer-text {
+  width: 187px;
+  height: 30px;
+
+  /* SubHeading/B-20 */
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 30px;
+  /* identical to box height */
+
+  text-align: center;
+
+  /* Design System/White/white-100 */
+
+  color: #ffffff;
+>>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
+}
+
 .SERVICE {
   display: flex;
   flex-direction: column;
@@ -12,7 +92,7 @@
 }
 
 .titleS {
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: bold;
   font-size: 40px;
@@ -34,7 +114,7 @@
 
   /* Dark-Light/Light-1 */
 
-  background: #FFFFFF;
+  background: #ffffff;
   /* Elevation-2 */
 
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
@@ -47,13 +127,12 @@
 
   /* SubHeading/B-20 */
 
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
   line-height: 10px;
   /* identical to box height */
-
 
   /* Dark-Light/Dark-1 */
 
@@ -66,7 +145,7 @@
 
   /* Body/R-16 */
 
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -76,9 +155,11 @@
   /* Dark-Light/Dark-1 */
 
   color: #000000;
-
 }
 
+<<<<<<< HEAD
+.food,
+=======
 .food {
   justify-content: center;
   align-items: center;
@@ -86,36 +167,64 @@
   width: 170px;
   height: 30px;
 
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
   font-size: 15px;
   text-align: center;
 
-  border: 1px solid #FFFFFF !important;
+  border: 1px solid #ffffff !important;
   border-radius: 100px 0px 0px 100px;
-
 }
 
+>>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
 .drink {
   justify-content: center;
   align-items: center;
 
-  color: white;
+<<<<<<< HEAD
+  width: 170px;
+  height: 30px;
+
   font-family: 'Poppins';
+=======
+  color: white;
+  font-family: "Poppins";
+>>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
   font-style: normal;
   font-weight: 700;
   font-size: 15px;
   text-align: center;
+<<<<<<< HEAD
+  background: #0669BD;
+  color: #FFFFFF;
 
+  border: 1px solid #FFFFFF !important;
+}
+
+.food {
+  border-radius: 100px 0px 0px 100px !important;
+
+}
+
+.food:active,
+.drink:active {
+  background-color: #FFFFFF;
+  color: #0669BD;
+}
+
+.drink {
+  border-radius: 0px 100px 100px 0px !important;
+=======
 
   width: 170px;
   height: 30px;
 
-  background: #0669BD;
+  background: #0669bd;
 
-  border: 1px solid #FFFFFF !important;
+  border: 1px solid #ffffff !important;
   border-radius: 0px 100px 100px 0px;
+>>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
 }
 
 .MENU {
@@ -124,42 +233,37 @@
   justify-content: center;
   align-items: center;
   padding: 30px;
-  background: #0669BD;
+  background: #0669bd;
   border-radius: 20px;
 }
 
-.imgM {
-  width: 100px;
-  height: 100px;
-}
-
 .titleM {
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
   font-size: 48px;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .descM {
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   font-size: 28px;
   margin-top: -20px;
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .lihat {
   margin-left: -1100px;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 30px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .cardM {
@@ -167,7 +271,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
 }
@@ -178,12 +282,11 @@
   align-items: flex-start;
   width: 296px;
   height: 166px;
-
 }
 
 .judulM {
   margin-top: -20px;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -191,30 +294,28 @@
 
 .kotaM {
   margin-top: -10px;
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
 
-  color: #7F7F7F;
+  color: #7f7f7f;
 }
 
 .hargaM {
-
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
   font-size: 15px;
 }
 
 .kalori {
-
-  font-family: 'Poppins';
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   margin-top: 20px;
-  color: #7F7F7F;
+  color: #7f7f7f;
 }
 
 .hargakalor {
@@ -224,3 +325,179 @@
   gap: 110px;
   margin-top: -20px;
 }
+
+<<<<<<< HEAD
+.ant-carousel .slick-prev,
+.ant-carousel .slick-prev:hover,
+.ant-carousel .slick-prev:focus {
+  font-size: inherit;
+  left: 10px;
+  z-index: 2;
+  color: black;
+}
+
+.ant-carousel .slick-next,
+.ant-carousel .slick-next:hover,
+.ant-carousel .slick-next:focus {
+  font-size: inherit;
+  right: 10px;
+  z-index: 2;
+  color: black;
+}
+=======
+.CONTACT {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 30px 30px 0px 30px;
+  background: #0669bd;
+  border-radius: 60px 60px 0px 0px;
+}
+
+.cont-container {
+  padding-bottom: 60px;
+  border-bottom: 2px solid #ffffff;
+}
+
+
+
+.container-col-contact {
+  height: auto;
+}
+
+.contact-nusa {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+}
+
+.text-experience {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 36px;
+  /* identical to box height */
+
+  text-align: center;
+
+  /* Dark-Light/Light-1 */
+
+  color: #ffffff;
+}
+
+.cont-us {
+  width: 135px;
+  height: 36px;
+
+  /* SubHeading/B-24 */
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+  /* identical to box height */
+
+  /* Dark-Light/Light-1 */
+
+  color: #ffffff;
+}
+
+.divider-cont-us {
+  width: 50px;
+  height: 2px;
+
+  /* Dark-Light/Light-1 */
+  background-color: #ffffff;
+}
+
+.icon-container {
+  margin-top: 24px;
+  justify-content: center;
+  align-items: center;
+  padding: 7px;
+
+  width: 40px;
+  height: 40px;
+
+  /* Dark-Light/Light-1 */
+  color: #0669bd;
+  background: #ffffff;
+  border-radius: 100px;
+}
+
+.phone-mail {
+  margin-left: 10px;
+  margin-top: 24px;
+  width: 146px;
+  height: 30px;
+
+  /* SubHeading/R-20 */
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
+
+  text-align: center;
+
+  /* Dark-Light/Light-1 */
+
+  color: #ffffff;
+}
+
+.btn-google {
+  margin-top: 0px;
+  width: 180px;
+  height: 52px;
+  background-image: url("../../assets//button_bg/googleplay.png");
+  border: hidden;
+  transition: transform 0.3s ease;
+}
+
+.btn-google:hover {
+  transform: scale(1.1);
+}
+
+.list-btn-contact {
+  margin: 20px 0px;
+  list-style: none;
+}
+
+.btn-list {
+  width: auto;
+  height: auto;
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
+
+  /* Dark-Light/Light-1 */
+
+  color: #ffffff;
+}
+
+.container-btn-social{
+  margin-top: 5px;
+  margin-left: 15px;
+  width: max-content;
+}
+
+.icon-social{
+  color: #0669bd;
+  background-color: #ffffff;
+  font-size: 25px;
+  align-items: center;
+}
+
+.btn-social{
+  padding: 3px 4px 0px 3px;
+}
+>>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
