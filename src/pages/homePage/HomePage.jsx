@@ -18,6 +18,7 @@ import {
   YoutubeOutlined,
   TwitterOutlined,
 } from "@ant-design/icons";
+<<<<<<< HEAD
 >>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
 
 const HomePage = () => {
@@ -28,6 +29,12 @@ const HomePage = () => {
     setSection(value);
   };
 =======
+  const [section, setSection] = useState("food");
+>>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
+=======
+
+const HomePage = () => {
+  // radio button
   const [section, setSection] = useState("food");
 >>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
 
@@ -62,12 +69,15 @@ const HomePage = () => {
           <Row className='rowM'>
             <Radio.Group
 <<<<<<< HEAD
+<<<<<<< HEAD
               defaultValue='food'
               onChange={onChange}
               value={section}>
               <Radio.Button className="food" value='food' style={{ zIndex: 0 }}>Food's</Radio.Button>
               <Radio.Button className="drink" value='drink'>Drink's</Radio.Button>
 =======
+=======
+>>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
               defaultValue="food"
               buttonStyle="solid"
               value={section}
@@ -78,6 +88,9 @@ const HomePage = () => {
               <Radio.Button className="drink" value="drink">
                 Drink's
               </Radio.Button>
+<<<<<<< HEAD
+>>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
+=======
 >>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
             </Radio.Group>
           </Row>
@@ -244,6 +257,9 @@ const HomePage = () => {
           </Col>
         </Row>
       </section>
+<<<<<<< HEAD
+>>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
+=======
 >>>>>>> 257d93d90bbe471b7472789ebacd03a2ba90755c
     </div>
   );
