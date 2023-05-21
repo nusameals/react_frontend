@@ -168,7 +168,8 @@
   font-weight: 700;
   font-size: 15px;
   text-align: center;
-
+  background: #0669BD;
+  color: #FFFFFF;
   border: 1px solid #ffffff !important;
   border-radius: 100px 0px 0px 100px;
 }
@@ -190,6 +191,12 @@
 
   border: 1px solid #ffffff !important;
   border-radius: 0px 100px 100px 0px;
+}
+
+.food:active,
+.drink:active {
+  background: white;
+  color: #0669BD;
 }
 
 .MENU {

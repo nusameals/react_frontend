@@ -55,6 +55,7 @@ const HomePage = () => {
             <Radio.Group
               defaultValue="food"
               value={section}
+              onChange={onChange}
             >
               <Radio.Button className="food" value="food" style={{ zIndex: 0 }}>
                 Food's
