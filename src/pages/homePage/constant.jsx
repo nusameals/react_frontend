@@ -9,6 +9,7 @@ import jahe from '../../assets/icons/jahe.png';
 import mangga from '../../assets/icons/mangga.png';
 import cincau from '../../assets/icons/cincau.png';
 import teh from '../../assets/icons/teh.png'
+import { Customer1, Customer2, Customer3 } from '../../assets';
 
 
 export const service = [
@@ -89,4 +90,25 @@ export const minum = [
         harga: 'Rp 9.000',
         kalor: '12kkal'
     },
+]
+
+export const feedback = [
+    {
+        ava: Customer1,
+        nama: 'Steve',
+        role: 'Customer',
+        desc: 'Sangatlah luar biasa rasanya makanan di sini, dengan bumbu yang meresap hingga ke dalam daging'
+    },
+    {
+        ava: Customer2,
+        nama: 'Esther Howard',
+        role: 'Customer',
+        desc: 'Gila makanan disini enak banget, sampe semua bumbu itu meresap sampai ke daging2. Terutama Rendangnya sih kalian harus nyoba gokil!!!'
+    },
+    {
+        ava: Customer3,
+        nama: 'Edward Jacob',
+        role: 'Customer',
+        desc: 'Wow, makanan disini sungguh memukau! Saya bisa merasakan betapa lezatnya bumbu yang meresap sampai ke dalam dagingnya. Tidak boleh dilewatkan'
+    }
 ]

@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 // import reactLogo from "../../assets/images/react.svg";
-import { Button, Space, Col, Row, Card, Radio, Carousel } from "antd";
-import { RightOutlined, LeftOutlined } from "@ant-design/icons";
-import { CancelButton } from "../../components/buttonComponent/ButtonComponent";
-import "./homePage.css";
-import Gap from "../../components/gap/Gap";
-import { menu, service, minum } from "./constant";
-import { GoogleButton, Logo } from "../../assets/index";
+import {
+  Button,
+  Space,
+  Col,
+  Row,
+  Card,
+  Radio,
+  Carousel,
+  Rate,
+  Input,
+} from 'antd';
+import { RightOutlined, LeftOutlined } from '@ant-design/icons';
+import { CancelButton } from '../../components/buttonComponent/ButtonComponent';
+import './homePage.css';
+import Gap from '../../components/gap/Gap';
+import { menu, service, minum, feedback } from './constant';
+import { GoogleButton, Logo } from '../../assets/index';
 import {
   PhoneOutlined,
   MailOutlined,
@@ -14,11 +24,11 @@ import {
   InstagramOutlined,
   YoutubeOutlined,
   TwitterOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 
 const HomePage = () => {
   // radio button
-  const [section, setSection] = useState('food')
+  const [section, setSection] = useState('food');
   const onChange = ({ target: { value } }) => {
     setSection(value);
   };
@@ -51,7 +61,7 @@ const HomePage = () => {
           the best of Indonesia's culinary treasures, all in one place
         </p>
         <div>
-          <Row className='rowM'>
+          <Row className="rowM">
             <Radio.Group
               defaultValue="food"
               value={section}
@@ -95,8 +105,8 @@ const HomePage = () => {
                       <div className="icon-container">
                         <PhoneOutlined
                           style={{
-                            fontSize: "25px",
-                            transform: "rotate(90deg)",
+                            fontSize: '25px',
+                            transform: 'rotate(90deg)',
                           }}
                         />
                       </div>
@@ -106,7 +116,7 @@ const HomePage = () => {
                       <div className="icon-container">
                         <MailOutlined
                           style={{
-                            fontSize: "25px",
+                            fontSize: '25px',
                           }}
                         />
                       </div>
@@ -114,12 +124,12 @@ const HomePage = () => {
                     </Row>
                   </Space>
                 </Col>
-                <Col xs={24} sm={24} md={8} lg={8} xl={8} >
+                <Col xs={24} sm={24} md={8} lg={8} xl={8}>
                   <Space direction="vertical" className="container-col-contact">
                     <Button className="btn-google" />
                     <Row gutter={12}>
                       <Col span={8}>
-                        <ul style={{ paddingLeft: "0px" }}>
+                        <ul style={{ paddingLeft: '0px' }}>
                           <li className="list-btn-contact">
                             <Button className="btn-list" type="text">
                               Home
@@ -143,7 +153,7 @@ const HomePage = () => {
                         </ul>
                       </Col>
                       <Col span={16}>
-                        <ul style={{ paddingLeft: "0px" }}>
+                        <ul style={{ paddingLeft: '0px' }}>
                           <li className="list-btn-contact">
                             <Button className="btn-list" type="text">
                               Terms and Conditions
@@ -207,9 +217,46 @@ const HomePage = () => {
         </Row>
       </section>
 
+      <section className="customer-feedback">
+        <h2 className="titleS">Our Customer FeedBack</h2>
+        <div className="feedback">
+          <Row gutter={[40, 16]}>
+            {feedback.map((item) => (
+              <Col span={8}>
+                <Card className="card-feedback">
+                  <div className="ava-name">
+                    <img className="ava-feedback" src={item.ava} alt="logo" />
+                    <div className="name-role">
+                      <p className="name-feedback">{item.nama}</p>
+                      <p className="role-feedback">{item.role}</p>
+                    </div>
+                  </div>
+                  <Rate disabled defaultValue={5} />
+                  <p className="desc-feedback">{item.desc}</p>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        </div>
+        <div className="subscribe-form">
+          <div className="subscribe-content">
+            <p className="title-subs">Get more updates of Nusantara Foods</p>
+            <p className="subs-text">
+              Never miss out on the taste of Indonesia - Subscribe for exclusive
+              updates
+            </p>
+            <Space>
+              <Space.Compact className='input-button'>
+                <Input placeholder='Your email...'/>
+                <Button type="primary">Subscribe</Button>
+              </Space.Compact>
+            </Space>
+          </div>
+        </div>
+      </section>
     </div>
   );
-}
+};
 export default HomePage;
 
 function FoodMenu() {
@@ -234,7 +281,6 @@ function FoodMenu() {
     </Row>
   );
 }
-
 
 function DrinkMenu() {
   return (
@@ -261,7 +307,11 @@ function DrinkMenu() {
 
 function FoodMenuCarousel() {
   return (
-    <Carousel arrows={true} prevArrow={<LeftOutlined />} nextArrow={<RightOutlined />}>
+    <Carousel
+      arrows={true}
+      prevArrow={<LeftOutlined />}
+      nextArrow={<RightOutlined />}
+    >
       <Row gutter={15}>
         {menu.map((item) => (
           <Col span={6} xs={24} sm={24} md={24} lg={6} xl={6}>
@@ -281,12 +331,16 @@ function FoodMenuCarousel() {
         ))}
       </Row>
     </Carousel>
-  )
+  );
 }
 
 function DrinkMenuCarousel() {
   return (
-    <Carousel arrows={true} prevArrow={<LeftOutlined />} nextArrow={<RightOutlined />}>
+    <Carousel
+      arrows={true}
+      prevArrow={<LeftOutlined />}
+      nextArrow={<RightOutlined />}
+    >
       <Row gutter={15}>
         {minum.map((item) => (
           <Col span={6} xs={24} sm={24} md={24} lg={6} xl={6}>
@@ -306,5 +360,5 @@ function DrinkMenuCarousel() {
         ))}
       </Row>
     </Carousel>
-  )
+  );
 }

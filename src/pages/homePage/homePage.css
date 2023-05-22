@@ -460,3 +460,92 @@
 .btn-social {
   padding: 3px 4px 0px 3px;
 }
+
+.card-feedback {
+  margin: 0 82.5px 0 82.5px;
+}
+
+.ava-name {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.name-role {
+  margin: 0 0 0 10px;
+}
+
+.name-feedback {
+  width: 259px;
+  height: 10px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  color: #000000;
+}
+
+.role-feedback{
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  text-align: justify;
+  color: #000000;
+}
+
+.desc-feedback {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 24px;
+  text-align: justify;
+  color: #000000;
+}
+
+.subscribe-form {
+  background-image: url('../../assets/icons/nusantara-food.png');
+  margin: 0 0 100px 100px;
+  background-size: cover;
+  width: 1328px;
+  height: 330px;
+  border-radius: 30px;
+}
+
+.title-subs {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 72px;
+  padding-top: 30px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.subs-text {
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 42px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.input-button {
+  width: 633px;
+  height: 52px;
+  margin-left: 316.5px;
+}
+
+.input-button Button {
+  font-family: "Poppins";
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  height: 52px;
+  border-radius: 100px;
+}
+
+.input-button Input {
+  border-radius: 100px;
+}
