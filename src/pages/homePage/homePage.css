@@ -1,3 +1,6 @@
+/* body {
+  font-family: "Poppins", Arial, sans-serif;
+} */
 @media screen and (width: 768px) {
   .service {
     display: flex;
@@ -548,4 +551,27 @@
 
 .input-button Input {
   border-radius: 100px;
+}
+
+.hero{
+  margin: 200px;
+  object-fit: contain;
+}
+.herotext1{
+  font-size: x-large;
+  font-family: 'Poppins';
+font-style: normal;
+/* font-size: 48px; */
+line-height: 40px;
+}
+.herodis{
+    font-family: "Poppins";
+    /* font-style: normal; */
+    font-weight: 400;
+    /* font-size: 28px; */
+    /* margin-top: -20px;
+    text-align: center; */
+}
+.buttonget{
+  /* padding: 3px; */
 }

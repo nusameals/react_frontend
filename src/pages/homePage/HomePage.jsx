@@ -35,12 +35,25 @@ const HomePage = () => {
 
   return (
     <div>
+      <h1>test</h1>
+      <div className='hero'>
+        <div className='heroleft'>
+        <div className='herotext1'>
+          <h1 className='herodis'>Discover the Rich Culinary </h1>
+<h1 className='heroher'>Heritage of Indonesia</h1>  
+<p>No more long lines, our app makes <br /> booking and order with our app, <br /> the smart way to dine.</p>        
+
+        </div>
+        <Button type="primary" className='buttonget'>Get the app</Button>
+
+</div>
+      </div>
       <section className="SERVICE">
         <h2 className="titleS">
           Our Special Service <br />
           from Nusantara Meals
         </h2>
-        <div>
+        <div>             
           <Row>
             {service.map((item) => (
               <Col className="service">
