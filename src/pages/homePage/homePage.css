@@ -573,5 +573,43 @@ line-height: 40px;
     text-align: center; */
 }
 .buttonget{
-  /* padding: 3px; */
+  font-size: 18px;
+  font-family: "Poppins";
+  font-style: bold;
+  font-weight: 700;
+  /* padding: 23px 28x;  */
+  padding: 30px 28px;
+  /* Width: 900x;
+Height: 68px; */
+  text-align: center; /* Center align the text horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  }
+
+.herosocial{
+  margin-top: 70px;
+  display: flex;
+
+  font-size: 25px;
+  align-items: center;  
+  }
+.heroicon{
+  color: #6AA5D7;
+  /* background-color: #ffffff; */
+  font-size: 25px;
+  align-items: center;
+  line-height: 10px;
+  /* margin-right: 50px;  */
+  display: flex;
+
+}
+.heroic{
+  margin-left: 0.5em;
+  margin-right: 1.2em;
+  border: none; /* Remove the button border */
+  background-color: transparent; /* Set the background color to transparent */
+  outline: none; 
+
 }
