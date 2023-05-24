@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 // import reactLogo from "../../assets/images/react.svg";
 import {
   Button,
@@ -10,13 +10,13 @@ import {
   Carousel,
   Rate,
   Input,
-} from 'antd';
-import { RightOutlined, LeftOutlined } from '@ant-design/icons';
-import { CancelButton } from '../../components/buttonComponent/ButtonComponent';
-import './homePage.css';
-import Gap from '../../components/gap/Gap';
-import { menu, service, minum, feedback } from './constant';
-import { GoogleButton, Logo, Bulethero, Herofood } from '../../assets/index';
+} from "antd";
+import { RightOutlined, LeftOutlined } from "@ant-design/icons";
+import { CancelButton } from "../../components/buttonComponent/ButtonComponent";
+import "./homePage.css";
+import Gap from "../../components/gap/Gap";
+import { menu, service, minum, feedback } from "./constant";
+import { GoogleButton, Logo, Bulethero, Herofood } from "../../assets/index";
 import {
   PhoneOutlined,
   MailOutlined,
@@ -24,11 +24,11 @@ import {
   InstagramOutlined,
   YoutubeOutlined,
   TwitterOutlined,
-} from '@ant-design/icons';
+} from "@ant-design/icons";
 
 const HomePage = () => {
   // radio button
-  const [section, setSection] = useState('food');
+  const [section, setSection] = useState("food");
   const onChange = ({ target: { value } }) => {
     setSection(value);
   };
@@ -36,47 +36,56 @@ const HomePage = () => {
   return (
     <div>
       <h1>test</h1>
-      <div style={{ backgroundImage: `url(${Bulethero})`, backgroundSize: 'contain' }}>
-      <div className='hero' >
-        <div className='conherofood' >
-        <img className ='herofood' src={Herofood} alt="Image"/>
+      <div
+        style={{
+          backgroundImage: `url(${Bulethero})`,
+          backgroundSize: "contain",
+        }}
+      >
+        <div className="hero">
+          <div className="conherofood">
+            <img className="herofood" src={Herofood} alt="Image" />
+          </div>
+
+          <div className="heroleft">
+            <div className="herotext1">
+              <h1 className="herodis">Discover the Rich Culinary </h1>
+              <h1 className="heroher">Heritage of Indonesia</h1>
+              <p>
+                No more long lines, our app makes <br /> booking and order with
+                our app, <br /> <b>the smart way to dine.</b>
+              </p>{" "}
+            </div>
+            <Button type="primary" className="buttonget">
+              Get the app
+            </Button>
+            <Space
+              wrap
+              direction="horizontal"
+              className="herosocial"
+              style={{ marginRight: "80px" }}
+            >
+              <Button
+                className="heroic"
+                icon={
+                  <FacebookOutlined
+                    className="heroicon"
+                    style={{ marginRight: "100px" }}
+                  />
+                }
+              />
+
+              <Button
+                className="heroic"
+                icon={<InstagramOutlined className="heroicon" />}
+              />
+              <Button
+                className="heroic"
+                icon={<TwitterOutlined className="heroicon" />}
+              />
+            </Space>
+          </div>
         </div>
-        
-        <div className='heroleft'>
-          <div className='herotext1'>
-            
-            <h1 className='herodis'>Discover the Rich Culinary </h1>
-            <h1 className='heroher'>Heritage of Indonesia</h1>
-            <p>No more long lines, our app makes <br /> booking and order with our app, <br /> <b>the smart way to dine.</b></p>                </div>
-          <Button type="primary" className='buttonget'>Get the app</Button>
-          <Space
-
-            wrap
-            direction="horizontal"
-            className="herosocial"
-            style={{ marginRight: '80px' }}
-
-          >
-            <Button className='heroic'
-              icon={
-                <FacebookOutlined className="heroicon" style={{ marginRight: '100px' }} />
-              }
-            />
-
-            <Button className='heroic'
-              icon={
-                <InstagramOutlined className="heroicon" />
-              }
-            />
-            <Button className='heroic'
-              icon={
-                <TwitterOutlined className="heroicon" />
-              }
-            />
-          </Space>
-
-        </div>
-      </div>
       </div>
       <section className="SERVICE">
         <h2 className="titleS">
@@ -120,10 +129,8 @@ const HomePage = () => {
           </Row>
         </div>
         <p className="lihat">Lihat Semua</p>
-        <div>{section === 'food' ? <FoodMenu /> : <DrinkMenu />}</div>
+        <div>{section === "food" ? <FoodMenu /> : <DrinkMenu />}</div>
       </section>
-
-
 
       <section className="customer-feedback">
         <h2 className="titleS">Our Customer FeedBack</h2>
@@ -154,8 +161,8 @@ const HomePage = () => {
               updates
             </p>
             <Space>
-              <Space.Compact className='input-button'>
-                <Input placeholder='Your email...' />
+              <Space.Compact className="input-button">
+                <Input placeholder="Your email..." />
                 <Button type="primary">Subscribe</Button>
               </Space.Compact>
             </Space>
@@ -187,8 +194,8 @@ const HomePage = () => {
                       <div className="icon-container">
                         <PhoneOutlined
                           style={{
-                            fontSize: '25px',
-                            transform: 'rotate(90deg)',
+                            fontSize: "25px",
+                            transform: "rotate(90deg)",
                           }}
                         />
                       </div>
@@ -198,7 +205,7 @@ const HomePage = () => {
                       <div className="icon-container">
                         <MailOutlined
                           style={{
-                            fontSize: '25px',
+                            fontSize: "25px",
                           }}
                         />
                       </div>
@@ -211,7 +218,7 @@ const HomePage = () => {
                     <Button className="btn-google" />
                     <Row gutter={12}>
                       <Col span={8}>
-                        <ul style={{ paddingLeft: '0px' }}>
+                        <ul style={{ paddingLeft: "0px" }}>
                           <li className="list-btn-contact">
                             <Button className="btn-list" type="text">
                               Home
@@ -235,7 +242,7 @@ const HomePage = () => {
                         </ul>
                       </Col>
                       <Col span={16}>
-                        <ul style={{ paddingLeft: '0px' }}>
+                        <ul style={{ paddingLeft: "0px" }}>
                           <li className="list-btn-contact">
                             <Button className="btn-list" type="text">
                               Terms and Conditions
