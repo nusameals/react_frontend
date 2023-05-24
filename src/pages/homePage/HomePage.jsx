@@ -16,7 +16,7 @@ import { CancelButton } from '../../components/buttonComponent/ButtonComponent';
 import './homePage.css';
 import Gap from '../../components/gap/Gap';
 import { menu, service, minum, feedback } from './constant';
-import { GoogleButton, Logo, Bulethero } from '../../assets/index';
+import { GoogleButton, Logo, Bulethero, Herofood } from '../../assets/index';
 import {
   PhoneOutlined,
   MailOutlined,
@@ -36,47 +36,54 @@ const HomePage = () => {
   return (
     <div>
       <h1>test</h1>
-      <div className='hero'style={{ backgroundImage: `url(${Bulethero})`, backgroundSize: 'cover' }}>
-        <div className='heroleft'>
-        <div className='herotext1'>
-          <h1 className='herodis'>Discover the Rich Culinary </h1>
-<h1 className='heroher'>Heritage of Indonesia</h1>  
-<p>No more long lines, our app makes <br /> booking and order with our app, <br /> <b>the smart way to dine.</b></p>                </div>
-        <Button type="primary" className='buttonget'>Get the app</Button>
-        <Space
+      <div style={{ backgroundImage: `url(${Bulethero})`, backgroundSize: 'contain' }}>
+      <div className='hero' >
+        <div className='conherofood' >
+        <img className ='herofood' src={Herofood} alt="Image"/>
+        </div>
         
-                              wrap
-                              direction="horizontal"
-                              className="herosocial"
-                              style={{ marginRight: '80px' }}
+        <div className='heroleft'>
+          <div className='herotext1'>
+            
+            <h1 className='herodis'>Discover the Rich Culinary </h1>
+            <h1 className='heroher'>Heritage of Indonesia</h1>
+            <p>No more long lines, our app makes <br /> booking and order with our app, <br /> <b>the smart way to dine.</b></p>                </div>
+          <Button type="primary" className='buttonget'>Get the app</Button>
+          <Space
 
-                            >
-                              <Button className='heroic'
-                                icon={
-                                  <FacebookOutlined className="heroicon" style={{ marginRight: '100px' }}/>
-                                }
-                              />
+            wrap
+            direction="horizontal"
+            className="herosocial"
+            style={{ marginRight: '80px' }}
 
-                              <Button className='heroic'
-                                icon={
-                                  <InstagramOutlined className="heroicon" />
-                                }
-                              />
-                              <Button className='heroic'
-                                icon={
-                                  <TwitterOutlined className="heroicon" />
-                                }
-                              />
-                            </Space>
+          >
+            <Button className='heroic'
+              icon={
+                <FacebookOutlined className="heroicon" style={{ marginRight: '100px' }} />
+              }
+            />
 
-</div>
+            <Button className='heroic'
+              icon={
+                <InstagramOutlined className="heroicon" />
+              }
+            />
+            <Button className='heroic'
+              icon={
+                <TwitterOutlined className="heroicon" />
+              }
+            />
+          </Space>
+
+        </div>
+      </div>
       </div>
       <section className="SERVICE">
         <h2 className="titleS">
           Our Special Service <br />
           from Nusantara Meals
         </h2>
-        <div>             
+        <div>
           <Row>
             {service.map((item) => (
               <Col className="service">
@@ -148,7 +155,7 @@ const HomePage = () => {
             </p>
             <Space>
               <Space.Compact className='input-button'>
-                <Input placeholder='Your email...'/>
+                <Input placeholder='Your email...' />
                 <Button type="primary">Subscribe</Button>
               </Space.Compact>
             </Space>

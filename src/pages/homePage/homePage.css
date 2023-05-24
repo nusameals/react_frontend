@@ -556,13 +556,16 @@
 .hero{
   margin: 200px;
   object-fit: contain;
+  margin: 13%;
 }
+
 .herotext1{
   font-size: x-large;
   font-family: 'Poppins';
 font-style: normal;
 /* font-size: 48px; */
 line-height: 40px;
+
 }
 .herodis{
     font-family: "Poppins";
@@ -613,3 +616,4 @@ Height: 68px; */
   outline: none; 
 
 }
+
