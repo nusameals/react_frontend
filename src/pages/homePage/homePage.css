@@ -36,7 +36,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
 
     width: 220px;
     height: 248.75px;
@@ -175,6 +174,7 @@
   background: #0669BD;
   color: #FFFFFF;
   border: 1px solid #ffffff !important;
+  z-index: inherit;
 }
 
 .food {
@@ -189,6 +189,7 @@
 .drink:active {
   background: white;
   color: #0669BD;
+  z-index: 0 !important;
 }
 
 .MENU {
@@ -199,6 +200,7 @@
   padding: 30px;
   background: #0669bd;
   border-radius: 20px;
+  padding-bottom: 50px;
 }
 
 .titleM {
@@ -238,6 +240,7 @@
   background: #ffffff;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  max-width: 294px;
 }
 
 .imgM {
@@ -253,7 +256,7 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .kotaM {
@@ -261,7 +264,7 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 13px;
 
   color: #7f7f7f;
 }
@@ -277,7 +280,7 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 13px;
   margin-top: 20px;
   color: #7f7f7f;
 }
@@ -290,22 +293,46 @@
   margin-top: -20px;
 }
 
-.ant-carousel .slick-prev,
-.ant-carousel .slick-prev:hover,
-.ant-carousel .slick-prev:focus {
-  font-size: inherit;
-  left: 10px;
-  z-index: 2;
-  color: black;
+.swiper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 230px;
+  height: 290px;
 }
 
-.ant-carousel .slick-next,
-.ant-carousel .slick-next:hover,
-.ant-carousel .slick-next:focus {
-  font-size: inherit;
-  right: 10px;
-  z-index: 2;
-  color: black;
+.swiper-wrapper {
+  width: 230px !important;
+  height: 270px;
+}
+
+.swiper-slide {
+  width: 230px !important;
+  height: 248.75px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+
+}
+
+.swiper-button-next {
+  right: 0px;
+  padding: 25px;
+  width: 5px !important;
+  height: 5px !important;
+}
+
+.swiper-button-prev {
+  left: 0;
+  padding: 25px;
+  width: 5px !important;
+  height: 5px !important;
+}
+
+.swiper-pagination {
+  margin-top: 50px !important;
+  color: white !important;
 }
 
 .CONTACT {
@@ -487,7 +514,7 @@
   color: #000000;
 }
 
-.role-feedback{
+.role-feedback {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -553,29 +580,31 @@
   border-radius: 100px;
 }
 
-.hero{
+.hero {
   margin: 200px;
   object-fit: contain;
   margin: 13%;
 }
 
-.herotext1{
+.herotext1 {
   font-size: x-large;
   font-family: 'Poppins';
-font-style: normal;
-/* font-size: 48px; */
-line-height: 40px;
+  font-style: normal;
+  /* font-size: 48px; */
+  line-height: 40px;
 
 }
-.herodis{
-    font-family: "Poppins";
-    /* font-style: normal; */
-    font-weight: 400;
-    /* font-size: 28px; */
-    /* margin-top: -20px;
+
+.herodis {
+  font-family: "Poppins";
+  /* font-style: normal; */
+  font-weight: 400;
+  /* font-size: 28px; */
+  /* margin-top: -20px;
     text-align: center; */
 }
-.buttonget{
+
+.buttonget {
   font-size: 18px;
   font-family: "Poppins";
   font-style: bold;
@@ -584,21 +613,23 @@ line-height: 40px;
   padding: 30px 28px;
   /* Width: 900x;
 Height: 68px; */
-  text-align: center; /* Center align the text horizontally */
+  text-align: center;
+  /* Center align the text horizontally */
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 100px;
-  }
+}
 
-.herosocial{
+.herosocial {
   margin-top: 70px;
   display: flex;
 
   font-size: 25px;
-  align-items: center;  
-  }
-.heroicon{
+  align-items: center;
+}
+
+.heroicon {
   color: #6AA5D7;
   /* background-color: #ffffff; */
   font-size: 25px;
@@ -608,12 +639,14 @@ Height: 68px; */
   display: flex;
 
 }
-.heroic{
+
+.heroic {
   margin-left: 0.5em;
   margin-right: 1.2em;
-  border: none; /* Remove the button border */
-  background-color: transparent; /* Set the background color to transparent */
-  outline: none; 
+  border: none;
+  /* Remove the button border */
+  background-color: transparent;
+  /* Set the background color to transparent */
+  outline: none;
 
 }
-

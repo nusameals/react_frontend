@@ -16,7 +16,8 @@ import { CancelButton } from "../../components/buttonComponent/ButtonComponent";
 import "./homePage.css";
 import Gap from "../../components/gap/Gap";
 import { menu, service, minum, feedback } from "./constant";
-import { GoogleButton, Logo, Bulethero, Herofood } from "../../assets/index";
+import { GoogleButton, Logo, Bulethero, Herofood, iga, sateayam, satedaging, empal, jahe, mangga, cincau, teh } from "../../assets/index";
+
 import {
   PhoneOutlined,
   MailOutlined,
@@ -25,8 +26,23 @@ import {
   YoutubeOutlined,
   TwitterOutlined,
 } from "@ant-design/icons";
+import swiper from "swiper";
 
 const HomePage = () => {
+
+  const swiper = new Swiper('.swiper', {
+    loop: true,
+
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    pagination: {
+      el: ".swiper-pagination",
+    },
+  });
+
   // radio button
   const [section, setSection] = useState("food");
   const onChange = ({ target: { value } }) => {
@@ -87,6 +103,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+
       <section className="SERVICE">
         <h2 className="titleS">
           Our Special Service <br />
@@ -113,7 +130,7 @@ const HomePage = () => {
           the best of Indonesia's culinary treasures, all in one place
         </p>
         <div>
-          <Row className="rowM">
+          <Row className='rowM' style={{ zIndex: 0 }}>
             <Radio.Group
               defaultValue="food"
               value={section}
@@ -169,6 +186,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
+
       <section className="CONTACT">
         <Row justify="center" align="middle">
           <Col
@@ -213,7 +231,7 @@ const HomePage = () => {
                     </Row>
                   </Space>
                 </Col>
-                <Col xs={24} sm={24} md={8} lg={8} xl={8}>
+                <Col xs={24} sm={24} md={8} lg={8} xl={8} >
                   <Space direction="vertical" className="container-col-contact">
                     <Button className="btn-google" />
                     <Row gutter={12}>
@@ -305,9 +323,10 @@ const HomePage = () => {
           </Col>
         </Row>
       </section>
+
     </div>
   );
-};
+}
 export default HomePage;
 
 function FoodMenu() {
@@ -332,6 +351,7 @@ function FoodMenu() {
     </Row>
   );
 }
+
 
 function DrinkMenu() {
   return (
@@ -358,58 +378,99 @@ function DrinkMenu() {
 
 function FoodMenuCarousel() {
   return (
-    <Carousel
-      arrows={true}
-      prevArrow={<LeftOutlined />}
-      nextArrow={<RightOutlined />}
-    >
-      <Row gutter={15}>
-        {menu.map((item) => (
-          <Col span={6} xs={24} sm={24} md={24} lg={6} xl={6}>
-            <Card
-              className="cardM"
-              value="food"
-              cover={<img className="imgM" alt="example" src={item.foto} />}
-            >
-              <p className="judulM">{item.judul}</p>
-              <p className="kotaM">{item.kota}</p>
-              <div className="hargakalor">
-                <p className="hargaM">{item.harga}</p>
-                <p className="kalori">{item.kalor}</p>
-              </div>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </Carousel>
-  );
-}
+    <div className="swiper" style={{ zIndex: 0 }}>
+      <div className="swiper-wrapper" >
 
+        <div className="swiper-slide" >
+          <img style={{ width: 230, borderTopLeftRadius: 10, borderTopRightRadius: 10 }} src={iga} alt="iga" />
+          <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>Iga Bakar</p>
+          <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>Jakarta</p>
+          <div className="hargakalor">
+            <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, width: 200 }}>Rp 30.000</p>
+            <p className="kalori" style={{ paddingRight: 30, fontSize: 13, }}>351kkal</p>
+          </div>
+        </div>
+        <div className="swiper-slide">
+          <img style={{ width: 230, borderTopLeftRadius: 10, borderTopRightRadius: 10 }} src={sateayam} alt="sate meranggi" />
+          <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>Sate Meranggi</p>
+          <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>Magelang</p>
+          <div className="hargakalor">
+            <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, width: 200 }}>Rp 35.000</p>
+            <p className="kalori" style={{ paddingRight: 30, fontSize: 13, }}>385kkal</p>
+          </div>
+        </div>
+        <div className="swiper-slide">
+          <img style={{ width: 230, borderTopLeftRadius: 10, borderTopRightRadius: 10 }} src={satedaging} alt="sate kambing" />
+          <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>Sate Kambing</p>
+          <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>Sumedang</p>
+          <div className="hargakalor">
+            <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, }}>Rp 25.000</p>
+            <p className="kalori" style={{ paddingRight: 25, fontSize: 13, }}>21kkal</p>
+          </div>
+        </div>
+        <div className="swiper-slide">
+          <img style={{ width: 230, borderTopLeftRadius: 10, borderTopRightRadius: 10 }} src={empal} alt="empal gentong" />
+          <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>Empal Gentong</p>
+          <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>Bandung</p>
+          <div className="hargakalor">
+            <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, }}>Rp 27.000</p>
+            <p className="kalori" style={{ paddingRight: 30, fontSize: 13, }}>482kkal</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="swiper-button-prev"></div>
+      <div className="swiper-button-next"></div>
+      <div className="swiper-pagination"></div>
+    </div>
+  )
+}
 function DrinkMenuCarousel() {
   return (
-    <Carousel
-      arrows={true}
-      prevArrow={<LeftOutlined />}
-      nextArrow={<RightOutlined />}
-    >
-      <Row gutter={15}>
-        {minum.map((item) => (
-          <Col span={6} xs={24} sm={24} md={24} lg={6} xl={6}>
-            <Card
-              className="cardM"
-              value="drink"
-              cover={<img className="imgM" alt="example" src={item.foto} />}
-            >
-              <p className="judulM">{item.judul}</p>
-              <p className="kotaM">{item.kota}</p>
-              <div className="hargakalor">
-                <p className="hargaM">{item.harga}</p>
-                <p className="kalori">{item.kalor}</p>
-              </div>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    </Carousel>
-  );
+    <div className="swiper" style={{ zIndex: 0 }}>
+      <div className="swiper-wrapper" >
+
+        <div className="swiper-slide" >
+          <img style={{ width: 230, borderTopLeftRadius: 10, borderTopRightRadius: 10 }} src={jahe} alt="wedang jahe merah" />
+          <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>Wedang Jahe Merah</p>
+          <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>Bandung</p>
+          <div className="hargakalor">
+            <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, width: 200 }}>Rp 8.000</p>
+            <p className="kalori" style={{ paddingRight: 30, fontSize: 13, }}>110kkal</p>
+          </div>
+        </div>
+        <div className="swiper-slide">
+          <img style={{ width: 230, borderTopLeftRadius: 10, borderTopRightRadius: 10 }} src={mangga} alt="jus mangga kweni" />
+          <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>Jus Mangga Kweni</p>
+          <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>Medan </p>
+          <div className="hargakalor">
+            <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, width: 200 }}>Rp 12.000</p>
+            <p className="kalori" style={{ paddingRight: 30, fontSize: 13, }}>100kkal</p>
+          </div>
+        </div>
+        <div className="swiper-slide">
+          <img style={{ width: 230, borderTopLeftRadius: 10, borderTopRightRadius: 10 }} src={cincau} alt="es cincau" />
+          <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>Es Cincau</p>
+          <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>Bali</p>
+          <div className="hargakalor">
+            <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, }}>Rp 13.000</p>
+            <p className="kalori" style={{ paddingRight: 25, fontSize: 13, }}>50kkal</p>
+          </div>
+        </div>
+        <div className="swiper-slide">
+          <img style={{ width: 230, borderTopLeftRadius: 10, borderTopRightRadius: 10 }} src={teh} alt="es lemon tea" />
+          <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>Es Lemon Tea</p>
+          <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>Mataram</p>
+          <div className="hargakalor">
+            <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, }}>Rp 9.000</p>
+            <p className="kalori" style={{ paddingRight: 30, fontSize: 13, }}>12kkal</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="swiper-button-prev"></div>
+      <div className="swiper-button-next"></div>
+      <div className="swiper-pagination"></div>
+    </div>
+  )
 }
