@@ -16,7 +16,7 @@ import { CancelButton } from "../../components/buttonComponent/ButtonComponent";
 import "./homePage.css";
 import Gap from "../../components/gap/Gap";
 import { menu, service, minum, feedback } from "./constant";
-import { GoogleButton, Logo, Bulethero, Herofood, iga, sateayam, satedaging, empal, jahe, mangga, cincau, teh } from "../../assets/index";
+import { GoogleButton, Logo, Herobackground, Herofood, iga, sateayam, satedaging, empal, jahe, mangga, cincau, teh } from "../../assets/index";
 
 import {
   PhoneOutlined,
@@ -51,13 +51,16 @@ const HomePage = () => {
 
   return (
     <div>
-      <h1>test</h1>
-      <div
+            <div
         style={{
-          backgroundImage: `url(${Bulethero})`,
-          backgroundSize: "contain",
+          backgroundImage: `url(${Herobackground})`,
+          backgroundSize: "cover",
         }}
       >
+      <h1        style={{
+         color: "white"
+        }}>test</h1>
+
         <div className="hero">
           <div className="conherofood">
             <img className="herofood" src={Herofood} alt="Image" />
@@ -146,7 +149,7 @@ const HomePage = () => {
           </Row>
         </div>
         <p className="lihat">Lihat Semua</p>
-        <div>{section === "food" ? <FoodMenu /> : <DrinkMenu />}</div>
+        <div>{section === "food" ? <FoodMenuCarousel /> : <DrinkMenuCarousel />}</div>
       </section>
 
       <section className="customer-feedback">
@@ -423,6 +426,7 @@ function FoodMenuCarousel() {
       <div className="swiper-button-next"></div>
       <div className="swiper-pagination"></div>
     </div>
+    
   )
 }
 function DrinkMenuCarousel() {
