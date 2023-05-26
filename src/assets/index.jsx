@@ -5,6 +5,7 @@ import Customer2 from './icons/Customer-2.svg'
 import Customer3 from './icons/Customer-3.svg'
 import NusantaraFood from './icons/nusantara-food.png'
 import Bulethero from './images/bulethero.svg'
+import Herobackground from './images/herobackground.svg'  
 import Herofood from './images/NusantarasFoodhero.svg'
 import jahe from './icons/jahe.png';
 import mangga from './icons/mangga.png';
@@ -17,4 +18,4 @@ import empal from './icons/empal.png';
 
 
 
-export { Logo, GoogleButton, Customer1, Customer2, Customer3, NusantaraFood, Bulethero, Herofood, jahe, mangga, cincau, teh, iga, sateayam, satedaging, empal };
+export { Logo, GoogleButton, Customer1, Customer2, Customer3, NusantaraFood, Bulethero, Herofood, jahe, mangga, cincau, teh, iga, sateayam, satedaging, empal, Herobackground };

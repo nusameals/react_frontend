@@ -505,7 +505,7 @@
 }
 
 .card-feedback {
-  margin: 0 82.5px 0 82.5px;
+  width: 400px;
 }
 
 .ava-name {
@@ -662,4 +662,21 @@ Height: 68px; */
   /* Set the background color to transparent */
   outline: none;
 
+}
+
+.ant-carousel .slick-prev,
+.ant-carousel .slick-next,
+.ant-carousel .slick-prev:hover,
+.ant-carousel .slick-next:hover{
+  font-size: inherit;
+  color: #ffffff;
+  background-color: #333333 !important;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  border-radius: 20px;
+}
+
+.ant-carousel {
+  width: 428px;
 }
