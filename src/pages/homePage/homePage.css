@@ -1,7 +1,8 @@
 /* body {
   font-family: "Poppins", Arial, sans-serif;
 } */
-@media screen and (width: 768px) {
+@media only screen and (width: 768px) {
+
   .service {
     display: flex;
     flex-direction: row;
@@ -47,6 +48,10 @@
 
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
+  }
+
+  .lihat {
+    margin-right: -1100px
   }
 }
 
@@ -195,12 +200,19 @@
 .MENU {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 30px;
   background: #0669bd;
   border-radius: 20px;
   padding-bottom: 50px;
+}
+
+.titleM,
+.descM,
+.CARD {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .titleM {
@@ -223,7 +235,7 @@
 }
 
 .lihat {
-  margin-left: -1100px;
+  float: inline-start;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
@@ -231,6 +243,7 @@
   line-height: 30px;
   color: #ffffff;
 }
+
 
 .cardM {
   display: flex;
