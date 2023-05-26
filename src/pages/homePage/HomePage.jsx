@@ -159,7 +159,7 @@ const HomePage = () => {
           </Row>
         </div>
         <p className="lihat" >Lihat Semua</p>
-        <div className="CARD">{section === "food" ? <FoodMenuCarousel /> : <DrinkMenuCarousel />}</div>
+        <div className="CARD">{section === "food" ? <FoodMenu /> : <DrinkMenu />}</div>
         <div className="car" style={{ display: 'none' }}>
           {section === 'food' ? <FoodMenuCarousel /> : <DrinkMenuCarousel />}
         </div>
