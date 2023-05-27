@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 // import reactLogo from "../../assets/images/react.svg";
 import {
   Button,
@@ -10,13 +10,26 @@ import {
   Carousel,
   Rate,
   Input,
-} from "antd";
-import { RightOutlined, LeftOutlined } from "@ant-design/icons";
-import { CancelButton } from "../../components/buttonComponent/ButtonComponent";
-import "./homePage.css";
-import Gap from "../../components/gap/Gap";
-import { menu, service, minum, feedback } from "./constant";
-import { GoogleButton, Logo, Herobackground, Herofood, iga, sateayam, satedaging, empal, jahe, mangga, cincau, teh } from "../../assets/index";
+} from 'antd';
+import { RightOutlined, LeftOutlined } from '@ant-design/icons';
+import { CancelButton } from '../../components/buttonComponent/ButtonComponent';
+import './homePage.css';
+import Gap from '../../components/gap/Gap';
+import { menu, service, minum, feedback } from './constant';
+import {
+  GoogleButton,
+  Logo,
+  Herobackground,
+  Herofood,
+  iga,
+  sateayam,
+  satedaging,
+  empal,
+  jahe,
+  mangga,
+  cincau,
+  teh,
+} from '../../assets/index';
 
 import {
   PhoneOutlined,
@@ -26,40 +39,35 @@ import {
   YoutubeOutlined,
   TwitterOutlined,
 } from "@ant-design/icons";
-import swiper from "swiper";
+
+
+import useMediaQuery from "./query";
 
 const HomePage = () => {
 
-  const swiper = new Swiper('.swiper', {
-    loop: true,
-
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-
-    pagination: {
-      el: ".swiper-pagination",
-    },
-  });
+  const matches = useMediaQuery('(min-width: 768px)')
 
   // radio button
-  const [section, setSection] = useState("food");
+  const [section, setSection] = useState('food');
   const onChange = ({ target: { value } }) => {
     setSection(value);
   };
 
   return (
     <div>
-            <div
+      <div
         style={{
           backgroundImage: `url(${Herobackground})`,
-          backgroundSize: "cover",
+          backgroundSize: 'cover',
         }}
       >
-      <h1        style={{
-         color: "white"
-        }}>test</h1>
+        <h1
+          style={{
+            color: 'white',
+          }}
+        >
+          test
+        </h1>
 
         <div className="hero">
           <div className="conherofood">
@@ -73,7 +81,7 @@ const HomePage = () => {
               <p>
                 No more long lines, our app makes <br /> booking and order with
                 our app, <br /> <b>the smart way to dine.</b>
-              </p>{" "}
+              </p>{' '}
             </div>
             <Button type="primary" className="buttonget">
               Get the app
@@ -82,14 +90,14 @@ const HomePage = () => {
               wrap
               direction="horizontal"
               className="herosocial"
-              style={{ marginRight: "80px" }}
+              style={{ marginRight: '80px' }}
             >
               <Button
                 className="heroic"
                 icon={
                   <FacebookOutlined
                     className="heroicon"
-                    style={{ marginRight: "100px" }}
+                    style={{ marginRight: '100px' }}
                   />
                 }
               />
@@ -113,17 +121,19 @@ const HomePage = () => {
           from Nusantara Meals
         </h2>
         <div>
-          <Row>
-            {service.map((item) => (
-              <Col className="service">
-                <img className="imgS" src={item.logo} alt="logo" />
-                <div className="juduldescS">
-                  <p className="judulS">{item.judul}</p>
-                  <p className="descS">{item.desc}</p>
-                </div>
-              </Col>
-            ))}
-          </Row>
+          <Space direction="horizontal">
+            <Row justify='center'>
+              {service.map((item) => (
+                <Col className="service">
+                  <img className="imgS" src={item.logo} alt="logo" />
+                  <div className="juduldescS">
+                    <p className="judulS">{item.judul}</p>
+                    <p className="descS">{item.desc}</p>
+                  </div>
+                </Col>
+              ))}
+            </Row>
+          </Space>
         </div>
       </section>
 
@@ -133,7 +143,7 @@ const HomePage = () => {
           the best of Indonesia's culinary treasures, all in one place
         </p>
         <div>
-          <Row className='rowM' style={{ zIndex: 0 }}>
+          <Row justify='center' className='rowM' style={{ zIndex: 0 }}>
             <Radio.Group
               defaultValue="food"
               value={section}
@@ -148,29 +158,38 @@ const HomePage = () => {
             </Radio.Group>
           </Row>
         </div>
-        <p className="lihat">Lihat Semua</p>
-        <div>{section === "food" ? <FoodMenuCarousel /> : <DrinkMenuCarousel />}</div>
+        <p className="lihat" >Lihat Semua</p>
+        <div className="CARD">{section === "food" ? <FoodMenu /> : <DrinkMenu />}</div>
+        <div className="car" style={{ display: 'none' }}>
+          {section === 'food' ? <FoodMenuCarousel /> : <DrinkMenuCarousel />}
+        </div>
       </section>
 
       <section className="customer-feedback">
         <h2 className="titleS">Our Customer FeedBack</h2>
         <div className="feedback">
-          <Row gutter={[40, 16]}>
-            {feedback.map((item) => (
-              <Col span={8}>
-                <Card className="card-feedback">
-                  <div className="ava-name">
-                    <img className="ava-feedback" src={item.ava} alt="logo" />
-                    <div className="name-role">
-                      <p className="name-feedback">{item.nama}</p>
-                      <p className="role-feedback">{item.role}</p>
+          <Row gutter={[40, 16]} justify='center' align='middle'>
+            <Carousel
+              arrows={true}
+              prevArrow={<LeftOutlined />}
+              nextArrow={<RightOutlined />}
+            >
+              {feedback.map((item) => (
+                <Col xl={{ span: 8 }} md={{ span: 24 }}>
+                  <Card className="card-feedback">
+                    <div className="ava-name">
+                      <img className="ava-feedback" src={item.ava} alt="logo" />
+                      <div className="name-role">
+                        <p className="name-feedback">{item.nama}</p>
+                        <p className="role-feedback">{item.role}</p>
+                      </div>
                     </div>
-                  </div>
-                  <Rate disabled defaultValue={5} />
-                  <p className="desc-feedback">{item.desc}</p>
-                </Card>
-              </Col>
-            ))}
+                    <Rate disabled defaultValue={5} />
+                    <p className="desc-feedback">{item.desc}</p>
+                  </Card>
+                </Col>
+              ))}
+            </Carousel>
           </Row>
         </div>
         <div className="subscribe-form">
@@ -215,8 +234,8 @@ const HomePage = () => {
                       <div className="icon-container">
                         <PhoneOutlined
                           style={{
-                            fontSize: "25px",
-                            transform: "rotate(90deg)",
+                            fontSize: '25px',
+                            transform: 'rotate(90deg)',
                           }}
                         />
                       </div>
@@ -226,7 +245,7 @@ const HomePage = () => {
                       <div className="icon-container">
                         <MailOutlined
                           style={{
-                            fontSize: "25px",
+                            fontSize: '25px',
                           }}
                         />
                       </div>
@@ -234,12 +253,12 @@ const HomePage = () => {
                     </Row>
                   </Space>
                 </Col>
-                <Col xs={24} sm={24} md={8} lg={8} xl={8} >
+                <Col xs={24} sm={24} md={8} lg={8} xl={8}>
                   <Space direction="vertical" className="container-col-contact">
                     <Button className="btn-google" />
                     <Row gutter={12}>
                       <Col span={8}>
-                        <ul style={{ paddingLeft: "0px" }}>
+                        <ul style={{ paddingLeft: '0px' }}>
                           <li className="list-btn-contact">
                             <Button className="btn-list" type="text">
                               Home
@@ -263,7 +282,7 @@ const HomePage = () => {
                         </ul>
                       </Col>
                       <Col span={16}>
-                        <ul style={{ paddingLeft: "0px" }}>
+                        <ul style={{ paddingLeft: '0px' }}>
                           <li className="list-btn-contact">
                             <Button className="btn-list" type="text">
                               Terms and Conditions
@@ -326,155 +345,136 @@ const HomePage = () => {
           </Col>
         </Row>
       </section>
-
-    </div>
+    </div >
   );
-}
+};
 export default HomePage;
 
 function FoodMenu() {
   return (
-    <Row gutter={15}>
-      {menu.map((item) => (
-        <Col span={6} xs={24} sm={24} md={24} lg={6} xl={6}>
-          <Card
-            className="cardM"
-            value="food"
-            cover={<img className="imgM" alt="example" src={item.foto} />}
-          >
-            <p className="judulM">{item.judul}</p>
-            <p className="kotaM">{item.kota}</p>
-            <div className="hargakalor">
-              <p className="hargaM">{item.harga}</p>
-              <p className="kalori">{item.kalor}</p>
-            </div>
-          </Card>
-        </Col>
-      ))}
-    </Row>
+    <Space direction="horizontal">
+      <Row justify="center" gutter={15}>
+        {menu.map((item) => (
+          <Col span={6} xs={24} sm={24} md={24} lg={6} xl={6}>
+            <Card
+              className="cardM"
+              value="food"
+              cover={<img className="imgM" alt="example" src={item.foto} />}
+            >
+              <p className="judulM">{item.judul}</p>
+              <p className="kotaM">{item.kota}</p>
+              <div className="hargakalor">
+                <p className="hargaM">{item.harga}</p>
+                <p className="kalori">{item.kalor}</p>
+              </div>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Space>
   );
 }
 
-
 function DrinkMenu() {
   return (
-    <Row gutter={15}>
-      {minum.map((item) => (
-        <Col span={6} xs={24} sm={24} md={24} lg={6} xl={6}>
-          <Card
-            className="cardM"
-            value="drink"
-            cover={<img className="imgM" alt="example" src={item.foto} />}
-          >
-            <p className="judulM">{item.judul}</p>
-            <p className="kotaM">{item.kota}</p>
-            <div className="hargakalor">
-              <p className="hargaM">{item.harga}</p>
-              <p className="kalori">{item.kalor}</p>
-            </div>
-          </Card>
-        </Col>
-      ))}
-    </Row>
+    <Space direction="horizontal">
+      <Row justify='center' gutter={15}>
+        {minum.map((item) => (
+          <Col span={6} xs={24} sm={24} md={24} lg={6} xl={6}>
+            <Card
+              className="cardM"
+              value="drink"
+              cover={<img className="imgM" alt="example" src={item.foto} />}
+            >
+              <p className="judulM">{item.judul}</p>
+              <p className="kotaM">{item.kota}</p>
+              <div className="hargakalor">
+                <p className="hargaM">{item.harga}</p>
+                <p className="kalori">{item.kalor}</p>
+              </div>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </Space>
   );
 }
 
 function FoodMenuCarousel() {
   return (
-    <div className="swiper" style={{ zIndex: 0 }}>
-      <div className="swiper-wrapper" >
-
-        <div className="swiper-slide" >
-          <img style={{ width: 230, borderTopLeftRadius: 10, borderTopRightRadius: 10 }} src={iga} alt="iga" />
-          <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>Iga Bakar</p>
-          <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>Jakarta</p>
-          <div className="hargakalor">
-            <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, width: 200 }}>Rp 30.000</p>
-            <p className="kalori" style={{ paddingRight: 30, fontSize: 13, }}>351kkal</p>
-          </div>
-        </div>
-        <div className="swiper-slide">
-          <img style={{ width: 230, borderTopLeftRadius: 10, borderTopRightRadius: 10 }} src={sateayam} alt="sate meranggi" />
-          <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>Sate Meranggi</p>
-          <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>Magelang</p>
-          <div className="hargakalor">
-            <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, width: 200 }}>Rp 35.000</p>
-            <p className="kalori" style={{ paddingRight: 30, fontSize: 13, }}>385kkal</p>
-          </div>
-        </div>
-        <div className="swiper-slide">
-          <img style={{ width: 230, borderTopLeftRadius: 10, borderTopRightRadius: 10 }} src={satedaging} alt="sate kambing" />
-          <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>Sate Kambing</p>
-          <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>Sumedang</p>
-          <div className="hargakalor">
-            <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, }}>Rp 25.000</p>
-            <p className="kalori" style={{ paddingRight: 25, fontSize: 13, }}>21kkal</p>
-          </div>
-        </div>
-        <div className="swiper-slide">
-          <img style={{ width: 230, borderTopLeftRadius: 10, borderTopRightRadius: 10 }} src={empal} alt="empal gentong" />
-          <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>Empal Gentong</p>
-          <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>Bandung</p>
-          <div className="hargakalor">
-            <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, }}>Rp 27.000</p>
-            <p className="kalori" style={{ paddingRight: 30, fontSize: 13, }}>482kkal</p>
-          </div>
-        </div>
+    <div className="carousel" style={{ zIndex: 0 }}>
+      <div className='swiper-wrapper'>
+        <Space>
+          <Row gutter={[40, 16]} justify='center' align='middle'>
+            <Carousel
+              arrows={true}
+              prevArrow={<LeftOutlined />}
+              nextArrow={<RightOutlined />}
+              style={{
+                width: 265
+              }}
+            >
+              {menu.map((item) => (
+                <Col xl={{ span: 8 }} md={{ span: 24 }}>
+                  <div className="swiper-slide">
+                    <img style={{
+                      width: 230,
+                      borderTopLeftRadius: 10,
+                      borderTopRightRadius: 10,
+                    }} src={item.foto} alt="logo" />
+                    <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>{item.judul}</p>
+                    <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>{item.kota}</p>
+                    <div className="hargakalor">
+                      <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, width: 200 }}>{item.harga}</p>
+                      <p className="kalori" style={{ paddingRight: 30, fontSize: 13 }}>{item.kalor}</p>
+                    </div>
+                  </div>
+                </Col>
+              ))}
+            </Carousel>
+          </Row>
+        </Space>
       </div>
-
-      <div className="swiper-button-prev"></div>
-      <div className="swiper-button-next"></div>
-      <div className="swiper-pagination"></div>
     </div>
-    
   )
 }
+
 function DrinkMenuCarousel() {
   return (
-    <div className="swiper" style={{ zIndex: 0 }}>
-      <div className="swiper-wrapper" >
-
-        <div className="swiper-slide" >
-          <img style={{ width: 230, borderTopLeftRadius: 10, borderTopRightRadius: 10 }} src={jahe} alt="wedang jahe merah" />
-          <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>Wedang Jahe Merah</p>
-          <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>Bandung</p>
-          <div className="hargakalor">
-            <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, width: 200 }}>Rp 8.000</p>
-            <p className="kalori" style={{ paddingRight: 30, fontSize: 13, }}>110kkal</p>
-          </div>
-        </div>
-        <div className="swiper-slide">
-          <img style={{ width: 230, borderTopLeftRadius: 10, borderTopRightRadius: 10 }} src={mangga} alt="jus mangga kweni" />
-          <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>Jus Mangga Kweni</p>
-          <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>Medan </p>
-          <div className="hargakalor">
-            <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, width: 200 }}>Rp 12.000</p>
-            <p className="kalori" style={{ paddingRight: 30, fontSize: 13, }}>100kkal</p>
-          </div>
-        </div>
-        <div className="swiper-slide">
-          <img style={{ width: 230, borderTopLeftRadius: 10, borderTopRightRadius: 10 }} src={cincau} alt="es cincau" />
-          <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>Es Cincau</p>
-          <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>Bali</p>
-          <div className="hargakalor">
-            <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, }}>Rp 13.000</p>
-            <p className="kalori" style={{ paddingRight: 25, fontSize: 13, }}>50kkal</p>
-          </div>
-        </div>
-        <div className="swiper-slide">
-          <img style={{ width: 230, borderTopLeftRadius: 10, borderTopRightRadius: 10 }} src={teh} alt="es lemon tea" />
-          <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>Es Lemon Tea</p>
-          <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>Mataram</p>
-          <div className="hargakalor">
-            <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, }}>Rp 9.000</p>
-            <p className="kalori" style={{ paddingRight: 30, fontSize: 13, }}>12kkal</p>
-          </div>
-        </div>
+    <div className="carousel" style={{ zIndex: 0 }}>
+      <div className='swiper-wrapper'>
+        <Space>
+          <Row gutter={[40, 16]} justify='center' align='middle'>
+            <Carousel
+              arrows={true}
+              prevArrow={<LeftOutlined />}
+              nextArrow={<RightOutlined />}
+              style={{
+                width: 265
+              }}
+            >
+              {minum.map((item) => (
+                <Col xl={{ span: 8 }} md={{ span: 24 }}>
+                  <div className="swiper-slide">
+                    <img style={{
+                      width: 230,
+                      borderTopLeftRadius: 10,
+                      borderTopRightRadius: 10,
+                    }} src={item.foto} alt="logo" />
+                    <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>{item.judul}</p>
+                    <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>{item.kota}</p>
+                    <div className="hargakalor">
+                      <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, width: 200 }}>{item.harga}</p>
+                      <p className="kalori" style={{ paddingRight: 30, fontSize: 13 }}>{item.kalor}</p>
+                    </div>
+                  </div>
+                </Col>
+              ))}
+            </Carousel>
+          </Row>
+        </Space>
       </div>
-
-      <div className="swiper-button-prev"></div>
-      <div className="swiper-button-next"></div>
-      <div className="swiper-pagination"></div>
     </div>
   )
 }
+
