@@ -220,7 +220,7 @@ const HomePage = () => {
             className="cont-container"
           >
             <Space direction="horizontal">
-              <Row gutter={12} justify="center">
+              <Row gutter={[12, 32]} justify="center">
                 <Col xs={24} sm={24} md={16} lg={16} xl={16}>
                   <Space direction="vertical" className="container-col-contact">
                     <img src={Logo} alt="logo" className="contact-nusa" />
