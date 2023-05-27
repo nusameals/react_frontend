@@ -55,7 +55,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <div
+      <div id='home'
         style={{
           backgroundImage: `url(${Herobackground})`,
           backgroundSize: 'cover',
@@ -115,7 +115,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <section className="SERVICE">
+      <section id='services' className="SERVICE">
         <h2 className="titleS">
           Our Special Service <br />
           from Nusantara Meals
@@ -137,7 +137,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="MENU">
+      <section id='menu' className="MENU">
         <h2 className="titleM">This Month Hottest Menu</h2>
         <p className="descM">
           the best of Indonesia's culinary treasures, all in one place
@@ -209,7 +209,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="CONTACT">
+      <section id='contact' className="CONTACT">
         <Row justify="center" align="middle">
           <Col
             xs={24}
