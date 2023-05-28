@@ -45,7 +45,8 @@ import useMediaQuery from "./query";
 
 const HomePage = () => {
 
-  const matches = useMediaQuery('(min-width: 768px)')
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  // console.log('isMobile returns ', isMobile);
 
   // radio button
   const [section, setSection] = useState('food');
@@ -152,17 +153,31 @@ const HomePage = () => {
               <Radio.Button className="food" value="food" style={{ zIndex: 0 }}>
                 Food's
               </Radio.Button>
-              <Radio.Button className="drink" value="drink">
+              <Radio.Button className="drink" style={{ zIndex: 0 }} value="drink">
                 Drink's
               </Radio.Button>
             </Radio.Group>
           </Row>
         </div>
         <p className="lihat" >Lihat Semua</p>
-        <div className="CARD">{section === "food" ? <FoodMenu /> : <DrinkMenu />}</div>
-        <div className="car" style={{ display: 'none' }}>
-          {section === 'food' ? <FoodMenuCarousel /> : <DrinkMenuCarousel />}
-        </div>
+        {isMobile ? (
+          <div className="car" style={
+            {
+              zIndex: 0,
+              justifyContent: 'center',
+              display: 'flex',
+              alignItems: 'center'
+            }
+          }>
+            {section === 'food' ? <FoodMenuCarousel /> : <DrinkMenuCarousel />}
+          </div>
+        ) : (
+          <div className="CARD" style={{
+            zIndex: 0
+          }}>
+            {section === 'food' ? <FoodMenu /> : <DrinkMenu />}
+          </div>
+        )}
       </section>
 
       <section className="customer-feedback">
@@ -422,11 +437,11 @@ function FoodMenuCarousel() {
                       borderTopLeftRadius: 10,
                       borderTopRightRadius: 10,
                     }} src={item.foto} alt="logo" />
-                    <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>{item.judul}</p>
-                    <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>{item.kota}</p>
-                    <div className="hargakalor">
-                      <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, width: 200 }}>{item.harga}</p>
-                      <p className="kalori" style={{ paddingRight: 30, fontSize: 13 }}>{item.kalor}</p>
+                    <p className="judulM">{item.judul}</p>
+                    <p className="kotaM" >{item.kota}</p>
+                    <div className="hargakalor" >
+                      <p className="hargaM" >{item.harga}</p>
+                      <p className="kalori">{item.kalor}</p>
                     </div>
                   </div>
                 </Col>
@@ -461,11 +476,11 @@ function DrinkMenuCarousel() {
                       borderTopLeftRadius: 10,
                       borderTopRightRadius: 10,
                     }} src={item.foto} alt="logo" />
-                    <p className="judulM" style={{ paddingTop: 25, paddingLeft: 25, fontSize: 15 }}>{item.judul}</p>
-                    <p className="kotaM" style={{ paddingLeft: 25, fontSize: 13 }}>{item.kota}</p>
+                    <p className="judulM">{item.judul}</p>
+                    <p className="kotaM">{item.kota}</p>
                     <div className="hargakalor">
-                      <p className="hargaM" style={{ paddingLeft: 25, fontSize: 13, width: 200 }}>{item.harga}</p>
-                      <p className="kalori" style={{ paddingRight: 30, fontSize: 13 }}>{item.kalor}</p>
+                      <p className="hargaM">{item.harga}</p>
+                      <p className="kalori">{item.kalor}</p>
                     </div>
                   </div>
                 </Col>

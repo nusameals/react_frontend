@@ -270,6 +270,8 @@
   font-style: normal;
   font-weight: 700;
   font-size: 15px;
+  padding-top: 25px;
+  padding-left: 25px;
 }
 
 .kotaM {
@@ -278,7 +280,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
-
+  padding-left: 25px;
   color: #7f7f7f;
 }
 
@@ -286,7 +288,8 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 13px;
+  padding-left: 25px;
 }
 
 .kalori {
@@ -294,16 +297,16 @@
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
-  margin-top: 20px;
   color: #7f7f7f;
+  padding-right: 25px;
 }
 
 .hargakalor {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 110px;
-  margin-top: -20px;
+  margin-top: -10px;
+  width: 230px;
 }
 
 .carousel {
