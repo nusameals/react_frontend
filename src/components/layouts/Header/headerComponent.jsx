@@ -1,49 +1,52 @@
-import { Layout, Menu, Row, Button } from "antd";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import "./header.css";
+import { Layout, Menu, Row, Button, Collapse } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
 import { MENU_ITEM } from "../constants";
 import { Link } from "react-router-dom";
 import { Logo } from "../../../assets";
-import "./header.css";
+import classnames from "classnames";
 
 const HeaderComponent = () => {
   const { Header } = Layout;
   const path = window.location.pathname;
   const [current, setCurrent] = useState(path);
+  const [isScrolled, setIsScrolled] = useState(false);
+
   const onClick = (e) => {
     setCurrent(e.key);
   };
 
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
+
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <Header
-      style={{
-        position: "fixed",
-        top: 0,
-        zIndex: 1,
-        width: "100%",
-        background: "#fff",
-        boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)",
-        paddingTop: 0,
-      }}
-    >
-      <Row justify="space-between">
-        <Link to="/">
-          <Row>
+    <Header className="head-container" style={{ 
+      background:  isScrolled ? "#fff" : "transparent",
+     }}>
+      <Row justify="space-between" >
+        <Link to="/" className="logoHidden">
+          <Row className="brand">
             <img
               src={Logo}
               alt="logo"
-              style={{
-                float: "left",
-                width: 40,
-                height: 40,
-                margin: "13px 10px 13px 200px",
-                background: "rgba(255, 255, 255, 0.2)",
-              }}
+              className="logo-image"
               onClick={() => setCurrent("")}
             />
-            <span
-              type="text"
-              className="logo-text"
-            >
+            <span type="text" className="logo-text">
               Nusameals
             </span>
           </Row>
@@ -52,11 +55,52 @@ const HeaderComponent = () => {
           theme="light"
           mode="horizontal"
           items={MENU_ITEM}
-          disabledOverflow
           onClick={onClick}
           selectedKeys={[current]}
-          className="nav-menu"
+          className="mobileHidden"
+          style={{ 
+            backgroundColor:  isScrolled ? "#fff" : "transparent",
+           }}
+          disabledOverflow
         />
+
+        <Collapse ghost bordered={false} className="mobileVisible">
+          <Collapse.Panel
+            header={
+              <Row justify="space-between">
+                <Link to="/">
+                  <Row className="brand">
+                    <img
+                      src={Logo}
+                      alt="logo"
+                      className="logo-image"
+                      onClick={() => setCurrent("")}
+                    />
+                    <span type="text" className="logo-text">
+                      Nusameals
+                    </span>
+                  </Row>
+                </Link>
+                <Button
+                  type="primary"
+                  icon={<MenuOutlined />}
+                  className="btn-bread"
+                />
+              </Row>
+            }
+            key="1"
+            showArrow={false}
+          >
+            <Menu
+              theme="light"
+              mode="vertical"
+              items={MENU_ITEM}
+              onClick={onClick}
+              selectedKeys={[current]}
+              className="menu-bread"
+            />
+          </Collapse.Panel>
+        </Collapse>
       </Row>
     </Header>
   );
