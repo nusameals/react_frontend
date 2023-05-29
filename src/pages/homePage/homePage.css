@@ -605,7 +605,7 @@
 }
 
 .herofood{
-  max-width: 80%;
+  max-width: 70%;
   height: auto;
 }
 @media (min-width: 900px) {
@@ -695,4 +695,60 @@ Height: 68px; */
 
 .ant-carousel {
   width: 428px;
+}
+.heroexcess{
+  margin: 5% 0%;
+  align-items: center;
+  display: grid;
+  place-items: center;
+  flex-direction: row;
+  /* gap: 48px; */
+  /* margin: 0% 5%; */
+}
+.heroexc {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  text-align: center; /* Center text */
+}
+.herocontent{
+  /* margin-right: 30%; */
+  padding: 20px 20px;
+  border-radius: 5%;
+ }
+ .heroexc {
+  /* margin-right: 5%; */
+  transition: transform 0.3s ease;
+}
+
+.herocontent:hover {
+  background-color: #f0f0f0; 
+  
+
+}
+.hjudul{
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 10px;
+}
+.hdes{
+  width: 240px;
+  height: 50px;
+
+  /* Body/R-16 */
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: justify;
+
+  /* Dark-Light/Dark-1 */
+
+  color: #000000;
 }

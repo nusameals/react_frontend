@@ -15,7 +15,7 @@ import { RightOutlined, LeftOutlined } from '@ant-design/icons';
 import { CancelButton } from '../../components/buttonComponent/ButtonComponent';
 import './homePage.css';
 import Gap from '../../components/gap/Gap';
-import { menu, service, minum, feedback } from './constant';
+import { menu, service, minum, feedback, heroex } from './constant';
 import {
   GoogleButton,
   Logo,
@@ -28,7 +28,7 @@ import {
   jahe,
   mangga,
   cincau,
-  teh,
+  teh, heroic1
 } from '../../assets/index';
 
 import {
@@ -116,6 +116,31 @@ const HomePage = () => {
             {/* <img class="herofood" src={Herofood} alt="Image" /> */}
           </div>
         </div>
+        <h1
+          style={{
+            color: "white",
+            marginTop: "-2%",
+          }}
+        >
+          test
+        </h1>
+      </div>
+      <div className='heroexcess' >
+      <Space direction="horizontal">
+            <Row justify='center'>
+              {heroex.map((item) => (
+                <Col className="heroexc">
+                  <div className='herocontent'>
+                  <img className="hlogo" src={item.logo} alt="logo" />
+                  <div className="hjuduldes">
+                    <p className="hjudul">{item.judul}</p>
+                    <p className="hdes">{item.desc}</p>
+                    </div>
+                  </div>
+                </Col>
+              ))}
+            </Row>
+          </Space>
       </div>
 
       <section id='services' className="SERVICE">

@@ -14,8 +14,12 @@ import teh from './icons/teh.png'
 import iga from './icons/iga.png';
 import sateayam from './icons/sateayam.png';
 import satedaging from './icons/satedaging.png';
+import heroic1 from './icons/heroic1.svg';
+import heroic2 from './icons/heroic2.svg';
+import heroic3 from './icons/heroic3.svg';
 import empal from './icons/empal.png';
 
 
 
-export { Logo, GoogleButton, Customer1, Customer2, Customer3, NusantaraFood, Bulethero, Herofood, jahe, mangga, cincau, teh, iga, sateayam, satedaging, empal, Herobackground };
+
+export { Logo, GoogleButton, Customer1, Customer2, Customer3, NusantaraFood, Bulethero, Herofood, jahe, mangga, cincau, teh, iga, sateayam, satedaging, empal, Herobackground, heroic1, heroic2, heroic3 };

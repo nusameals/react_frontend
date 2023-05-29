@@ -10,6 +10,9 @@ import mangga from '../../assets/icons/mangga.png';
 import cincau from '../../assets/icons/cincau.png';
 import teh from '../../assets/icons/teh.png'
 import { Customer1, Customer2, Customer3 } from '../../assets';
+import {
+    heroic1, heroic2, heroic3
+  } from '../../assets/index';
 
 
 export const service = [
@@ -110,5 +113,22 @@ export const feedback = [
         nama: 'Edward Jacob',
         role: 'Customer',
         desc: 'Wow, makanan disini sungguh memukau! Saya bisa merasakan betapa lezatnya bumbu yang meresap sampai ke dalam dagingnya. Tidak boleh dilewatkan'
+    }
+]
+export const heroex = [
+    {
+        logo: heroic1,
+        judul: 'Easy To Order',
+        desc: 'The convenience of ordering food only with the application'
+    },
+    {
+        logo: heroic2,
+        judul: 'Best Quality',
+        desc: 'The whole meal has guaranteed quality'
+    },
+    {
+        logo: heroic3,
+        judul: 'Affordable Prices',
+        desc: 'Stay thrifty while eating well'
     }
 ]
