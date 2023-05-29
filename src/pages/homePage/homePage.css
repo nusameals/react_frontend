@@ -592,7 +592,6 @@
 }
 
 .hero {
-  margin: 200px;
   object-fit: contain;
   margin: 13%;
 }
@@ -601,9 +600,22 @@
   font-size: x-large;
   font-family: 'Poppins';
   font-style: normal;
-  /* font-size: 48px; */
   line-height: 40px;
 
+}
+
+.herofood{
+  max-width: 80%;
+  height: auto;
+}
+@media (min-width: 900px) {
+
+
+  .herofood{
+    float: right;
+    max-width: 44%;
+margin-top: -4%;
+  }
 }
 
 .herodis {

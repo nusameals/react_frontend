@@ -56,62 +56,64 @@ const HomePage = () => {
 
   return (
     <div>
-      <div id='home'
+      <div
         style={{
           backgroundImage: `url(${Herobackground})`,
-          backgroundSize: 'cover',
+          backgroundSize: "cover",
         }}
       >
         <h1
           style={{
-            color: 'white',
+            color: "white",
+            marginTop: "-2%",
           }}
         >
           test
         </h1>
-
         <div className="hero">
-          <div className="conherofood">
-            <img className="herofood" src={Herofood} alt="Image" />
-          </div>
+          <div className="herocontai">
+            <img class="herofood" src={Herofood} alt="Image" />
 
-          <div className="heroleft">
-            <div className="herotext1">
-              <h1 className="herodis">Discover the Rich Culinary </h1>
-              <h1 className="heroher">Heritage of Indonesia</h1>
-              <p>
-                No more long lines, our app makes <br /> booking and order with
-                our app, <br /> <b>the smart way to dine.</b>
-              </p>{' '}
+            <div className="heroleft">
+              <div className="herotext1">
+                <h1 className="herodis">Discover the Rich Culinary </h1>
+                <h1 className="heroher">Heritage of Indonesia</h1>
+                <p>
+                  No more long lines, our app makes <br /> booking and order
+                  with our app, <br /> <b>the smart way to dine.</b>
+                </p>{" "}
+              </div>
+              <Button type="primary" className="buttonget">
+                Get the app
+              </Button>
+              <Space
+                wrap
+                direction="horizontal"
+                className="herosocial"
+                style={{ marginRight: "80px" }}
+              >
+                <Button
+                  className="heroic"
+                  icon={
+                    <FacebookOutlined
+                      className="heroicon"
+                      style={{ marginRight: "100px" }}
+                    />
+                  }
+                />
+
+                <Button
+                  className="heroic"
+                  icon={<InstagramOutlined className="heroicon" />}
+                />
+                <Button
+                  className="heroic"
+                  icon={<TwitterOutlined className="heroicon" />}
+                />
+              </Space>
             </div>
-            <Button type="primary" className="buttonget">
-              Get the app
-            </Button>
-            <Space
-              wrap
-              direction="horizontal"
-              className="herosocial"
-              style={{ marginRight: '80px' }}
-            >
-              <Button
-                className="heroic"
-                icon={
-                  <FacebookOutlined
-                    className="heroicon"
-                    style={{ marginRight: '100px' }}
-                  />
-                }
-              />
 
-              <Button
-                className="heroic"
-                icon={<InstagramOutlined className="heroicon" />}
-              />
-              <Button
-                className="heroic"
-                icon={<TwitterOutlined className="heroicon" />}
-              />
-            </Space>
+            {/* <img class="herofood" src={Herofood} alt="Image" /> */}
           </div>
         </div>
       </div>
