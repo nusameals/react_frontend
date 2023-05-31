@@ -13,15 +13,16 @@ import {
   Checkbox,
   Modal,
 } from 'antd';
-import { ForgetPass, LoginIcon, NusaMealsLogin } from '../../assets';
+import { ForgetPass, LoginIcon, NewPass, NusaMealsLogin } from '../../assets';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import './loginPage.css';
 import Gap from '../../components/gap/Gap';
 
 const LoginPage = () => {
   const [form] = Form.useForm();
-  const [forgotForm] = Form.useForm();
+  const [forgotForm] = Form.useForm()
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [section, setSection] = useState(true)
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -107,6 +108,7 @@ const LoginPage = () => {
           </Col>
         </Row>
         <Modal open={isModalOpen} onCancel={handleCancel} width={864}>
+          <div>
           <Row>
             <Col xl={12} sm={24}>
               <img
@@ -149,6 +151,7 @@ const LoginPage = () => {
               </div>
             </Col>
           </Row>
+          </div>
         </Modal>
       </Card>
     </div>
