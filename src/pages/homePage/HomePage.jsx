@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 // import reactLogo from "../../assets/images/react.svg";
 import {
   Button,
@@ -10,12 +10,12 @@ import {
   Carousel,
   Rate,
   Input,
-} from 'antd';
-import { RightOutlined, LeftOutlined } from '@ant-design/icons';
-import { CancelButton } from '../../components/buttonComponent/ButtonComponent';
-import './homePage.css';
-import Gap from '../../components/gap/Gap';
-import { menu, service, minum, feedback, heroex } from './constant';
+} from "antd";
+import { RightOutlined, LeftOutlined } from "@ant-design/icons";
+import { CancelButton } from "../../components/buttonComponent/ButtonComponent";
+import "./homePage.css";
+import Gap from "../../components/gap/Gap";
+import { menu, service, minum, feedback, heroex } from "./constant";
 import {
   GoogleButton,
   Logo,
@@ -28,8 +28,8 @@ import {
   jahe,
   mangga,
   cincau,
-  teh, heroic1
-} from '../../assets/index';
+  teh,
+} from "../../assets/index";
 
 import {
   PhoneOutlined,
@@ -40,16 +40,16 @@ import {
   TwitterOutlined,
 } from "@ant-design/icons";
 
-
 import useMediaQuery from "./query";
 
-const HomePage = () => {
+// import 'antd/dist/antd.css';
 
-  const isMobile = useMediaQuery('(max-width: 768px)');
+const HomePage = () => {
+  const isMobile = useMediaQuery("(max-width: 768px)");
   // console.log('isMobile returns ', isMobile);
 
   // radio button
-  const [section, setSection] = useState('food');
+  const [section, setSection] = useState("food");
   const onChange = ({ target: { value } }) => {
     setSection(value);
   };
@@ -125,32 +125,22 @@ const HomePage = () => {
           test
         </h1>
       </div>
-      <div className='heroexcess' >
-      <Space direction="horizontal">
-            <Row justify='center'>
-              {heroex.map((item) => (
-                <Col className="heroexc">
-                  <div className='herocontent'>
-                  <img className="hlogo" src={item.logo} alt="logo" />
-                  <div className="hjuduldes">
-                    <p className="hjudul">{item.judul}</p>
-                    <p className="hdes">{item.desc}</p>
-                    </div>
-                  </div>
-                </Col>
-              ))}
-            </Row>
-          </Space>
-      </div>
 
-      <section id='services' className="SERVICE">
+      {isMobile ? (
+        <HeroCarousel /> 
+        ) : (
+          <HeroRow /> 
+
+        )}
+
+      <section id="services" className="SERVICE">
         <h2 className="titleS">
           Our Special Service <br />
           from Nusantara Meals
         </h2>
         <div>
           <Space direction="horizontal">
-            <Row justify='center'>
+            <Row justify="center">
               {service.map((item) => (
                 <Col className="service">
                   <img className="imgS" src={item.logo} alt="logo" />
@@ -165,13 +155,13 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section id='menu' className="MENU">
+      <section id="menu" className="MENU">
         <h2 className="titleM">This Month Hottest Menu</h2>
         <p className="descM">
           the best of Indonesia's culinary treasures, all in one place
         </p>
         <div>
-          <Row justify='center' className='rowM' style={{ zIndex: 0 }}>
+          <Row justify="center" className="rowM" style={{ zIndex: 0 }}>
             <Radio.Group
               defaultValue="food"
               value={section}
@@ -180,29 +170,37 @@ const HomePage = () => {
               <Radio.Button className="food" value="food" style={{ zIndex: 0 }}>
                 Food's
               </Radio.Button>
-              <Radio.Button className="drink" style={{ zIndex: 0 }} value="drink">
+              <Radio.Button
+                className="drink"
+                style={{ zIndex: 0 }}
+                value="drink"
+              >
                 Drink's
               </Radio.Button>
             </Radio.Group>
           </Row>
         </div>
-        <p className="lihat" >Lihat Semua</p>
+        <p className="lihat">Lihat Semua</p>
         {isMobile ? (
-          <div className="car" style={
-            {
+          <div
+            className="car"
+            style={{
               zIndex: 0,
-              justifyContent: 'center',
-              display: 'flex',
-              alignItems: 'center'
-            }
-          }>
-            {section === 'food' ? <FoodMenuCarousel /> : <DrinkMenuCarousel />}
+              justifyContent: "center",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            {section === "food" ? <FoodMenuCarousel /> : <DrinkMenuCarousel />}
           </div>
         ) : (
-          <div className="CARD" style={{
-            zIndex: 0
-          }}>
-            {section === 'food' ? <FoodMenu /> : <DrinkMenu />}
+          <div
+            className="CARD"
+            style={{
+              zIndex: 0,
+            }}
+          >
+            {section === "food" ? <FoodMenu /> : <DrinkMenu />}
           </div>
         )}
       </section>
@@ -210,7 +208,7 @@ const HomePage = () => {
       <section className="customer-feedback">
         <h2 className="titleS">Our Customer FeedBack</h2>
         <div className="feedback">
-          <Row gutter={[40, 16]} justify='center' align='middle'>
+          <Row gutter={[40, 16]} justify="center" align="middle">
             <Carousel
               arrows={true}
               prevArrow={<LeftOutlined />}
@@ -251,7 +249,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section id='contact' className="CONTACT">
+      <section id="contact" className="CONTACT">
         <Row justify="center" align="middle">
           <Col
             xs={24}
@@ -276,8 +274,8 @@ const HomePage = () => {
                       <div className="icon-container">
                         <PhoneOutlined
                           style={{
-                            fontSize: '25px',
-                            transform: 'rotate(90deg)',
+                            fontSize: "25px",
+                            transform: "rotate(90deg)",
                           }}
                         />
                       </div>
@@ -287,7 +285,7 @@ const HomePage = () => {
                       <div className="icon-container">
                         <MailOutlined
                           style={{
-                            fontSize: '25px',
+                            fontSize: "25px",
                           }}
                         />
                       </div>
@@ -300,7 +298,7 @@ const HomePage = () => {
                     <Button className="btn-google" />
                     <Row gutter={12}>
                       <Col span={8}>
-                        <ul style={{ paddingLeft: '0px' }}>
+                        <ul style={{ paddingLeft: "0px" }}>
                           <li className="list-btn-contact">
                             <Button className="btn-list" type="text">
                               Home
@@ -324,7 +322,7 @@ const HomePage = () => {
                         </ul>
                       </Col>
                       <Col span={16}>
-                        <ul style={{ paddingLeft: '0px' }}>
+                        <ul style={{ paddingLeft: "0px" }}>
                           <li className="list-btn-contact">
                             <Button className="btn-list" type="text">
                               Terms and Conditions
@@ -387,7 +385,7 @@ const HomePage = () => {
           </Col>
         </Row>
       </section>
-    </div >
+    </div>
   );
 };
 export default HomePage;
@@ -420,7 +418,7 @@ function FoodMenu() {
 function DrinkMenu() {
   return (
     <Space direction="horizontal">
-      <Row justify='center' gutter={15}>
+      <Row justify="center" gutter={15}>
         {minum.map((item) => (
           <Col span={6} xs={24} sm={24} md={24} lg={6} xl={6}>
             <Card
@@ -445,64 +443,29 @@ function DrinkMenu() {
 function FoodMenuCarousel() {
   return (
     <div className="carousel" style={{ zIndex: 0 }}>
-      <div className='swiper-wrapper'>
+      <div className="swiper-wrapper">
         <Space>
-          <Row gutter={[40, 16]} justify='center' align='middle'>
+          <Row gutter={[40, 16]} justify="center" align="middle">
             <Carousel
               arrows={true}
               prevArrow={<LeftOutlined />}
               nextArrow={<RightOutlined />}
               style={{
-                width: 265
+                width: 265,
               }}
             >
               {menu.map((item) => (
                 <Col xl={{ span: 8 }} md={{ span: 24 }}>
                   <div className="swiper-slide">
-                    <img style={{
-                      width: 230,
-                      borderTopLeftRadius: 10,
-                      borderTopRightRadius: 10,
-                    }} src={item.foto} alt="logo" />
-                    <p className="judulM">{item.judul}</p>
-                    <p className="kotaM" >{item.kota}</p>
-                    <div className="hargakalor" >
-                      <p className="hargaM" >{item.harga}</p>
-                      <p className="kalori">{item.kalor}</p>
-                    </div>
-                  </div>
-                </Col>
-              ))}
-            </Carousel>
-          </Row>
-        </Space>
-      </div>
-    </div>
-  )
-}
-
-function DrinkMenuCarousel() {
-  return (
-    <div className="carousel" style={{ zIndex: 0 }}>
-      <div className='swiper-wrapper'>
-        <Space>
-          <Row gutter={[40, 16]} justify='center' align='middle'>
-            <Carousel
-              arrows={true}
-              prevArrow={<LeftOutlined />}
-              nextArrow={<RightOutlined />}
-              style={{
-                width: 265
-              }}
-            >
-              {minum.map((item) => (
-                <Col xl={{ span: 8 }} md={{ span: 24 }}>
-                  <div className="swiper-slide">
-                    <img style={{
-                      width: 230,
-                      borderTopLeftRadius: 10,
-                      borderTopRightRadius: 10,
-                    }} src={item.foto} alt="logo" />
+                    <img
+                      style={{
+                        width: 230,
+                        borderTopLeftRadius: 10,
+                        borderTopRightRadius: 10,
+                      }}
+                      src={item.foto}
+                      alt="logo"
+                    />
                     <p className="judulM">{item.judul}</p>
                     <p className="kotaM">{item.kota}</p>
                     <div className="hargakalor">
@@ -517,6 +480,96 @@ function DrinkMenuCarousel() {
         </Space>
       </div>
     </div>
-  )
+  );
 }
 
+function DrinkMenuCarousel() {
+  return (
+    <div className="carousel" style={{ zIndex: 0 }}>
+      <div className="swiper-wrapper">
+        <Space>
+          <Row gutter={[40, 16]} justify="center" align="middle">
+            <Carousel
+              arrows={true}
+              prevArrow={<LeftOutlined />}
+              nextArrow={<RightOutlined />}
+              style={{
+                width: 265,
+              }}
+            >
+              {minum.map((item) => (
+                <Col xl={{ span: 8 }} md={{ span: 24 }}>
+                  <div className="swiper-slide">
+                    <img
+                      style={{
+                        width: 230,
+                        borderTopLeftRadius: 10,
+                        borderTopRightRadius: 10,
+                      }}
+                      src={item.foto}
+                      alt="logo"
+                    />
+                    <p className="judulM">{item.judul}</p>
+                    <p className="kotaM">{item.kota}</p>
+                    <div className="hargakalor">
+                      <p className="hargaM">{item.harga}</p>
+                      <p className="kalori">{item.kalor}</p>
+                    </div>
+                  </div>
+                </Col>
+              ))}
+            </Carousel>
+          </Row>
+        </Space>
+      </div>
+    </div>
+  );
+}
+
+
+function HeroRow(){
+  return(
+    <div className="heroexcess">
+    <Space direction="horizontal">
+      <Row justify="center">
+        {heroex.map((item) => (
+          <Col className="heroexc">
+            <div className="herocontent">
+              <img className="hlogo" src={item.logo} alt="logo" />
+              <div className="hjuduldes">
+                <p className="hjudul">{item.judul}</p>
+                <p className="hdes">{item.desc}</p>
+              </div>
+            </div>
+          </Col>
+        ))}
+      </Row>
+    </Space>
+  </div>
+  )
+}
+function HeroCarousel(){
+  return(
+    <div className="heroexcess">
+    <Carousel
+      className="herocar"
+      arrows={true}
+      prevArrow={<LeftOutlined />}
+      nextArrow={<RightOutlined />}
+    >
+      {heroex.map((item) => (
+        <Col className="heroexc">
+          <div className="herocontent">
+            <img className="hlogo" src={item.logo} alt="logo" />
+            <div className="hjuduldes">
+              <p className="hjudul">{item.judul}</p>
+              <p className="hdes">{item.desc}</p>
+            </div>
+          </div>
+        </Col>
+      ))}
+
+    </Carousel>
+  </div>
+  )
+}
