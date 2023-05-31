@@ -7,7 +7,7 @@ import "./Header/header.css";
 export const MENU_ITEM = [
   {
     label: (
-      <ScrollLink to="home" smooth={true} duration={500} offset={-65}>
+      <ScrollLink to="heroback" smooth={true} duration={500} offset={-65}>
         Home
       </ScrollLink>
     ),
