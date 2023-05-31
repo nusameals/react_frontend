@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 // import reactLogo from "../../assets/images/react.svg";
 import {
   Button,
@@ -10,12 +10,12 @@ import {
   Carousel,
   Rate,
   Input,
-} from "antd";
-import { RightOutlined, LeftOutlined } from "@ant-design/icons";
-import { CancelButton } from "../../components/buttonComponent/ButtonComponent";
-import "./homePage.css";
-import Gap from "../../components/gap/Gap";
-import { menu, service, minum, feedback, heroex } from "./constant";
+} from 'antd';
+import { RightOutlined, LeftOutlined } from '@ant-design/icons';
+import { CancelButton } from '../../components/buttonComponent/ButtonComponent';
+import './homePage.css';
+import Gap from '../../components/gap/Gap';
+import { menu, service, minum, feedback, heroex } from './constant';
 import {
   GoogleButton,
   Logo,
@@ -28,8 +28,9 @@ import {
   jahe,
   mangga,
   cincau,
-  teh,Heromob
-} from "../../assets/index";
+  teh,
+  Heromob,
+} from '../../assets/index';
 
 import {
   PhoneOutlined,
@@ -38,25 +39,26 @@ import {
   InstagramOutlined,
   YoutubeOutlined,
   TwitterOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 
-import useMediaQuery from "./query";
+import useMediaQuery from './query';
 
 // import 'antd/dist/antd.css';
 
 const HomePage = () => {
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useMediaQuery('(max-width: 768px)');
   // console.log('isMobile returns ', isMobile);
 
   // radio button
-  const [section, setSection] = useState("food");
+  const [section, setSection] = useState('food');
   const onChange = ({ target: { value } }) => {
     setSection(value);
   };
 
   return (
     <div>
-      <div className="heroback"
+      <div
+        className="heroback"
         // style={{
         //   backgroundImage: `url(${Herobackground})`,
         //   backgroundSize: "cover",
@@ -64,8 +66,8 @@ const HomePage = () => {
       >
         <h1
           style={{
-            color: "white",
-            marginTop: "-2%",
+            color: 'white',
+            marginTop: '-2%',
           }}
         >
           test
@@ -81,7 +83,7 @@ const HomePage = () => {
                 <p>
                   No more long lines, our app makes <br /> booking and order
                   with our app, <br /> <b>the smart way to dine.</b>
-                </p>{" "}
+                </p>{' '}
               </div>
               <Button type="primary" className="buttonget">
                 Get the app
@@ -90,14 +92,14 @@ const HomePage = () => {
                 wrap
                 direction="horizontal"
                 className="herosocial"
-                style={{ marginRight: "80px" }}
+                style={{ marginRight: '80px' }}
               >
                 <Button
                   className="heroic"
                   icon={
                     <FacebookOutlined
                       className="heroicon"
-                      style={{ marginRight: "100px" }}
+                      style={{ marginRight: '100px' }}
                     />
                   }
                 />
@@ -118,20 +120,15 @@ const HomePage = () => {
         </div>
         <h1
           style={{
-            color: "white",
-            marginTop: "-2%",
+            color: 'white',
+            marginTop: '-2%',
           }}
         >
           test
         </h1>
       </div>
 
-      {isMobile ? (
-        <HeroCarousel /> 
-        ) : (
-          <HeroRow /> 
-
-        )}
+      {isMobile ? <HeroCarousel /> : <HeroRow />}
 
       <section id="services" className="SERVICE">
         <h2 className="titleS">
@@ -186,12 +183,12 @@ const HomePage = () => {
             className="car"
             style={{
               zIndex: 0,
-              justifyContent: "center",
-              display: "flex",
-              alignItems: "center",
+              justifyContent: 'center',
+              display: 'flex',
+              alignItems: 'center',
             }}
           >
-            {section === "food" ? <FoodMenuCarousel /> : <DrinkMenuCarousel />}
+            {section === 'food' ? <FoodMenuCarousel /> : <DrinkMenuCarousel />}
           </div>
         ) : (
           <div
@@ -200,53 +197,15 @@ const HomePage = () => {
               zIndex: 0,
             }}
           >
-            {section === "food" ? <FoodMenu /> : <DrinkMenu />}
+            {section === 'food' ? <FoodMenu /> : <DrinkMenu />}
           </div>
         )}
       </section>
 
       <section className="customer-feedback">
         <h2 className="titleS">Our Customer FeedBack</h2>
-        <div className="feedback">
-          <Row gutter={[40, 16]} justify="center" align="middle">
-            <Carousel
-              arrows={true}
-              prevArrow={<LeftOutlined />}
-              nextArrow={<RightOutlined />}
-            >
-              {feedback.map((item) => (
-                <Col xl={{ span: 8 }} md={{ span: 24 }}>
-                  <Card className="card-feedback">
-                    <div className="ava-name">
-                      <img className="ava-feedback" src={item.ava} alt="logo" />
-                      <div className="name-role">
-                        <p className="name-feedback">{item.nama}</p>
-                        <p className="role-feedback">{item.role}</p>
-                      </div>
-                    </div>
-                    <Rate disabled defaultValue={5} />
-                    <p className="desc-feedback">{item.desc}</p>
-                  </Card>
-                </Col>
-              ))}
-            </Carousel>
-          </Row>
-        </div>
-        <div className="subscribe-form">
-          <div className="subscribe-content">
-            <p className="title-subs">Get more updates of Nusantara Foods</p>
-            <p className="subs-text">
-              Never miss out on the taste of Indonesia - Subscribe for exclusive
-              updates
-            </p>
-            <Space>
-              <Space.Compact className="input-button">
-                <Input placeholder="Your email..." />
-                <Button type="primary">Subscribe</Button>
-              </Space.Compact>
-            </Space>
-          </div>
-        </div>
+        <div>{isMobile ? <FeedBackReviewMobile /> : <FeedBackReview />}</div>
+        <div>{isMobile ? <SubsFormMobile /> : <SubsForm />}</div>
       </section>
 
       <section id="contact" className="CONTACT">
@@ -274,8 +233,8 @@ const HomePage = () => {
                       <div className="icon-container">
                         <PhoneOutlined
                           style={{
-                            fontSize: "25px",
-                            transform: "rotate(90deg)",
+                            fontSize: '25px',
+                            transform: 'rotate(90deg)',
                           }}
                         />
                       </div>
@@ -285,7 +244,7 @@ const HomePage = () => {
                       <div className="icon-container">
                         <MailOutlined
                           style={{
-                            fontSize: "25px",
+                            fontSize: '25px',
                           }}
                         />
                       </div>
@@ -298,7 +257,7 @@ const HomePage = () => {
                     <Button className="btn-google" />
                     <Row gutter={12}>
                       <Col span={8}>
-                        <ul style={{ paddingLeft: "0px" }}>
+                        <ul style={{ paddingLeft: '0px' }}>
                           <li className="list-btn-contact">
                             <Button className="btn-list" type="text">
                               Home
@@ -322,7 +281,7 @@ const HomePage = () => {
                         </ul>
                       </Col>
                       <Col span={16}>
-                        <ul style={{ paddingLeft: "0px" }}>
+                        <ul style={{ paddingLeft: '0px' }}>
                           <li className="list-btn-contact">
                             <Button className="btn-list" type="text">
                               Terms and Conditions
@@ -526,12 +485,36 @@ function DrinkMenuCarousel() {
   );
 }
 
-
-function HeroRow(){
-  return(
+function HeroRow() {
+  return (
     <div className="heroexcess">
-    <Space direction="horizontal">
-      <Row justify="center">
+      <Space direction="horizontal">
+        <Row justify="center">
+          {heroex.map((item) => (
+            <Col className="heroexc">
+              <div className="herocontent">
+                <img className="hlogo" src={item.logo} alt="logo" />
+                <div className="hjuduldes">
+                  <p className="hjudul">{item.judul}</p>
+                  <p className="hdes">{item.desc}</p>
+                </div>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </Space>
+    </div>
+  );
+}
+function HeroCarousel() {
+  return (
+    <div className="heroexcess">
+      <Carousel
+        className="herocar"
+        arrows={true}
+        prevArrow={<LeftOutlined />}
+        nextArrow={<RightOutlined />}
+      >
         {heroex.map((item) => (
           <Col className="heroexc">
             <div className="herocontent">
@@ -543,33 +526,109 @@ function HeroRow(){
             </div>
           </Col>
         ))}
+      </Carousel>
+    </div>
+  );
+}
+
+function FeedBackReviewMobile() {
+  return (
+    <div className="feedback">
+      <Row gutter={[40, 16]} justify="center" align="middle">
+        <Carousel
+          arrows={true}
+          prevArrow={<LeftOutlined />}
+          nextArrow={<RightOutlined />}
+        >
+          {feedback.map((item) => (
+            <Col xl={{ span: 8 }} md={{ span: 24 }}>
+              <Card className="card-feedback">
+                <div className="ava-name">
+                  <img className="ava-feedback" src={item.ava} alt="logo" />
+                  <div className="name-role">
+                    <p className="name-feedback">{item.nama}</p>
+                    <p className="role-feedback">{item.role}</p>
+                  </div>
+                </div>
+                <Rate disabled defaultValue={5} />
+                <p className="desc-feedback">{item.desc}</p>
+              </Card>
+            </Col>
+          ))}
+        </Carousel>
       </Row>
-    </Space>
-  </div>
+    </div>
+  );
+}
+
+function FeedBackReview() {
+  return (
+    <div className="feedback">
+      <Row
+        gutter={[40, 16]}
+        justify="center"
+        align="middle"
+        className="row-feedback"
+        style={{marginLeft: 52}}
+      >
+        {feedback.map((item) => (
+          <Col xl={{ span: 8 }} md={{ span: 24 }}>
+            <Card className="card-feedback">
+              <div className="ava-name">
+                <img className="ava-feedback" src={item.ava} alt="logo" />
+                <div className="name-role">
+                  <p className="name-feedback">{item.nama}</p>
+                  <p className="role-feedback">{item.role}</p>
+                </div>
+              </div>
+              <Rate disabled defaultValue={5} />
+              <p className="desc-feedback">{item.desc}</p>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </div>
+  );
+}
+
+function SubsForm() {
+  return (
+    <div className="subscribe-form">
+          <div className="subscribe-content">
+            <p className="title-subs">Get more updates of Nusantara Foods</p>
+            <p className="subs-text">
+              Never miss out on the taste of Indonesia - Subscribe for exclusive
+              updates
+            </p>
+            <Space>
+              <Space.Compact className="input-button">
+                <Input placeholder="Your email..." />
+                <Button type="primary">Subscribe</Button>
+              </Space.Compact>
+            </Space>
+          </div>
+        </div>
   )
 }
-function HeroCarousel(){
-  return(
-    <div className="heroexcess">
-    <Carousel
-      className="herocar"
-      arrows={true}
-      prevArrow={<LeftOutlined />}
-      nextArrow={<RightOutlined />}
-    >
-      {heroex.map((item) => (
-        <Col className="heroexc">
-          <div className="herocontent">
-            <img className="hlogo" src={item.logo} alt="logo" />
-            <div className="hjuduldes">
-              <p className="hjudul">{item.judul}</p>
-              <p className="hdes">{item.desc}</p>
-            </div>
-          </div>
-        </Col>
-      ))}
 
-    </Carousel>
-  </div>
+function SubsFormMobile() {
+  return (
+    <div className="subscribe-form-mobile">
+          <div className="subscribe-content">
+            <p className="title-subs-mobile">Get more updates of Nusantara Foods
+            <br />
+            <span className="subs-text-mobile">
+              Never miss out on the taste of Indonesia - Subscribe for exclusive
+              updates
+            </span>
+            </p>
+            <Space>
+              <Space.Compact className="input-button-mobile">
+                <Input placeholder="Your email..." />
+                <Button type="primary">Subscribe</Button>
+              </Space.Compact>
+            </Space>
+          </div>
+        </div>
   )
 }
