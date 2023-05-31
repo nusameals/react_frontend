@@ -28,7 +28,7 @@ import {
   jahe,
   mangga,
   cincau,
-  teh,
+  teh,Heromob
 } from "../../assets/index";
 
 import {
@@ -56,11 +56,11 @@ const HomePage = () => {
 
   return (
     <div>
-      <div
-        style={{
-          backgroundImage: `url(${Herobackground})`,
-          backgroundSize: "cover",
-        }}
+      <div className="heroback"
+        // style={{
+        //   backgroundImage: `url(${Herobackground})`,
+        //   backgroundSize: "cover",
+        // }}
       >
         <h1
           style={{
