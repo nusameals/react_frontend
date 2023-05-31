@@ -816,15 +816,20 @@ Height: 68px; */
   .heroexcess{
     margin-left: 20%;
   }
-  /* .heroback{ */
-    
-    /* background-image: url('../../assets/images/heromob.svg'); */
-/* background-size: contain; 
-kok rafungsi gusti*/
-  
+
 }
 .heroback{
   background-image: url('../../assets/images/herobackground.svg');
 
   background-size:cover ;
+}
+@media only screen and (max-width: 768px) {
+
+
+  .heroback{
+    
+    background-image: url('../../assets/images/heromob.svg');
+    background-size:cover ;
+
+  }
 }
