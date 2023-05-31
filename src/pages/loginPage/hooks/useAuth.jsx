@@ -2,23 +2,30 @@ import { useCallback, useState } from "react"
 import { api } from "../../../api"
 import { message } from "antd"
 
-export const useGetProfile = () => {
+export const useLogin = () => {
     const [isLoading, setIsLoading] = useState(false)
-    const [data, setData] = useState()
 
-    const getData = useCallback(async () => {
-        try{
+    const login = useCallback(async (body, onSuccess) => {
+        try {
             setIsLoading(true)
-            const res = await api.getProfile()
-            setData(res.data)
-        }catch (err) {
+            const res = await api.login(body)
+            if (res) {
+                message.open({
+                    type: 'success',
+                    content: 'Login Success'
+                })
+                onSuccess && onSuccess()
+            }
+        }
+        catch (err) {
             message.open({
                 type: 'error',
                 content: `${err?.message}`
             })
-        } finally {
+        }
+        finally {
             setIsLoading(false)
         }
     }, [])
-    return [isLoading, data, getData]
+    return [isLoading, login]
 }

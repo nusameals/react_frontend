@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Button,
   Space,
@@ -17,13 +17,13 @@ import { ForgetPass, LoginIcon, NewPass, NusaMealsLogin } from '../../assets';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import './loginPage.css';
 import Gap from '../../components/gap/Gap';
+import { useLogin } from './hooks/useAuth';
+import { Navigate } from 'react-router';
 
 const LoginPage = () => {
   const [form] = Form.useForm();
   const [forgotForm] = Form.useForm()
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [section, setSection] = useState(true)
-
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -31,6 +31,14 @@ const LoginPage = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  const [isLoading, login] = useLogin()
+
+  const onLogin = (values) => {
+    login(values, () => {
+      Navigate('/')
+    })
+  }
 
   return (
     <div className="login-page">
@@ -59,9 +67,9 @@ const LoginPage = () => {
                 </p>
               </div>
               <Gap height={24} />
-              <Form name="login-form" form={form}>
+              <Form name="login-form" form={form} onFinish={onLogin}>
                 <Form.Item
-                  name="username"
+                  name="id"
                   rules={[
                     {
                       required: true,
@@ -125,7 +133,7 @@ const LoginPage = () => {
                 <Gap height={20} />
                 <Form name="forgotForm" form={forgotForm}>
                   <Form.Item
-                    name="username"
+                    name="id"
                     rules={[
                       {
                         required: true,
