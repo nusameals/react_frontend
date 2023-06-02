@@ -1,39 +1,83 @@
-import { Layout } from "antd";
+import React, { useState } from "react";
+import "./layout.css";
+import { Layout, Button, Collapse, Menu, Row } from "antd";
 import FooterComponent from "./Footer/footerComponent";
 import HeaderComponent from "./Header/headerComponent";
-import "./layout.css";
+import SiderComponent from "./Sider/SiderComponent";
+// import HeaderAdminComponent from "./Header/HeaderAdminComponent";
+import {
+  UserOutlined,
+  VideoCameraOutlined,
+  UploadOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+} from "@ant-design/icons";
+import HeaderAdmin from "./Header/headerAdmin/HeaderAdmin";
 
 const LayoutComponent = ({ children }) => {
-  const { Content } = Layout;
+  const { Header, Content, Sider } = Layout;
+  const [collapsed, setCollapsed] = useState(false);
+  const token = localStorage.getItem("token");
 
   return (
-    <>
-      <Layout>
-        {/* Header */}
-        <HeaderComponent />
+    <Layout>
+      {token ? (
+        <>
+          {/* Header */}
+          <HeaderComponent />
 
-        {/* Content */}
-        <Content
-          className="site-layout"
-          style={{
-            padding: "0px",
-          }}
-        >
-          <div
+          {/* Content */}
+          <Content
+            className="site-layout"
             style={{
-              padding: 0,
-              minHeight: 380,
-              background: "#fff",
+              padding: "0px",
             }}
           >
-            {children}
-          </div>
-        </Content>
+            <div
+              style={{
+                padding: 0,
+                minHeight: 380,
+                background: "#fff",
+              }}
+            >
+              {children}
+            </div>
+          </Content>
 
-        {/* Footer */}
-        <FooterComponent />
-      </Layout>
-    </>
+          {/* Footer */}
+          <FooterComponent />
+        </>
+      ) : (
+        <>
+          <SiderComponent />
+          <Layout>
+            {/* Header */}
+            <HeaderAdmin/>
+
+            {/* Content */}
+            <Content
+              className="site-layout"
+              style={{
+                padding: "0px",
+              }}
+            >
+              <div
+                style={{
+                  padding: 0,
+                  minHeight: 380,
+                  background: "#fff",
+                }}
+              >
+                {children}
+              </div>
+            </Content>
+
+            {/* Footer */}
+            <FooterComponent />
+          </Layout>
+        </>
+      )}
+    </Layout>
   );
 };
 

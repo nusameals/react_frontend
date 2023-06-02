@@ -1,6 +1,12 @@
 import { Button } from "antd";
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
+import {
+  DashboardOutlined,
+  ProfileOutlined,
+  TableOutlined,
+  FormOutlined,
+} from "@ant-design/icons";
 
 import "./Header/header.css";
 
@@ -47,4 +53,33 @@ export const MENU_ITEM = [
     ),
     key: "5",
   },
+];
+
+export const SIDER_ITEM = [
+  {
+    key: "1",
+    icon: <DashboardOutlined />,
+    label: <Link to="/">Dashboard</Link>,
+  },
+  {
+    key: "2",
+    icon: <ProfileOutlined />,
+    label: <Link to="/">Menus</Link>,
+  },
+  {
+    key: "3",
+    icon: <FormOutlined />,
+    label: <Link to="/">Orders</Link>,
+  },
+  {
+    key: "4",
+    icon: <FormOutlined />,
+    label: <Link to="/">Reservations</Link>,
+  },
+  {
+    key: "5",
+    icon: <TableOutlined />,
+    label: <Link to="/">Report</Link>,
+  },
+  
 ];
