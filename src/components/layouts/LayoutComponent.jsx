@@ -65,15 +65,12 @@ const LayoutComponent = ({ children }) => {
                 style={{
                   padding: 0,
                   minHeight: 380,
-                  background: "#fff",
+                  background: "#fafafa",
                 }}
               >
                 {children}
               </div>
             </Content>
-
-            {/* Footer */}
-            <FooterComponent />
           </Layout>
         </>
       )}

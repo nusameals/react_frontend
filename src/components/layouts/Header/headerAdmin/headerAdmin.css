@@ -1,5 +1,4 @@
 .header-admin-container {
-  position: absolute;
   height: 48px;
   width: 100%;
   padding: 0px 24px;
@@ -15,17 +14,10 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  width: auto;
+  width: 100%;
   height: 48px;
 }
 
-.container-menu-profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: auto;
-  height: auto;
-}
 
 .badger-notif {
   margin-right: 12px;

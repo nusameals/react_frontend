@@ -5,17 +5,18 @@ import LoadingComponent from "../components/loadingComponent/LoadingComponent";
 
 
 import HomePage from "../pages/homePage/HomePage";
+import ProfilePage from "../pages/profilePage/ProfilePage";
 
 
 const RouteManagement = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!token) {
-      navigate("/");
-    }
-  }, [token]);
+  // useEffect(() => {
+  //   if (!token) {
+  //     navigate("/");
+  //   }
+  // }, [token]);
 
   return (
     <Suspense fallback={<LoadingComponent />}>
@@ -23,6 +24,7 @@ const RouteManagement = () => {
         <LayoutComponent>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/profile-setting" element={<ProfilePage/>}/>
             {/* <Route path="/form" element={<FormComponent />} />
             <Route path="/form-exp" element={<FormComponentExp />} />
             <Route path="/form-crud" element={<FormCRUD />} />

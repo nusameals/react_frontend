@@ -17,6 +17,7 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 import { sateayam } from "../../../../assets";
+import { Link } from "react-router-dom";
 
 const HeaderAdmin = () => {
   const { Header } = Layout;
@@ -41,9 +42,11 @@ const HeaderAdmin = () => {
   const items = [
     {
       label: (
-        <Button type="text" x icon={<SettingOutlined />}>
-          Profile Setting
-        </Button>
+        <Link to="/profile-setting">
+          <Button type="text" x icon={<SettingOutlined />}>
+            Profile Setting
+          </Button>
+        </Link>
       ),
       key: "0",
     },
@@ -69,43 +72,41 @@ const HeaderAdmin = () => {
   ];
 
   return (
-    <>
-      <Header className="header-admin-container">
-        <Row justify="end" align="middle" className="container-admin-profile">
-          {contextHolder}
-          <Badge
-            className="badger-notif"
-            count={10}
-            offset={[-6, 12]}
-            size="small"
-            onClick={openNotification}
-          >
-            <BellOutlined className="btn-notif" />
-          </Badge>
-          <Divider type="vertical" className="separator-header-admin" />
+    <Header className="header-admin-container">
+      <Row justify="end" align="middle" className="container-admin-profile">
+        {contextHolder}
+        <Badge
+          className="badger-notif"
+          count={10}
+          offset={[-6, 12]}
+          size="small"
+          onClick={openNotification}
+        >
+          <BellOutlined className="btn-notif" />
+        </Badge>
+        <Divider type="vertical" className="separator-header-admin" />
 
-          <Dropdown
-            menu={{
-              items,
-            }}
-            trigger={["click"]}
+        <Dropdown
+          menu={{
+            items,
+          }}
+          trigger={["click"]}
+        >
+          <Row
+            style={{ width: "118px", height: "42px" }}
+            onClick={(e) => e.preventDefault()}
           >
-            <Row
-              style={{ width: "118px", height: "42px" }}
-              onClick={(e) => e.preventDefault()}
-            >
-              <Col span={12} className="container-col-admin">
-                <img src={sateayam} className="admin-avatar" alt="" />
-              </Col>
-              <Col span={12} className="container-col-admin">
-                <span className="nama-admin">Ahmad</span>
-                <span className="status-admin">Admin</span>
-              </Col>
-            </Row>
-          </Dropdown>
-        </Row>
-      </Header>
-    </>
+            <Col span={12} className="container-col-admin">
+              <img src={sateayam} className="admin-avatar" alt="" />
+            </Col>
+            <Col span={12} className="container-col-admin">
+              <span className="nama-admin">Ahmad</span>
+              <span className="status-admin">Admin</span>
+            </Col>
+          </Row>
+        </Dropdown>
+      </Row>
+    </Header>
   );
 };
 
