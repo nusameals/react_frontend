@@ -9,8 +9,13 @@ import {
   Divider,
   Badge,
   Space,
+  Dropdown,
 } from "antd";
-import { BellOutlined } from "@ant-design/icons";
+import {
+  ArrowLeftOutlined,
+  BellOutlined,
+  SettingOutlined,
+} from "@ant-design/icons";
 import { sateayam } from "../../../../assets";
 
 const HeaderAdmin = () => {
@@ -33,6 +38,36 @@ const HeaderAdmin = () => {
     }, 1000);
   };
 
+  const items = [
+    {
+      label: (
+        <Button type="text" x icon={<SettingOutlined />}>
+          Profile Setting
+        </Button>
+      ),
+      key: "0",
+    },
+    {
+      type: "divider",
+    },
+    {
+      label: (
+        <Button
+          type="text"
+          style={{ color: "red" }}
+          icon={
+            <ArrowLeftOutlined
+              style={{ borderLeft: "2px solid red", color: "red" }}
+            />
+          }
+        >
+          Sign Out
+        </Button>
+      ),
+      key: "1",
+    },
+  ];
+
   return (
     <>
       <Header className="header-admin-container">
@@ -48,15 +83,26 @@ const HeaderAdmin = () => {
             <BellOutlined className="btn-notif" />
           </Badge>
           <Divider type="vertical" className="separator-header-admin" />
-          <Row style={{ width: "118px", height: "42px" }}>
-            <Col span={12} className="container-col-admin">
-              <img src={sateayam} className="admin-avatar" alt="" />
-            </Col>
-            <Col span={12} className="container-col-admin">
-              <span className="nama-admin">Ahmad</span>
-              <span className="status-admin">Admin</span>
-            </Col>
-          </Row>
+
+          <Dropdown
+            menu={{
+              items,
+            }}
+            trigger={["click"]}
+          >
+            <Row
+              style={{ width: "118px", height: "42px" }}
+              onClick={(e) => e.preventDefault()}
+            >
+              <Col span={12} className="container-col-admin">
+                <img src={sateayam} className="admin-avatar" alt="" />
+              </Col>
+              <Col span={12} className="container-col-admin">
+                <span className="nama-admin">Ahmad</span>
+                <span className="status-admin">Admin</span>
+              </Col>
+            </Row>
+          </Dropdown>
         </Row>
       </Header>
     </>
