@@ -3,6 +3,7 @@ import "./profile.css";
 import { Breadcrumb, Button, Card, Col, Row, Space } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { mangga } from "../../assets";
+import { Link } from "react-router-dom";
 
 const ProfilePage = () => {
   return (
@@ -63,7 +64,9 @@ const ProfilePage = () => {
                     alt="avatar-profile"
                     className="avatar-profile"
                   />
-                  <Button className="btn-edit-profile">Test</Button>
+                  <Link to="/edit-profile">
+                    <Button className="btn-edit-profile">Edit Profile</Button>
+                  </Link>
                 </Space>
               </Row>
             </Col>

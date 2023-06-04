@@ -263,3 +263,43 @@
   box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
   border-radius: 2px;
 }
+
+/* Edit Profile */
+
+.text-edit-profile {
+  width: 98px;
+  height: 28px;
+
+  /* H4/medium */
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  /* identical to box height, or 140% */
+
+  /* Character/Title .85 */
+
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.container-edit-profile {
+  padding: 0px;
+  gap: 24px;
+}
+
+.container-edit-form {
+  /* Auto layout */
+
+  justify-content: center !important;
+  align-items: center !important;
+  padding-left: 45px;
+
+  width: 445px;
+  height: 293px;
+}
+
+.container-btn-edit-profile {
+  margin-left: 83px;
+}
