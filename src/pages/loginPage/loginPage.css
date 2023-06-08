@@ -3,6 +3,27 @@ body {
   font-style: normal;
 }
 
+@media (max-width: 768px) {
+  .card-login {
+    width: 100%;
+    height: auto;
+  }
+
+  .row-login {
+    flex-direction: column;
+  }
+
+  .col-right {
+    padding: 24px;
+  }
+
+  .logo-login {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+  }
+}
+
 .card-login {
   margin: 0;
   position: absolute;

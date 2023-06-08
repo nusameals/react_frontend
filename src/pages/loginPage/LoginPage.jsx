@@ -12,33 +12,36 @@ import {
   Form,
   Checkbox,
   Modal,
+  Alert,
 } from 'antd';
 import { ForgetPass, LoginIcon, NewPass, NusaMealsLogin } from '../../assets';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import './loginPage.css';
 import Gap from '../../components/gap/Gap';
 import { useLogin } from './hooks/useAuth';
-import { Navigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [form] = Form.useForm();
-  const [forgotForm] = Form.useForm()
+  const [forgotForm] = Form.useForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
   };
 
+  const navigate = useNavigate()
+
   const handleCancel = () => {
     setIsModalOpen(false);
   };
 
-  const [isLoading, login] = useLogin()
+  const [isLoading, login] = useLogin();
 
   const onLogin = (values) => {
     login(values, () => {
-      Navigate('/')
-    })
-  }
+      navigate('/dashboard')
+    });
+  };
 
   return (
     <div className="login-page">
@@ -69,7 +72,7 @@ const LoginPage = () => {
               <Gap height={24} />
               <Form name="login-form" form={form} onFinish={onLogin}>
                 <Form.Item
-                  name="id"
+                  name="email_or_username"
                   rules={[
                     {
                       required: true,
@@ -107,6 +110,7 @@ const LoginPage = () => {
                   type="primary"
                   htmlType="submit"
                   block
+                  loading={isLoading}
                   style={{ width: 436, height: 40 }}
                 >
                   Sign in
@@ -117,48 +121,48 @@ const LoginPage = () => {
         </Row>
         <Modal open={isModalOpen} onCancel={handleCancel} width={864}>
           <div>
-          <Row>
-            <Col xl={12} sm={24}>
-              <img
-                src={ForgetPass}
-                alt="forget-pass"
-                style={{ width: 369, height: 320 }}
-              />
-            </Col>
-            <Col xl={12} sm={24}>
-              <div className="forgot-right">
-                <Gap height={70} />
-                <p className="forgot-pass">Forgot Password</p>
-                <div className="devider" />
-                <Gap height={20} />
-                <Form name="forgotForm" form={forgotForm}>
-                  <Form.Item
-                    name="id"
-                    rules={[
-                      {
-                        required: true,
-                        message: 'Please input username!',
-                      },
-                    ]}
-                  >
-                    <Input
-                      prefix={<UserOutlined style={{ color: '#0669BD' }} />}
-                      placeholder="Username"
-                      style={{ width: 348, height: 48 }}
-                    />
-                  </Form.Item>
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    block
-                    style={{ width: 348, height: 40 }}
-                  >
-                    Submit
-                  </Button>
-                </Form>
-              </div>
-            </Col>
-          </Row>
+            <Row>
+              <Col xl={12} sm={24}>
+                <img
+                  src={ForgetPass}
+                  alt="forget-pass"
+                  style={{ width: 369, height: 320 }}
+                />
+              </Col>
+              <Col xl={12} sm={24}>
+                <div className="forgot-right">
+                  <Gap height={70} />
+                  <p className="forgot-pass">Forgot Password</p>
+                  <div className="devider" />
+                  <Gap height={20} />
+                  <Form name="forgotForm" form={forgotForm}>
+                    <Form.Item
+                      name="id"
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Please input username!',
+                        },
+                      ]}
+                    >
+                      <Input
+                        prefix={<UserOutlined style={{ color: '#0669BD' }} />}
+                        placeholder="Username"
+                        style={{ width: 348, height: 48 }}
+                      />
+                    </Form.Item>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      block
+                      style={{ width: 348, height: 40 }}
+                    >
+                      Submit
+                    </Button>
+                  </Form>
+                </div>
+              </Col>
+            </Row>
           </div>
         </Modal>
       </Card>

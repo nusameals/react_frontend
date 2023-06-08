@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react"
 import { api } from "../../../api"
-import { message } from "antd"
+import { Alert, message } from "antd"
 
 export const useLogin = () => {
     const [isLoading, setIsLoading] = useState(false)
@@ -9,10 +9,16 @@ export const useLogin = () => {
         try {
             setIsLoading(true)
             const res = await api.login(body)
+
+            console.log({res})
+
             if (res) {
+                localStorage.setItem("token", res.data?.token);
+                localStorage.setItem("id", res.data?.id);
+                localStorage.setItem("username", res.data?.username);
                 message.open({
                     type: 'success',
-                    content: 'Login Success'
+                    content: 'Berasil Login!',
                 })
                 onSuccess && onSuccess()
             }
@@ -20,7 +26,7 @@ export const useLogin = () => {
         catch (err) {
             message.open({
                 type: 'error',
-                content: `${err?.message}`
+                content: `${err?.message}` 
             })
         }
         finally {
