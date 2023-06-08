@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Button,
   Space,
@@ -13,13 +13,13 @@ import {
   Checkbox,
   Modal,
   Alert,
-} from 'antd';
-import { ForgetPass, LoginIcon, NewPass, NusaMealsLogin } from '../../assets';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import './loginPage.css';
-import Gap from '../../components/gap/Gap';
-import { useLogin } from './hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
+} from "antd";
+import { ForgetPass, LoginIcon, NewPass, NusaMealsLogin } from "../../assets";
+import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import "./loginPage.css";
+import Gap from "../../components/gap/Gap";
+import { useLogin } from "./hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [form] = Form.useForm();
@@ -29,7 +29,7 @@ const LoginPage = () => {
     setIsModalOpen(true);
   };
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -39,7 +39,9 @@ const LoginPage = () => {
 
   const onLogin = (values) => {
     login(values, () => {
-      navigate('/dashboard')
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 3000);
     });
   };
 
@@ -76,12 +78,12 @@ const LoginPage = () => {
                   rules={[
                     {
                       required: true,
-                      message: 'Please input username!',
+                      message: "Please input username!",
                     },
                   ]}
                 >
                   <Input
-                    prefix={<UserOutlined style={{ color: '#0669BD' }} />}
+                    prefix={<UserOutlined style={{ color: "#0669BD" }} />}
                     placeholder="Username"
                     className="input-form"
                   />
@@ -91,12 +93,12 @@ const LoginPage = () => {
                   rules={[
                     {
                       required: true,
-                      message: 'Please input password!',
+                      message: "Please input password!",
                     },
                   ]}
                 >
                   <Input.Password
-                    prefix={<LockOutlined style={{ color: '#0669BD' }} />}
+                    prefix={<LockOutlined style={{ color: "#0669BD" }} />}
                     placeholder="Password"
                     className="input-form"
                   />
@@ -141,12 +143,12 @@ const LoginPage = () => {
                       rules={[
                         {
                           required: true,
-                          message: 'Please input username!',
+                          message: "Please input username!",
                         },
                       ]}
                     >
                       <Input
-                        prefix={<UserOutlined style={{ color: '#0669BD' }} />}
+                        prefix={<UserOutlined style={{ color: "#0669BD" }} />}
                         placeholder="Username"
                         style={{ width: 348, height: 48 }}
                       />
