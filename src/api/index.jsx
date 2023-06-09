@@ -1,7 +1,7 @@
-import { baseAPI } from "../config/apiService"
+import { baseAPI } from "../config/apiService";
 
 export const api = {
-    login: (body) => {
-        return baseAPI.post(`/login`, body)
-    }
-}
+  login: (body) => {
+    return baseAPI.post(`/login`, body);
+  },
+};
