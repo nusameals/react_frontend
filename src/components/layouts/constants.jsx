@@ -1,23 +1,41 @@
 import { Button } from "antd";
 import { Link } from "react-router-dom";
-import "./Header/header.css"
+import { Link as ScrollLink } from "react-scroll";
+
+import "./Header/header.css";
 
 export const MENU_ITEM = [
   {
-    label: "Home",
-    key: "1",
+    label: (
+      <ScrollLink to="heroback" smooth={true} duration={500} offset={-65}>
+        Home
+      </ScrollLink>
+    ),
+    key: "home",
   },
   {
-    label: "Services",
-    key: "2",
+    label: (
+      <ScrollLink to="services" smooth={true} duration={500} offset={-65}>
+        Services
+      </ScrollLink>
+    ),
+    key: "services",
   },
   {
-    label: "Menus",
-    key: "3",
+    label: (
+      <ScrollLink to="menu" smooth={true} duration={500} offset={-65}>
+        Menu
+      </ScrollLink>
+    ),
+    key: "menu",
   },
   {
-    label: "Contact",
-    key: "4",
+    label: (
+      <ScrollLink to="contact" smooth={true} duration={500} offset={-65}>
+        Contact
+      </ScrollLink>
+    ),
+    key: "contact",
   },
   {
     label: (

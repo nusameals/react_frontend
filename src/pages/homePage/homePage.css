@@ -1,4 +1,5 @@
-@media screen and (width: 768px) {
+@media only screen and (width: 768px) {
+
   .service {
     display: flex;
     flex-direction: row;
@@ -33,7 +34,6 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0px;
 
     width: 220px;
     height: 248.75px;
@@ -45,6 +45,10 @@
 
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
+  }
+
+  .lihat {
+    margin-right: -1100px
   }
 }
 
@@ -172,6 +176,7 @@
   background: #0669BD;
   color: #FFFFFF;
   border: 1px solid #ffffff !important;
+  z-index: inherit;
 }
 
 .food {
@@ -186,16 +191,25 @@
 .drink:active {
   background: white;
   color: #0669BD;
+  z-index: 0 !important;
 }
 
 .MENU {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 30px;
   background: #0669bd;
   border-radius: 20px;
+  padding-bottom: 50px;
+}
+
+.titleM,
+.descM,
+.CARD {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .titleM {
@@ -218,7 +232,7 @@
 }
 
 .lihat {
-  margin-left: -1100px;
+  float: inline-start;
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
@@ -226,6 +240,7 @@
   line-height: 30px;
   color: #ffffff;
 }
+
 
 .cardM {
   display: flex;
@@ -235,6 +250,7 @@
   background: #ffffff;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
+  max-width: 294px;
 }
 
 .imgM {
@@ -250,7 +266,9 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 700;
-  font-size: 20px;
+  font-size: 15px;
+  padding-top: 25px;
+  padding-left: 25px;
 }
 
 .kotaM {
@@ -258,8 +276,8 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-
+  font-size: 13px;
+  padding-left: 25px;
   color: #7f7f7f;
 }
 
@@ -267,42 +285,61 @@
   font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 13px;
+  padding-left: 25px;
 }
 
 .kalori {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  margin-top: 20px;
+  font-size: 13px;
   color: #7f7f7f;
+  padding-right: 25px;
 }
 
 .hargakalor {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 110px;
-  margin-top: -20px;
+  margin-top: -10px;
+  width: 230px;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.swiper-wrapper {
+  width: 230px !important;
+  height: 270px;
+}
+
+.swiper-slide {
+  width: 230px !important;
+  height: 248.75px;
+  background-color: #FFFFFF;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  margin-bottom: 50px;
+
 }
 
 .ant-carousel .slick-prev,
-.ant-carousel .slick-prev:hover,
-.ant-carousel .slick-prev:focus {
-  font-size: inherit;
-  left: 10px;
-  z-index: 2;
-  color: black;
-}
-
 .ant-carousel .slick-next,
-.ant-carousel .slick-next:hover,
-.ant-carousel .slick-next:focus {
+.ant-carousel .slick-prev:hover,
+.ant-carousel .slick-next:hover {
   font-size: inherit;
-  right: 10px;
-  z-index: 2;
-  color: black;
+  color: #ffffff;
+  background-color: #333333 !important;
+  width: 20px;
+  height: 20px;
+  padding: 3px;
+  border-radius: 20px;
 }
 
 .CONTACT {
@@ -462,7 +499,7 @@
 }
 
 .card-feedback {
-  margin: 0 82.5px 0 82.5px;
+  width: 400px;
 }
 
 .ava-name {
@@ -484,7 +521,7 @@
   color: #000000;
 }
 
-.role-feedback{
+.role-feedback {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
@@ -548,4 +585,253 @@
 
 .input-button Input {
   border-radius: 100px;
+}
+
+.subscribe-form-mobile {
+  background-image: url('../../assets/icons/nusantara-food.png');
+  margin: 60px 0 74px 120px;
+  margin-left: auto;
+  margin-right: auto;
+  background-size: cover;
+  width: 380px;
+  height: 161px;
+  border-radius: 20px;
+}
+
+.title-subs-mobile {
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 24px 0 0 0;
+  text-align: center;
+  color: #ffffff;
+}
+
+.subs-text-mobile {
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 12px;
+  padding: 0;
+  text-align: center;
+  color: #ffffff;
+}
+
+.input-button-mobile {
+  width: 348px;
+  height: 37px;
+  margin: 0 16px 0 16px;
+}
+
+.input-button-mobile Button {
+  font-family: "Poppins";
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+  height: 37px;
+  border-radius: 100px;
+}
+
+.input-button-mobile Input {
+  border-radius: 100px;
+}
+
+.hero {
+  object-fit: contain;
+  margin: 13%;
+}
+
+.herotext1 {
+  font-size: x-large;
+  font-family: 'Poppins';
+  font-style: normal;
+  line-height: 40px;
+
+}
+
+.herofood{
+  max-width: 70%;
+  height: auto;
+}
+@media (min-width: 900px) {
+
+
+  .herofood{
+    float: right;
+    max-width: 44%;
+margin-top: -4%;
+  }
+}
+
+.herodis {
+  font-family: "Poppins";
+  /* font-style: normal; */
+  font-weight: 400;
+  /* font-size: 28px; */
+  /* margin-top: -20px;
+    text-align: center; */
+}
+
+.buttonget {
+  font-size: 18px;
+  font-family: "Poppins";
+  font-style: bold;
+  font-weight: 700;
+  /* padding: 23px 28x;  */
+  padding: 30px 28px;
+  /* Width: 900x;
+Height: 68px; */
+  text-align: center;
+  /* Center align the text horizontally */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+}
+
+.herosocial {
+  margin-top: 70px;
+  display: flex;
+
+  font-size: 25px;
+  align-items: center;
+}
+
+.heroicon {
+  color: #6AA5D7;
+  /* background-color: #ffffff; */
+  font-size: 25px;
+  align-items: center;
+  line-height: 10px;
+  /* margin-right: 50px;  */
+  display: flex;
+
+}
+
+.heroic {
+  margin-left: 0.5em;
+  margin-right: 1.2em;
+  border: none;
+  /* Remove the button border */
+  background-color: transparent;
+  /* Set the background color to transparent */
+  outline: none;
+
+}
+
+.ant-carousel .slick-prev,
+.ant-carousel .slick-next,
+.ant-carousel .slick-prev:hover,
+.ant-carousel .slick-next:hover {
+  font-size: inherit;
+  color: #0669bd;
+  background-color: #FFFFFF !important;
+  width: 30px;
+  height: 30px;
+  padding: 8px;
+  border-radius: 20px;
+}
+
+.slick-dots li button {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 100% !important;
+}
+
+.ant-carousel {
+  width: 428px;
+}
+.heroexcess{
+  margin: 5% 0%;
+  align-items: center;
+  display: grid;
+  place-items: center;
+
+ 
+
+  /* gap: 48px; */
+  /* margin: 0% 5%; */
+}
+.heroexc {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  text-align: center; /* Center text */
+}
+.herocontent{
+  padding: 20px 20px;
+  border-radius: 5%;
+ }
+ .heroexc {
+  /* margin-right: 5%; */
+  transition: transform 0.3s ease;
+}
+
+.herocontent:hover {
+  background-color: #f0f0f0; 
+  
+
+}
+.hjudul{
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 10px;
+}
+.hdes{
+  width: 240px;
+  height: 50px;
+
+  /* Body/R-16 */
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center; /* Center text */
+
+
+  color: #000000;
+  
+}
+.herocar{
+  width: 70%;
+  height: 250px; 
+}
+.hlogo{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 50%; */
+}
+.herocar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (max-width: 768px) {
+
+  .heroexcess{
+    margin-left: 20%;
+  }
+
+}
+.heroback{
+  background-image: url('../../assets/images/herobackground.svg');
+
+  background-size:cover ;
+}
+@media only screen and (max-width: 768px) {
+
+
+  .heroback{
+    
+    background-image: url('../../assets/images/heromob.svg');
+    background-size:cover ;
+
+  }
 }
