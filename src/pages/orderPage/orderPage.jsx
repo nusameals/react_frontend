@@ -1,8 +1,52 @@
-import React from 'react';
-import { Breadcrumb, Row, Table, Space, Popconfirm, Badge } from "antd";
+import React, { useState } from 'react';
+import { Breadcrumb, Row, Table, Space, Modal, Badge, Select, Button, Form } from "antd";
 import './orderPage.css'
+import { CloseSquareFilled } from '@ant-design/icons';
 
 const OrderPage = () => {
+
+    // modal
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
+
+    const [form] = Form.useForm();
+
+    const data = [];
+    for (let i = 0; i < 100; i++) {
+        data.push({
+            key: i,
+            orderId: `12345${i}`,
+            dateOrder: '2021-02-05 08:28:36',
+            customerName: `Kim Taehyung ${i}`,
+            type: 'dine in',
+        });
+    }
+
+    const [rowData, setRowData] = useState(data);
+
+    const onAdd = (values) => {
+
+        form.resetFields();
+
+        console.log({ values })
+    };
+
+    const onFinishFailed = (errorInfo) => {
+        console.log('Failed:', errorInfo);
+    };
+
+    // select form
+    const handleChange = (value) => {
+        console.log(`selected ${value}`);
+    };
 
     const TABLE_COLUMNS = [
         {
@@ -10,10 +54,10 @@ const OrderPage = () => {
             dataIndex: 'orderId',
             key: 'orderId',
             render: (_, record) =>
-                <a
+                <div
                     style={{
-                        color: 'blue'
-                    }} onClick={() => handleEdit(record)}></a>
+                        color: ' #0669BD'
+                    }}>{record.orderId}</div>
         },
         {
             title: 'Date Order',
@@ -36,14 +80,15 @@ const OrderPage = () => {
             title: 'Order Status',
             dataIndex: 'orderStatus',
             key: 'orderStatus',
-            sorter: (a, b) => a.orderStatus - b.orderStatus
+            sorter: (a, b) => a.orderStatus - b.orderStatus,
+            render: () => <Badge status="processing" text='Processing' />
         },
         {
             title: 'Payment Status',
             dataIndex: 'paymentStatus',
             key: 'paymentStatus',
             sorter: (a, b) => a.paymentStatus - b.paymentStatus,
-            render: () => <Badge status="success" text="Finished" />
+            render: () => <Badge status="success" text='Already payment' />
         },
         {
             title: 'Action',
@@ -53,36 +98,108 @@ const OrderPage = () => {
                 <Space>
                     <a
                         style={{
-                            color: 'blue'
-                        }} onClick={() => handleEdit(record)}>Update orders</a>
-                    <Popconfirm
-                        title='sure to delete'
-                        arrow={false}
-                        onConfirm={() => onDelete(record.id)}
-                    >
-                        <a
-                            style={{
-                                color: 'blue'
-                            }}>Update Payments</a>
-                    </Popconfirm>
+                            color: ' #0669BD'
+                        }} onClick={showModal}>Update orders</a>
+                    <Modal
+                        open={isModalOpen} footer={null} onOk={handleOk} onCancel={handleCancel} closeIcon={<CloseSquareFilled style={{ color: 'red', fontSize: 20 }} />}>
+                        <div className='modalheader'>
+                            <p className='titlemodal'><b>Orders Status</b></p>
+                            <p className='subtitle'>Here, you can see the order details</p>
+                        </div>
+                        <hr style={{ marginTop: '-8px' }}></hr>
+                        <p className='titledetail'><b>Orders Detail</b></p>
+                        <div style={{ display: 'flex', justifyContent: "space-between" }}>
+                            <div className='modalisian'>
+                                <p className='subdetail'>Customer Name</p>
+                                <p className='subdetail'>Order Number</p>
+                                <p className='subdetail'>Type</p>
+                                <p className='subdetail'>Table Number</p>
+                            </div>
+
+                            <div className='modalrespon'>
+                                <p className='subrespon'><b>Trina</b></p>
+                                <p className='subrespon'><b>67890</b></p>
+                                <p className='subrespon'><b>Dine In</b></p>
+                                <p className='subrespon' ><b>4</b></p>
+                            </div>
+                        </div>
+
+                        <div style={{ display: 'flex', justifyContent: "space-between" }}>
+                            <div className='modalprice'>
+                                <ul>
+                                    <li className='modalpesan'>Soto Ayam x 3</li>
+                                </ul>
+                                <p className='pricee'><b>Total</b></p>
+                                <p className='method' style={{ marginTop: '-0px' }}>Payment method</p>
+                            </div>
+
+                            <div style={{ marginTop: 20 }}>
+                                <p className='nomprice'><b>Rp 75.000</b></p>
+                                <p className='nomprice' style={{ marginTop: '-15px' }}><b>Rp 75.000</b></p>
+                                <p className='paymentmet' style={{ marginTop: 0, textAlign: 'end' }} ><b>Cash</b></p>
+                            </div>
+                        </div>
+                        <hr />
+                        <div style={{ display: 'flex', gap: 10, marginTop: '-15px', alignItems: "center" }}>
+                            <p><b>Update Orders Status</b></p>
+                            <Form
+                                name='form'
+                                form={form}
+                                onFinish={onAdd}
+                                onFinishFailed={onFinishFailed}
+
+                                fields={[
+                                    {
+                                        name: ['orderStatus'],
+                                        value: rowData?.orderStatus,
+                                    },
+                                ]}>
+                                <Form.Item
+                                    name='orderStatus'
+                                ><Select
+
+                                        onChange={handleChange}
+                                        placeholder={<Badge status="default" text='New Order' />}
+                                        style={{
+                                            width: 230,
+                                            marginTop: 20,
+                                            alignItems: 'center'
+                                        }}
+                                        options={[
+                                            {
+                                                value: 'New Order',
+                                                label: <Badge status="default" text='New Order' />
+                                            },
+                                            {
+                                                value: 'Processing',
+                                                label: <Badge status="processing" text='Processing' />
+                                            },
+                                            {
+                                                value: 'Finished',
+                                                label: <Badge status="success" text='Finished' />
+                                            },
+                                        ]}
+                                    /></Form.Item>
+                            </Form>
+                            <Button type="primary" htmlType="submit">
+                                Submit
+                            </Button>
+                        </div>
+                    </Modal>
+                    <a
+                        style={{
+                            color: ' #0669BD'
+                        }}
+                    >Update Payments</a>
                 </Space >
 
         },
     ]
 
-    const data = [];
-    for (let i = 0; i < 100; i++) {
-        data.push({
-            key: i,
-            orderId: `Edward ${i}`,
-            dateOrder: 32,
-            customerName: `London Park no. ${i}`,
-        });
-    }
-
     const onChange = (filters, sorter) => {
         console.log('params', filters, sorter);
     };
+
 
     return (
         <div>
