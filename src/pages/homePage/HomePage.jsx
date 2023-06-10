@@ -600,12 +600,13 @@ function SubsForm() {
               Never miss out on the taste of Indonesia - Subscribe for exclusive
               updates
             </p>
-            <Space>
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
               <Space.Compact className="input-button">
                 <Input placeholder="Your email..." />
                 <Button type="primary">Subscribe</Button>
               </Space.Compact>
-            </Space>
+              </div>
+<br /><br />
           </div>
         </div>
   )

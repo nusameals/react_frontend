@@ -543,9 +543,11 @@
 .subscribe-form {
   background-image: url('../../assets/icons/nusantara-food.png');
   margin: 0 0 100px 100px;
+  margin-left: auto;
+  margin-right: auto;
   background-size: cover;
-  width: 1328px;
-  height: 330px;
+  width: 85%;
+
   border-radius: 30px;
 }
 
@@ -570,8 +572,9 @@
 
 .input-button {
   width: 633px;
+  width: 50%;
   height: 52px;
-  margin-left: 316.5px;
+  
 }
 
 .input-button Button {
