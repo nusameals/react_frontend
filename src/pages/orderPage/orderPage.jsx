@@ -30,8 +30,8 @@ const OrderPage = () => {
         Modal.success({
             content: <p>Update orders status success! <br />Click done to continue</p>,
             okText: 'Done',
-            style: { marginTop: 130 },
-            confirmLoading: true
+            style: { marginTop: 135 },
+
         })
 
     }
