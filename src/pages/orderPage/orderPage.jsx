@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
-import { Breadcrumb, Row, Table, Space, Modal, Badge, Select, Button, Form } from "antd";
+import { Breadcrumb, Row, Table, Space, Modal, Badge, Select, Button, Form, Input, Spin } from "antd";
 import './orderPage.css'
-import { CloseSquareFilled } from '@ant-design/icons';
+import { CloseSquareFilled, LoadingOutlined } from '@ant-design/icons';
 
 const OrderPage = () => {
+
+    // search
+    const [searchedText, setSearchedText] = useState("")
 
     // modal
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,6 +19,22 @@ const OrderPage = () => {
     const handleCancel = () => {
         setIsModalOpen(false);
     };
+
+    // loading
+    const antIcon = (
+        <LoadingOutlined style={{ fontSize: 24 }} spin />
+    )
+
+    // confirm
+    const success = () => {
+        Modal.success({
+            content: <p>Update orders status success! <br />Click done to continue</p>,
+            okText: 'Done',
+            style: { marginTop: 130 },
+            confirmLoading: true
+        })
+
+    }
 
     const [form] = Form.useForm();
 
@@ -68,7 +87,16 @@ const OrderPage = () => {
         {
             title: 'Customer Name',
             dataIndex: 'customerName',
-            key: 'customerName'
+            key: 'customerName',
+            filteredValue: [searchedText],
+            onFilter: (value, record) => {
+                return (
+                    String(record.orderId).toLowerCase().includes(value.toLowerCase()) ||
+                    String(record.dateOrder).toLowerCase().includes(value.toLowerCase()) ||
+                    String(record.customerName).toLowerCase().includes(value.toLowerCase()) ||
+                    String(record.type).toLowerCase().includes(value.toLowerCase())
+                )
+            }
         },
         {
             title: 'Type',
@@ -141,49 +169,51 @@ const OrderPage = () => {
                         </div>
                         <hr />
                         <div style={{ display: 'flex', gap: 10, marginTop: '-15px', alignItems: "center" }}>
-                            <p><b>Update Orders Status</b></p>
-                            <Form
-                                name='form'
-                                form={form}
-                                onFinish={onAdd}
-                                onFinishFailed={onFinishFailed}
+                            <p style={{ marginTop: 0 }}><b>Update Orders Status</b></p>
+                            <div >
+                                <Form
+                                    name='form'
+                                    form={form}
+                                    onFinish={onAdd}
+                                    onFinishFailed={onFinishFailed}
+                                    layout='horizontal'
+                                    fields={[
+                                        {
+                                            name: ['orderStatus'],
+                                            value: rowData?.orderStatus,
+                                        },
+                                    ]}>
+                                    <Form.Item
+                                        name='orderStatus'
+                                    ><Select
 
-                                fields={[
-                                    {
-                                        name: ['orderStatus'],
-                                        value: rowData?.orderStatus,
-                                    },
-                                ]}>
-                                <Form.Item
-                                    name='orderStatus'
-                                ><Select
-
-                                        onChange={handleChange}
-                                        placeholder={<Badge status="default" text='New Order' />}
-                                        style={{
-                                            width: 230,
-                                            marginTop: 20,
-                                            alignItems: 'center'
-                                        }}
-                                        options={[
-                                            {
-                                                value: 'New Order',
-                                                label: <Badge status="default" text='New Order' />
-                                            },
-                                            {
-                                                value: 'Processing',
-                                                label: <Badge status="processing" text='Processing' />
-                                            },
-                                            {
-                                                value: 'Finished',
-                                                label: <Badge status="success" text='Finished' />
-                                            },
-                                        ]}
-                                    /></Form.Item>
-                            </Form>
-                            <Button type="primary" htmlType="submit">
-                                Submit
-                            </Button>
+                                            onChange={handleChange}
+                                            placeholder={<Badge status="default" text='New Order' />}
+                                            style={{
+                                                width: 230,
+                                                marginTop: 20,
+                                                alignItems: 'center'
+                                            }}
+                                            options={[
+                                                {
+                                                    value: 'New Order',
+                                                    label: <Badge status="default" text='New Order' />
+                                                },
+                                                {
+                                                    value: 'Processing',
+                                                    label: <Badge status="processing" text='Processing' />
+                                                },
+                                                {
+                                                    value: 'Finished',
+                                                    label: <Badge status="success" text='Finished' />
+                                                },
+                                            ]}
+                                        /></Form.Item>
+                                    <Button type="primary" style={{ float: 'right', marginRight: -80, marginTop: -56 }} htmlType='submit' onClick={success}>
+                                        Submit
+                                    </Button>
+                                </Form>
+                            </div>
                         </div>
                     </Modal>
                     <a
@@ -217,6 +247,18 @@ const OrderPage = () => {
                 <span className="textorder">Orders Data</span>
             </Row>
 
+            <div style={{ display: 'flex', gap: 10, alignItems: 'center', margin: '10px 60px', marginBottom: '-20px' }}>
+                <span style={{ fontSize: 14 }}>Search:</span>
+                <Input.Search placeholder='Please enter' style={{
+                    width: 500,
+                }}
+                    onSearch={(value) => {
+                        setSearchedText(value)
+                    }}
+                    onChange={(e) => {
+                        setSearchedText(e.target.value)
+                    }} />
+            </div>
             <Table
                 style={{
                     margin: '50px 60px',
