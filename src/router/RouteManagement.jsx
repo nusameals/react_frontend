@@ -9,6 +9,7 @@ import ProfilePage from "../pages/profilePage/ProfilePage";
 import EditProfile from "../pages/profilePage/editProfile/EditProfile";
 import OrderPage from "../pages/orderPage/orderPage";
 import ReservationsPage from "../pages/reservationsPage/reservationsPage";
+import ReportPage from "../pages/reportPage/reportPage";
 
 
 const RouteManagement = () => {
@@ -31,6 +32,7 @@ const RouteManagement = () => {
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/order-page" element={<OrderPage />} />
           <Route path="/reservations-page" element={<ReservationsPage />} />
+          <Route path="/report-page" element={<ReportPage />} />
           {/* <Route path="/form" element={<FormComponent />} />
             <Route path="/form-exp" element={<FormComponentExp />} />
             <Route path="/form-crud" element={<FormCRUD />} />
