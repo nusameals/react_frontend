@@ -13,7 +13,7 @@ import {
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 import { CancelButton } from "../../components/buttonComponent/ButtonComponent";
 import "./homePage.css";
-import Gap from "../../components/gap/Gap";
+// import Gap from "../../components/gap/Gap";
 import { menu, service, minum, feedback, heroex } from "./constant";
 import {
   GoogleButton,
@@ -41,6 +41,8 @@ import {
 } from "@ant-design/icons";
 
 import useMediaQuery from "./query";
+import { Link } from 'react-router-dom';
+
 
 const HomePage = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -52,6 +54,7 @@ const HomePage = () => {
 
   return (
     <div>
+      
       <div className="heroback">
         <h1
           style={{
@@ -593,8 +596,13 @@ function SubsForm() {
             <Button type="primary">Subscribe</Button>
           </Space.Compact>
         </div>
-        <br />
-        <br />
+         <br /> 
+         <br /> 
+
+        <Link to="/admin">
+            <Button  style={{ backgroundColor: 'transparent', border: 'none' }}>{""}</Button>
+      </Link>
+      
       </div>
     </div>
   );
