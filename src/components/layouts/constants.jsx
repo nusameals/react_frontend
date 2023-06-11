@@ -69,12 +69,12 @@ export const SIDER_ITEM = [
   {
     key: "3",
     icon: <FormOutlined />,
-    label: <Link to="/">Orders</Link>,
+    label: <Link to="/order-page">Orders</Link>,
   },
   {
     key: "4",
     icon: <FormOutlined />,
-    label: <Link to="/">Reservations</Link>,
+    label: <Link to="/reservations-page">Reservations</Link>,
   },
   {
     key: "5",
