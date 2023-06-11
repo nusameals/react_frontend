@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-// import reactLogo from "../../assets/images/react.svg";
+import React, { useState } from "react";
 import {
   Button,
   Space,
@@ -10,12 +9,12 @@ import {
   Carousel,
   Rate,
   Input,
-} from 'antd';
-import { RightOutlined, LeftOutlined } from '@ant-design/icons';
-import { CancelButton } from '../../components/buttonComponent/ButtonComponent';
-import './homePage.css';
-import Gap from '../../components/gap/Gap';
-import { menu, service, minum, feedback, heroex } from './constant';
+} from "antd";
+import { RightOutlined, LeftOutlined } from "@ant-design/icons";
+import { CancelButton } from "../../components/buttonComponent/ButtonComponent";
+import "./homePage.css";
+import Gap from "../../components/gap/Gap";
+import { menu, service, minum, feedback, heroex } from "./constant";
 import {
   GoogleButton,
   Logo,
@@ -30,7 +29,7 @@ import {
   cincau,
   teh,
   Heromob,
-} from '../../assets/index';
+} from "../../assets/index";
 
 import {
   PhoneOutlined,
@@ -39,35 +38,25 @@ import {
   InstagramOutlined,
   YoutubeOutlined,
   TwitterOutlined,
-} from '@ant-design/icons';
+} from "@ant-design/icons";
 
-import useMediaQuery from './query';
-
-// import 'antd/dist/antd.css';
+import useMediaQuery from "./query";
 
 const HomePage = () => {
-  const isMobile = useMediaQuery('(max-width: 768px)');
-  // console.log('isMobile returns ', isMobile);
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
-  // radio button
-  const [section, setSection] = useState('food');
+  const [section, setSection] = useState("food");
   const onChange = ({ target: { value } }) => {
     setSection(value);
   };
 
   return (
     <div>
-      <div
-        className="heroback"
-        // style={{
-        //   backgroundImage: `url(${Herobackground})`,
-        //   backgroundSize: "cover",
-        // }}
-      >
+      <div className="heroback">
         <h1
           style={{
-            color: 'white',
-            marginTop: '-2%',
+            color: "white",
+            marginTop: "-2%",
           }}
         >
           test
@@ -83,7 +72,7 @@ const HomePage = () => {
                 <p>
                   No more long lines, our app makes <br /> booking and order
                   with our app, <br /> <b>the smart way to dine.</b>
-                </p>{' '}
+                </p>{" "}
               </div>
               <Button type="primary" className="buttonget">
                 Get the app
@@ -92,14 +81,14 @@ const HomePage = () => {
                 wrap
                 direction="horizontal"
                 className="herosocial"
-                style={{ marginRight: '80px' }}
+                style={{ marginRight: "80px" }}
               >
                 <Button
                   className="heroic"
                   icon={
                     <FacebookOutlined
                       className="heroicon"
-                      style={{ marginRight: '100px' }}
+                      style={{ marginRight: "100px" }}
                     />
                   }
                 />
@@ -114,14 +103,12 @@ const HomePage = () => {
                 />
               </Space>
             </div>
-
-            {/* <img class="herofood" src={Herofood} alt="Image" /> */}
           </div>
         </div>
         <h1
           style={{
-            color: 'white',
-            marginTop: '-2%',
+            color: "white",
+            marginTop: "-2%",
           }}
         >
           test
@@ -183,12 +170,12 @@ const HomePage = () => {
             className="car"
             style={{
               zIndex: 0,
-              justifyContent: 'center',
-              display: 'flex',
-              alignItems: 'center',
+              justifyContent: "center",
+              display: "flex",
+              alignItems: "center",
             }}
           >
-            {section === 'food' ? <FoodMenuCarousel /> : <DrinkMenuCarousel />}
+            {section === "food" ? <FoodMenuCarousel /> : <DrinkMenuCarousel />}
           </div>
         ) : (
           <div
@@ -197,7 +184,7 @@ const HomePage = () => {
               zIndex: 0,
             }}
           >
-            {section === 'food' ? <FoodMenu /> : <DrinkMenu />}
+            {section === "food" ? <FoodMenu /> : <DrinkMenu />}
           </div>
         )}
       </section>
@@ -233,8 +220,8 @@ const HomePage = () => {
                       <div className="icon-container">
                         <PhoneOutlined
                           style={{
-                            fontSize: '25px',
-                            transform: 'rotate(90deg)',
+                            fontSize: "25px",
+                            transform: "rotate(90deg)",
                           }}
                         />
                       </div>
@@ -244,7 +231,7 @@ const HomePage = () => {
                       <div className="icon-container">
                         <MailOutlined
                           style={{
-                            fontSize: '25px',
+                            fontSize: "25px",
                           }}
                         />
                       </div>
@@ -257,7 +244,7 @@ const HomePage = () => {
                     <Button className="btn-google" />
                     <Row gutter={12}>
                       <Col span={8}>
-                        <ul style={{ paddingLeft: '0px' }}>
+                        <ul style={{ paddingLeft: "0px" }}>
                           <li className="list-btn-contact">
                             <Button className="btn-list" type="text">
                               Home
@@ -281,7 +268,7 @@ const HomePage = () => {
                         </ul>
                       </Col>
                       <Col span={16}>
-                        <ul style={{ paddingLeft: '0px' }}>
+                        <ul style={{ paddingLeft: "0px" }}>
                           <li className="list-btn-contact">
                             <Button className="btn-list" type="text">
                               Terms and Conditions
@@ -569,7 +556,7 @@ function FeedBackReview() {
         justify="center"
         align="middle"
         className="row-feedback"
-        style={{marginLeft: 52}}
+        style={{ marginLeft: 52 }}
       >
         {feedback.map((item) => (
           <Col xl={{ span: 8 }} md={{ span: 24 }}>
@@ -594,41 +581,44 @@ function FeedBackReview() {
 function SubsForm() {
   return (
     <div className="subscribe-form">
-          <div className="subscribe-content">
-            <p className="title-subs">Get more updates of Nusantara Foods</p>
-            <p className="subs-text">
-              Never miss out on the taste of Indonesia - Subscribe for exclusive
-              updates
-            </p>
-            <Space>
-              <Space.Compact className="input-button">
-                <Input placeholder="Your email..." />
-                <Button type="primary">Subscribe</Button>
-              </Space.Compact>
-            </Space>
-          </div>
+      <div className="subscribe-content">
+        <p className="title-subs">Get more updates of Nusantara Foods</p>
+        <p className="subs-text">
+          Never miss out on the taste of Indonesia - Subscribe for exclusive
+          updates
+        </p>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <Space.Compact className="input-button">
+            <Input placeholder="Your email..." />
+            <Button type="primary">Subscribe</Button>
+          </Space.Compact>
         </div>
-  )
+        <br />
+        <br />
+      </div>
+    </div>
+  );
 }
 
 function SubsFormMobile() {
   return (
     <div className="subscribe-form-mobile">
-          <div className="subscribe-content">
-            <p className="title-subs-mobile">Get more updates of Nusantara Foods
-            <br />
-            <span className="subs-text-mobile">
-              Never miss out on the taste of Indonesia - Subscribe for exclusive
-              updates
-            </span>
-            </p>
-            <Space>
-              <Space.Compact className="input-button-mobile">
-                <Input placeholder="Your email..." />
-                <Button type="primary">Subscribe</Button>
-              </Space.Compact>
-            </Space>
-          </div>
-        </div>
-  )
+      <div className="subscribe-content">
+        <p className="title-subs-mobile">
+          Get more updates of Nusantara Foods
+          <br />
+          <span className="subs-text-mobile">
+            Never miss out on the taste of Indonesia - Subscribe for exclusive
+            updates
+          </span>
+        </p>
+        <Space>
+          <Space.Compact className="input-button-mobile">
+            <Input placeholder="Your email..." />
+            <Button type="primary">Subscribe</Button>
+          </Space.Compact>
+        </Space>
+      </div>
+    </div>
+  );
 }
