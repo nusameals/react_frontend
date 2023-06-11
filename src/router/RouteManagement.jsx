@@ -7,6 +7,7 @@ import LoadingComponent from "../components/loadingComponent/LoadingComponent";
 import HomePage from "../pages/homePage/HomePage";
 import ProfilePage from "../pages/profilePage/ProfilePage";
 import EditProfile from "../pages/profilePage/editProfile/EditProfile";
+import MenuPage from '../pages/menuPage/Create Menu/createMenu'
 import OrderPage from "../pages/orderPage/orderPage";
 import ReservationsPage from "../pages/reservationsPage/reservationsPage";
 import ReportPage from "../pages/reportPage/reportPage";
@@ -30,6 +31,7 @@ const RouteManagement = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="/profile-setting" element={<ProfilePage />} />
           <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path='/menu-page' element={<MenuPage />} />
           <Route path="/order-page" element={<OrderPage />} />
           <Route path="/reservations-page" element={<ReservationsPage />} />
           <Route path="/report-page" element={<ReportPage />} />
