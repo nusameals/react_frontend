@@ -7,6 +7,8 @@ import LoadingComponent from "../components/loadingComponent/LoadingComponent";
 import HomePage from "../pages/homePage/HomePage";
 import ProfilePage from "../pages/profilePage/ProfilePage";
 import EditProfile from "../pages/profilePage/editProfile/EditProfile";
+import OrderPage from "../pages/orderPage/orderPage";
+import ReservationsPage from "../pages/reservationsPage/reservationsPage";
 
 
 const RouteManagement = () => {
@@ -22,12 +24,14 @@ const RouteManagement = () => {
   return (
     <Suspense fallback={<LoadingComponent />}>
 
-        <LayoutComponent>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/profile-setting" element={<ProfilePage/>}/>
-            <Route path="/edit-profile" element={<EditProfile/>}/>
-            {/* <Route path="/form" element={<FormComponent />} />
+      <LayoutComponent>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/profile-setting" element={<ProfilePage />} />
+          <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path="/order-page" element={<OrderPage />} />
+          <Route path="/reservations-page" element={<ReservationsPage />} />
+          {/* <Route path="/form" element={<FormComponent />} />
             <Route path="/form-exp" element={<FormComponentExp />} />
             <Route path="/form-crud" element={<FormCRUD />} />
             <Route path="/form-crud-api" element={<FormCRUDAPI />} />
@@ -38,9 +42,9 @@ const RouteManagement = () => {
             <Route path="/product" element={<ProductPage />} />
             <Route path="/product/:uuid" element={<ProductDetail />} />
             <Route path="/content" element={<Contentful />} /> */}
-          </Routes>
-        </LayoutComponent>
-      
+        </Routes>
+      </LayoutComponent>
+
     </Suspense>
   );
 };
