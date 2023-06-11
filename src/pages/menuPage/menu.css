@@ -1,0 +1,113 @@
+.container-header-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 24px;
+  gap: 8px;
+
+  background-color: #ffffff;
+}
+
+.text-menuList {
+  width: 301px;
+  height: 30px;
+
+  /* SubHeading/B-20 */
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  /* identical to box height */
+
+  /* Character/Title .85 */
+
+  color: rgba(0, 0, 0, 0.85);
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.menu-search-box {
+  /* Auto layout */
+  align-self: center;
+  padding: 0px;
+
+  width: 507px !important;
+  /* Neutral/1 */
+
+  background: #ffffff;
+}
+
+.menu-data {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px 24px;
+  gap: 10px;
+
+  /* position: absolute; */
+  width: auto;
+  height: 645px;
+  left: 1px;
+  top: 218px;
+  overflow-y: scroll;
+}
+
+.container-table-menu {
+  /* Table */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 24px;
+
+  width: 1176px;
+  height: 645px;
+
+  /* Neutral/1 */
+
+  background: #ffffff;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.tag-all-menu {
+  margin-left: 24px;
+  margin-right: 12px;
+}
+
+.container-card-categories {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.container-table-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}

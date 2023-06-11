@@ -64,7 +64,7 @@ export const SIDER_ITEM = [
   {
     key: "2",
     icon: <ProfileOutlined />,
-    label: <Link to="/">Menus</Link>,
+    label: <Link to="/menu-page">Menus</Link>,
   },
   {
     key: "3",
