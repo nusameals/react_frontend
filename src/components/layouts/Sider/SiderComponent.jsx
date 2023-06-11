@@ -52,7 +52,7 @@ const SiderComponent = () => {
           <Divider className="divider-length" />
         </div>
         <Menu
-          theme="light"
+          theme="dark"
           mode="inline"
           selectedKeys={[current]}
           items={SIDER_ITEM}
