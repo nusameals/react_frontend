@@ -13,7 +13,6 @@ import {
 import { RightOutlined, LeftOutlined } from "@ant-design/icons";
 import { CancelButton } from "../../components/buttonComponent/ButtonComponent";
 import "./homePage.css";
-// import Gap from "../../components/gap/Gap";
 import { menu, service, minum, feedback, heroex } from "./constant";
 import {
   GoogleButton,
