@@ -21,7 +21,7 @@ const LayoutComponent = ({ children }) => {
 
   return (
     <Layout>
-      {!token ? (
+      {token ? (
         <>
           {/* Header */}
           <HeaderComponent />
