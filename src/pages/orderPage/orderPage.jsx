@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Breadcrumb, Row, Table, Space, Modal, Badge, Select, Button, Form, Input, Spin } from "antd";
+import { Breadcrumb, Row, Table, Space, Modal, Badge, Select, Button, Form, Input, Spin, Pagination } from "antd";
 import './orderPage.css'
 import { CloseSquareFilled, LoadingOutlined } from '@ant-design/icons';
 
@@ -8,16 +8,28 @@ const OrderPage = () => {
     // search
     const [searchedText, setSearchedText] = useState("")
 
-    // modal
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    // modal order
+    const [isModalOrder, setIsModalOrder] = useState(false);
     const showModal = () => {
-        setIsModalOpen(true);
+        setIsModalOrder(true);
     };
     const handleOk = () => {
-        setIsModalOpen(false);
+        setIsModalOrder(false);
     };
     const handleCancel = () => {
-        setIsModalOpen(false);
+        setIsModalOrder(false);
+    };
+
+    // modal payment
+    const [isModalPayment, setIsModalPayment] = useState(false);
+    const showModalpayment = () => {
+        setIsModalPayment(true);
+    };
+    const handleOkPayment = () => {
+        setIsModalPayment(false)
+    };
+    const handleCancelPayment = () => {
+        setIsModalPayment(false)
     };
 
     // loading
@@ -34,6 +46,14 @@ const OrderPage = () => {
 
         })
 
+    }
+    const successPayment = () => {
+        Modal.success({
+            content: <p>Update payments status success! <br />Click done to continue</p>,
+            okText: 'Done',
+            style: { marginTop: 135 },
+
+        })
     }
 
     const [form] = Form.useForm();
@@ -129,7 +149,7 @@ const OrderPage = () => {
                             color: ' #0669BD'
                         }} onClick={showModal}>Update orders</a>
                     <Modal
-                        open={isModalOpen} footer={null} onOk={handleOk} onCancel={handleCancel} closeIcon={<CloseSquareFilled style={{ color: 'red', fontSize: 20 }} />}>
+                        open={isModalOrder} footer={null} onOk={handleOk} onCancel={handleCancel} closeIcon={<CloseSquareFilled style={{ color: 'red', fontSize: 20 }} />}>
                         <div className='modalheader'>
                             <p className='titlemodal'><b>Orders Status</b></p>
                             <p className='subtitle'>Here, you can see the order details</p>
@@ -220,7 +240,92 @@ const OrderPage = () => {
                         style={{
                             color: ' #0669BD'
                         }}
+                        onClick={showModalpayment}
                     >Update Payments</a>
+                    <Modal
+                        open={isModalPayment} footer={null} onOk={handleOkPayment} onCancel={handleCancelPayment} closeIcon={<CloseSquareFilled style={{ color: 'red', fontSize: 20 }} />}>
+                        <div className='modalheader'>
+                            <p className='titlemodal'><b>Payment Status</b></p>
+                            <p className='subtitle'>Here, you can see the order details</p>
+                        </div>
+                        <hr style={{ marginTop: '-8px' }}></hr>
+                        <p className='titledetail'><b>Orders Detail</b></p>
+                        <div style={{ display: 'flex', justifyContent: "space-between" }}>
+                            <div className='modalisian'>
+                                <p className='subdetail'>Customer Name</p>
+                                <p className='subdetail'>Order Number</p>
+                                <p className='subdetail'>Type</p>
+                                <p className='subdetail'>Table Number</p>
+                            </div>
+
+                            <div className='modalrespon'>
+                                <p className='subrespon'><b>Trina</b></p>
+                                <p className='subrespon'><b>67890</b></p>
+                                <p className='subrespon'><b>Dine In</b></p>
+                                <p className='subrespon' ><b>4</b></p>
+                            </div>
+                        </div>
+
+                        <div style={{ display: 'flex', justifyContent: "space-between" }}>
+                            <div className='modalprice'>
+                                <ul>
+                                    <li className='modalpesan'>Soto Ayam x 3</li>
+                                </ul>
+                                <p className='pricee'><b>Total</b></p>
+                                <p className='method' style={{ marginTop: '-0px' }}>Payment method</p>
+                            </div>
+
+                            <div style={{ marginTop: 20 }}>
+                                <p className='nomprice'><b>Rp 75.000</b></p>
+                                <p className='nomprice' style={{ marginTop: '-15px' }}><b>Rp 75.000</b></p>
+                                <p className='paymentmet' style={{ marginTop: 0, textAlign: 'end' }} ><b>Cash</b></p>
+                            </div>
+                        </div>
+                        <hr />
+                        <div style={{ display: 'flex', gap: 10, marginTop: '-15px', alignItems: "center" }}>
+                            <p style={{ marginTop: 0 }}><b>Update Payments Status</b></p>
+                            <div >
+                                <Form
+                                    name='form'
+                                    form={form}
+                                    onFinish={onAdd}
+                                    onFinishFailed={onFinishFailed}
+                                    layout='horizontal'
+                                    fields={[
+                                        {
+                                            name: ['paymentStatus'],
+                                            value: rowData?.paymentStatusStatus,
+                                        },
+                                    ]}>
+                                    <Form.Item
+                                        name='orderStatus'
+                                    ><Select
+
+                                            onChange={handleChange}
+                                            placeholder={<Badge status="default" text='Not yet paid' />}
+                                            style={{
+                                                width: 230,
+                                                marginTop: 20,
+                                                alignItems: 'center'
+                                            }}
+                                            options={[
+                                                {
+                                                    value: 'Not yet paid',
+                                                    label: <Badge status="default" text='New yet paid' />
+                                                },
+                                                {
+                                                    value: 'Already paid',
+                                                    label: <Badge status="processing" text='Already paid' />
+                                                }
+                                            ]}
+                                        /></Form.Item>
+                                    <Button type="primary" style={{ float: 'right', marginRight: -80, marginTop: -56 }} htmlType='submit' onClick={successPayment}>
+                                        Submit
+                                    </Button>
+                                </Form>
+                            </div>
+                        </div>
+                    </Modal>
                 </Space >
 
         },
@@ -230,6 +335,7 @@ const OrderPage = () => {
         console.log('params', filters, sorter);
     };
 
+    const [currentPage, setCurrentPage] = useState(1);
 
     return (
         <div>
@@ -267,6 +373,7 @@ const OrderPage = () => {
                 columns={TABLE_COLUMNS}
                 onChange={onChange}
                 dataSource={data}
+                pagination={{ total: data, showTotal: (total, range) => `${range[0]}-${range[1]} of ${total}items`, defaultPageSize: 10, defaultCurrent: 1, current: currentPage, onChange: (page) => setCurrentPage(page) }}
             />
         </div>
     );
