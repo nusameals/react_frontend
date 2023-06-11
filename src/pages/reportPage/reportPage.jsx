@@ -12,7 +12,6 @@ import axios from "axios";
 
 export const ReportPage = () => {
   const [dataSource, setDataSource] = useState([]);
-  const [visible, setVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const paginationConfig = {
     total: dataSource,
@@ -39,6 +38,8 @@ export const ReportPage = () => {
       console.log(error);
     }
   };
+
+  
   const columns = [
     {
       title: "ID",
@@ -58,11 +59,15 @@ export const ReportPage = () => {
         title: "Years",
         dataIndex: "years",
         key: "years",
+        sorter: (a, b) => a.years - b.years,
+        sortDirections: ["ascend", "descend"],  
       },
     {
       title: "Month",
       dataIndex: "month",
       key: "month",
+      sorter: (a, b) => a.month.localeCompare(b.month),
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Cash",
