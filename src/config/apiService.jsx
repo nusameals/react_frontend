@@ -1,5 +1,6 @@
 import axios from "axios";
+import { BASE_URL } from "../utils";
 
 export const baseAPI = axios.create({
-  baseURL: "http://testing.hopto.org",
+  baseURL: BASE_URL.API,
 });
