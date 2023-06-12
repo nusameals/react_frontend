@@ -44,7 +44,7 @@ export const ReportPage = () => {
       //       onFilter: (value, record)  => {
       // return record.name. includes (value);
       //       },
-
+      width: 90,
       render: (_, record) => (
         <div
           style={{
@@ -59,6 +59,8 @@ export const ReportPage = () => {
       title: "Years",
       dataIndex: "years",
       key: "years",
+      width: 90,
+
       sorter: (a, b) => a.years - b.years,
       sortDirections: ["ascend", "descend"],
     },
@@ -66,6 +68,7 @@ export const ReportPage = () => {
       title: "Month",
       dataIndex: "month",
       key: "month",
+      width: 100,
       sorter: (a, b) => a.month.localeCompare(b.month),
       sortDirections: ["ascend", "descend"],
       filteredValue: [searchedText],
@@ -127,6 +130,8 @@ export const ReportPage = () => {
         bordered={false}
         style={{
           margin: "2% 2%",
+          width:"70%"
+
         }}
       >
         <div
@@ -163,10 +168,13 @@ export const ReportPage = () => {
           }}
         />
         </div> */}
-        <Divider></Divider>
+        <Divider          style={{
+            margin: "1.5% -2%",
+
+          }}></Divider>
         <Table
           style={{
-            margin: "2% 0%",
+            margin: "1% 0%",
           }}
           dataSource={dataSource}
           columns={columns}
