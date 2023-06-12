@@ -1,16 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Breadcrumb, Row, Table, Space, Modal, Badge, Select, Button, Form, Input, Spin, Pagination } from "antd";
 import './orderPage.css'
 import { CloseSquareFilled, LoadingOutlined } from '@ant-design/icons';
+import { useGetOrders, useUpdateOrders } from './hook/useOrder';
+import { useParams } from 'react-router-dom';
 
 const OrderPage = () => {
+
+    // data order
+    const [isLoadingOrders, orders, getOrders] = useGetOrders();
+    const [rowData, setRowData] = useState(orders);
+
+    // call hook
+    useEffect(() => {
+        getOrders()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     // search
     const [searchedText, setSearchedText] = useState("")
 
+    const { id } = useParams();
+
     // modal order
     const [isModalOrder, setIsModalOrder] = useState(false);
-    const showModal = () => {
+    const showModal = (row_data) => {
+        setRowData(row_data)
         setIsModalOrder(true);
     };
     const handleOk = () => {
@@ -43,7 +58,6 @@ const OrderPage = () => {
             content: <p>Update orders status success! <br />Click done to continue</p>,
             okText: 'Done',
             style: { marginTop: 135 },
-
         })
 
     }
@@ -59,25 +73,16 @@ const OrderPage = () => {
     // form
     const [form] = Form.useForm();
 
-    const data = [];
-    for (let i = 0; i < 100; i++) {
-        data.push({
-            key: i,
-            orderId: `12345${i}`,
-            dateOrder: '2021-02-05 08:28:36',
-            customerName: `Kim Taehyung ${i}`,
-            type: 'dine in',
-        });
-    }
-
-    const [rowData, setRowData] = useState(data);
-
-    const onAdd = (values) => {
-
-        form.resetFields();
-
-        console.log({ values })
-    };
+    // const data = [];
+    // for (let i = 0; i < 100; i++) {
+    //     data.push({
+    //         key: i,
+    //         orderId: `12345${i}`,
+    //         dateOrder: '2021-02-05 08:28:36',
+    //         customerUsername: `Kim Taehyung ${i}`,
+    //         type: 'dine in',
+    //     });
+    // }
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
@@ -106,15 +111,15 @@ const OrderPage = () => {
             sorter: (a, b) => a.dateOrder - b.dateOrder
         },
         {
-            title: 'Customer Name',
-            dataIndex: 'customerName',
-            key: 'customerName',
+            title: 'Customer Userame',
+            dataIndex: 'customerUsername',
+            key: 'customerUsername',
             filteredValue: [searchedText],
             onFilter: (value, record) => {
                 return (
                     String(record.orderId).toLowerCase().includes(value.toLowerCase()) ||
                     String(record.dateOrder).toLowerCase().includes(value.toLowerCase()) ||
-                    String(record.customerName).toLowerCase().includes(value.toLowerCase()) ||
+                    String(record.customerUsername).toLowerCase().includes(value.toLowerCase()) ||
                     String(record.type).toLowerCase().includes(value.toLowerCase())
                 )
             }
@@ -130,14 +135,14 @@ const OrderPage = () => {
             dataIndex: 'orderStatus',
             key: 'orderStatus',
             sorter: (a, b) => a.orderStatus - b.orderStatus,
-            render: () => <Badge status="processing" text='Processing' />
+            render: (_, record) => <Badge status="processing" text={record.orderStatus} />
         },
         {
             title: 'Payment Status',
             dataIndex: 'paymentStatus',
             key: 'paymentStatus',
             sorter: (a, b) => a.paymentStatus - b.paymentStatus,
-            render: () => <Badge status="success" text='Already payment' />
+            render: (_, record) => <Badge status="success" text={record.paymentStatus} />
         },
         {
             title: 'Action',
@@ -149,184 +154,12 @@ const OrderPage = () => {
                         style={{
                             color: ' #0669BD'
                         }} onClick={showModal}>Update orders</a>
-                    <Modal
-                        open={isModalOrder} footer={null} onOk={handleOk} onCancel={handleCancel} closeIcon={<CloseSquareFilled style={{ color: 'red', fontSize: 20 }} />}>
-                        <div className='modalheader'>
-                            <p className='titlemodal'><b>Orders Status</b></p>
-                            <p className='subtitle'>Here, you can see the order details</p>
-                        </div>
-                        <hr style={{ marginTop: '-8px' }}></hr>
-                        <p className='titledetail'><b>Orders Detail</b></p>
-                        <div style={{ display: 'flex', justifyContent: "space-between" }}>
-                            <div className='modalisian'>
-                                <p className='subdetail'>Customer Name</p>
-                                <p className='subdetail'>Order Number</p>
-                                <p className='subdetail'>Type</p>
-                                <p className='subdetail'>Table Number</p>
-                            </div>
-
-                            <div className='modalrespon'>
-                                <p className='subrespon'><b>Trina</b></p>
-                                <p className='subrespon'><b>67890</b></p>
-                                <p className='subrespon'><b>Dine In</b></p>
-                                <p className='subrespon' ><b>4</b></p>
-                            </div>
-                        </div>
-
-                        <div style={{ display: 'flex', justifyContent: "space-between" }}>
-                            <div className='modalprice'>
-                                <ul>
-                                    <li className='modalpesan'>Soto Ayam x 3</li>
-                                </ul>
-                                <p className='pricee'><b>Total</b></p>
-                                <p className='method' style={{ marginTop: '-0px' }}>Payment method</p>
-                            </div>
-
-                            <div style={{ marginTop: 20 }}>
-                                <p className='nomprice'><b>Rp 75.000</b></p>
-                                <p className='nomprice' style={{ marginTop: '-15px' }}><b>Rp 75.000</b></p>
-                                <p className='paymentmet' style={{ marginTop: 0, textAlign: 'end' }} ><b>Cash</b></p>
-                            </div>
-                        </div>
-                        <hr />
-                        <div style={{ display: 'flex', gap: 10, marginTop: '-15px', alignItems: "center" }}>
-                            <p style={{ marginTop: 0 }}><b>Update Orders Status</b></p>
-                            <div >
-                                <Form
-                                    name='form'
-                                    form={form}
-                                    onFinish={onAdd}
-                                    onFinishFailed={onFinishFailed}
-                                    layout='horizontal'
-                                    fields={[
-                                        {
-                                            name: ['orderStatus'],
-                                            value: rowData?.orderStatus,
-                                        },
-                                    ]}>
-                                    <Form.Item
-                                        name='orderStatus'
-                                    ><Select
-
-                                            onChange={handleChange}
-                                            placeholder={<Badge status="default" text='New Order' />}
-                                            style={{
-                                                width: 230,
-                                                marginTop: 20,
-                                                alignItems: 'center'
-                                            }}
-                                            options={[
-                                                {
-                                                    value: 'New Order',
-                                                    label: <Badge status="default" text='New Order' />
-                                                },
-                                                {
-                                                    value: 'Processing',
-                                                    label: <Badge status="processing" text='Processing' />
-                                                },
-                                                {
-                                                    value: 'Finished',
-                                                    label: <Badge status="success" text='Finished' />
-                                                },
-                                            ]}
-                                        /></Form.Item>
-                                    <Button type="primary" style={{ float: 'right', marginRight: -80, marginTop: -56 }} htmlType='submit' onClick={success}>
-                                        Submit
-                                    </Button>
-                                </Form>
-                            </div>
-                        </div>
-                    </Modal>
                     <a
                         style={{
                             color: ' #0669BD'
                         }}
                         onClick={showModalpayment}
                     >Update Payments</a>
-                    <Modal
-                        open={isModalPayment} footer={null} onOk={handleOkPayment} onCancel={handleCancelPayment} closeIcon={<CloseSquareFilled style={{ color: 'red', fontSize: 20 }} />}>
-                        <div className='modalheader'>
-                            <p className='titlemodal'><b>Payment Status</b></p>
-                            <p className='subtitle'>Here, you can see the order details</p>
-                        </div>
-                        <hr style={{ marginTop: '-8px' }}></hr>
-                        <p className='titledetail'><b>Orders Detail</b></p>
-                        <div style={{ display: 'flex', justifyContent: "space-between" }}>
-                            <div className='modalisian'>
-                                <p className='subdetail'>Customer Name</p>
-                                <p className='subdetail'>Order Number</p>
-                                <p className='subdetail'>Type</p>
-                                <p className='subdetail'>Table Number</p>
-                            </div>
-
-                            <div className='modalrespon'>
-                                <p className='subrespon'><b>Trina</b></p>
-                                <p className='subrespon'><b>67890</b></p>
-                                <p className='subrespon'><b>Dine In</b></p>
-                                <p className='subrespon' ><b>4</b></p>
-                            </div>
-                        </div>
-
-                        <div style={{ display: 'flex', justifyContent: "space-between" }}>
-                            <div className='modalprice'>
-                                <ul>
-                                    <li className='modalpesan'>Soto Ayam x 3</li>
-                                </ul>
-                                <p className='pricee'><b>Total</b></p>
-                                <p className='method' style={{ marginTop: '-0px' }}>Payment method</p>
-                            </div>
-
-                            <div style={{ marginTop: 20 }}>
-                                <p className='nomprice'><b>Rp 75.000</b></p>
-                                <p className='nomprice' style={{ marginTop: '-15px' }}><b>Rp 75.000</b></p>
-                                <p className='paymentmet' style={{ marginTop: 0, textAlign: 'end' }} ><b>Cash</b></p>
-                            </div>
-                        </div>
-                        <hr />
-                        <div style={{ display: 'flex', gap: 10, marginTop: '-15px', alignItems: "center" }}>
-                            <p style={{ marginTop: 0 }}><b>Update Payments Status</b></p>
-                            <div >
-                                <Form
-                                    name='form'
-                                    form={form}
-                                    onFinish={onAdd}
-                                    onFinishFailed={onFinishFailed}
-                                    layout='horizontal'
-                                    fields={[
-                                        {
-                                            name: ['paymentStatus'],
-                                            value: rowData?.paymentStatusStatus,
-                                        },
-                                    ]}>
-                                    <Form.Item
-                                        name='orderStatus'
-                                    ><Select
-
-                                            onChange={handleChange}
-                                            placeholder={<Badge status="default" text='Not yet paid' />}
-                                            style={{
-                                                width: 230,
-                                                marginTop: 20,
-                                                alignItems: 'center'
-                                            }}
-                                            options={[
-                                                {
-                                                    value: 'Not yet paid',
-                                                    label: <Badge status="default" text='New yet paid' />
-                                                },
-                                                {
-                                                    value: 'Already paid',
-                                                    label: <Badge status="processing" text='Already paid' />
-                                                }
-                                            ]}
-                                        /></Form.Item>
-                                    <Button type="primary" style={{ float: 'right', marginRight: -80, marginTop: -56 }} htmlType='submit' onClick={successPayment}>
-                                        Submit
-                                    </Button>
-                                </Form>
-                            </div>
-                        </div>
-                    </Modal>
                 </Space >
 
         },
@@ -356,7 +189,7 @@ const OrderPage = () => {
 
             <div style={{ display: 'flex', gap: 10, alignItems: 'center', margin: '10px 60px', marginBottom: '-20px' }}>
                 <span style={{ fontSize: 14 }}>Search:</span>
-                <Input.Search placeholder='Please enter' style={{
+                <Input placeholder='Please enter' style={{
                     width: 500,
                 }}
                     onSearch={(value) => {
@@ -373,9 +206,197 @@ const OrderPage = () => {
                 rowKey="id"
                 columns={TABLE_COLUMNS}
                 onChange={onChange}
-                dataSource={data}
-                pagination={{ total: data, showTotal: (total, range) => `${range[0]}-${range[1]} of ${total}items`, defaultPageSize: 10, defaultCurrent: 1, current: currentPage, onChange: (page) => setCurrentPage(page) }}
+                dataSource={orders}
+                pagination={{ total: orders, showTotal: (total, range) => `${range[0]}-${range[1]} of ${total}items`, defaultPageSize: 10, defaultCurrent: 1, current: currentPage, onChange: (page) => setCurrentPage(page) }}
+                loading={isLoadingOrders}
             />
+
+            {/* modal order */}
+
+            <Modal
+                open={isModalOrder} footer={null} onOk={handleOk} onCancel={handleCancel} closeIcon={<CloseSquareFilled style={{ color: 'red', fontSize: 20 }} />}>
+                <div className='modalheader'>
+                    <p className='titlemodal'><b>Orders Status</b></p>
+                    <p className='subtitle'>Here, you can see the order details</p>
+                </div>
+                <hr style={{ marginTop: '-8px' }}></hr>
+                <p className='titledetail'><b>Orders Detail</b></p>
+                <div style={{ display: 'flex', justifyContent: "space-between" }}>
+                    <div className='modalisian'>
+                        <p className='subdetail'>Customer Username</p>
+                        <p className='subdetail'>Order Number</p>
+                        <p className='subdetail'>Type</p>
+                        <p className='subdetail'>Table Number</p>
+                    </div>
+
+                    <div className='modalrespon'>
+                        <p className='subrespon'><b>Trina</b></p>
+                        <p className='subrespon'><b></b>67890</p>
+                        <p className='subrespon'><b>Dine In</b></p>
+                        <p className='subrespon' ><b>4</b></p>
+                    </div>
+                    {/*                    
+                    {orders?.map((row_id) => (
+                        <div key={row_id} className='modalrespon'>
+                            <p className='subrespon'><b>{row_id.customerUsername}</b></p>
+                            <p className='subrespon'><b></b></p>
+                            <p className='subrespon'><b>Dine In</b></p>
+                            <p className='subrespon' ><b>4</b></p>
+                        </div>
+                    ))} */}
+
+                </div>
+
+                <div style={{ display: 'flex', justifyContent: "space-between" }}>
+                    <div className='modalprice'>
+                        <ul>
+                            <li className='modalpesan'>Soto Ayam x 3</li>
+                        </ul>
+                        <p className='pricee'><b>Total</b></p>
+                        <p className='method' style={{ marginTop: '-0px' }}>Payment method</p>
+                    </div>
+
+                    <div style={{ marginTop: 20 }}>
+                        <p className='nomprice'><b>Rp 75.000</b></p>
+                        <p className='nomprice' style={{ marginTop: '-15px' }}><b>Rp 75.000</b></p>
+                        <p className='paymentmet' style={{ marginTop: 0, textAlign: 'end' }} ><b>Cash</b></p>
+                    </div>
+                </div>
+                <hr />
+                <div style={{ display: 'flex', gap: 10, marginTop: '-15px', alignItems: "center" }}>
+                    <p style={{ marginTop: 0 }}><b>Update Orders Status</b></p>
+                    <div >
+                        <Form
+                            name='form'
+                            form={form}
+
+                            onFinishFailed={onFinishFailed}
+                            layout='horizontal'
+                            fields={[
+                                {
+                                    name: ['orderStatus'],
+                                    value: rowData?.orderStatus,
+                                },
+                            ]}>
+                            <Form.Item
+                                name='orderStatus'
+                            ><Select
+                                    onChange={handleChange}
+                                    placeholder={<Badge status="default" text='New Order' />}
+                                    style={{
+                                        width: 230,
+                                        marginTop: 20,
+                                        alignItems: 'center'
+                                    }}
+                                    options={[
+                                        {
+                                            value: 'New Order',
+                                            label: <Badge status="default" text='New Order' />
+                                        },
+                                        {
+                                            value: 'Processing',
+                                            label: <Badge status="processing" text='Processing' />
+                                        },
+                                        {
+                                            value: 'Finished',
+                                            label: <Badge status="success" text='Finished' />
+                                        },
+                                    ]}
+                                /></Form.Item>
+                            <Button type="primary" style={{ float: 'right', marginRight: -80, marginTop: -56 }} htmlType='submit' onClick={success}>
+                                Submit
+                            </Button>
+                        </Form>
+                    </div>
+                </div>
+            </Modal>
+
+            {/* modal payment */}
+
+            <Modal
+                open={isModalPayment} footer={null} onOk={handleOkPayment} onCancel={handleCancelPayment} closeIcon={<CloseSquareFilled style={{ color: 'red', fontSize: 20 }} />}>
+                <div className='modalheader'>
+                    <p className='titlemodal'><b>Payment Status</b></p>
+                    <p className='subtitle'>Here, you can see the order details</p>
+                </div>
+                <hr style={{ marginTop: '-8px' }}></hr>
+                <p className='titledetail'><b>Orders Detail</b></p>
+                <div style={{ display: 'flex', justifyContent: "space-between" }}>
+                    <div className='modalisian'>
+                        <p className='subdetail'>Customer Username</p>
+                        <p className='subdetail'>Order Number</p>
+                        <p className='subdetail'>Type</p>
+                        <p className='subdetail'>Table Number</p>
+                    </div>
+
+                    <div className='modalrespon'>
+                        <p className='subrespon'><b>Trina</b></p>
+                        <p className='subrespon'><b>67890</b></p>
+                        <p className='subrespon'><b>Dine In</b></p>
+                        <p className='subrespon' ><b>4</b></p>
+                    </div>
+                </div>
+                <div style={{ display: 'flex', justifyContent: "space-between" }}>
+                    <div className='modalprice'>
+                        <ul>
+                            <li className='modalpesan'>Soto Ayam x 3</li>
+                        </ul>
+                        <p className='pricee'><b>Total</b></p>
+                        <p className='method' style={{ marginTop: '-0px' }}>Payment method</p>
+                    </div>
+
+                    <div style={{ marginTop: 20 }}>
+                        <p className='nomprice'><b>Rp 75.000</b></p>
+                        <p className='nomprice' style={{ marginTop: '-15px' }}><b>Rp 75.000</b></p>
+                        <p className='paymentmet' style={{ marginTop: 0, textAlign: 'end' }} ><b>Cash</b></p>
+                    </div>
+                </div>
+                <hr />
+                <div style={{ display: 'flex', gap: 10, marginTop: '-15px', alignItems: "center" }}>
+                    <p style={{ marginTop: 0 }}><b>Update Payments Status</b></p>
+                    <div >
+                        <Form
+                            name='form'
+                            form={form}
+
+                            onFinishFailed={onFinishFailed}
+                            layout='horizontal'
+                            fields={[
+                                {
+                                    name: ['paymentStatus'],
+                                    value: rowData?.paymentStatusStatus,
+                                },
+                            ]}>
+                            <Form.Item
+                                name='orderStatus'
+                            ><Select
+
+                                    onChange={handleChange}
+                                    placeholder={<Badge status="default" text='Not yet paid' />}
+                                    style={{
+                                        width: 230,
+                                        marginTop: 20,
+                                        alignItems: 'center'
+                                    }}
+                                    options={[
+                                        {
+                                            value: 'Not yet paid',
+                                            label: <Badge status="default" text='New yet paid' />
+                                        },
+                                        {
+                                            value: 'Already paid',
+                                            label: <Badge status="processing" text='Already paid' />
+                                        }
+                                    ]}
+                                /></Form.Item>
+                            <Button type="primary" style={{ float: 'right', marginRight: -80, marginTop: -56 }} htmlType='submit' onClick={successPayment}>
+                                Submit
+                            </Button>
+                        </Form>
+                    </div>
+                </div>
+            </Modal>
+
         </div>
     );
 }
