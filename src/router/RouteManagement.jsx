@@ -10,6 +10,7 @@ import EditProfile from "../pages/profilePage/editProfile/EditProfile";
 import OrderPage from "../pages/orderPage/orderPage";
 import ReservationsPage from "../pages/reservationsPage/reservationsPage";
 import MenuPage from "../pages/menuPage/MenuPage";
+import DetailMenuPage from "../pages/menuPage/crud/DetailMenuPage";
 
 
 const RouteManagement = () => {
@@ -33,6 +34,7 @@ const RouteManagement = () => {
           <Route path="/order-page" element={<OrderPage />} />
           <Route path="/reservations-page" element={<ReservationsPage />} />
           <Route path="/menu-page" element={<MenuPage />} />
+          <Route path="/menu-page/:id" element={<DetailMenuPage />} />
           {/* <Route path="/form" element={<FormComponent />} />
             <Route path="/form-exp" element={<FormComponentExp />} />
             <Route path="/form-crud" element={<FormCRUD />} />

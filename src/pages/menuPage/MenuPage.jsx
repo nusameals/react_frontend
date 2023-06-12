@@ -21,6 +21,7 @@ const MenuPage = () => {
   const [value, setValue] = useState("Food");
   const [isLoadingMenu, menu, getMenu] = useGetMenu();
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchData, setSearchData] = useState(menu);
 
   useEffect(() => {
     getMenu();
@@ -86,6 +87,17 @@ const MenuPage = () => {
     },
   ];
 
+  const handleSearch = (value) => {
+    const filteredData = menu.filter((item) => {
+      const isMatchMenu = value
+        ? item.name.toLowerCase().includes(value.toLowerCase())
+        : true;
+      return isMatchMenu;
+    });
+    setSearchData(filteredData);
+  };
+  
+
   return (
     <>
       <Row className="container-header-menu">
@@ -105,7 +117,7 @@ const MenuPage = () => {
           allowClear
           enterButton="Search"
           size="large"
-          onSearch={onSearch}
+          onSearch={handleSearch}
           className="menu-search-box"
         />
         <Row justify="space-between">
@@ -144,7 +156,7 @@ const MenuPage = () => {
             <Table
               rowKey="id"
               columns={TABLE_COLUMNS}
-              dataSource={menu}
+              dataSource={searchData}
               loading={isLoadingMenu}
               pagination={paginationConfig}
             />

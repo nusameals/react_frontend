@@ -111,3 +111,196 @@
   align-self: stretch;
   flex-grow: 0;
 }
+
+/* Detail menu css */
+
+.container-detail-menu-card {
+  padding-top: 24px;
+  padding-bottom: 405px;
+}
+
+.card-detail-menu {
+  gap: 24px;
+
+  width: 776px;
+  height: 500px;
+
+  /* Dark-Light/Light-1 */
+
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.btn-back-menu {
+  padding: 0px;
+  width: 79px;
+  height: 32px;
+  color: #1890ff;
+}
+
+.row-content-detail-menu {
+  /* Rows */
+  margin-top: 24px;
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 24px;
+
+  width: 726px;
+  height: 337px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.col-text-detail-menu {
+  /* Column */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+
+  width: 450px;
+  height: 256px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.name-detail-menu {
+  display: block;
+  /* Rows */
+
+  box-sizing: border-box;
+  padding: 0px 0px 4px;
+
+  width: 450px;
+  height: auto;
+  padding: 0px 0px 4px;
+
+  /* Dark-Light/Light-5 */
+
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.role-detail-menu {
+  display: flex;
+  /* Rows */
+
+  box-sizing: border-box;
+  padding: 0px 0px 4px;
+
+  width: 450px;
+  height: 52px;
+  padding: 0px 0px 4px;
+
+  /* Dark-Light/Light-5 */
+
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.text-name {
+  display: flex;
+  flex-direction: column;
+  /* Name */
+
+  width: auto;
+  height: 21px;
+
+  /* Body/B-14 */
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  /* identical to box height */
+
+  text-align: left;
+
+  color: #000000;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.text-detail-menu-name {
+  display: flex;
+  flex-direction: column;
+  /* Ahmad */
+
+  width: auto;
+  height: auto;
+
+  /* SubHeading/R-18 */
+
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height */
+
+  text-align: left;
+
+  color: #000000;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.avatar-detail-menu {
+  /* Upload-Picture */
+
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+
+  width: 252px;
+  height: 252px;
+
+  border-radius: 10px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.btn-action-menu {
+  margin-top: auto;
+  margin-bottom: 92px;
+  padding: 4px 15px;
+  gap: 10px;
+
+  width: 118px;
+  height: 40px;
+}
