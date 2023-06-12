@@ -10,7 +10,7 @@ export const ReportPage = () => {
   const paginationConfig = {
     total: dataSource,
     showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
-    defaultPageSize: 20,
+    defaultPageSize: 10,
     defaultCurrent: 1,
     current: currentPage,
     onChange: (page) => setCurrentPage(page),
@@ -41,9 +41,6 @@ export const ReportPage = () => {
       dataIndex: "idReservation",
       key: "idReservation",
 
-      //       onFilter: (value, record)  => {
-      // return record.name. includes (value);
-      //       },
       width: 90,
       render: (_, record) => (
         <div
@@ -92,17 +89,22 @@ export const ReportPage = () => {
       title: "Cash",
       dataIndex: "cash",
       key: "cash",
+            width: 135
     },
 
     {
       title: "Debit Card",
       dataIndex: "debitCard",
       key: "debitCard",
+      width: 135
+
     },
     {
       title: "E-Wallett",
       dataIndex: "ewallet",
       key: "ewallet",
+      width: 135
+
     },
     {
       title: "Total",
@@ -130,7 +132,7 @@ export const ReportPage = () => {
         bordered={false}
         style={{
           margin: "2% 2%",
-          width:"70%"
+          width:"68%"
 
         }}
       >
