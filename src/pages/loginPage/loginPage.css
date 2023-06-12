@@ -78,9 +78,9 @@ body {
 }
 
 .remember-me {
-  padding: 0 33px 0 33px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 140px;
 }
 
 .remember-me a {
