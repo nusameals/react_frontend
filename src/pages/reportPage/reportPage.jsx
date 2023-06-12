@@ -144,12 +144,12 @@ export const ReportPage = () => {
           }}
         >
           <span style={{ fontSize: 14 }}>Search:</span>
-          <Input.Search
+          <Input
             placeholder="Please enter"
             style={{
               width: 500,
             }}
-            onSearch={(value) => {
+            onSearch={(value) => {  
               setSearchedText(value);
             }}
             onChange={(e) => {
