@@ -84,11 +84,11 @@ export const ReservationsPage = () => {
         return (
           <Space size="middle" >
             <a onClick={handleShowModal}>View Details</a>
-            <Modal
+            {/* <Modal
               title="Add Product"
               visible={visible}
 
-              ></Modal>
+              ></Modal> */}
           </Space>
         );
       },
@@ -117,7 +117,11 @@ export const ReservationsPage = () => {
         dataSource={dataSource}
         columns={columns}
       />
+            <Modal
+              title="Add Product"
+              visible={visible}
 
+              ></Modal>
     </div>
   );
 };
