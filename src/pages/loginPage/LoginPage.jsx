@@ -20,10 +20,12 @@ import "./loginPage.css";
 import Gap from "../../components/gap/Gap";
 import { useLogin } from "./hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import useMediaQuery from "../homePage/query";
 
 const LoginPage = () => {
   const [form] = Form.useForm();
   const [forgotForm] = Form.useForm();
+  const isMobile = useMediaQuery("(max-width: 768px)");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
@@ -47,16 +49,24 @@ const LoginPage = () => {
 
   return (
     <div className="login-page">
-      <Card style={{ width: 1040, height: 686 }} className="card-login">
+      <Card
+        style={
+          isMobile
+            ? { width: "600px", height: "1200px" }
+            : { width: "1040px", height: "686px" }
+        }
+        className="card-login"
+      >
         <Row className="row-login">
-          <Col xl={12} sm={24}>
+          <Col md={12} sm={24}>
             <img
+              className="md:w-32"
               src={LoginIcon}
               alt="icon-login"
               style={{ width: 500, height: 500 }}
             />
           </Col>
-          <Col xl={12} sm={24}>
+          <Col md={12} sm={24}>
             <div className="col-right">
               <div className="logo">
                 <Gap height={50} />
@@ -64,7 +74,7 @@ const LoginPage = () => {
                   src={NusaMealsLogin}
                   alt="logo"
                   style={{ width: 251, height: 51 }}
-                  className="logo-login"
+                  className="logo-login md:text-left"
                 />
                 <Gap height={13.5} />
                 <p className="text-login">
@@ -124,14 +134,14 @@ const LoginPage = () => {
         <Modal open={isModalOpen} onCancel={handleCancel} width={864}>
           <div>
             <Row>
-              <Col xl={12} sm={24}>
+              <Col md={12} sm={24}>
                 <img
                   src={ForgetPass}
                   alt="forget-pass"
                   style={{ width: 369, height: 320 }}
                 />
               </Col>
-              <Col xl={12} sm={24}>
+              <Col md={12} sm={24}>
                 <div className="forgot-right">
                   <Gap height={70} />
                   <p className="forgot-pass">Forgot Password</p>
