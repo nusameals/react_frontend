@@ -3,4 +3,7 @@ import { BASE_URL } from "../utils";
 
 export const baseAPI = axios.create({
   baseURL: BASE_URL.API,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
