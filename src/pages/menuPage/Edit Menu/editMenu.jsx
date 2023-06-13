@@ -1,23 +1,17 @@
 import React, { useState } from 'react';
 import { Row, Breadcrumb, Form, Input, Radio, Upload, Modal, Col, Space, Button, Spin } from 'antd';
-import { CheckCircleOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import './createMenu.css';
+import { CheckCircleOutlined } from '@ant-design/icons';
+import './editMenu.css';
+import soto from '../../../assets/images/soto.jpg';
 
-const getBase64 = (file) =>
-    new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result);
-        reader.onerror = (error) => reject(error);
-    });
 
-const CreateMenu = () => {
+const EditMenu = () => {
 
-    // form menu
-    const [formMenu] = Form.useForm();
+    // form edit menu
+    const [formEditMenu] = Form.useForm();
+
     const onAdd = (values) => {
-        formMenu.resetFields();
-        console.log({ values })
+        formEditMenu.resetFields();
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -26,37 +20,7 @@ const CreateMenu = () => {
 
     const { TextArea } = Input;
 
-    // form upload
-    const [previewOpen, setPreviewOpen] = useState(false);
-    const [previewImage, setPreviewImage] = useState("");
-    const [previewTitle, setPreviewTitle] = useState("");
-    const [fileList, setFileList] = useState([]);
-
-    const handleCancel = () => setPreviewOpen(false);
-    const handlePreview = async (file) => {
-        if (!file.url && !file.preview) {
-            file.preview = await getBase64(file.originFileObj);
-        }
-        setPreviewImage(file.url || file.preview);
-        setPreviewOpen(true);
-        setPreviewTitle(file.name || file.url.substring(file.url.lastIndexOf('/') + 1));
-    };
-    const handleChangePreview = ({ fileList: newFileList }) => setFileList(newFileList);
-
-    // upload button
-    const uploadButton = (
-        <div >
-            <PlusOutlined />
-            <div style={{
-                marginTop: 8,
-
-            }}>
-                Upload
-            </div>
-        </div>
-    )
-
-    // modal
+    //  modal
     const [modalOpen, setModalOpen] = useState(false);
     const showModal = () => {
         setModalOpen(true)
@@ -68,15 +32,6 @@ const CreateMenu = () => {
         setModalOpen(false)
     }
 
-    // loading
-    const [loading, setLoading] = useState();
-
-    const onLoading = (
-        <LoadingOutlined
-            style={{ fontSize: 24 }}
-            spin />
-    );
-
     return (
         <div className='body'>
             <Row className="container-header-profile">
@@ -86,18 +41,18 @@ const CreateMenu = () => {
                             title: "Menus",
                         },
                         {
-                            title: "Create Menu",
+                            title: "Edit Menu",
                         },
                     ]}
                 />
-                <span className="textorder">Create Menu</span>
+                <span className="textorder">Edit Menu</span>
             </Row>
 
             <Row justify="center" align="middle" style={{ marginLeft: 200 }}>
                 <Col>
                     <Form
-                        name='formMenu'
-                        form={formMenu}
+                        name='formEditMenu'
+                        form={formEditMenu}
                         onFinish={onAdd}
                         onFinishFailed={onFinishFailed}
 
@@ -116,7 +71,7 @@ const CreateMenu = () => {
                         <div style={{ display: 'flex', gap: 40 }}>
                             <div style={{ width: 500 }} >
                                 <Form.Item label="Name">
-                                    <Input placeholder={'Please enter '} />
+                                    <Input placeholder={'Soto Ayam '} />
                                 </Form.Item>
                                 <Form.Item label="Radio">
                                     <Radio.Group>
@@ -126,39 +81,32 @@ const CreateMenu = () => {
                                     </Radio.Group>
                                 </Form.Item>
                                 <Form.Item label="City">
-                                    <Input placeholder={'Please enter the city of food'} />
+                                    <Input placeholder={'Jakarta'} />
                                 </Form.Item>
                                 <Form.Item label="Total Calories">
-                                    <Input placeholder={'Please enter the calories'} />
+                                    <Input placeholder={'215kkal'} />
                                 </Form.Item>
                                 <Form.Item label="Price"
-                                >
-                                    <Input placeholder={'Please enter the price'} />
+                                    >
+                                    <Input placeholder={'Rp 15.000'} />
                                 </Form.Item>
                                 <Form.Item label="Ingredients">
-                                    <TextArea rows={4} placeholder='Please enter the ingredients' />
+                                    <TextArea rows={4} placeholder='Soto ayam berasa dari daerah DKI Jakarta dan juga merupakan salah satu makanan Nusantara populer' />
                                 </Form.Item>
                                 <Form.Item label="Description">
-                                    <TextArea rows={4} placeholder='Please enter the description of menu' />
+                                    <TextArea rows={4} placeholder='Daging Ayam, Bawang, Bawang Putih, Kemiri, Kunyit, Jahe, dan Minyak Zaitun.' />
                                 </Form.Item>
                             </div>
                             <div style={{ width: 150 }}>
-                                <Form.Item>
-                                    <Upload
-                                        action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
-                                        listType='picture-card'
-                                        fileList={fileList}
-                                        onPreview={handlePreview}
-                                        onChange={handleChangePreview}
-                                    >
-                                        {fileList.length === 1 ? null : uploadButton}
-                                    </Upload>
-                                    <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
+                                <Col className="col-img-profile">
+                                    <Row>
                                         <img
-                                            alt='avatar'
-                                            style={{ width: '100%' }} src={previewImage} />
-                                    </Modal>
-                                </Form.Item>
+                                            src={soto}
+                                            alt="avatar-profile"
+                                            style={{ width: 200, height: 200 }}
+                                        />
+                                    </Row>
+                                </Col>
                             </div>
                         </div>
 
@@ -193,7 +141,7 @@ const CreateMenu = () => {
                         </div>
                     </div>
                     <span>
-                        <Button type="primary" style={{ marginLeft: 400 }} onClick={handleOk} loading={loading}>
+                        <Button type="primary" style={{ marginLeft: 400 }} onClick={handleOk} >
                             Done
                         </Button>
                     </span>
@@ -203,4 +151,4 @@ const CreateMenu = () => {
     );
 }
 
-export default CreateMenu;
+export default EditMenu;

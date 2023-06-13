@@ -5,6 +5,8 @@ import { CloseSquareFilled, LoadingOutlined } from '@ant-design/icons';
 import { useGetOrders, useUpdateOrders } from './hook/useOrder';
 import { useParams } from 'react-router-dom';
 
+const { useForm } = Form;
+
 const OrderPage = () => {
 
     // data order
@@ -69,6 +71,8 @@ const OrderPage = () => {
 
         })
     }
+
+    const { useForm } = Form;
 
     // form
     const [form] = Form.useForm();
