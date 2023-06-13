@@ -18,14 +18,14 @@ export const useLogin = () => {
         localStorage.setItem("username", res.data?.username);
         message.open({
           type: "success",
-          content: "Berasil Login!",
+          content: "Successfully, redirect to system. Please wait...",
         });
         onSuccess && onSuccess();
       }
     } catch (err) {
       message.open({
         type: "error",
-        content: `${err?.message}`,
+        content: "Incorrect username or password, please try again",
       });
     } finally {
       setIsLoading(false);
