@@ -6,10 +6,13 @@ export const useGetMenu = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setdata] = useState();
 
-  const getData = useCallback(async () => {
+  const getData = useCallback(async (onSuccess) => {
     try {
       const res = await api.getMenu();
-      setdata(res.data);
+      if (res) {
+        setdata(res.data);
+        onSuccess && onSuccess(res.data);
+      } 
     } catch (error) {
       message.open({
         type: "error",

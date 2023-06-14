@@ -10,6 +10,7 @@ import {
   Table,
   Popconfirm,
   Space,
+  Tabs,
 } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 import "./menu.css";
@@ -18,13 +19,16 @@ import { useGetMenu } from "./hooks/useMenus";
 
 const MenuPage = () => {
   const { Search } = Input;
-  const [value, setValue] = useState("Food");
   const [isLoadingMenu, menu, getMenu] = useGetMenu();
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchData, setSearchData] = useState(menu);
+  const [searchData, setSearchData] = useState();
+  // const [key, setKey] = useState("Intelligent");
+  const [activeCategory, setActiveCategory] = useState("All");
 
   useEffect(() => {
-    getMenu();
+    getMenu((data) => {
+      setSearchData(data);
+    });
   }, []);
 
   const onSearch = (value) => console.log(value);
@@ -96,7 +100,63 @@ const MenuPage = () => {
     });
     setSearchData(filteredData);
   };
-  
+
+  const items = [
+    {
+      key: "All",
+      label: `All`,
+    },
+    {
+      key: "Intelligent",
+      label: `Food`,
+    },
+    {
+      key: "Drink",
+      label: `Drink`,
+    },
+    {
+      key: "Saving & Package",
+      label: `Saving & Package`,
+    },
+  ];
+
+  // const categoryFilter = (key) => {
+  //   const filteredData = menu.filter((item) => {
+  //     const isMatchMenu = key
+  //       ? item.name.toLowerCase().includes(key.toLowerCase())
+  //       : true;
+  //     return isMatchMenu;
+  //   });
+  //   setSearchData(filteredData);
+  // };
+
+  // if (key === "Intelligent") {
+  //   const filteredCategory = menu.filter((item) => {
+  //     const isMatchMenu = key
+  //       ? item.category.toLowerCase().includes(value.toLowerCase())
+  //       : true;
+  //     return isMatchMenu;
+  //   });
+  //   setSearchData(filteredCategory);
+  // } else if (key === "Drink") {
+  //   searchData?.filter((data) => data.category === "Drink");
+  // } else {
+  //   searchData?.filter((data) => data.category !== "Intelligent" && data.category !== "Drink");
+  // }
+
+
+  const handleTabChange = (key) => {
+    setActiveCategory(key);
+    if (key === "All") {
+      setSearchData(menu);
+    } else {
+      const filteredData = menu.filter((item) => {
+        const isMatchCategory = item.category === key;
+        return isMatchCategory;
+      });
+      setSearchData(filteredData);
+    }
+  };
 
   return (
     <>
@@ -121,24 +181,10 @@ const MenuPage = () => {
           className="menu-search-box"
         />
         <Row justify="space-between">
-          <Segmented
-            style={{ borderRadius: "8px", fontSize: "12px", marginTop: "5px" }}
-            value={value}
-            onChange={setValue}
-            options={[
-              {
-                label: "Food",
-                value: "Food",
-              },
-              {
-                label: "Drink",
-                value: "Drink",
-              },
-              {
-                label: "Saving & Package",
-                value: "Saving & Package",
-              },
-            ]}
+          <Tabs
+            defaultActiveKey="All"
+            onChange={handleTabChange}
+            items={items}
           />
         </Row>
       </Row>
