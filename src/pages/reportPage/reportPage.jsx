@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Breadcrumb, Button, Form, Card, Col, Row, Space } from "antd";
 import { Divider, Input, Table, Modal, Popconfirm, Pagination } from "antd";
+// import { Tooltip, Icon } from 'antd';
+// import { ChartCard, MiniBar } from '@ant-design/Charts';
+// import { Line  } from '@ant-design/charts';
+
+import { TinyColumn } from '@ant-design/plots';
+
 
 import axios from "axios";
 
@@ -34,7 +40,28 @@ export const ReportPage = () => {
   };
 
   const [searchedText, setSearchedText] = useState("");
-
+  // const datapayment = [274, 337, 81, 497, 666, 219, 269];
+  //   const config = {
+  //   height: 64,
+  //   autoFit: false,
+  //   datapayment,
+  //   tooltip: {
+  //     customContent: function (x, datapayment) {
+  //       return `NO.${x}: ${datapayment[0]?.datapayment?.y.toFixed(2)}`;
+  //     },
+  //   },
+  // };
+  const data = [274, 337, 81, 497, 666, 219, 269];
+  const config = {
+    height: 64,
+    autoFit: false,
+    data,
+    tooltip: {
+      customContent: function (x, data) {
+        return `NO.${x}: ${data[0]?.data?.y.toFixed(2)}`;
+      },
+    },
+  };
   const columns = [
     {
       title: "ID",
@@ -128,19 +155,21 @@ export const ReportPage = () => {
         />
         <span className="text-profile">Report Data</span>
       </Row>
+      <div>
+      <Space align="start">
+
       <Card
         bordered={false}
         style={{
-          margin: "2% 2%",
-          width:"68%"
-
+          margin: "2%",
+          width:"850px",
         }}
       >
         <div
           style={{
-            display: "flex",
             gap: 10,
             alignItems: "center",
+            display: 'flex'
             // margin: "10px 60px",
             // marginBottom: "-20px",
           }}
@@ -159,17 +188,7 @@ export const ReportPage = () => {
             }}
           />
         </div>
-        {/* <div style={{ backgroundColor: "blue", 
-      }}>
-        <hr
-          style={{
-            margin: "2% -2%",
-            color: "#fafafa",
-            backgroundColor: "#fafafa", 
 
-          }}
-        />
-        </div> */}
         <Divider          style={{
             margin: "1.5% -2%",
 
@@ -183,23 +202,27 @@ export const ReportPage = () => {
           pagination={paginationConfig}
         />
       </Card>
-      <Space>
         <Card
-          // size="small"
-          // title="Payment"
-          // bordered={false}
-          // extra={<p>ⓘ</p>}
           style={{
             width: 300,
+            margin: "5%",
+            marginLeft: "30px"
           }}
         >
+                      {/* <div style={{ margin: '0px'}}> */}
+
+          <Space style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <p>Payments</p>
-          <p>ⓘ</p>
-          <p>Card content</p>
-          <p>Card content</p>
+          <p  >ⓘ</p>
+          </Space>
+          <p>6560</p>
+          <TinyColumn {...config} />
+          <Divider/>
+          <p>Conversion Rate 60%</p>
         </Card>
-      </Space>{" "}
-    </div>
+      </Space>
+      </div>
+      </div>
   );
 };
 export default ReportPage;
