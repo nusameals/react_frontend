@@ -5,9 +5,9 @@ import { Divider, Input, Table, Modal, Popconfirm, Pagination } from "antd";
 // import { ChartCard, MiniBar } from '@ant-design/Charts';
 // import { Line  } from '@ant-design/charts';
 
-import { TinyColumn } from '@ant-design/plots';
+import { TinyColumn } from "@ant-design/plots";
 
-import"./reportPage.css";
+import "./reportPage.css";
 import axios from "axios";
 
 export const ReportPage = () => {
@@ -41,7 +41,9 @@ export const ReportPage = () => {
 
   const [searchedText, setSearchedText] = useState("");
 
-  const data = [274, 337, 81, 497, 666, 219, 269, 274, 337, 81, 497, 666, 219,274, 337, 81];
+  const data = [
+    274, 337, 81, 497, 666, 219, 269, 274, 337, 81, 497, 666, 219, 274, 337, 81,
+  ];
   const config = {
     height: 64,
     autoFit: false,
@@ -82,8 +84,26 @@ export const ReportPage = () => {
       title: "Month",
       dataIndex: "month",
       key: "month",
-      width: 100,
-      sorter: (a, b) => a.month.localeCompare(b.month),
+      width: 120,
+      // sorter: (a, b) => a.month.localeCompare(b.month),
+      sorter: (a, b) => {
+        const months = [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ];
+        return months.indexOf(a.month) - months.indexOf(b.month);
+      },
+
       sortDirections: ["ascend", "descend"],
       filteredValue: [searchedText],
       onFilter: (value, record) => {
@@ -106,22 +126,20 @@ export const ReportPage = () => {
       title: "Cash",
       dataIndex: "cash",
       key: "cash",
-            width: 135
+      width: 135,
     },
 
     {
       title: "Debit Card",
       dataIndex: "debitCard",
       key: "debitCard",
-      width: 135
-
+      width: 135,
     },
     {
       title: "E-Wallett",
       dataIndex: "ewallet",
       key: "ewallet",
-      width: 135
-
+      width: 135,
     },
     {
       title: "Total",
@@ -146,80 +164,91 @@ export const ReportPage = () => {
         <span className="text-profile">Report Data</span>
       </Row>
       <div>
-      <Space align="start">
-
-      <Card
-        bordered={false}
-        style={{
-          margin: "2%",
-          width:"900px",
-        }}
-      >
-        <div
-          style={{
-            gap: 10,
-            alignItems: "center",
-            display: 'flex'
-            // margin: "10px 60px",
-            // marginBottom: "-20px",
-          }}
-        >
-          <span style={{ fontSize: 14 }}>Search:</span>
-          <Input
-            placeholder="Please enter"
+        <Space align="start">
+          <Card
+            bordered={false}
             style={{
-              width: 500,
+              margin: "2%",
+              width: "900px",
             }}
-            onSearch={(value) => {  
-              setSearchedText(value);
+          >
+            <div
+              style={{
+                gap: 10,
+                alignItems: "center",
+                display: "flex",
+                // margin: "10px 60px",
+                // marginBottom: "-20px",
+              }}
+            >
+              <span style={{ fontSize: 14 }}>Search:</span>
+              <Input
+                placeholder="Please enter"
+                style={{
+                  width: 500,
+                }}
+                onSearch={(value) => {
+                  setSearchedText(value);
+                }}
+                onChange={(e) => {
+                  setSearchedText(e.target.value);
+                }}
+              />
+            </div>
+
+            <Divider
+              style={{
+                margin: "1.5% -2%",
+              }}
+            ></Divider>
+            <Table
+              style={{
+                margin: "1% 0%",
+              }}
+              dataSource={dataSource}
+              columns={columns.map((column) => ({
+                ...column,
+                title: (
+                  <span style={{ fontWeight: "normal" }}>{column.title}</span>
+                ),
+              }))}
+              pagination={paginationConfig}
+            />
+          </Card>
+          <Card
+            style={{
+              width: 350,
+              margin: "5%",
+              marginLeft: "30px",
             }}
-            onChange={(e) => {
-              setSearchedText(e.target.value);
-            }}
-          />
-        </div>
-
-        <Divider          style={{
-            margin: "1.5% -2%",
-
-          }}></Divider>
-        <Table
-          style={{
-            margin: "1% 0%",
-          }}
-          dataSource={dataSource}
-          columns={columns}
-          pagination={paginationConfig}
-          components={{
-            header: {
-              cell: (props) => (
-                <th style={{ fontWeight: "normal" }}>{props.children}</th>
-              ),
-            },
-          }}
-        />
-      </Card>
-        <Card
-          style={{
-            width: 350,
-            margin: "5%",
-            marginLeft: "30px"
-          }}
-        >
-                      {/* <div style={{ margin: '0px'}}> */}
-
-          <Space style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <p>Payments</p>
-          <p  >ⓘ</p>
-          </Space>
-          <p>6560</p>
-          <TinyColumn {...config} />
-          <Divider/>
-          <p>Conversion Rate 60%</p>
-        </Card>
-      </Space>
+          >
+            <div              style={{
+lineHeight: 0
+, 
+              }}>
+            <Space
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
+              <p style={{ color: "#00000073" }}>Payments</p>
+              <p style={{ fontSize: 16, fontWeight: 'bold' }}>
+                ⓘ
+              </p>
+            </Space>
+            <p className="paymentnumber">6,560</p>
+            <TinyColumn {...config} />
+            <Divider               style={{
+margin:"10px 0px"
+              }} />
+            <p>Conversion Rate 60%</p>
+            </div>
+          </Card>
+        </Space>
       </div>
-      </div>
+    </div>
   );
 };
 export default ReportPage;
