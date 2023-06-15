@@ -6,7 +6,7 @@ const AdminPage = () => {
   return (
     <div>
       <h1>ADMIN PAGE</h1>
-      <Link to="/">
+      <Link to="/" reloadDocument>
         <Button
           type="primary"
           onClick={() => {

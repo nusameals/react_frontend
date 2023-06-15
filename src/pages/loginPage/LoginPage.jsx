@@ -17,7 +17,7 @@ import {
 import { ForgetPass, LoginIcon, NewPass, NusaMealsLogin } from "../../assets";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import "./loginPage.css";
-import Gap from"../../components/gap/gap";
+import Gap from "../../components/gap/gap";
 // import Gap from "../../components/gap/Gap";
 import { useLogin } from "./hooks/useAuth";
 import { useNavigate } from "react-router-dom";
@@ -44,6 +44,7 @@ const LoginPage = () => {
     login(values, () => {
       setTimeout(() => {
         navigate("/dashboard");
+        window.location.reload();
       }, 3000);
     });
   };
