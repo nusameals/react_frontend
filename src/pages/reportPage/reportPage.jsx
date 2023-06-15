@@ -169,7 +169,7 @@ export const ReportPage = () => {
             bordered={false}
             style={{
               margin: "2%",
-              width: "900px",
+              width: "100%",
             }}
           >
             <div
@@ -177,8 +177,6 @@ export const ReportPage = () => {
                 gap: 10,
                 alignItems: "center",
                 display: "flex",
-                // margin: "10px 60px",
-                // marginBottom: "-20px",
               }}
             >
               <span style={{ fontSize: 14 }}>Search:</span>
@@ -222,28 +220,29 @@ export const ReportPage = () => {
               marginLeft: "30px",
             }}
           >
-            <div              style={{
-lineHeight: 0
-, 
-              }}>
-            <Space
+            <div
               style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
+                lineHeight: 0,
               }}
             >
-              <p style={{ color: "#00000073" }}>Payments</p>
-              <p style={{ fontSize: 16, fontWeight: 'bold' }}>
-                ⓘ
-              </p>
-            </Space>
-            <p className="paymentnumber">6,560</p>
-            <TinyColumn {...config} />
-            <Divider               style={{
-margin:"10px 0px"
-              }} />
-            <p>Conversion Rate 60%</p>
+              <Space
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <p style={{ color: "#00000073" }}>Payments</p>
+                <p style={{ fontSize: 16, fontWeight: "bold" }}>ⓘ</p>
+              </Space>
+              <p className="paymentnumber">6,560</p>
+              <TinyColumn {...config} />
+              <Divider
+                style={{
+                  margin: "10px 0px",
+                }}
+              />
+              <p>Conversion Rate 60%</p>
             </div>
           </Card>
         </Space>

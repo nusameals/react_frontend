@@ -19,12 +19,22 @@ export const ReservationsPage = () => {
   const [dataSource, setDataSource] = useState([]);
   const [visible, setVisible] = useState(false);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const paginationConfig = {
+    total: dataSource,
+    showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
+    defaultPageSize: 10,
+    defaultCurrent: 1,
+    current: currentPage,
+    onChange: (page) => setCurrentPage(page),
+  };
   useEffect(() => {
     fetchData();
   }, []);
   const handleShowModal = () => {
     setVisible(true);
   };
+  const [searchedText, setSearchedText] = useState("");
 
   const fetchData = async () => {
     try {
@@ -50,7 +60,31 @@ export const ReservationsPage = () => {
           {record.idReservation}
         </div>
       ),
-    },  
+    },
+    {
+      title: "Customer Username",
+      dataIndex: "customerUsername",
+      key: "customerUsername",
+      sortDirections: ["ascend", "descend"],
+      filteredValue: [searchedText],
+      onFilter: (value, record) => {
+        return (
+          String(record.idReservation)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
+          String(record.customerUsername)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
+          String(record.customerName)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
+          String(record.phone).toLowerCase().includes(value.toLowerCase()) ||
+          String(record.date).toLowerCase().includes(value.toLowerCase()) ||
+          String(record.timeIn).toLowerCase().includes(value.toLowerCase()) ||
+          String(record.timeOut).toLowerCase().includes(value.toLowerCase())
+        );
+      },
+    },
     {
       title: "Customer Name",
       dataIndex: "customerName",
@@ -65,24 +99,30 @@ export const ReservationsPage = () => {
       title: "Date",
       dataIndex: "date",
       key: "date",
+      sorter: (a, b) => new Date(a.date) - new Date(b.date),
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Time In",
       dataIndex: "timeIn",
       key: "timeIn",
+      sorter: (a, b) => new Date(a.date) - new Date(b.date),
+      sortDirections: ["ascend", "descend"],
     },
     {
       title: "Time Out",
       dataIndex: "timeOut",
       key: "timeOut",
+      sorter: (a, b) => new Date(a.date) - new Date(b.date),
+      sortDirections: ["ascend", "descend"],
     },
-  
+
     {
       title: "Action",
       key: "action",
       render: (text, record) => {
         return (
-          <Space size="middle" >
+          <Space size="middle">
             <a onClick={handleShowModal}>View Details</a>
             {/* <Modal
               title="Add Product"
@@ -110,18 +150,53 @@ export const ReservationsPage = () => {
         />
         <span className="text-profile">Reservations Data</span>
       </Row>
-      <Table
+      <Card
+        bordered={false}
         style={{
-          margin: "50px 60px",
+          display: "flex",
+          // alignItems: "center",
+          margin: "2%",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "96%",
         }}
-        dataSource={dataSource}
-        columns={columns}
-      />
-            <Modal
-              title="Add Product"
-              visible={visible}
-
-              ></Modal>
+      >
+        <div
+          style={{
+            gap: 10,
+            alignItems: "center",
+            display: "flex",
+          }}
+        >
+          <span style={{ fontSize: 14 }}>Search:</span>
+          <Input
+            placeholder="Please enter"
+            style={{
+              width: 500,
+            }}
+            onSearch={(value) => {
+              setSearchedText(value);
+            }}
+            onChange={(e) => {
+              setSearchedText(e.target.value);
+            }}
+          />
+        </div>
+        <Table
+              style={{
+                margin: "1% 0%",
+              }}
+              dataSource={dataSource}
+              columns={columns.map((column) => ({
+                ...column,
+                title: (
+                  <span style={{ fontWeight: "normal" }}>{column.title}</span>
+                ),
+              }))}
+              pagination={paginationConfig}
+            />
+      </Card>
+      <Modal title="Add Product" visible={visible}></Modal>
     </div>
   );
 };
