@@ -7,7 +7,7 @@ import { Divider, Input, Table, Modal, Popconfirm, Pagination } from "antd";
 
 import { TinyColumn } from '@ant-design/plots';
 
-
+import"./reportPage.css";
 import axios from "axios";
 
 export const ReportPage = () => {
@@ -40,18 +40,8 @@ export const ReportPage = () => {
   };
 
   const [searchedText, setSearchedText] = useState("");
-  // const datapayment = [274, 337, 81, 497, 666, 219, 269];
-  //   const config = {
-  //   height: 64,
-  //   autoFit: false,
-  //   datapayment,
-  //   tooltip: {
-  //     customContent: function (x, datapayment) {
-  //       return `NO.${x}: ${datapayment[0]?.datapayment?.y.toFixed(2)}`;
-  //     },
-  //   },
-  // };
-  const data = [274, 337, 81, 497, 666, 219, 269];
+
+  const data = [274, 337, 81, 497, 666, 219, 269, 274, 337, 81, 497, 666, 219,274, 337, 81];
   const config = {
     height: 64,
     autoFit: false,
@@ -140,7 +130,7 @@ export const ReportPage = () => {
     },
   ];
   return (
-    <div>
+    <div className="reportpage">
       {" "}
       <Row className="container-header-profile">
         <Breadcrumb
@@ -162,7 +152,7 @@ export const ReportPage = () => {
         bordered={false}
         style={{
           margin: "2%",
-          width:"850px",
+          width:"900px",
         }}
       >
         <div
@@ -200,11 +190,18 @@ export const ReportPage = () => {
           dataSource={dataSource}
           columns={columns}
           pagination={paginationConfig}
+          components={{
+            header: {
+              cell: (props) => (
+                <th style={{ fontWeight: "normal" }}>{props.children}</th>
+              ),
+            },
+          }}
         />
       </Card>
         <Card
           style={{
-            width: 300,
+            width: 350,
             margin: "5%",
             marginLeft: "30px"
           }}
