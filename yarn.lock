@@ -82,7 +82,7 @@
   resolved "https://registry.npmjs.org/@ant-design/icons-svg/-/icons-svg-4.2.1.tgz"
   integrity sha512-EB0iwlKDGpG93hW8f85CTJTs4SvMX7tt5ceupvhALp1IF44SeUFOMhKUOYqpsoYWQKAOuTRDMqn75rEaKDp0Xw==
 
-"@ant-design/icons@^5.0.0", "@ant-design/icons@^5.0.1":
+"@ant-design/icons@^4.6.0", "@ant-design/icons@^5.0.0", "@ant-design/icons@^5.0.1":
   version "5.0.1"
   resolved "https://registry.npmjs.org/@ant-design/icons/-/icons-5.0.1.tgz"
   integrity sha512-ZyF4ksXCcdtwA/1PLlnFLcF/q8/MhwxXhKHh4oCHDA4Ip+ZzAHoICtyp4wZWfiCVDP0yuz3HsjyvuldHFb3wjA==
@@ -780,12 +780,12 @@
     react-resize-detector "^7.0.0"
     ua-parser-js "^0.7.20"
 
-"@antv/x6-react-shape@^1.4.5", "@antv/x6-react-shape@^1.5.2":
+"@antv/x6-react-shape@^1.2.5", "@antv/x6-react-shape@^1.4.5", "@antv/x6-react-shape@^1.5.2":
   version "1.6.4"
   resolved "https://registry.npmjs.org/@antv/x6-react-shape/-/x6-react-shape-1.6.4.tgz"
   integrity sha512-xjvEV0FuH/AC+MXfgliEroPzMzdPmx3hqiWbIaXq36BasghXUNutlyCKiDmT6DX0bL1IxJsKJGESV0QQBcMlow==
 
-"@antv/x6@^1.25.0", "@antv/x6@^1.30.1":
+"@antv/x6@^1.25.0", "@antv/x6@^1.30.1", "@antv/x6@^1.x":
   version "1.34.13"
   resolved "https://registry.npmjs.org/@antv/x6/-/x6-1.34.13.tgz"
   integrity sha512-gYFxh9Sd1UXPO0aO9LHclASacT6HKkG7AP9XQqRuuCcJYWQiZVRmTN1mYQf3lTZDdybdI6IisZp6zFoGjmFxig==
@@ -874,7 +874,7 @@
   resolved "https://registry.npmjs.org/@babel/compat-data/-/compat-data-7.21.0.tgz"
   integrity sha512-gMuZsmsgxk/ENC3O/fRw5QY8A9/uxQbbCEypnLIiYYc/qVJtEV7ouxC3EllIIwNzMqAQee5tanFabWsUOutS7g==
 
-"@babel/core@^7.20.12":
+"@babel/core@^7.0.0", "@babel/core@^7.0.0-0", "@babel/core@^7.20.12":
   version "7.21.3"
   resolved "https://registry.npmjs.org/@babel/core/-/core-7.21.3.tgz"
   integrity sha512-qIJONzoa/qiHghnm0l1n4i/6IIziDpzqc36FBs4pzMhDUraHqponwJLiAKm1hGLP3OSB/TVNz6rMwVGpwxxySw==
@@ -1522,7 +1522,7 @@ antd-img-crop@^4.12.2:
     react-easy-crop "^4.7.4"
     tslib "^2.5.0"
 
-antd@^5.3.1:
+antd@^4.6.3, antd@^5.3.1, antd@>=4.0.0, "antd@>=4.4.2 || >=5.0.0-beta.0":
   version "5.3.1"
   resolved "https://registry.npmjs.org/antd/-/antd-5.3.1.tgz"
   integrity sha512-PaGlqMsINgyR5CMeqwnMqupXOKqSY/MdLXgKg4m1Z+3IByIx5XZGg53FNDviE/3jp+ClgFya9eGKQ67i3Q5phQ==
@@ -1643,7 +1643,7 @@ brace-expansion@^1.1.7:
     balanced-match "^1.0.0"
     concat-map "0.0.1"
 
-browserslist@^4.21.3:
+browserslist@^4.21.3, "browserslist@>= 4.21.0":
   version "4.21.5"
   resolved "https://registry.npmjs.org/browserslist/-/browserslist-4.21.5.tgz"
   integrity sha512-tUkiguQGW7S3IhB7N+c2MV/HZPSCPAAiYBZXLsBhFB/PCy6ZKKsZrmBayHV9fdGV/ARIfJ14NkxKzRDjvp7L6w==
@@ -1976,7 +1976,7 @@ dagre@^0.8.5:
     graphlib "^2.1.8"
     lodash "^4.17.15"
 
-dayjs@^1.11.1, dayjs@^1.11.7:
+dayjs@^1.11.1, dayjs@^1.11.7, "dayjs@>= 1.x":
   version "1.11.7"
   resolved "https://registry.npmjs.org/dayjs/-/dayjs-1.11.7.tgz"
   integrity sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==
@@ -2359,7 +2359,7 @@ graphql-tag@^2.12.6:
   dependencies:
     tslib "^2.1.0"
 
-graphql@^16.6.0:
+"graphql@^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "graphql@^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0", "graphql@^14.0.0 || ^15.0.0 || ^16.0.0", graphql@^16.6.0:
   version "16.6.0"
   resolved "https://registry.npmjs.org/graphql/-/graphql-16.6.0.tgz"
   integrity sha512-KPIBPDlW7NxrbT/eh4qPXz5FiFdL5UbaA0XUNz2Rp3Z3hqBSkbj0GVjwFDztsWVauZUWsbKHgMg++sk8UX0bkw==
@@ -2745,7 +2745,7 @@ lodash.throttle@^4.1.1:
   resolved "https://registry.npmjs.org/lodash.throttle/-/lodash.throttle-4.1.1.tgz"
   integrity sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==
 
-lodash@^4.0.1, lodash@^4.11.1, lodash@^4.17.11, lodash@^4.17.15, lodash@^4.17.21:
+lodash@^4.0.1, lodash@^4.11.1, lodash@^4.17.11, lodash@^4.17.15, lodash@^4.17.20, lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -2788,7 +2788,7 @@ mana-syringe@^0.2.2:
   dependencies:
     inversify "^5.0.1"
 
-mapbox-gl@^1.2.1:
+mapbox-gl@^1.2.1, "mapbox-gl@>=0.32.1 <2.0.0":
   version "1.13.3"
   resolved "https://registry.npmjs.org/mapbox-gl/-/mapbox-gl-1.13.3.tgz"
   integrity sha512-p8lJFEiqmEQlyv+DQxFAOG/XPWN0Wp7j/Psq93Zywz7qt9CcUKFYDBOoOEKzqe6gudHVJY8/Bhqw6VDpX2lSBg==
@@ -2881,7 +2881,7 @@ ml-matrix@^6.5.0:
     is-any-array "^2.0.0"
     ml-array-rescale "^1.3.7"
 
-moment@^2.29.1:
+moment@^2.29.1, "moment@>= 2.x":
   version "2.29.4"
   resolved "https://registry.npmjs.org/moment/-/moment-2.29.4.tgz"
   integrity sha512-5LC9SOxjSc2HF6vO2CyuTDNivEdoz2IvyJJGj6X8DJ0eFyfszE0QiEd+iXmBvUP3WHxSjFH/vIsA0EN00cgr8w==
@@ -3514,7 +3514,7 @@ react-content-loader@^5.0.4:
   resolved "https://registry.npmjs.org/react-content-loader/-/react-content-loader-5.1.4.tgz"
   integrity sha512-hTq7pZi2GKCK6a9d3u6XStozm0QGCEjw8cSqQReiWnh2up6IwCha5R5TF0o6SY5qUDpByloEZEZtnFxpJyENFw==
 
-react-dom@^18.2.0:
+react-dom@*, "react-dom@^15.0.0 || ^16.0.0 || ^17.0.0", "react-dom@^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8.0  || ^17.0.0", "react-dom@^16.8.0 || ^17.0.0 || ^18.0.0", react-dom@^18.2.0, react-dom@>=16.0.0, react-dom@>=16.11.0, react-dom@>=16.4.0, react-dom@>=16.8, react-dom@>=16.8.0, react-dom@>=16.8.4, "react-dom@>=16.8.6 || >=17.0.0", react-dom@>=16.9.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -3605,7 +3605,7 @@ react-use@17.3.1:
     ts-easing "^0.2.0"
     tslib "^2.1.0"
 
-react@^18.2.0:
+react@*, "react@^15.0.0 || ^16.0.0 || ^17.0.0", "react@^15.5.4 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0  || ^17.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^18.2.0, react@>=16.0.0, react@>=16.11.0, react@>=16.4.0, react@>=16.8, react@>=16.8.0, react@>=16.8.4, "react@>=16.8.6 || >=17.0.0", react@>=16.9.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
@@ -4030,6 +4030,11 @@ ts-invariant@^0.10.3:
   dependencies:
     tslib "^2.1.0"
 
+tslib@*, tslib@^2.0.0, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.3.0, tslib@^2.3.1, tslib@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.npmjs.org/tslib/-/tslib-2.5.0.tgz"
+  integrity sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==
+
 tslib@^1.10.0:
   version "1.14.1"
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
@@ -4039,11 +4044,6 @@ tslib@^1.9.0:
   version "1.14.1"
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
-
-tslib@^2.0.0, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.3.0, tslib@^2.3.1, tslib@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.npmjs.org/tslib/-/tslib-2.5.0.tgz"
-  integrity sha512-336iVw3rtn2BUK7ORdIAHTyxHGRIHVReokCR3XjbckJMK7ms8FysBfhLR8IXnAgy7T0PTPNBWKiH514FOW/WSg==
 
 tslib@2.0.1:
   version "2.0.1"
@@ -4063,6 +4063,11 @@ typed-array-length@^1.0.4:
     call-bind "^1.0.2"
     for-each "^0.3.3"
     is-typed-array "^1.1.9"
+
+typescript@>=4.7.0:
+  version "5.1.3"
+  resolved "https://registry.npmjs.org/typescript/-/typescript-5.1.3.tgz"
+  integrity sha512-XH627E9vkeqhlZFQuL+UsyAXEnibT0kWR2FWONlr4sTjvxyJYnyefgrkyECLzM5NenmKzRAy2rR/OlYLA1HkZw==
 
 ua-parser-js@^0.7.20:
   version "0.7.35"
@@ -4122,7 +4127,7 @@ viewport-mercator-project@^6.2.1:
     "@babel/runtime" "^7.0.0"
     gl-matrix "^3.0.0"
 
-vite@^4.1.0:
+vite@^4.1.0, vite@^4.1.0-beta.0:
   version "4.1.4"
   resolved "https://registry.npmjs.org/vite/-/vite-4.1.4.tgz"
   integrity sha512-3knk/HsbSTKEin43zHu7jTwYWv81f8kgAL99G5NWBcA1LKvtvcVAC4JjBH1arBunO9kQka+1oGbrMKOjk4ZrBg==
