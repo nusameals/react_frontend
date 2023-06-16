@@ -169,7 +169,7 @@ export const ReportPage = () => {
             bordered={false}
             style={{
               margin: "2%",
-              width: "100%",
+              width: "910px",
             }}
           >
             <div
