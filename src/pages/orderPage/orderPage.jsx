@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   Breadcrumb,
   Row,
@@ -12,11 +12,11 @@ import {
   Input,
   Spin,
   Pagination,
-} from "antd";
-import "./orderPage.css";
-import { CloseSquareFilled, LoadingOutlined } from "@ant-design/icons";
-import { useGetOrders, useUpdateOrders } from "./hook/useOrder";
-import { useParams } from "react-router-dom";
+} from 'antd';
+import './orderPage.css';
+import { CloseSquareFilled, LoadingOutlined } from '@ant-design/icons';
+import { useGetOrders, useUpdateOrders } from './hook/useOrder';
+import { useParams } from 'react-router-dom';
 
 const { useForm } = Form;
 
@@ -32,14 +32,15 @@ const OrderPage = () => {
   }, []);
 
   // search
-  const [searchedText, setSearchedText] = useState("");
+  const [searchedText, setSearchedText] = useState('');
 
   const { id } = useParams();
 
   // modal order
   const [isModalOrder, setIsModalOrder] = useState(false);
-  const showModal = (row_data) => {
-    setRowData(row_data);
+
+  const showModal = (data) => {
+    setRowData(data);
     setIsModalOrder(true);
   };
   const handleOk = () => {
@@ -73,7 +74,7 @@ const OrderPage = () => {
           Click done to continue
         </p>
       ),
-      okText: "Done",
+      okText: 'Done',
       style: { marginTop: 135 },
     });
   };
@@ -85,7 +86,7 @@ const OrderPage = () => {
           Click done to continue
         </p>
       ),
-      okText: "Done",
+      okText: 'Done',
       style: { marginTop: 135 },
     });
   };
@@ -107,7 +108,7 @@ const OrderPage = () => {
   // }
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+    console.log('Failed:', errorInfo);
   };
 
   // select form
@@ -117,13 +118,13 @@ const OrderPage = () => {
 
   const TABLE_COLUMNS = [
     {
-      title: "Order ID",
-      dataIndex: "orderId",
-      key: "orderId",
+      title: 'Order ID',
+      dataIndex: 'orderId',
+      key: 'orderId',
       render: (_, record) => (
         <div
           style={{
-            color: " #0669BD",
+            color: ' #0669BD',
           }}
         >
           {record.orderId}
@@ -131,15 +132,15 @@ const OrderPage = () => {
       ),
     },
     {
-      title: "Date Order",
-      dataIndex: "dateOrder",
-      key: "dateOrder",
+      title: 'Date Order',
+      dataIndex: 'dateOrder',
+      key: 'dateOrder',
       sorter: (a, b) => a.dateOrder - b.dateOrder,
     },
     {
-      title: "Customer Userame",
-      dataIndex: "customerUsername",
-      key: "customerUsername",
+      title: 'Customer Userame',
+      dataIndex: 'customerUsername',
+      key: 'customerUsername',
       filteredValue: [searchedText],
       onFilter: (value, record) => {
         return (
@@ -155,45 +156,45 @@ const OrderPage = () => {
       },
     },
     {
-      title: "Type",
-      dataIndex: "type",
-      key: "type",
+      title: 'Type',
+      dataIndex: 'type',
+      key: 'type',
       sorter: (a, b) => a.type - b.type,
     },
     {
-      title: "Order Status",
-      dataIndex: "orderStatus",
-      key: "orderStatus",
+      title: 'Order Status',
+      dataIndex: 'orderStatus',
+      key: 'orderStatus',
       sorter: (a, b) => a.orderStatus - b.orderStatus,
       render: (_, record) => (
         <Badge status="processing" text={record.orderStatus} />
       ),
     },
     {
-      title: "Payment Status",
-      dataIndex: "paymentStatus",
-      key: "paymentStatus",
+      title: 'Payment Status',
+      dataIndex: 'paymentStatus',
+      key: 'paymentStatus',
       sorter: (a, b) => a.paymentStatus - b.paymentStatus,
       render: (_, record) => (
         <Badge status="success" text={record.paymentStatus} />
       ),
     },
     {
-      title: "Action",
-      dataIndex: "action",
+      title: 'Action',
+      dataIndex: 'action',
       render: (_, record) => (
         <Space>
           <a
             style={{
-              color: " #0669BD",
+              color: ' #0669BD',
             }}
-            onClick={showModal}
+            onClick={() => showModal(record)}
           >
             Update orders
           </a>
           <a
             style={{
-              color: " #0669BD",
+              color: ' #0669BD',
             }}
             onClick={showModalpayment}
           >
@@ -205,7 +206,7 @@ const OrderPage = () => {
   ];
 
   const onChange = (filters, sorter) => {
-    console.log("params", filters, sorter);
+    console.log('params', filters, sorter);
   };
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -216,10 +217,10 @@ const OrderPage = () => {
         <Breadcrumb
           items={[
             {
-              title: "Orders",
+              title: 'Orders',
             },
             {
-              title: "Orders Data",
+              title: 'Orders Data',
             },
           ]}
         />
@@ -228,11 +229,11 @@ const OrderPage = () => {
 
       <div
         style={{
-          display: "flex",
+          display: 'flex',
           gap: 10,
-          alignItems: "center",
-          margin: "10px 60px",
-          marginBottom: "-20px",
+          alignItems: 'center',
+          margin: '10px 60px',
+          marginBottom: '-20px',
         }}
       >
         <span style={{ fontSize: 14 }}>Search:</span>
@@ -251,7 +252,7 @@ const OrderPage = () => {
       </div>
       <Table
         style={{
-          margin: "50px 60px",
+          margin: '50px 60px',
         }}
         rowKey="id"
         columns={TABLE_COLUMNS}
@@ -276,7 +277,7 @@ const OrderPage = () => {
         footer={null}
         onOk={handleOk}
         onCancel={handleCancel}
-        closeIcon={<CloseSquareFilled style={{ color: "red", fontSize: 20 }} />}
+        closeIcon={<CloseSquareFilled style={{ color: 'red', fontSize: 20 }} />}
       >
         <div className="modalheader">
           <p className="titlemodal">
@@ -284,11 +285,11 @@ const OrderPage = () => {
           </p>
           <p className="subtitle">Here, you can see the order details</p>
         </div>
-        <hr style={{ marginTop: "-8px" }}></hr>
+        <hr style={{ marginTop: '-8px' }}></hr>
         <p className="titledetail">
           <b>Orders Detail</b>
         </p>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div className="modalisian">
             <p className="subdetail">Customer Username</p>
             <p className="subdetail">Order Number</p>
@@ -298,10 +299,10 @@ const OrderPage = () => {
 
           <div className="modalrespon">
             <p className="subrespon">
-              <b>Trina</b>
+              <b>{rowData?.customerUsername}</b>
             </p>
             <p className="subrespon">
-              <b></b>67890
+              <b>{rowData?.orderId}</b>
             </p>
             <p className="subrespon">
               <b>Dine In</b>
@@ -321,7 +322,7 @@ const OrderPage = () => {
                     ))} */}
         </div>
 
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div className="modalprice">
             <ul>
               <li className="modalpesan">Soto Ayam x 3</li>
@@ -329,7 +330,7 @@ const OrderPage = () => {
             <p className="pricee">
               <b>Total</b>
             </p>
-            <p className="method" style={{ marginTop: "-0px" }}>
+            <p className="method" style={{ marginTop: '-0px' }}>
               Payment method
             </p>
           </div>
@@ -338,12 +339,12 @@ const OrderPage = () => {
             <p className="nomprice">
               <b>Rp 75.000</b>
             </p>
-            <p className="nomprice" style={{ marginTop: "-15px" }}>
+            <p className="nomprice" style={{ marginTop: '-15px' }}>
               <b>Rp 75.000</b>
             </p>
             <p
               className="paymentmet"
-              style={{ marginTop: 0, textAlign: "end" }}
+              style={{ marginTop: 0, textAlign: 'end' }}
             >
               <b>Cash</b>
             </p>
@@ -352,10 +353,10 @@ const OrderPage = () => {
         <hr />
         <div
           style={{
-            display: "flex",
+            display: 'flex',
             gap: 10,
-            marginTop: "-15px",
-            alignItems: "center",
+            marginTop: '-15px',
+            alignItems: 'center',
           }}
         >
           <p style={{ marginTop: 0 }}>
@@ -369,7 +370,7 @@ const OrderPage = () => {
               layout="horizontal"
               fields={[
                 {
-                  name: ["orderStatus"],
+                  name: ['orderStatus'],
                   value: rowData?.orderStatus,
                 },
               ]}
@@ -381,19 +382,19 @@ const OrderPage = () => {
                   style={{
                     width: 230,
                     marginTop: 20,
-                    alignItems: "center",
+                    alignItems: 'center',
                   }}
                   options={[
                     {
-                      value: "New Order",
+                      value: 'New Order',
                       label: <Badge status="default" text="New Order" />,
                     },
                     {
-                      value: "Processing",
+                      value: 'Processing',
                       label: <Badge status="processing" text="Processing" />,
                     },
                     {
-                      value: "Finished",
+                      value: 'Finished',
                       label: <Badge status="success" text="Finished" />,
                     },
                   ]}
@@ -401,7 +402,7 @@ const OrderPage = () => {
               </Form.Item>
               <Button
                 type="primary"
-                style={{ float: "right", marginRight: -80, marginTop: -56 }}
+                style={{ float: 'right', marginRight: -80, marginTop: -56 }}
                 htmlType="submit"
                 onClick={success}
               >
@@ -419,7 +420,7 @@ const OrderPage = () => {
         footer={null}
         onOk={handleOkPayment}
         onCancel={handleCancelPayment}
-        closeIcon={<CloseSquareFilled style={{ color: "red", fontSize: 20 }} />}
+        closeIcon={<CloseSquareFilled style={{ color: 'red', fontSize: 20 }} />}
       >
         <div className="modalheader">
           <p className="titlemodal">
@@ -427,11 +428,11 @@ const OrderPage = () => {
           </p>
           <p className="subtitle">Here, you can see the order details</p>
         </div>
-        <hr style={{ marginTop: "-8px" }}></hr>
+        <hr style={{ marginTop: '-8px' }}></hr>
         <p className="titledetail">
           <b>Orders Detail</b>
         </p>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div className="modalisian">
             <p className="subdetail">Customer Username</p>
             <p className="subdetail">Order Number</p>
@@ -454,7 +455,7 @@ const OrderPage = () => {
             </p>
           </div>
         </div>
-        <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div className="modalprice">
             <ul>
               <li className="modalpesan">Soto Ayam x 3</li>
@@ -462,7 +463,7 @@ const OrderPage = () => {
             <p className="pricee">
               <b>Total</b>
             </p>
-            <p className="method" style={{ marginTop: "-0px" }}>
+            <p className="method" style={{ marginTop: '-0px' }}>
               Payment method
             </p>
           </div>
@@ -471,12 +472,12 @@ const OrderPage = () => {
             <p className="nomprice">
               <b>Rp 75.000</b>
             </p>
-            <p className="nomprice" style={{ marginTop: "-15px" }}>
+            <p className="nomprice" style={{ marginTop: '-15px' }}>
               <b>Rp 75.000</b>
             </p>
             <p
               className="paymentmet"
-              style={{ marginTop: 0, textAlign: "end" }}
+              style={{ marginTop: 0, textAlign: 'end' }}
             >
               <b>Cash</b>
             </p>
@@ -485,10 +486,10 @@ const OrderPage = () => {
         <hr />
         <div
           style={{
-            display: "flex",
+            display: 'flex',
             gap: 10,
-            marginTop: "-15px",
-            alignItems: "center",
+            marginTop: '-15px',
+            alignItems: 'center',
           }}
         >
           <p style={{ marginTop: 0 }}>
@@ -502,7 +503,7 @@ const OrderPage = () => {
               layout="horizontal"
               fields={[
                 {
-                  name: ["paymentStatus"],
+                  name: ['paymentStatus'],
                   value: rowData?.paymentStatusStatus,
                 },
               ]}
@@ -514,15 +515,15 @@ const OrderPage = () => {
                   style={{
                     width: 230,
                     marginTop: 20,
-                    alignItems: "center",
+                    alignItems: 'center',
                   }}
                   options={[
                     {
-                      value: "Not yet paid",
+                      value: 'Not yet paid',
                       label: <Badge status="default" text="New yet paid" />,
                     },
                     {
-                      value: "Already paid",
+                      value: 'Already paid',
                       label: <Badge status="processing" text="Already paid" />,
                     },
                   ]}
@@ -530,7 +531,7 @@ const OrderPage = () => {
               </Form.Item>
               <Button
                 type="primary"
-                style={{ float: "right", marginRight: -80, marginTop: -56 }}
+                style={{ float: 'right', marginRight: -80, marginTop: -56 }}
                 htmlType="submit"
                 onClick={successPayment}
               >
