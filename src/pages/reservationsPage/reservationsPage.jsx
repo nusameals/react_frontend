@@ -9,17 +9,19 @@ import {
   Table,
   Modal,
   Popconfirm,
-  Upload,
+  Upload, Divider
 } from "antd";
 
 import axios from "axios";
-import "./ReservationsPage.css";
+import "./reservationsPage.css";
 
 export const ReservationsPage = () => {
   const [dataSource, setDataSource] = useState([]);
   const [visible, setVisible] = useState(false);
+  const [selectedId, setSelectedId] = useState(null); 
 
   const [currentPage, setCurrentPage] = useState(1);
+  
   const paginationConfig = {
     total: dataSource,
     showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
@@ -31,7 +33,8 @@ export const ReservationsPage = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  const handleShowModal = () => {
+  const handleShowModal = (id) => { // Modified handleShowModal function
+    // setSelectedId(id);    
     setVisible(true);
   };
   const [searchedText, setSearchedText] = useState("");
@@ -192,12 +195,38 @@ export const ReservationsPage = () => {
                 title: (
                   <span style={{ fontWeight: "normal" }}>{column.title}</span>
                 ),
+                
               }))}
               pagination={paginationConfig}
             />
       </Card>
-      <Modal title="Add Product" visible={visible}></Modal>
+             <Modal
+              visible={visible}
+
+              
+              >
+        <div className="modalheader">
+          <p className="titlemodalreser">
+            <b>Reservations Status</b>
+          </p>
+          <p className="subtitle">Here, you can see the Reservations details</p>
+        </div>   
+        <Divider/>
+        <p>y</p>
+        {dataSource.map((record) => (
+    <div key={record.idReservation}>
+      <p>ID: {record.idReservation}</p>
+      <p>Customer Username: {record.customerUsername}</p>
+      <p>Customer Name: {record.customerName}</p>
+      <p>Phone: {record.phone}</p>
+      <p>Date: {record.date}</p>
+      <p>Time In: {record.timeIn}</p>
+      <p>Time Out: {record.timeOut}</p>
+      <Divider />
     </div>
+  ))}
+                   </Modal>
+               </div>
   );
 };
 export default ReservationsPage;
