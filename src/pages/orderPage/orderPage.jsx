@@ -442,10 +442,10 @@ const OrderPage = () => {
 
           <div className="modalrespon">
             <p className="subrespon">
-              <b>Trina</b>
+              <b>{rowData?.customerUsername}</b>
             </p>
             <p className="subrespon">
-              <b>67890</b>
+              <b>{rowData?.orderId}</b>
             </p>
             <p className="subrespon">
               <b>Dine In</b>
@@ -513,7 +513,7 @@ const OrderPage = () => {
                   onChange={handleChange}
                   placeholder={<Badge status="default" text="Not yet paid" />}
                   style={{
-                    width: 230,
+                    width: 200,
                     marginTop: 20,
                     alignItems: 'center',
                   }}
