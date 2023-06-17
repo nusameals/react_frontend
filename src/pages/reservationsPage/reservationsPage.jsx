@@ -202,8 +202,9 @@ export const ReservationsPage = () => {
         bordered={false}
         style={{
           display: "flex",
-          // alignItems: "center",
-          // margin: "2%",
+          alignItems: "center",
+          margin: "2%",
+
           marginLeft: "auto",
           marginRight: "auto",
           width: "96%",
@@ -313,7 +314,7 @@ export const ReservationsPage = () => {
   return (
     <div>
       {" "}
-      <Row className="container-header-profiler"style={{paddingBottom: '0px'}} >
+      <Row className="container-header-profile" >
         <div className="reserheader">
         <Breadcrumb
           items={[
@@ -327,15 +328,24 @@ export const ReservationsPage = () => {
         />
         <span className="text-profile">Reservations Data</span>
         </div>
-        <Row justify="space-between"style={{paddingBottom: '0px -99px', marginBottom: "-15px"}}>
+
+      </Row>
+      <Row justify="space-between">
           <Tabs
             defaultActiveKey="Data"
             onChange={handleTabChange}
             
             items={items}  
+            tabBarStyle={{
+              background: '#ffffff', 
+              padding: "0% 0%" ,
+              // marginLeft: "14px"
+              paddingLeft: "22px"
+              
+
+            }}
           />
         </Row>
-      </Row>
 
       <Card
         bordered={false}

@@ -13,7 +13,7 @@
         align-items: flex-start;
         padding: 16px 24px;
         gap: 8px;
-        /* background-color: #ffffff; */
+        background-color: #ffffff;
     }
     .white-background {
         background-color: white;
