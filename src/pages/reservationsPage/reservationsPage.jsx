@@ -313,7 +313,7 @@ export const ReservationsPage = () => {
   };
   return (
     <div>
-      {" "}
+      {/* {" "} */}
       <Row className="container-header-profile" >
         <div className="reserheader">
         <Breadcrumb
@@ -330,20 +330,22 @@ export const ReservationsPage = () => {
         </div>
 
       </Row>
-      <Row justify="space-between">
+      <Row justify="space-between" >
           <Tabs
             defaultActiveKey="Data"
             onChange={handleTabChange}
             
             items={items}  
             tabBarStyle={{
-              background: '#ffffff', 
-              padding: "0% 0%" ,
-              // marginLeft: "14px"
-              paddingLeft: "22px"
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              padding: '0px 24px',
+              backgroundColor: '#ffffff',
               
-
+marginBottom:'-0.1%'
             }}
+            style={{ width: '100%' }}
           />
         </Row>
 
