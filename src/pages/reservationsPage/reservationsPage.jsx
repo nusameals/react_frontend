@@ -51,7 +51,7 @@ export const ReservationsPage = () => {
       console.log(error);
     }
   };
-  const columns = [
+  const columnsData = [
     {
       title: "ID",
       dataIndex: "idReservation",
@@ -134,36 +134,187 @@ export const ReservationsPage = () => {
       },
     },
   ];
+  const columnsTable = [
+    {
+      title: "Image",
+      dataIndex: "image",
+      key: "image",
+      render: (_, record, index) => (
+        <img
+          src={record.avatar}
+          alt={`avatar-${index}`}
+          style={{ height: "30px" }}
+        />
+      )
+    },
+    {
+      title: "Number of Tables",
+      dataIndex: "numberofTables",
+      key: "numberofTables",
+      filteredValue: [searchedText],
+      onFilter: (value, record) => {
+        return (
+
+          String(record.numberofTables)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
+          String(record.seats)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
+          String(record.type).toLowerCase().includes(value.toLowerCase())
+        );
+      },
+    },
+    {
+      title: "Seats",
+      dataIndex: "seats",
+      key: "seats",
+    },
+    {
+      title: "Type",
+      dataIndex: "type",
+      key: "type",
+    },
+    {
+      title: "Action",
+      key: "action",
+      render: (text, record) => {
+        return (
+          <Space size="middle">
+            <a onClick={handleShowModal}>View Details</a>
+          </Space>
+        );
+      },
+    },
+  ];
 
   // yg diatas bisa diklik
+  const [activeTab, setActiveTab] = useState("Data");
+
   const items = [
 
     {
       key: "Data",
       label: `Data`,
-      children: `Content of Tab Pane 1`,
+      children:      
+      <div className="childcard" style={{backgroundColor: "#fafafa"}}>
+      <Card
+        bordered={false}
+        style={{
+          display: "flex",
+          // alignItems: "center",
+          // margin: "2%",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "96%",
+          width: "1250px",
+          
 
+        }}
+      >
+        <div
+          style={{
+            gap: 10,
+            alignItems: "center",
+            display: "flex",
+          }}
+        >
+          <span style={{ fontSize: 14 }}>Search:</span>
+          <Input
+            placeholder="Please enter"
+            style={{
+              width: 500,
+            }}
+            onSearch={(value) => {
+              setSearchedText(value);
+            }}
+            onChange={(e) => {
+              setSearchedText(e.target.value);
+            }}
+          />
+        </div>
+        <Table
+          style={{
+            margin: "1% 0%",
+          }}
+          dataSource={dataSource}
+          columns={columnsData.map((column) => ({
+            ...column,
+            title: <span style={{ fontWeight: "normal" }}>{column.title}</span>,
+          }))}
+          pagination={paginationConfig}
+        />
+      </Card>
+      </div>
     },
     {
       key: "Table List",
       label: `Table List`,
-
+      //buat testing aja blom rapi
+      children:       <Card
+      bordered={false}
+      style={{
+        display: "flex",
+        // alignItems: "center",
+        margin: "2%",
+        marginLeft: "auto",
+        marginRight: "auto",
+        width: "96%",
+      }}
+    >
+      <div
+        style={{
+          gap: 10,
+          alignItems: "center",
+          display: "flex",
+        }}
+      >
+        <span style={{ fontSize: 14 }}>Search:</span>
+        <Input
+          placeholder="Please enter"
+          style={{
+            width: 500,
+          }}
+          onSearch={(value) => {
+            setSearchedText(value);
+          }}
+          onChange={(e) => {
+            setSearchedText(e.target.value);
+          }}
+        />
+      </div>
+      <Table
+        style={{
+          margin: "1% 0%",
+        }}
+        dataSource={dataSource}
+        columns={columnsTable.map((column) => ({
+          ...column,
+          title: <span style={{ fontWeight: "normal" }}>{column.title}</span>,
+        }))}
+        pagination={paginationConfig}
+      />
+    </Card>
     },
   ];
-  const [activeCategory, setActiveCategory] = useState("All");
+  // const [activeCategory, setActiveCategory] = useState("All");
 
-  const handleTabChange = (key) => {
+  // const handleTabChange = (key) => {
 
-      const filteredData = menu.filter((item) => {
-        const isMatchCategory = item.category === key;
-        return isMatchCategory;
-      });
+  //     const filteredData = menu.filter((item) => {
+  //       const isMatchCategory = item.category === key;
+  //       return isMatchCategory;
+  //     });
     
+  // };
+  const handleTabChange = (key) => {
+    setActiveTabKey(key);
   };
   return (
     <div>
       {" "}
-      <Row className="container-header-profile"style={{paddingBottom: '0px'}} >
+      <Row className="container-header-profiler"style={{paddingBottom: '0px'}} >
+        <div className="reserheader">
         <Breadcrumb
           items={[
             {
@@ -175,23 +326,17 @@ export const ReservationsPage = () => {
           ]}
         />
         <span className="text-profile">Reservations Data</span>
+        </div>
         <Row justify="space-between"style={{paddingBottom: '0px -99px', marginBottom: "-15px"}}>
           <Tabs
             defaultActiveKey="Data"
             onChange={handleTabChange}
-            items={items}
             
+            items={items}  
           />
         </Row>
       </Row>
-      <Row justify="space-between"style={{backgroundColor: '#ffffff' }}>
-          <Tabs
-            defaultActiveKey="Data"
-            onChange={handleTabChange}
-            items={items}
-            
-          />
-        </Row>
+
       <Card
         bordered={false}
         style={{
@@ -229,7 +374,7 @@ export const ReservationsPage = () => {
             margin: "1% 0%",
           }}
           dataSource={dataSource}
-          columns={columns.map((column) => ({
+          columns={columnsData.map((column) => ({
             ...column,
             title: <span style={{ fontWeight: "normal" }}>{column.title}</span>,
           }))}
