@@ -1,4 +1,5 @@
-import { apiOrder } from '../config/apiService'
+import { apiOrder } from '../config/apiService';
+import { baseAPI } from "../config/apiService";
 
 export const apiOrders = {
     // API orders
@@ -12,3 +13,10 @@ export const apiOrders = {
         return apiOrder.put(`/orders/${id}`, body);
     },
 }
+
+export const api = {
+  login: (body) => {
+    return baseAPI.post("/login", body);
+  },
+};
+
