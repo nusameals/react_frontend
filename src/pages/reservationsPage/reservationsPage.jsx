@@ -56,10 +56,11 @@ export const ReservationsPage = () => {
       title: "ID",
       dataIndex: "idReservation",
       key: "idReservation",
+      width: 88,
       render: (_, record) => (
         <div
           style={{
-            color: " #1890FF",
+            color: "#1890FF",
           }}
         >
           {record.idReservation}
@@ -72,6 +73,7 @@ export const ReservationsPage = () => {
       key: "customerUsername",
       sortDirections: ["ascend", "descend"],
       filteredValue: [searchedText],
+      width: 192.67,
       onFilter: (value, record) => {
         return (
           String(record.idReservation)
@@ -94,16 +96,19 @@ export const ReservationsPage = () => {
       title: "Customer Name",
       dataIndex: "customerName",
       key: "customerName",
+      width: 192.67,
     },
     {
       title: "Phone",
       dataIndex: "phone",
       key: "phone",
+      width: 192.67,
     },
     {
       title: "Date",
       dataIndex: "date",
       key: "date",
+      width: 120,
       sorter: (a, b) => new Date(a.date) - new Date(b.date),
       sortDirections: ["ascend", "descend"],
     },
@@ -111,6 +116,7 @@ export const ReservationsPage = () => {
       title: "Time In",
       dataIndex: "timeIn",
       key: "timeIn",
+      width: 120,
       sorter: (a, b) => new Date(a.date) - new Date(b.date),
       sortDirections: ["ascend", "descend"],
     },
@@ -118,13 +124,14 @@ export const ReservationsPage = () => {
       title: "Time Out",
       dataIndex: "timeOut",
       key: "timeOut",
+      width: 120,
       sorter: (a, b) => new Date(a.date) - new Date(b.date),
       sortDirections: ["ascend", "descend"],
     },
-
     {
       title: "Action",
       key: "action",
+      width: 102,
       render: (text, record) => {
         return (
           <Space size="middle">
@@ -134,11 +141,14 @@ export const ReservationsPage = () => {
       },
     },
   ];
+  
   const columnsTable = [
     {
       title: "Image",
       dataIndex: "image",
       key: "image",
+      width: 170,
+
       render: (_, record, index) => (
         <img
           src={record.avatar}
@@ -151,6 +161,8 @@ export const ReservationsPage = () => {
       title: "Number of Tables",
       dataIndex: "numberofTables",
       key: "numberofTables",
+      width: 250,
+
       filteredValue: [searchedText],
       onFilter: (value, record) => {
         return (
@@ -169,15 +181,21 @@ export const ReservationsPage = () => {
       title: "Seats",
       dataIndex: "seats",
       key: "seats",
+      width: 259.33,
+
     },
     {
       title: "Type",
       dataIndex: "type",
       key: "type",
+      width: 259.33,
+
     },
     {
       title: "Action",
       key: "action",
+      width: 259.33,
+
       render: (text, record) => {
         return (
           <Space size="middle">
@@ -207,7 +225,6 @@ export const ReservationsPage = () => {
 
           marginLeft: "auto",
           marginRight: "auto",
-          width: "96%",
           width: "1250px",
           
 
@@ -237,11 +254,12 @@ export const ReservationsPage = () => {
         <Table
           style={{
             margin: "1% 0%",
+            
           }}
           dataSource={dataSource}
           columns={columnsData.map((column) => ({
             ...column,
-            title: <span style={{ fontWeight: "normal" }}>{column.title}</span>,
+            // title: <span style={{ fontWeight: "normal" }}>{column.title}</span>,
           }))}
           pagination={paginationConfig}
         />
@@ -252,50 +270,57 @@ export const ReservationsPage = () => {
       key: "Table List",
       label: `Table List`,
       //buat testing aja blom rapi
-      children:       <Card
-      bordered={false}
-      style={{
-        display: "flex",
-        // alignItems: "center",
-        margin: "2%",
-        marginLeft: "auto",
-        marginRight: "auto",
-        width: "96%",
-      }}
-    >
-      <div
+      children:       
+      <div className="childcard" style={{backgroundColor: "#fafafa"}}>
+      <Card
+        bordered={false}
         style={{
-          gap: 10,
-          alignItems: "center",
           display: "flex",
+          alignItems: "center",
+          margin: "2%",
+
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "1250px",
+          
+
         }}
       >
-        <span style={{ fontSize: 14 }}>Search:</span>
-        <Input
-          placeholder="Please enter"
+        <div
           style={{
-            width: 500,
+            gap: 10,
+            alignItems: "center",
+            display: "flex",
           }}
-          onSearch={(value) => {
-            setSearchedText(value);
+        >
+          <span style={{ fontSize: 14 }}>Search:</span>
+          <Input
+            placeholder="Please enter"
+            style={{
+              width: 500,
+            }}
+            onSearch={(value) => {
+              setSearchedText(value);
+            }}
+            onChange={(e) => {
+              setSearchedText(e.target.value);
+            }}
+          />
+        </div>
+        <Table
+          style={{
+            margin: "1% 0%",
+            
           }}
-          onChange={(e) => {
-            setSearchedText(e.target.value);
-          }}
+          dataSource={dataSource}
+          columns={columnsTable.map((column) => ({
+            ...column,
+            // title: <span style={{ fontWeight: "normal" }}>{column.title}</span>,
+          }))}
+          pagination={paginationConfig}
         />
+      </Card>
       </div>
-      <Table
-        style={{
-          margin: "1% 0%",
-        }}
-        dataSource={dataSource}
-        columns={columnsTable.map((column) => ({
-          ...column,
-          title: <span style={{ fontWeight: "normal" }}>{column.title}</span>,
-        }))}
-        pagination={paginationConfig}
-      />
-    </Card>
     },
   ];
   // const [activeCategory, setActiveCategory] = useState("All");
@@ -349,7 +374,7 @@ marginBottom:'-0.1%'
           />
         </Row>
 
-      <Card
+      {/* <Card
         bordered={false}
         style={{
           display: "flex",
@@ -357,7 +382,7 @@ marginBottom:'-0.1%'
           margin: "2%",
           marginLeft: "auto",
           marginRight: "auto",
-          width: "96%",
+          width: "96%", 
         }}
       >
         <div
@@ -392,7 +417,7 @@ marginBottom:'-0.1%'
           }))}
           pagination={paginationConfig}
         />
-      </Card>
+      </Card> */}
       <Modal visible={visible}>
         <div className="modalheader">
           <p className="titlemodalreser">
