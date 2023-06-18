@@ -2,10 +2,25 @@ import React from "react";
 import "../menu.css";
 import { Row, Col, Card, Button, Space, Breadcrumb } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { mangga } from "../../../assets";
+import { useGetMenuById } from "../hooks/useMenus";
+import { useEffect } from "react";
 
 const DetailMenuPage = () => {
+
+  const { id } = useParams();
+
+
+  const [isLoadingMenuById, menuById, getMenuById] = useGetMenuById();
+
+  useEffect(() => {
+    getMenuById(id);
+  }, []);
+
+  console.log(menuById)
+
+
   return (
     <>
       <Row className="container-header-menu">
@@ -34,7 +49,7 @@ const DetailMenuPage = () => {
             <Col className="col-text-detail-menu">
               <Row justify="start" className="name-detail-menu">
                 <span className="text-name">Name</span>
-                <span className="text-detail-menu-name">Sate Maranggi & Es Jeruk</span>
+                <span className="text-detail-menu-name">{menuById.name}</span>
               </Row>
               <Row className="role-detail-menu" justify="space-between">
                 <Col>

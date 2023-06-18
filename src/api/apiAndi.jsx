@@ -23,7 +23,10 @@ export const api = {
     // },
 
     getMenu: () => {
-        return baseAPI.get(`/menuProduct`);
+        return baseAPI.get(`/menus`);
+    },
+    getMenuById: (id) => {
+        return baseAPI.get(`/menuProduct/:id`);
     }
 
 }
