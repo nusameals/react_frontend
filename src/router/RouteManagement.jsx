@@ -12,17 +12,13 @@ import EditMenu from '../pages/menuPage/Edit Menu/editMenu';
 import OrderPage from "../pages/orderPage/orderPage";
 import ReservationsPage from "../pages/reservationsPage/reservationsPage";
 import ReportPage from "../pages/reportPage/reportPage";
+import AddTable from "../pages/reservationsPage/crud/Addtable";
 
 
 const RouteManagement = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   if (!token) {
-  //     navigate("/");
-  //   }
-  // }, [token]);
 
   return (
     <Suspense fallback={<LoadingComponent />}>
@@ -37,6 +33,8 @@ const RouteManagement = () => {
           <Route path="/order-page" element={<OrderPage />} />
           <Route path="/reservations-page" element={<ReservationsPage />} />
           <Route path="/report-page" element={<ReportPage />} />
+          <Route path="/add-table" element={<AddTable />} />
+
           {/* <Route path="/form" element={<FormComponent />} />
             <Route path="/form-exp" element={<FormComponentExp />} />
             <Route path="/form-crud" element={<FormCRUD />} />

@@ -306,6 +306,8 @@ export const ReservationsPage = () => {
               setSearchedText(e.target.value);
             }}
           />
+              <Button type="primary" style={{marginLeft: 'auto',backgroundColor: '#1890FF',borderRadius: '2px' }}>Add Table</Button>
+
         </div>
         <Table
           style={{
@@ -426,7 +428,7 @@ marginBottom:'-0.1%'
           <p className="subtitle">Here, you can see the Reservations details</p>
         </div>
         <Divider />
-        <p>y</p>
+        {/* <p>y</p>
         {dataSource.map((record) => (
           <div key={record.idReservation}>
             <p>ID: {record.idReservation}</p>
@@ -438,7 +440,8 @@ marginBottom:'-0.1%'
             <p>Time Out: {record.timeOut}</p>
             <Divider />
           </div>
-        ))}
+        ))} */}
+        
       </Modal>
     </div>
   );

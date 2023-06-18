@@ -1,11 +1,11 @@
 import React from "react";
-import "../menu.css";
+// import "../menu.css";
 import { Row, Col, Card, Button, Space, Breadcrumb } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { mangga } from "../../../assets";
 
-const DetailMenuPage = () => {
+const AddTable = () => {
   return (
     <>
       <Row className="container-header-menu">
@@ -88,4 +88,4 @@ const DetailMenuPage = () => {
   );
 };
 
-export default DetailMenuPage;
+export default AddTable;
