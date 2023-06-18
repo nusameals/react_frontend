@@ -10,8 +10,8 @@ export const useGetMenu = () => {
     try {
       const res = await api.getMenu();
       if (res) {
-        setdata(res.data);
-        onSuccess && onSuccess(res.data);
+        setdata(res.data.data);
+        onSuccess && onSuccess(res.data.data);
       } 
     } catch (error) {
       message.open({

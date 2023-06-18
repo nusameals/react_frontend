@@ -53,18 +53,18 @@ const MenuPage = () => {
   console.log(searchData)
 
   const TABLE_COLUMNS = [
-    // {
-    //   title: "Image",
-    //   dataIndex: "images",
-    //   key: "images",
-    //   render: (_, record, index) => (
-    //     <img
-    //       src={record.images}
-    //       alt={`images-${index}`}
-    //       style={{ height: "30px" }}
-    //     />
-    //   ),
-    // },
+    {
+      title: "Image",
+      dataIndex: "images",
+      key: "images",
+      render: (_, record, index) => (
+        <img
+          src={record.images}
+          alt={`images-${index}`}
+          style={{ height: "30px" }}
+        />
+      ),
+    },
     {
       title: "Name",
       dataIndex: "name",
