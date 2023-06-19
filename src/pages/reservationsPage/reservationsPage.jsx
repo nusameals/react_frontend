@@ -12,6 +12,7 @@ import {
   Upload,
   Divider, Tabs
 } from "antd";
+import { CloseSquareFilled } from '@ant-design/icons';
 
 import axios from "axios";
 import "./reservationsPage.css";
@@ -325,19 +326,31 @@ export const ReservationsPage = () => {
       </div>
     },
   ];
-  // const [activeCategory, setActiveCategory] = useState("All");
+// modal biar bisa keluar sesuai id
 
-  // const handleTabChange = (key) => {
+const [rowData, setRowData] = useState(dataSource);
+const handleClose = () => {
+  // Set the visibility to false to close the modal
+  setVisible(false);
+};
 
-  //     const filteredData = menu.filter((item) => {
-  //       const isMatchCategory = item.category === key;
-  //       return isMatchCategory;
-  //     });
-    
+  // modal order
+  // const [isModalOrder, setIsModalOrder] = useState(false);
+
+  // const showModal = (data) => {
+  //   setRowData(data);
+  //   setIsModalOrder(true);
+  // };
+  // const handleOk = () => {
+  //   setIsModalOrder(false);
+  // };
+  // const handleCancel = () => {
+  //   setIsModalOrder(false);
   // };
   const handleTabChange = (key) => {
     setActiveTabKey(key);
   };
+  
   return (
     <div>
       {/* {" "} */}
@@ -376,58 +389,61 @@ marginBottom:'-0.1%'
           />
         </Row>
 
-      {/* <Card
-        bordered={false}
-        style={{
-          display: "flex",
-          // alignItems: "center",
-          margin: "2%",
-          marginLeft: "auto",
-          marginRight: "auto",
-          width: "96%", 
-        }}
-      >
-        <div
-          style={{
-            gap: 10,
-            alignItems: "center",
-            display: "flex",
-          }}
-        >
-          <span style={{ fontSize: 14 }}>Search:</span>
-          <Input
-            placeholder="Please enter"
-            style={{
-              width: 500,
-            }}
-            onSearch={(value) => {
-              setSearchedText(value);
-            }}
-            onChange={(e) => {
-              setSearchedText(e.target.value);
-            }}
-          />
-        </div>
-        <Table
-          style={{
-            margin: "1% 0%",
-          }}
-          dataSource={dataSource}
-          columns={columnsData.map((column) => ({
-            ...column,
-            title: <span style={{ fontWeight: "normal" }}>{column.title}</span>,
-          }))}
-          pagination={paginationConfig}
-        />
-      </Card> */}
-      <Modal visible={visible}>
+      <Modal visible={visible}
+
+              closeIcon={<CloseSquareFilled style={{ color: 'red', fontSize: 20 }} />}
+              onCancel={handleClose}  
+              footer={[
+                <div style={{ display: 'flex', justifyContent: 'center' }}>
+
+                <Button key="submit" type="primary" onClick={handleClose}
+                style={{ width:"100px",backgroundColor: "#0669BD" }}>
+                  Submit
+                </Button>
+                </div>
+]}        >
         <div className="modalheader">
           <p className="titlemodalreser">
             <b>Reservations Status</b>
           </p>
           <p className="subtitle">Here, you can see the Reservations details</p>
         </div>
-        <Divider />
+        <Divider style={{ marginTop: '-8px' }}/>
+        <p className="titledetail">
+          <b>Reservations Detail</b>
+        </p>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <div className="modalisian">
+            <p className="subdetail">Customer Username</p>
+            <p className="subdetail">Order Number</p>
+            <p className="subdetail">Type</p>
+            <p className="subdetail">Table Number</p>
+          </div>
+
+          <div className="modalrespon">
+            <p className="subrespon">
+              <b>{rowData?.idreservation}</b>
+            </p>
+            <p className="subrespon">
+              {/* <b>{rowData?.orderId}</b> */}
+            </p>
+            <p className="subrespon">
+              <b>Dine In</b>
+            </p>
+            <p className="subrespon">
+              <b>4</b>
+            </p>
+          </div>
+          {/*                    
+                    {orders?.map((row_id) => (
+                        <div key={row_id} className='modalrespon'>
+                            <p className='subrespon'><b>{row_id.customerUsername}</b></p>
+                            <p className='subrespon'><b></b></p>
+                            <p className='subrespon'><b>Dine In</b></p>
+                            <p className='subrespon' ><b>4</b></p>
+                        </div>
+                    ))} */}
+        </div>
         {/* <p>y</p>
         {dataSource.map((record) => (
           <div key={record.idReservation}>
