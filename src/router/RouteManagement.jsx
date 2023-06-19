@@ -34,6 +34,8 @@ const RouteManagement = () => {
           <Route path="/admin" element={<LoginPage />} />
         </Routes>
       ) : (
+        <LayoutComponent>
+
         <Routes>
           <Route path="/dashboard" element={<AdminPage />} />
           <Route path="/profile-setting" element={<ProfilePage />} />
@@ -45,6 +47,8 @@ const RouteManagement = () => {
           <Route path="/report-page" element={<ReportPage />} />
           <Route path="/add-table" element={<AddTable />} />
         </Routes>
+        </LayoutComponent>
+
       )}
     </Suspense>
   );
