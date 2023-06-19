@@ -55,22 +55,27 @@ const HeaderAdmin = () => {
     },
     {
       label: (
-        <Button
-          type="text"
-          style={{ color: "red" }}
-          icon={
-            <ArrowLeftOutlined
-              style={{ borderLeft: "2px solid red", color: "red" }}
-            />
-          }
+        <Link
+          to="/"
+          reloadDocument
           onClick={() => {
             localStorage.removeItem("token");
             localStorage.removeItem("username");
             localStorage.removeItem("id");
           }}
         >
-          Sign Out
-        </Button>
+          <Button
+            type="text"
+            style={{ color: "red" }}
+            icon={
+              <ArrowLeftOutlined
+                style={{ borderLeft: "2px solid red", color: "red" }}
+              />
+            }
+          >
+            Sign Out
+          </Button>
+        </Link>
       ),
       key: "1",
     },

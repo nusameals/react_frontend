@@ -28,7 +28,7 @@ const RouteManagement = () => {
       {!token && pathName === "/" ? (
         <LayoutComponent>
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<HomePage/>} />
           </Routes>
         </LayoutComponent>
       ) : !token && pathName === "/admin" ? (
