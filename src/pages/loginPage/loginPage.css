@@ -1,0 +1,122 @@
+body {
+  font-family: "Poppins";
+  font-style: normal;
+}
+
+@media (max-width: 768px) {
+  .card-login {
+    width: 100%;
+    height: auto;
+  }
+
+  .row-login {
+    flex-direction: column;
+  }
+
+  .col-right {
+    padding: 24px;
+  }
+
+  .logo-login {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+  }
+}
+
+.card-login {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+}
+
+.devider {
+  width: 348px;
+  margin-left: 28px;
+  height: 0.4px;
+  background-color: #f2f0e8;
+}
+
+.row-login {
+  padding-top: 80px;
+}
+
+.text-login {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #969696;
+}
+
+.login-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 80px;
+  gap: 10px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 1;
+}
+
+.input-form {
+  width: 436px;
+  height: 48px;
+}
+
+.remember-me {
+  display: flex;
+  justify-content: center;
+  gap: 140px;
+}
+
+.remember-me a {
+  width: 160px;
+  height: 21px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  color: #0669bd;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.checkbox {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.forgot-right {
+  text-align: center;
+}
+
+.forgot-pass {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 21px;
+  color: #000000;
+}

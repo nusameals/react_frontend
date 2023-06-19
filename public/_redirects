@@ -1,0 +1,2 @@
+/api/*  http://testing.hopto.org/:splat 200
+/*  /index.html 200

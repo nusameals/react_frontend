@@ -1,0 +1,29 @@
+.titlemodalreser{
+        font-size: 20px;
+        width: 90%;
+        height: 30px;
+        font-family: "poppins";
+        text-align: center;
+
+
+}
+.container-header-profiler {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 24px;
+        gap: 8px;
+        background-color: #ffffff;
+    }
+    .white-background {
+        background-color: white;
+      }
+      
+/* .reserheader{
+        background-color: #ffffff;
+
+} */
+/* .childcard{
+        background-color: #fafafa;
+
+} */
