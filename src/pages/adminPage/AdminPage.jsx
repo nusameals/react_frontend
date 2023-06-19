@@ -216,7 +216,7 @@ const AdminPage = () => {
   };
 
   return (
-    <div>
+    <div className="dashboard-admin">
       <Link to="/" reloadDocument>
         <Button
           type="primary"
@@ -230,7 +230,7 @@ const AdminPage = () => {
           Logout
         </Button>
       </Link>
-      <Row justify="space-evenly">
+      <Row justify="center" gutter={16}>
         <Col xl={6} lg={12}>
           <Card style={{ width: "276px", height: "182px" }}>
             <div className="total-sales">
@@ -329,29 +329,31 @@ const AdminPage = () => {
         <div className="card-content">{contentListNoTitle[activeTabKey2]}</div>
       </Card>
 
-      <Row justify="space-evenly" align="middle">
-        <Col xl={12} lg={24}>
-          <Card title="Calendar" style={{ width: "576px", height: "571px" }}>
-            <Calendar cellRender={cellRender} />
-          </Card>
-        </Col>
-        <Col xl={12} lg={24}>
-          <Card
-            title="Status"
-            style={{
-              width: "576px",
-              height: "310px",
-            }}
-            tabList={tabListStatus}
-            activeTabKey={activeTabKeyPayments}
-            onTabChange={onTabPaymentChange}
-          >
-            <div className="card-content">
-              {contentListStatus[activeTabKeyPayments]}
-            </div>
-          </Card>
-        </Col>
-      </Row>
+      <div className="card-calendar-status">
+        <Row gutter={16} align="top">
+          <Col xl={12} lg={24}>
+            <Card title="Calendar" style={{ width: "576px", height: "571px" }}>
+              <Calendar cellRender={cellRender} />
+            </Card>
+          </Col>
+          <Col xl={12} lg={24}>
+            <Card
+              title="Status"
+              style={{
+                width: "576px",
+                height: "310px",
+              }}
+              tabList={tabListStatus}
+              activeTabKey={activeTabKeyPayments}
+              onTabChange={onTabPaymentChange}
+            >
+              <div className="card-content">
+                {contentListStatus[activeTabKeyPayments]}
+              </div>
+            </Card>
+          </Col>
+        </Row>
+      </div>
     </div>
   );
 };

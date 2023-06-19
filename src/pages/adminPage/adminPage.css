@@ -1,3 +1,7 @@
+.dashboard-admin {
+  margin: 0 24px 0 24px;
+}
+
 .total-sales {
   display: flex;
   justify-content: space-between;
@@ -96,5 +100,9 @@
 }
 
 .card-sales-visits {
+  margin-top: 24px;
+}
+
+.card-calendar-status {
   margin-top: 24px;
 }
