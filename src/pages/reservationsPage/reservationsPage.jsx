@@ -142,8 +142,8 @@ export const ReservationsPage = () => {
       width: 120,
       sortDirections: ["ascend", "descend"],
       sorter: (a, b) => {
-        const timeA = dayjs(a.timeIn, "HH:mm");
-        const timeB = dayjs(b.timeIn, "HH:mm");
+        const timeA = dayjs(a.timeOut, "HH:mm");
+        const timeB = dayjs(b.timeOut, "HH:mm");
         return timeA - timeB;
       },
       render: (time) => dayjs(time, "HH:mm").format("HH:mm"),
