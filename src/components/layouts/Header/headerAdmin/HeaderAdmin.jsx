@@ -63,6 +63,11 @@ const HeaderAdmin = () => {
               style={{ borderLeft: "2px solid red", color: "red" }}
             />
           }
+          onClick={() => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("username");
+            localStorage.removeItem("id");
+          }}
         >
           Sign Out
         </Button>

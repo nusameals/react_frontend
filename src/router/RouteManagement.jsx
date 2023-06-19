@@ -6,7 +6,7 @@ import LoadingComponent from "../components/loadingComponent/LoadingComponent";
 import HomePage from "../pages/homePage/HomePage";
 import ProfilePage from "../pages/profilePage/ProfilePage";
 import EditProfile from "../pages/profilePage/editProfile/EditProfile";
-import MenuPage from "../pages/menuPage/Create Menu/createMenu";
+import CreateMenuPage from "../pages/menuPage/Create Menu/createMenu";
 import EditMenu from "../pages/menuPage/Edit Menu/editMenu";
 import OrderPage from "../pages/orderPage/orderPage";
 import ReservationsPage from "../pages/reservationsPage/reservationsPage";
@@ -37,21 +37,20 @@ const RouteManagement = () => {
         </Routes>
       ) : (
         <LayoutComponent>
-
-        <Routes>
-          <Route path="/dashboard" element={<AdminPage />} />
-          <Route path="/profile-setting" element={<ProfilePage />} />
-          <Route path="/edit-profile" element={<EditProfile />} />
-          <Route path="/menu-page" element={<MenuPage />} />
-          <Route path="/menu-page/:id" element={<DetailMenuPage />} />
-          <Route path="/edit-menu" element={<EditMenu />} />
-          <Route path="/order-page" element={<OrderPage />} />
-          <Route path="/reservations-page" element={<ReservationsPage />} />
-          <Route path="/report-page" element={<ReportPage />} />
-          <Route path="/add-table" element={<AddTable />} />
-        </Routes>
+          <Routes>
+            <Route path="/dashboard" element={<AdminPage />} />
+            <Route path="/profile-setting" element={<ProfilePage />} />
+            <Route path="/edit-profile" element={<EditProfile />} />
+            <Route path="/menu-page" element={<MenuPage />} />
+            <Route path="/menu-page-create" element={<CreateMenuPage />} />
+            <Route path="/menu-page/:id" element={<DetailMenuPage />} />
+            <Route path="/edit-menu" element={<EditMenu />} />
+            <Route path="/order-page" element={<OrderPage />} />
+            <Route path="/reservations-page" element={<ReservationsPage />} />
+            <Route path="/report-page" element={<ReportPage />} />
+            <Route path="/add-table" element={<AddTable />} />
+          </Routes>
         </LayoutComponent>
-
       )}
     </Suspense>
   );
