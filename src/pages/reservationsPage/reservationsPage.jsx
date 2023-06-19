@@ -273,56 +273,7 @@ export const ReservationsPage = () => {
       //buat testing aja blom rapi
       children:       
       <div className="childcard" style={{backgroundColor: "#fafafa"}}>
-      <Card
-        bordered={false}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          margin: "2%",
 
-          marginLeft: "auto",
-          marginRight: "auto",
-          width: "1250px",
-          
-
-        }}
-      >
-        <div
-          style={{
-            gap: 10,
-            alignItems: "center",
-            display: "flex",
-          }}
-        >
-          <span style={{ fontSize: 14 }}>Search:</span>
-          <Input
-            placeholder="Please enter"
-            style={{
-              width: 500,
-            }}
-            onSearch={(value) => {
-              setSearchedText(value);
-            }}
-            onChange={(e) => {
-              setSearchedText(e.target.value);
-            }}
-          />
-              <Button type="primary" style={{marginLeft: 'auto',backgroundColor: '#1890FF',borderRadius: '2px' }}>Add Table</Button>
-
-        </div>
-        <Table
-          style={{
-            margin: "1% 0%",
-            
-          }}
-          dataSource={dataSource}
-          columns={columnsTable.map((column) => ({
-            ...column,
-            // title: <span style={{ fontWeight: "normal" }}>{column.title}</span>,
-          }))}
-          pagination={paginationConfig}
-        />
-      </Card>
       </div>
     },
   ];
@@ -334,19 +285,6 @@ const handleClose = () => {
   setVisible(false);
 };
 
-  // modal order
-  // const [isModalOrder, setIsModalOrder] = useState(false);
-
-  // const showModal = (data) => {
-  //   setRowData(data);
-  //   setIsModalOrder(true);
-  // };
-  // const handleOk = () => {
-  //   setIsModalOrder(false);
-  // };
-  // const handleCancel = () => {
-  //   setIsModalOrder(false);
-  // };
   const handleTabChange = (key) => {
     setActiveTabKey(key);
   };
@@ -422,10 +360,9 @@ marginBottom:'-0.1%'
 
           <div className="modalrespon">
             <p className="subrespon">
-              <b>{rowData?.idreservation}</b>
+              <b>{rowData?.idReservation}</b>
             </p>
             <p className="subrespon">
-              {/* <b>{rowData?.orderId}</b> */}
             </p>
             <p className="subrespon">
               <b>Dine In</b>
