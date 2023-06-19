@@ -113,15 +113,15 @@ const MenuPage = () => {
       label: `All`,
     },
     {
-      key: "Intelligent",
+      key: "0",
       label: `Food`,
     },
     {
-      key: "Drink",
+      key: "1",
       label: `Drink`,
     },
     {
-      key: "Saving & Package",
+      key: "3",
       label: `Saving & Package`,
     },
   ];
