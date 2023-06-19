@@ -16,7 +16,7 @@ import {
 import './orderPage.css';
 import { CloseSquareFilled, LoadingOutlined } from '@ant-design/icons';
 import { useGetOrders, useUpdateOrders } from './hook/useOrder';
-import { useParams } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 const { useForm } = Form;
 
@@ -34,8 +34,6 @@ const OrderPage = () => {
   // search
   const [searchedText, setSearchedText] = useState('');
 
-  const { id } = useParams();
-
   // modal order
   const [isModalOrder, setIsModalOrder] = useState(false);
 
@@ -52,7 +50,8 @@ const OrderPage = () => {
 
   // modal payment
   const [isModalPayment, setIsModalPayment] = useState(false);
-  const showModalpayment = () => {
+  const showModalpayment = (data) => {
+    setRowData(data)
     setIsModalPayment(true);
   };
   const handleOkPayment = () => {
@@ -135,7 +134,9 @@ const OrderPage = () => {
       title: 'Date Order',
       dataIndex: 'dateOrder',
       key: 'dateOrder',
-      sorter: (a, b) => a.dateOrder - b.dateOrder,
+      sorter: (a, b) => new Date(a.dateOrder) - new Date(b.dateOrder),
+      sortDirections: ["ascend", "descend"],
+      render: (date) => dayjs(date).format("DD-MM-YYYY"),
     },
     {
       title: 'Customer Userame',
@@ -165,6 +166,7 @@ const OrderPage = () => {
       title: 'Order Status',
       dataIndex: 'orderStatus',
       key: 'orderStatus',
+      sortDirections: ["ascend", "descend"],
       sorter: (a, b) => a.orderStatus - b.orderStatus,
       render: (_, record) => (
         <Badge status="processing" text={record.orderStatus} />
@@ -174,6 +176,7 @@ const OrderPage = () => {
       title: 'Payment Status',
       dataIndex: 'paymentStatus',
       key: 'paymentStatus',
+      sortDirections: ["ascend", "descend"],
       sorter: (a, b) => a.paymentStatus - b.paymentStatus,
       render: (_, record) => (
         <Badge status="success" text={record.paymentStatus} />
@@ -196,7 +199,7 @@ const OrderPage = () => {
             style={{
               color: ' #0669BD',
             }}
-            onClick={showModalpayment}
+            onClick={() => showModalpayment(record)}
           >
             Update Payments
           </a>
@@ -372,6 +375,7 @@ const OrderPage = () => {
                 {
                   name: ['orderStatus'],
                   value: rowData?.orderStatus,
+
                 },
               ]}
             >
@@ -504,11 +508,11 @@ const OrderPage = () => {
               fields={[
                 {
                   name: ['paymentStatus'],
-                  value: rowData?.paymentStatusStatus,
+                  value: rowData?.paymentStatus,
                 },
               ]}
             >
-              <Form.Item name="orderStatus">
+              <Form.Item name="paymentStatus">
                 <Select
                   onChange={handleChange}
                   placeholder={<Badge status="default" text="Not yet paid" />}
