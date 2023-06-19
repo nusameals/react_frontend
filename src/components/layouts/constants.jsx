@@ -59,7 +59,7 @@ export const SIDER_ITEM = [
   {
     key: "1",
     icon: <DashboardOutlined />,
-    label: <Link to="/">Dashboard</Link>,
+    label: <Link to="/dashboard">Dashboard</Link>,
   },
   {
     key: "2",
