@@ -10,6 +10,8 @@ import MenuPage from "../pages/menuPage/Create Menu/createMenu";
 import EditMenu from "../pages/menuPage/Edit Menu/editMenu";
 import OrderPage from "../pages/orderPage/orderPage";
 import ReservationsPage from "../pages/reservationsPage/reservationsPage";
+import MenuPage from "../pages/menuPage/MenuPage";
+import DetailMenuPage from "../pages/menuPage/crud/DetailMenuPage";
 import ReportPage from "../pages/reportPage/reportPage";
 import AddTable from "../pages/reservationsPage/crud/Addtable";
 
@@ -41,6 +43,7 @@ const RouteManagement = () => {
           <Route path="/profile-setting" element={<ProfilePage />} />
           <Route path="/edit-profile" element={<EditProfile />} />
           <Route path="/menu-page" element={<MenuPage />} />
+          <Route path="/menu-page/:id" element={<DetailMenuPage />} />
           <Route path="/edit-menu" element={<EditMenu />} />
           <Route path="/order-page" element={<OrderPage />} />
           <Route path="/reservations-page" element={<ReservationsPage />} />

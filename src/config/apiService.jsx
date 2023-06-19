@@ -11,3 +11,7 @@ export const baseAPI = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+export const baseAPIand = axios.create({
+  baseURL: "http://nusameals.ddns.net/",
+});
