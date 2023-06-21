@@ -50,7 +50,7 @@ const MenuPage = () => {
     onShowSizeChange: { onShowSizeChange },
   };
 
-  console.log(searchData)
+  // console.log(searchData)
 
   const TABLE_COLUMNS = [
     {
@@ -161,12 +161,17 @@ const MenuPage = () => {
           onSearch={handleSearch}
           className="menu-search-box"
         />
-        <Row justify="space-between">
+        <Row justify="space-between" style={{ width: "100%" }}>
           <Tabs
             defaultActiveKey="All"
             onChange={handleTabChange}
             items={items}
           />
+          <Link to="/menu-page-create">
+            <Button className="btn-add-menu" type="primary">
+              Add Menu
+            </Button>
+          </Link>
         </Row>
       </Row>
 
@@ -183,7 +188,7 @@ const MenuPage = () => {
             <Table
               rowKey="ID"
               columns={TABLE_COLUMNS}
-              dataSource={menu}
+              dataSource={searchData}
               loading={isLoadingMenu}
               pagination={paginationConfig}
             />
