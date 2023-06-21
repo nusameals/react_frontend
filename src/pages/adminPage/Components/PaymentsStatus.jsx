@@ -4,16 +4,12 @@ import React from "react";
 const PaymentsStatus = () => {
   const data = [
     {
-      type: "New Orders",
-      value: 28.79,
+      type: "Not yet Paid",
+      value: 40,
     },
     {
-      type: "Processed",
-      value: 21.04,
-    },
-    {
-      type: "Finished",
-      value: 19.73,
+      type: "Already Paid",
+      value: 60,
     },
   ];
 

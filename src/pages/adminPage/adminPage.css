@@ -2,6 +2,10 @@
   margin: 0 24px 0 24px;
 }
 
+.row-card-4 {
+  padding-top: 25px;
+}
+
 .total-sales {
   display: flex;
   justify-content: space-between;
@@ -96,7 +100,7 @@
 }
 
 .card-content {
-  padding: 66px 209px 24px 209px;
+  padding: 0 209px 24px 209px;
 }
 
 .card-sales-visits {
