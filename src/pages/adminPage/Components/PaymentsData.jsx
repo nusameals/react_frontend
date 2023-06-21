@@ -1,4 +1,5 @@
 import { Area, Column } from "@ant-design/plots";
+import "./components.css";
 
 const PaymentsData = () => {
   const data = [
@@ -63,6 +64,7 @@ const PaymentsData = () => {
   };
   return (
     <div>
+      <p className="sales-visit-title">Stores Sales Trend</p>
       <Column {...config} />
     </div>
   );
