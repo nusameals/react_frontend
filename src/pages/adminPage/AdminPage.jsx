@@ -90,9 +90,7 @@ const getListData = (value) => {
 
 const AdminPage = () => {
   const { RangePicker } = DatePicker;
-  const [activeTabKey1, setActiveTabKey1] = useState("Sales");
   const [activeTabKey2, setActiveTabKey2] = useState("Sales");
-  const [activeTabKeyOrder, setActiveTabKeyOrder] = useState("Order");
   const [activeTabKeyPayments, setActiveTabKeyPayments] = useState("Order");
 
   const data = [
@@ -124,22 +122,22 @@ const AdminPage = () => {
   const tabListNoTitle = [
     {
       key: "Sales",
-      label: "Sales",
+      tab: "Sales",
     },
     {
       key: "Visit",
-      label: "Visit",
+      tab: "Visit",
     },
   ];
 
   const tabListStatus = [
     {
       key: "Order",
-      label: "View Orders Detail",
+      tab: "View Orders Detail",
     },
     {
       key: "Payments",
-      label: "View Payments Detail",
+      tab: "View Payments Detail",
     },
   ];
 
@@ -168,16 +166,10 @@ const AdminPage = () => {
     Payments: <PaymentsStatus />,
   };
 
-  const onTab1Change = (key) => {
-    setActiveTabKey1(key);
-  };
   const onTab2Change = (key) => {
     setActiveTabKey2(key);
   };
 
-  const onTabOrderChange = (key) => {
-    setActiveTabKeyOrder(key);
-  };
   const onTabPaymentChange = (key) => {
     setActiveTabKeyPayments(key);
   };
@@ -217,20 +209,7 @@ const AdminPage = () => {
 
   return (
     <div className="dashboard-admin">
-      <Link to="/" reloadDocument>
-        <Button
-          type="primary"
-          onClick={() => {
-            localStorage.removeItem("token");
-            localStorage.removeItem("username");
-            localStorage.removeItem("id");
-          }}
-          danger
-        >
-          Logout
-        </Button>
-      </Link>
-      <Row justify="center" gutter={16}>
+      <Row justify="space-evenly" gutter={16} className="row-card-4">
         <Col xl={6} lg={12}>
           <Card style={{ width: "276px", height: "182px" }}>
             <div className="total-sales">

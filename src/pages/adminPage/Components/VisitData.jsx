@@ -1,5 +1,6 @@
 import { Column } from "@ant-design/plots";
 import React from "react";
+import "./components.css";
 
 const VisitData = () => {
   const data = [
@@ -64,6 +65,7 @@ const VisitData = () => {
   };
   return (
     <div>
+      <p className="sales-visit-title">Stores Visits Trend</p>
       <Column {...config} />
     </div>
   );

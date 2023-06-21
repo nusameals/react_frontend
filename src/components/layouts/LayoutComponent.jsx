@@ -52,7 +52,7 @@ const LayoutComponent = ({ children }) => {
           <SiderComponent />
           <Layout>
             {/* Header */}
-            <HeaderAdmin/>
+            <HeaderAdmin />
 
             {/* Content */}
             <Content
