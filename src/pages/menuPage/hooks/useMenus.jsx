@@ -37,8 +37,16 @@ export const useGetBiodata = () => {
 
   const getData = useCallback(async () => {
     try {
+<<<<<<< Updated upstream
       const res = await api.getBiodata();
       setdata(res.data);
+=======
+      const res = await apiMenu.getMenu(id);
+      if (res) {
+        setdata(res.data);
+        onSuccess && onSuccess(res.data);
+      }
+>>>>>>> Stashed changes
     } catch (error) {
       message.open({
         type: "error",
@@ -56,9 +64,38 @@ export const useGetBiodata = () => {
   return [isLoading, data, getData];
 };
 
+<<<<<<< Updated upstream
 export const useGetMenuById = (id) => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setdata] = useState();
+=======
+// Create Inventaris
+export const usePostMenu = () => {
+  const [isLoading, setIsLoading] = useState(false)
+
+  const createMenu = useCallback(async (body, onSuccess) => {
+    try {
+      setIsLoading(true);
+      await apiMenu.createMenu(body)
+      onSuccess && onSuccess();
+      message.open({
+        type: 'success',
+        content: `success add a new menu`,
+      });
+    } catch (err) {
+      message.open({
+        type: 'error',
+        content: `${err?.message}`,
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  return [isLoading, createMenu]
+}
+
+>>>>>>> Stashed changes
 
   const getData = useCallback(async (onSuccess) => {
     try {
