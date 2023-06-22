@@ -18,9 +18,23 @@ import { CloseSquareFilled } from "@ant-design/icons";
 import axios from "axios";
 import "./reservationsPage.css";
 import dayjs from 'dayjs';
+import { gql, useQuery } from '@apollo/client';
 
-
+const GET_TABLE = gql`
+  query GetTable {
+    table {
+      id
+    detail
+    image
+    numberofTables
+    seats
+    type
+    }
+  }
+`;
 export const ReservationsPage = () => {
+  const { loading, error, data } = useQuery(GET_TABLE);
+
   const [dataSource, setDataSource] = useState([]);
   const [visible, setVisible] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
@@ -54,6 +68,7 @@ export const ReservationsPage = () => {
       console.log(error);
     }
   };
+  
   const columnsData = [
     {
       title: "ID",
@@ -171,13 +186,8 @@ export const ReservationsPage = () => {
       key: "image",
       width: 170,
 
-      render: (_, record, index) => (
-        <img
-          src={record.avatar}
-          alt={`avatar-${index}`}
-          style={{ height: "30px" }}
-        />
-      ),
+      render: (text, record) => <img src={text} alt={record.name} style={{ width: '40px',marginBottom:"-5%", marginTop: "-2%" }} />,
+
     },
     {
       title: "Number of Tables",
@@ -273,7 +283,8 @@ export const ReservationsPage = () => {
               columns={columnsData.map((column) => ({
                 ...column,
                 // title: <span style={{ fontWeight: "normal" }}>{column.title}</span>,
-              }))}
+              })
+              )}
               pagination={paginationConfig}
             />
           </Card>
@@ -283,10 +294,67 @@ export const ReservationsPage = () => {
     {
       key: "Table List",
       label: `Table List`,
-      //buat testing aja blom rapi
       children: (
-        <div className="childcard" style={{ backgroundColor: "#fafafa" }}></div>
-      ),
+        <div className="childcard" style={{backgroundColor: "#fafafa"}}>
+        <Card
+          bordered={false}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            margin: "2%",
+  
+            marginLeft: "auto",
+            marginRight: "auto",
+            width: "1250px",
+  
+  
+          }}
+        >
+          <div
+            style={{
+              gap: 10,
+              alignItems: "center",
+              display: "flex",
+            }}
+          >
+            <span style={{ fontSize: 14 }}>Search:</span>
+            <Input
+              placeholder="Please enter"
+              style={{
+                width: 500,
+              }}
+              onSearch={(value) => {
+                setSearchedText(value);
+              }}
+              onChange={(e) => {
+                setSearchedText(e.target.value);
+              }}
+            />
+                <Button type="primary" style={{marginLeft: 'auto',backgroundColor: '#1890FF',borderRadius: '2px' }}>Add Table</Button>
+  
+          </div>
+          <Table
+  style={{
+    margin: '1% 0%',
+  }}
+  dataSource={loading ? [] : data?.table} // Use the fetched data as the data source
+  columns={columnsTable}
+  pagination={paginationConfig}
+/>
+          <Table
+            style={{
+              margin: "1% 0%",
+  
+            }}
+            dataSource={dataSource}
+            columns={columnsTable.map((column) => ({
+              ...column,
+              // title: <span style={{ fontWeight: "normal" }}>{column.title}</span>,
+            }))}
+            pagination={paginationConfig}
+          />
+        </Card>
+        </div>      ),
     },
   ];
   // modal biar bisa keluar sesuai id
@@ -301,11 +369,20 @@ export const ReservationsPage = () => {
     setActiveTabKey(key);
   };
 
+  const GET_DOGS = gql`
+  query GetDogs {
+    dogs {
+      id
+      breed
+    }
+  }
+`;
   return (
     <div>
       {/* {" "} */}
       <Row className="container-header-profile">
         <div className="reserheader">
+          
           <Breadcrumb
             items={[
               {
