@@ -58,6 +58,29 @@
   overflow-y: scroll;
 }
 
+.btn-add-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 15px;
+  gap: 8px;
+
+  width: 103px;
+  height: 31px;
+
+  /* Primary/6 */
+
+  background: #1890ff;
+  /* Primary/6 */
+
+  border: 1px solid #1890ff;
+  /* drop-shadow/button-primary */
+
+  box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.043);
+  border-radius: 2px;
+}
+
 .container-table-menu {
   /* Table */
 
