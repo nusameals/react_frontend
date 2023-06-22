@@ -32,6 +32,9 @@
 
   color: #000000;
 }
+.text-logo-collapse:hover{
+  cursor: pointer;
+}
 
 .btn-collapse-sider {
   margin-left: 0px;

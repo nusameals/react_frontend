@@ -108,12 +108,16 @@
     text-align: center;
     justify-content: center;
     align-items: center;
+    width: 100%;
 
     font-family: "Poppins";
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 30px;
+  }
+  .ant-collapse-header{
+    width: 100%;
   }
 
   .mobileHidden {

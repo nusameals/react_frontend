@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import { message } from "antd";
+import { Modal, message } from "antd";
 import { apiMenu } from "../../../api";
 import { useParams } from "react-router-dom";
 
@@ -13,7 +13,7 @@ export const useGetMenu = () => {
       if (res) {
         setdata(res.data.data);
         onSuccess && onSuccess(res.data.data);
-      } 
+      }
     } catch (error) {
       message.open({
         type: "error",
@@ -56,7 +56,6 @@ export const useGetBiodata = () => {
   return [isLoading, data, getData];
 };
 
-
 export const useGetMenuById = (id) => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setdata] = useState();
@@ -67,7 +66,7 @@ export const useGetMenuById = (id) => {
       if (res) {
         setdata(res.data.data);
         onSuccess && onSuccess(res.data.data);
-      } 
+      }
     } catch (error) {
       message.open({
         type: "error",
@@ -85,4 +84,26 @@ export const useGetMenuById = (id) => {
   return [isLoading, data, getData];
 };
 
-
+export const useDeleteMenu = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const deleteData = useCallback(async (id, onSuccess) => {
+    try {
+      setIsLoading(true);
+      await apiMenu.deleteMenu(id);
+      onSuccess && onSuccess();
+      Modal.success({
+        type: "success",
+        content: "Berhasil Menghapus Data!",
+        okText: "Done"
+      });
+    } catch (error) {
+      message.open({
+        type: "error",
+        content: `${error?.message}`,
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+  return [isLoading, deleteData];
+};

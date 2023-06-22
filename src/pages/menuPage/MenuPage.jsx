@@ -40,14 +40,13 @@ const MenuPage = () => {
   };
 
   const paginationConfig = {
-    total: menu,
-    showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
-    defaultPageSize: 8,
+    total: searchData,
+    showTotal: (total, range) => 
+    `${range[0]}-${range[1]} of ${total}items`,
+    defaultPageSize: 10,
     defaultCurrent: 1,
     current: currentPage,
     onChange: (page) => setCurrentPage(page),
-    showSizeChanger: true,
-    onShowSizeChange: { onShowSizeChange },
   };
 
   // console.log(searchData)

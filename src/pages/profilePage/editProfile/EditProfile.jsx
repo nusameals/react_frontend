@@ -13,6 +13,7 @@ import {
 } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { mangga } from "../../../assets";
+import { Link } from "react-router-dom";
 
 const EditProfile = () => {
   const layout = {
@@ -44,21 +45,12 @@ const EditProfile = () => {
       </Row>
 
       <Row justify="center" align="middle" className="container-profile-card">
-        <Card className="card-profile">
+        <Card className="card-edit-profile">
           <Row className="row-content-profile" justify="center" align="middle">
             <Col>
               <Form {...layout} className="container-edit-form">
-                <Form.Item label="Name" name="name">
+                <Form.Item label="Username" name="username">
                   <Input style={{ width: "320px" }} />
-                </Form.Item>
-
-                <Form.Item label="Role" name="role">
-                  <Radio.Group>
-                    <Space direction="horizontal">
-                      <Radio value={"Admin"}>Admin</Radio>
-                      <Radio value={"Cashier"}>Cashier</Radio>
-                    </Space>
-                  </Radio.Group>
                 </Form.Item>
 
                 <Form.Item label="Gender" name="gender">
@@ -68,10 +60,6 @@ const EditProfile = () => {
                       <Radio value={"Female"}>Female</Radio>
                     </Space>
                   </Radio.Group>
-                </Form.Item>
-
-                <Form.Item label="Username" name="username">
-                  <Input style={{ width: "320px" }} />
                 </Form.Item>
 
                 <Form.Item
@@ -90,7 +78,9 @@ const EditProfile = () => {
                   <Button type="primary" htmlType="submit">
                     Save
                   </Button>
-                  <Button type="danger">Cancel</Button>
+                  <Link to="/profile-setting">
+                    <Button type="danger">Cancel</Button>
+                  </Link>
                 </Space>
               </Form>
             </Col>

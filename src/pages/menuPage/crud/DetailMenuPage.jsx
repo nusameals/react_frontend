@@ -1,16 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "../menu.css";
-import { Row, Col, Card, Button, Space, Breadcrumb } from "antd";
-import { ArrowLeftOutlined } from "@ant-design/icons";
-import { Link, useParams } from "react-router-dom";
+import { Row, Col, Card, Button, Space, Breadcrumb, Modal } from "antd";
+import {
+  ArrowLeftOutlined,
+  ExclamationCircleOutlined,
+} from "@ant-design/icons";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { mangga } from "../../../assets";
-import { useGetMenuById } from "../hooks/useMenus";
+import { useDeleteMenu, useGetMenuById } from "../hooks/useMenus";
 import { useEffect } from "react";
 
 const DetailMenuPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { confirm } = Modal;
 
   const [isLoadingMenuById, menuById, getMenuById] = useGetMenuById(id);
+  const [isLoadingDeleteMenu, deleteMenu] = useDeleteMenu();
 
   useEffect(() => {
     getMenuById();
@@ -18,6 +24,35 @@ const DetailMenuPage = () => {
 
   console.log({ menuById });
 
+  const onDelete = (id) => {
+    // const newData = data.filter((item) => item.key !== row_key);
+    // setData(newData);
+    isLoadingDeleteMenu;
+    deleteMenu(id);
+    navigate(-1);
+  };
+
+  const showPromiseConfirm = () => {
+    confirm({
+      title: "Are you sure delete these items?",
+      icon: <ExclamationCircleOutlined />,
+      content: "Click yes to continue.",
+      okText: "Yes",
+      cancelText: "No",
+      onOk() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            onDelete(id);
+            resolve();
+          }, 1000);
+        }).catch(() => console.log("Oops errors!"));
+      },
+      onCancel() {},
+      okButtonProps: {
+        danger: "true",
+      },
+    });
+  };
   return (
     <>
       <Row className="container-header-menu">
@@ -38,7 +73,7 @@ const DetailMenuPage = () => {
         align="middle"
         className="container-detail-menu-card"
       >
-        <Card className="card-detail-menu" >
+        <Card className="card-detail-menu">
           <Link to="/menu-page">
             <Button
               type="text"
@@ -106,7 +141,12 @@ const DetailMenuPage = () => {
                       <Button type="primary" className="btn-action-menu">
                         Edit Menu
                       </Button>
-                      <Button type="primary" className="btn-action-menu" danger>
+                      <Button
+                        type="primary"
+                        className="btn-action-menu"
+                        danger
+                        onClick={showPromiseConfirm}
+                      >
                         Delete Menu
                       </Button>
                     </Row>

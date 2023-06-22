@@ -28,4 +28,7 @@ export const apiMenu = {
   getMenuById: (id) => {
     return baseAPIand.get(`/menus/${id}`);
   },
+  deleteMenu: (id) => {
+    return baseAPIand.delete(`/menus/${id}`);
+  },
 };

@@ -33,23 +33,13 @@ const ProfilePage = () => {
           </Button>
           <Row className="row-content-profile">
             <Col className="col-text-profile">
-              <Row justify="start" className="name-profile">
-                <span className="text-name">Name</span>
-                <span className="text-profile-name">Ahmad</span>
-              </Row>
-              <Row className="role-profile">
-                <Col>
-                  <span className="text-name">Role</span>
-                  <span className="text-profile-name">Admin</span>
-                </Col>
-                <Col offset={1}>
-                  <span className="text-name">Gender</span>
-                  <span className="text-profile-name">Male</span>
-                </Col>
-              </Row>
               <Row className="name-profile">
                 <span className="text-name">Username</span>
                 <span className="text-profile-name">Ahmad321</span>
+              </Row>
+              <Row className="name-profile">
+                <span className="text-name">Gender</span>
+                <span className="text-profile-name">Male</span>
               </Row>
               <Row className="name-profile">
                 <span className="text-name">Phone</span>
