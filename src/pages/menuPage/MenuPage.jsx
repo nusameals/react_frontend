@@ -99,7 +99,7 @@ const MenuPage = () => {
   const handleSearch = (value) => {
     const filteredData = menu.filter((item) => {
       const isMatchMenu = value
-        ? item.name.toLowerCase().includes(value.toLowerCase())
+        ? item.category.toLowerCase().includes(value.toLowerCase())
         : true;
       return isMatchMenu;
     });
@@ -112,15 +112,15 @@ const MenuPage = () => {
       label: `All`,
     },
     {
-      key: "0",
+      key: "makanan",
       label: `Food`,
     },
     {
-      key: "1",
+      key: "minuman",
       label: `Drink`,
     },
     {
-      key: "3",
+      key: "saving packages",
       label: `Saving & Package`,
     },
   ];

@@ -9,6 +9,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { mangga } from "../../../assets";
 import { useDeleteMenu, useGetMenuById } from "../hooks/useMenus";
 import { useEffect } from "react";
+import LoadingComponent from '../../../components/loadingComponent/LoadingComponent';
 
 const DetailMenuPage = () => {
   const { id } = useParams();
@@ -83,77 +84,83 @@ const DetailMenuPage = () => {
               Back
             </Button>
           </Link>
-          {menuById && (
-            <Row className="row-content-detail-menu">
-              <Col className="col-text-detail-menu">
-                <Row justify="start" className="name-detail-menu">
-                  <span className="text-name">Name</span>
-                  <span className="text-detail-menu-name">{menuById.name}</span>
-                </Row>
-                <Row className="role-detail-menu" justify="space-between">
-                  <Col>
-                    <span className="text-name">Category</span>
+          {isLoadingMenuById ? (
+            <LoadingComponent />
+          ) : (
+            menuById && (
+              <Row className="row-content-detail-menu">
+                <Col className="col-text-detail-menu">
+                  <Row justify="start" className="name-detail-menu">
+                    <span className="text-name">Name</span>
                     <span className="text-detail-menu-name">
-                      {menuById.category}
+                      {menuById.name}
                     </span>
-                  </Col>
-                  <Col>
-                    <span className="text-name">City</span>
+                  </Row>
+                  <Row className="role-detail-menu" justify="space-between">
+                    <Col>
+                      <span className="text-name">Category</span>
+                      <span className="text-detail-menu-name">
+                        {menuById.category}
+                      </span>
+                    </Col>
+                    <Col>
+                      <span className="text-name">City</span>
+                      <span className="text-detail-menu-name">
+                        {menuById.city}
+                      </span>
+                    </Col>
+                    <Col>
+                      <span className="text-name">Calories</span>
+                      <span className="text-detail-menu-name">
+                        {menuById.calories} kkal
+                      </span>
+                    </Col>
+                  </Row>
+                  <Row className="name-detail-menu">
+                    <span className="text-name">Price</span>
                     <span className="text-detail-menu-name">
-                      {menuById.city}
+                      Rp {menuById.price}
                     </span>
-                  </Col>
-                  <Col>
-                    <span className="text-name">Calories</span>
+                  </Row>
+                  <Row className="name-detail-menu">
+                    <span className="text-name">Description</span>
                     <span className="text-detail-menu-name">
-                      {menuById.calories} kkal
+                      {menuById.description}
                     </span>
-                  </Col>
-                </Row>
-                <Row className="name-detail-menu">
-                  <span className="text-name">Price</span>
-                  <span className="text-detail-menu-name">
-                    Rp {menuById.price}
-                  </span>
-                </Row>
-                <Row className="name-detail-menu">
-                  <span className="text-name">Description</span>
-                  <span className="text-detail-menu-name">
-                    {menuById.description}
-                  </span>
-                </Row>
-                <Row className="name-detail-menu">
-                  <span className="text-name">Ingredients</span>
-                  <span className="text-detail-menu-name">
-                    {menuById.ingredients}
-                  </span>
-                </Row>
-              </Col>
-              <Col className="col-img-detail-menu">
-                <Row>
-                  <Space direction="vertical">
-                    <img
-                      src={menuById.images}
-                      alt="avatar-detail-menu"
-                      className="avatar-detail-menu"
-                    />
-                    <Row justify="space-between" align="middle">
-                      <Button type="primary" className="btn-action-menu">
-                        Edit Menu
-                      </Button>
-                      <Button
-                        type="primary"
-                        className="btn-action-menu"
-                        danger
-                        onClick={showPromiseConfirm}
-                      >
-                        Delete Menu
-                      </Button>
-                    </Row>
-                  </Space>
-                </Row>
-              </Col>
-            </Row>
+                  </Row>
+                  <Row className="name-detail-menu">
+                    <span className="text-name">Ingredients</span>
+                    <span className="text-detail-menu-name">
+                      {menuById.ingredients}
+                    </span>
+                  </Row>
+                </Col>
+                <Col className="col-img-detail-menu">
+                  <Row>
+                    <Space direction="vertical">
+                      <img
+                        src={menuById.images}
+                        alt="avatar-detail-menu"
+                        className="avatar-detail-menu"
+                      />
+                      <Row justify="space-between" align="middle">
+                        <Button type="primary" className="btn-action-menu">
+                          Edit Menu
+                        </Button>
+                        <Button
+                          type="primary"
+                          className="btn-action-menu"
+                          danger
+                          onClick={showPromiseConfirm}
+                        >
+                          Delete Menu
+                        </Button>
+                      </Row>
+                    </Space>
+                  </Row>
+                </Col>
+              </Row>
+            )
           )}
         </Card>
       </Row>
