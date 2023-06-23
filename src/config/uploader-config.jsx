@@ -1,4 +1,4 @@
 export const uploaderConfig = {
-  upload_preset: "dao6t7xtj",
+  upload_preset: "zjmqhqy9",
   api_key: "524691237826577",
 };
