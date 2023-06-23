@@ -96,17 +96,6 @@ const OrderPage = () => {
   // form
   const [form] = Form.useForm();
 
-  // const data = [];
-  // for (let i = 0; i < 100; i++) {
-  //     data.push({
-  //         key: i,
-  //         orderId: `12345${i}`,
-  //         dateOrder: '2021-02-05 08:28:36',
-  //         customerUsername: `Kim Taehyung ${i}`,
-  //         type: 'dine in',
-  //     });
-  // }
-
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
@@ -119,15 +108,15 @@ const OrderPage = () => {
   const TABLE_COLUMNS = [
     {
       title: 'Order ID',
-      dataIndex: 'order_id',
-      key: 'order_id',
+      dataIndex: 'id',
+      key: 'id',
       render: (_, record) => (
         <div
           style={{
             color: ' #0669BD',
           }}
         >
-          {record.order_id}
+          {record.id}
         </div>
       ),
     },
