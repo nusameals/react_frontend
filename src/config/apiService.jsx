@@ -4,7 +4,7 @@ import { BASE_URL, BASE_URL2 } from "../utils";
 const token = localStorage.getItem("token");
 
 export const apiOrder = axios.create({
-  baseURL: BASE_URL2.API,
+  baseURL: BASE_URL.API,
   headers: {
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
@@ -19,7 +19,7 @@ export const baseAPI = axios.create({
 });
 
 export const baseAPIand = axios.create({
-  baseURL: BASE_URL2.API,
+  baseURL: BASE_URL.API,
   headers: {
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
