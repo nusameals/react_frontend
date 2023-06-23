@@ -1,6 +1,6 @@
 import { useCallback } from "react"
 import { useState } from "react"
-import { api } from "../../../api"
+import { apiOrders } from "../../../api"
 import { message } from "antd"
 
 // Get Orders
@@ -10,7 +10,7 @@ export const useGetOrders = () => {
 
     const getData = useCallback(async (onSuccess) => {
         try {
-            const res = await api.getOrders()
+            const res = await apiOrders.getOrders()
             if (res) {
                 setData(res.data);
                 onSuccess && onSuccess(res.data);
@@ -40,7 +40,7 @@ export const useUpdateOrders = () => {
     const updateOrders = useCallback(async (id, body, onSuccess) => {
         try {
             setIsLoading(true);
-            await api.updateOrders(id, body)
+            await apiOrders.updateOrders(id, body)
             onSuccess && onSuccess();
         } catch (err) {
             message.open({
