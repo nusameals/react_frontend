@@ -8,10 +8,13 @@ export const useGetOrders = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [orders, setOrders] = useState()
 
-    const getOrders = useCallback(async () => {
+    const getOrders = useCallback(async (onSuccess) => {
         try {
             const res = await apiOrders.getOrders()
-            setOrders(res?.data)
+            if (res) {
+                setOrders(res.data.data);
+                onSuccess && onSuccess(res.data.data);
+            }
         } catch (err) {
             message.open({
                 type: 'error',
@@ -19,6 +22,10 @@ export const useGetOrders = () => {
             });
         } finally {
             setIsLoading(false);
+            message.open({
+                type: "success",
+                content: "Berhasil Fetch Data!",
+            });
         }
     }, []);
 

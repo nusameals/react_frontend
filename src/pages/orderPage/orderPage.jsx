@@ -118,8 +118,8 @@ const OrderPage = () => {
   const TABLE_COLUMNS = [
     {
       title: 'Order ID',
-      dataIndex: 'orderId',
-      key: 'orderId',
+      dataIndex: 'id',
+      key: 'id',
       render: (_, record) => (
         <div
           style={{
@@ -132,34 +132,34 @@ const OrderPage = () => {
     },
     {
       title: 'Date Order',
-      dataIndex: 'dateOrder',
-      key: 'dateOrder',
-      sorter: (a, b) => new Date(a.dateOrder) - new Date(b.dateOrder),
+      dataIndex: 'id',
+      key: 'createdAt',
+      sorter: (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
       sortDirections: ["ascend", "descend"],
       render: (date) => dayjs(date).format("DD-MM-YYYY"),
     },
     {
       title: 'Customer Userame',
-      dataIndex: 'customerUsername',
-      key: 'customerUsername',
+      dataIndex: 'user_id',
+      key: 'user_id',
       filteredValue: [searchedText],
       onFilter: (value, record) => {
         return (
-          String(record.orderId).toLowerCase().includes(value.toLowerCase()) ||
-          String(record.dateOrder)
+          String(record.id).toLowerCase().includes(value.toLowerCase()) ||
+          String(record.createdAt)
             .toLowerCase()
             .includes(value.toLowerCase()) ||
-          String(record.customerUsername)
+          String(record.user_id)
             .toLowerCase()
             .includes(value.toLowerCase()) ||
-          String(record.type).toLowerCase().includes(value.toLowerCase())
+          String(record.type_order).toLowerCase().includes(value.toLowerCase())
         );
       },
     },
     {
       title: 'Type',
-      dataIndex: 'type',
-      key: 'type',
+      dataIndex: 'type_order',
+      key: 'type_order',
       sorter: (a, b) => a.type - b.type,
     },
     {
