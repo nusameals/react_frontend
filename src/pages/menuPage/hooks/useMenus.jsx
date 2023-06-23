@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { message } from "antd";
-import { apiMenu } from "../../../api";
+import { api } from "../../../api";
 
 export const useGetMenu = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -8,7 +8,7 @@ export const useGetMenu = () => {
 
   const getData = useCallback(async (onSuccess) => {
     try {
-      const res = await apiMenu.getMenu();
+      const res = await api.getMenu();
       if (res) {
         setdata(res.data.data);
         onSuccess && onSuccess(res.data.data);
@@ -37,7 +37,7 @@ export const useGetMenuById = () => {
 
   const getData = useCallback(async (id, onSuccess) => {
     try {
-      const res = await apiMenu.getMenu(id);
+      const res = await api.getMenu(id);
       if (res) {
         setdata(res.data);
         onSuccess && onSuccess(res.data);

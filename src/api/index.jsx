@@ -15,9 +15,28 @@ export const apiOrders = {
   },
 };
 
+// test
 export const api = {
   login: (body) => {
     return baseAPI.post("/login", body);
+  },
+
+  getMenu: () => {
+    return baseAPIand.get(`/menus`);
+  },
+  getMenuById: (id) => {
+    return baseAPIand.get(`/menuProduct/:id`);
+  },
+
+
+  getOrders: () => {
+    return apiOrder.get(`/orders`);
+  },
+  getOrdersById: (id) => {
+    return apiOrder.get(`/orders/${id}`);
+  },
+  updateOrders: (id, body) => {
+    return apiOrder.put(`/orders/${id}`, body);
   },
 };
 
