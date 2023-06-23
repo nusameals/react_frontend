@@ -31,31 +31,6 @@ export const useGetMenu = () => {
   return [isLoading, data, getData];
 };
 
-export const useGetBiodata = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [data, setdata] = useState();
-
-  const getData = useCallback(async () => {
-    try {
-      const res = await api.getBiodata();
-      setdata(res.data);
-    } catch (error) {
-      message.open({
-        type: "error",
-        content: `${error?.message}`,
-      });
-    } finally {
-      setIsLoading(false);
-      message.open({
-        type: "success",
-        content: "Berhasil Fetch Data!",
-      });
-    }
-  }, []);
-
-  return [isLoading, data, getData];
-};
-
 export const useGetMenuById = (id) => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setdata] = useState();
