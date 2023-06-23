@@ -49,9 +49,9 @@ const AddTable = () => {
     formTable.resetFields();
     console.log({ values });
   };
-  const [AddTable, { loading: loadingAddUser }] = useMutation(ADD_TABLE , {
-    refetchQueries: [GET_USERS],
-  });
+  // const [AddTable, { loading: loadingAddUser }] = useMutation(ADD_TABLE , {
+  //   refetchQueries: [GET_USERS],
+  // });
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
