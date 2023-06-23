@@ -24,12 +24,17 @@ const MenuPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchData, setSearchData] = useState();
   // const [key, setKey] = useState("Intelligent");
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("makanan");
   const { id } = useParams();
 
   useEffect(() => {
     getMenu((data) => {
-      setSearchData(data);
+      setSearchData(
+        data.filter((item) => {
+          const isMatchCategory = item.category === "makanan";
+          return isMatchCategory;
+        })
+      );
     });
   }, []);
 
@@ -41,8 +46,7 @@ const MenuPage = () => {
 
   const paginationConfig = {
     total: searchData,
-    showTotal: (total, range) => 
-    `${range[0]}-${range[1]} of ${total}items`,
+    showTotal: (total, range) => `${range[0]}-${range[1]} of ${total}items`,
     defaultPageSize: 10,
     defaultCurrent: 1,
     current: currentPage,
@@ -107,10 +111,10 @@ const MenuPage = () => {
   };
 
   const items = [
-    {
-      key: "All",
-      label: `All`,
-    },
+    // {
+    //   key: "All",
+    //   label: `All`,
+    // },
     {
       key: "makanan",
       label: `Food`,
@@ -162,7 +166,7 @@ const MenuPage = () => {
         />
         <Row justify="space-between" style={{ width: "100%" }}>
           <Tabs
-            defaultActiveKey="All"
+            defaultActiveKey="makanan"
             onChange={handleTabChange}
             items={items}
           />
