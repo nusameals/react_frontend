@@ -14,6 +14,7 @@ import {
   Tabs,
 } from "antd";
 import { CloseSquareFilled } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 import "./reservationsPage.css";
@@ -21,7 +22,7 @@ import dayjs from 'dayjs';
 import { gql, useQuery } from '@apollo/client';
 
 const GET_TABLE = gql`
-  query GetTable {
+  query table {
     table {
       id
     detail
@@ -32,6 +33,13 @@ const GET_TABLE = gql`
     }
   }
 `;
+// export const DELETE_TABLE = gql`
+//   mutation table($uuid: uuid!) {
+//     delete_table_by_pk(uuid: $uuid) {
+//       uuid
+//     }
+//   }
+// `;
 export const ReservationsPage = () => {
   const { loading, error, data } = useQuery(GET_TABLE);
 
@@ -186,7 +194,7 @@ export const ReservationsPage = () => {
       key: "image",
       width: 170,
 
-      render: (text, record) => <img src={text} alt={record.name} style={{ width: '40px',marginBottom:"-5%", marginTop: "-2%" }} />,
+      render: (text, record) => <img src={text} alt={record.name} style={{ width: '40px',height: '40px',objectFit: 'cover',marginBottom:"-5%", marginTop: "-2%", borderRadius:"4px" }} />,
 
     },
     {
@@ -330,7 +338,10 @@ export const ReservationsPage = () => {
                 setSearchedText(e.target.value);
               }}
             />
-                <Button type="primary" style={{marginLeft: 'auto',backgroundColor: '#1890FF',borderRadius: '2px' }}>Add Table</Button>
+                      <Link to="/add-table" style={{marginLeft: 'auto',backgroundColor: '#1890FF',borderRadius: '2px' }}  >
+
+                <Button type="primary">Add Table</Button>
+               </Link>
   
           </div>
           <Table
@@ -458,7 +469,9 @@ export const ReservationsPage = () => {
                   <p className="subdetail">Name</p>
                   <p className="subdetail">Number Phone</p>
                   <p className="subdetail">Date</p>
-                  <p className="subdetail">Start - End</p>
+                  <p className="subdetail">Time In</p>
+                  <p className="subdetail">Time Out</p>
+
                   <p className="subdetail">Agenda</p>
                   <p className="subdetail">Number of people</p>
                 </div>
@@ -467,11 +480,20 @@ export const ReservationsPage = () => {
                     <b>{record.customerName}</b>
                   </p>
                   <p className="subrespon"><b> {record.phone}</b></p>
-                  <p className="subrespon"><b>{record.date}</b></p>
-                  <p className="subrespon"> <b>{record.phone}</b></p>
-                  <p className="subrespon"> {record.date}</p>
-                  <p>Time In: {record.timeIn}</p>
-                  <p>Time Out: {record.timeOut}</p>
+                  <p className="subrespon">
+                  <b>{dayjs(record.date).format("DD-MM-YYYY")}</b>
+                    </p>
+                    <p className="subrespon">
+              <b>{dayjs(record.timeIn, "HH:mm").format("HH:mm")}</b>
+            </p>
+            <p className="subrespon">
+              <b>{dayjs(record.timeOut, "HH:mm").format("HH:mm")}</b>
+            </p>
+            <p className="subrespon">
+                    <b>{record.agenda}</b>
+                  </p>                  <p className="subrespon">
+                    <b>{record.numberOfPeople}</b>
+                  </p>
                   <Divider />
                 </div>{" "}
               </div>

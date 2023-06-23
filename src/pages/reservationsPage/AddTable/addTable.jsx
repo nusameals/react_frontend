@@ -10,7 +10,7 @@ import {
   Col,
   Space,
   Button,
-  Spin,
+  Spin,Card
 } from "antd";
 import {
   CheckCircleOutlined,
@@ -18,6 +18,21 @@ import {
   PlusOutlined,
 } from "@ant-design/icons";
 import "./addTable.css";
+// import { useSingleUploader } from "../../../config/uploader-config";
+import { useMutation, gql } from "@apollo/client";
+  
+
+// Create Data
+export const ADD_TABLE = gql`
+  mutation user($object: table_insert_input!) {
+    insert_table_one(object: $object) {
+      uuid
+    }
+  }
+`;
+  // Upload Image
+  // const [isLoadingUpload, uploadFile] = useSingleUploader();
+
 
 const getBase64 = (file) =>
   new Promise((resolve, reject) => {
@@ -29,12 +44,14 @@ const getBase64 = (file) =>
 
 const AddTable = () => {
   // form menu
-  const [formMenu] = Form.useForm();
+  const [formTable] = Form.useForm();
   const onAdd = (values) => {
-    formMenu.resetFields();
+    formTable.resetFields();
     console.log({ values });
   };
-
+  const [AddTable, { loading: loadingAddUser }] = useMutation(ADD_TABLE , {
+    refetchQueries: [GET_USERS],
+  });
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
@@ -63,11 +80,13 @@ const AddTable = () => {
 
   // upload button
   const uploadButton = (
-    <div>
+    <div >
       <PlusOutlined />
       <div
         style={{
           marginTop: 8,
+          width:"500px"
+          
         }}
       >
         Upload
@@ -111,11 +130,12 @@ const AddTable = () => {
         <span className="textorder">Create Data Table</span>
       </Row>
 
-      <Row justify="center" align="middle" style={{ marginLeft: 200 }}>
+      <Row justify="center" align="middle" style={{ marginLeft: 0 }}>
         <Col>
+        <Card style={{margin: "10% 8%",}}>
           <Form
-            name="formMenu"
-            form={formMenu}
+            name="formTable"
+            form={formTable}
             onFinish={onAdd}
             onFinishFailed={onFinishFailed}
             labelCol={{
@@ -124,7 +144,6 @@ const AddTable = () => {
             wrapperCol={{
               span: 18,
             }}
-            labelAlign="left"
             style={{
               width: 900,
               margin: 50,
@@ -132,7 +151,16 @@ const AddTable = () => {
           >
             <div style={{ display: "flex", gap: 40 }}>
               <div style={{ width: 600, textAlign: "left" }}>
-                <Form.Item label="Number of table">
+                <Form.Item label="Number of table"
+                name="numberofTables"
+                rules={[
+                  {
+                    required: true,
+                    pattern: /^\d+$/,
+
+                    message: "Please enter number of table",
+                  },
+                ]}>
                   <Input placeholder={"Please enter the number of table"} />
                 </Form.Item>
                 <Form.Item
@@ -148,26 +176,48 @@ const AddTable = () => {
                 >
                   <Input placeholder="Please enter seat quantity" />
                 </Form.Item>
-                <Form.Item label="Type">
+                <Form.Item label="Type"
+                                name="type"
+                                rules={[
+                                  {
+                                    required: true,
+                                    message: "Please enter a type",
+                                  },
+                                ]}
+                               >
                   <Radio.Group>
                     <Radio value="Indoor"> Indoor </Radio>
                     <Radio value="Outdoor"> Outdoor </Radio>
                   </Radio.Group>
                 </Form.Item>
-                <Form.Item label="Tables location">
+                <Form.Item label="Tables location"
+                name="detail"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter a location",
+                  },
+                ]}>
                   <Input
                     placeholder={"Please enter tables location in restaurant"}
                   />
                 </Form.Item>
               </div>
-              <div style={{ width: 50 }}>
-                <Form.Item>
+              <div
+              //  style={{ width: 50 }}
+               >
+                <Form.Item 
+                              //  style={{ width: 5000 }}
+
+                >
+<div></div>
                   <Upload
                     action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
                     listType="picture-card"
                     fileList={fileList}
                     onPreview={handlePreview}
                     onChange={handleChangePreview}
+
                   >
                     {fileList.length === 1 ? null : uploadButton}
                   </Upload>
@@ -187,7 +237,7 @@ const AddTable = () => {
               </div>
             </div>
 
-            <Space style={{ display: "flex", marginLeft: 105 }}>
+            <Space style={{ display: "flex", marginLeft: 130 }}>
               <Button
                 type="primary"
                 htmlType="submit"
@@ -203,6 +253,7 @@ const AddTable = () => {
               </Button>
             </Space>
           </Form>
+          </Card>
         </Col>
       </Row>
 
