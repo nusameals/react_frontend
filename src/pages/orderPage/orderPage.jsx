@@ -91,6 +91,7 @@ const OrderPage = () => {
   };
 
   const { useForm } = Form;
+  console.log(orders);
 
   // form
   const [form] = Form.useForm();
@@ -126,7 +127,7 @@ const OrderPage = () => {
             color: ' #0669BD',
           }}
         >
-          {record.orderId}
+          {record.id}
         </div>
       ),
     },
@@ -174,12 +175,12 @@ const OrderPage = () => {
     },
     {
       title: 'Payment Status',
-      dataIndex: 'paymentStatus',
-      key: 'paymentStatus',
+      dataIndex: 'status',
+      key: 'status',
       sortDirections: ["ascend", "descend"],
-      sorter: (a, b) => a.paymentStatus - b.paymentStatus,
+      sorter: (a, b) => a.status - b.status,
       render: (_, record) => (
-        <Badge status="success" text={record.paymentStatus} />
+        <Badge status="success" text={record.status} />
       ),
     },
     {

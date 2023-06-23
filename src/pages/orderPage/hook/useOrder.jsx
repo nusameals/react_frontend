@@ -6,14 +6,14 @@ import { message } from "antd"
 // Get Orders
 export const useGetOrders = () => {
     const [isLoading, setIsLoading] = useState(true)
-    const [orders, setOrders] = useState()
+    const [data, setData] = useState()
 
-    const getOrders = useCallback(async (onSuccess) => {
+    const getData = useCallback(async (onSuccess) => {
         try {
             const res = await apiOrders.getOrders()
             if (res) {
-                setOrders(res.data.data);
-                onSuccess && onSuccess(res.data.data);
+                setData(res.data);
+                onSuccess && onSuccess(res.data);
             }
         } catch (err) {
             message.open({
@@ -29,7 +29,7 @@ export const useGetOrders = () => {
         }
     }, []);
 
-    return [isLoading, orders, getOrders]
+    return [isLoading, data, getData]
 
 }
 
