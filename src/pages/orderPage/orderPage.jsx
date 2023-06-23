@@ -119,21 +119,21 @@ const OrderPage = () => {
   const TABLE_COLUMNS = [
     {
       title: 'Order ID',
-      dataIndex: 'id',
-      key: 'id',
+      dataIndex: 'order_id',
+      key: 'order_id',
       render: (_, record) => (
         <div
           style={{
             color: ' #0669BD',
           }}
         >
-          {record.id}
+          {record.order_id}
         </div>
       ),
     },
     {
       title: 'Date Order',
-      dataIndex: 'id',
+      dataIndex: 'createdAt',
       key: 'createdAt',
       sorter: (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
       sortDirections: ["ascend", "descend"],
@@ -161,16 +161,16 @@ const OrderPage = () => {
       title: 'Type',
       dataIndex: 'type_order',
       key: 'type_order',
-      sorter: (a, b) => a.type - b.type,
+      sorter: (a, b) => a.type_order - b.type_order,
     },
     {
       title: 'Order Status',
-      dataIndex: 'orderStatus',
-      key: 'orderStatus',
+      dataIndex: 'order_status',
+      key: 'order_status',
       sortDirections: ["ascend", "descend"],
-      sorter: (a, b) => a.orderStatus - b.orderStatus,
+      sorter: (a, b) => a.order_status - b.order_status,
       render: (_, record) => (
-        <Badge status="processing" text={record.orderStatus} />
+        <Badge status="processing" text={record.order_status} />
       ),
     },
     {
