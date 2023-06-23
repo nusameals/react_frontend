@@ -1,2 +1,4 @@
 /api/*  http://testing.hopto.org/:splat 200
+/apiMenu/*  http://nusameals.ddns.net/:splat 200
+
 /*  /index.html 200
