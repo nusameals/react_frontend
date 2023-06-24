@@ -18,6 +18,7 @@ const SiderComponent = () => {
     <>
       <Sider
         className="sider-container"
+        style={{ position:"fixed", zIndex:"999", height:"100%" }}
         trigger={null}
         collapsible
         collapsed={collapsed}
