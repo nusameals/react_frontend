@@ -52,7 +52,7 @@ const DetailTable = () => {
     Modal.confirm({
       title: "Delete Table",
       icon: <ExclamationCircleOutlined />,
-      content: "Are you sure you want to delete this table?",
+      content: "Are you sure delete this item?",
       okText: "Delete",
       okType: "danger",
       cancelText: "Cancel",
