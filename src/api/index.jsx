@@ -26,7 +26,10 @@ export const apiMenu = {
     return baseAPIand.get(`/menus`);
   },
   getMenuById: (id) => {
-    return baseAPIand.get(`/menuProduct/:id`);
+    return baseAPIand.get(`/menus/${id}`);
+  },
+  deleteMenu: (id) => {
+    return baseAPIand.delete(`/menus/${id}`);
   },
 };
 

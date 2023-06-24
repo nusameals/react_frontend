@@ -24,12 +24,17 @@ const MenuPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchData, setSearchData] = useState();
   // const [key, setKey] = useState("Intelligent");
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("makanan");
   const { id } = useParams();
 
   useEffect(() => {
     getMenu((data) => {
-      setSearchData(data);
+      setSearchData(
+        data.filter((item) => {
+          const isMatchCategory = item.category === "makanan";
+          return isMatchCategory;
+        })
+      );
     });
   }, []);
 
@@ -40,14 +45,12 @@ const MenuPage = () => {
   };
 
   const paginationConfig = {
-    total: menu,
-    showTotal: (total, range) => `${range[0]}-${range[1]} of ${total} items`,
-    defaultPageSize: 8,
+    total: searchData,
+    showTotal: (total, range) => `${range[0]}-${range[1]} of ${total}items`,
+    defaultPageSize: 10,
     defaultCurrent: 1,
     current: currentPage,
     onChange: (page) => setCurrentPage(page),
-    showSizeChanger: true,
-    onShowSizeChange: { onShowSizeChange },
   };
 
   // console.log(searchData)
@@ -100,7 +103,7 @@ const MenuPage = () => {
   const handleSearch = (value) => {
     const filteredData = menu.filter((item) => {
       const isMatchMenu = value
-        ? item.name.toLowerCase().includes(value.toLowerCase())
+        ? item.category.toLowerCase().includes(value.toLowerCase())
         : true;
       return isMatchMenu;
     });
@@ -108,20 +111,20 @@ const MenuPage = () => {
   };
 
   const items = [
+    // {
+    //   key: "All",
+    //   label: `All`,
+    // },
     {
-      key: "All",
-      label: `All`,
-    },
-    {
-      key: "0",
+      key: "makanan",
       label: `Food`,
     },
     {
-      key: "1",
+      key: "minuman",
       label: `Drink`,
     },
     {
-      key: "3",
+      key: "saving packages",
       label: `Saving & Package`,
     },
   ];
@@ -163,7 +166,7 @@ const MenuPage = () => {
         />
         <Row justify="space-between" style={{ width: "100%" }}>
           <Tabs
-            defaultActiveKey="All"
+            defaultActiveKey="makanan"
             onChange={handleTabChange}
             items={items}
           />

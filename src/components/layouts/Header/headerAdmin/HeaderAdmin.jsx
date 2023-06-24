@@ -21,6 +21,7 @@ import { Link } from "react-router-dom";
 
 const HeaderAdmin = () => {
   const { Header } = Layout;
+  const namaAdmin = localStorage.getItem("username")
   const key = "updatable";
 
   const [api, contextHolder] = notification.useNotification();
@@ -103,6 +104,7 @@ const HeaderAdmin = () => {
           trigger={["click"]}
         >
           <Row
+          className="btn-profile-dropdown"
             style={{ width: "118px", height: "42px" }}
             onClick={(e) => e.preventDefault()}
           >
@@ -110,8 +112,9 @@ const HeaderAdmin = () => {
               <img src={sateayam} className="admin-avatar" alt="" />
             </Col>
             <Col span={12} className="container-col-admin">
-              <span className="nama-admin">Ahmad</span>
-              <span className="status-admin">Admin</span>
+              <Row justify="center" align="middle">
+              <span className="nama-admin">{namaAdmin}</span>
+              </Row>
             </Col>
           </Row>
         </Dropdown>

@@ -64,10 +64,10 @@ const HeaderComponent = () => {
           disabledOverflow
         />
 
-        <Collapse ghost bordered={false} className="mobileVisible">
+        <Collapse ghost bordered={false} className="mobileVisible" style={{ width:"100%" }}>
           <Collapse.Panel
             header={
-              <Row justify="space-between">
+              <Row justify="space-between" style={{ width:"100%" }}>
                 <Link to="/">
                   <Row className="brand">
                     <img
@@ -90,6 +90,7 @@ const HeaderComponent = () => {
             }
             key="1"
             showArrow={false}
+            style={{ width:"100%" }}
           >
             <Menu
               theme="light"
