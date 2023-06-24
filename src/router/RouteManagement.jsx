@@ -18,6 +18,7 @@ import ReportPage from "../pages/reportPage/reportPage";
 import LoginPage from "../pages/loginPage/LoginPage";
 import AdminPage from "../pages/adminPage/AdminPage";
 import AddTable from "../pages/reservationsPage/AddTable/addTable";
+import DetailTable from "../pages/reservationsPage/detailTable";
 
 const RouteManagement = () => {
   const token = localStorage.getItem("token");
@@ -50,6 +51,8 @@ const RouteManagement = () => {
             <Route path="/reservations-page" element={<ReservationsPage />} />
             <Route path="/report-page" element={<ReportPage />} />
             <Route path="/add-table" element={<AddTable/>} />
+            <Route path="/reservations-page/:id" element={<DetailTable />} />
+
           </Routes>
         </LayoutComponent>
       )}

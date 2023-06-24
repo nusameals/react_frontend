@@ -14,7 +14,8 @@ import {
   Tabs,
 } from "antd";
 import { CloseSquareFilled } from "@ant-design/icons";
-import { Link } from "react-router-dom";
+import { Link,useParams } from "react-router-dom";
+import { INITIAL_TABLE_DATA } from "./Constant";
 
 import axios from "axios";
 import "./reservationsPage.css";
@@ -46,6 +47,7 @@ export const ReservationsPage = () => {
   const [dataSource, setDataSource] = useState([]);
   const [visible, setVisible] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
+  const { id } = useParams();
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -231,13 +233,12 @@ export const ReservationsPage = () => {
       key: "action",
       width: 259.33,
 
-      render: (text, record) => {
-        return (
-          <Space size="middle">
-            <a onClick={handleShowModal}>View Details</a>
-          </Space>
-        );
-      },
+      render: (_, record) =>
+        INITIAL_TABLE_DATA.length >= 1 ? (
+          <Link to={`${record.id}`}>
+            <Button type="link">View Detail</Button>
+          </Link>
+        ) : null,
     },
   ];
 
