@@ -3,7 +3,7 @@ import "./profile.css";
 import { Breadcrumb, Button, Card, Col, Row, Space } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { mangga } from "../../assets";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 // import { useQuery } from "@apollo/client";
 // import { GET_PROFILE_BY_PK } from "./query/profile-query";
 import LoadingComponent from "../../components/loadingComponent/LoadingComponent";
