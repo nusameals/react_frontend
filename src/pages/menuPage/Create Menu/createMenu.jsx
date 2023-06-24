@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Row, Breadcrumb, Form, Input, Radio, Upload, Modal, Col, Space, Button, Spin } from 'antd';
 import { CheckCircleOutlined, LoadingOutlined, PlusOutlined } from '@ant-design/icons';
 import './createMenu.css';
-import { useGetMenu, usePostMenu } from '../hooks/useMenus';
 
 const getBase64 = (file) =>
     new Promise((resolve, reject) => {
@@ -14,17 +13,10 @@ const getBase64 = (file) =>
 
 const CreateMenu = () => {
 
-    const [isLoadingCreateMenu, createMenu] = usePostMenu();
-    const [menu, getMenu] = useGetMenu();
-    const [rowData, setRowData] = useState(menu);
-
     // form menu
     const [formMenu] = Form.useForm();
     const onAdd = (values) => {
-        createMenu(values, () => {
-            getMenu()
-            formMenu.resetFields();
-        })
+        formMenu.resetFields();
         console.log({ values })
     };
 
@@ -109,29 +101,6 @@ const CreateMenu = () => {
                         onFinish={onAdd}
                         onFinishFailed={onFinishFailed}
 
-                        fields={[
-                            {
-                                name: ['name'],
-                                value: rowData?.name,
-                            },
-                            {
-                                name: ['city'],
-                                value: rowData?.city,
-                            },
-                            {
-                                name: ['calories'],
-                                value: rowData?.calories,
-                            },
-                            {
-                                name: ['price'],
-                                value: rowData?.price,
-                            },
-                            {
-                                name: ['images'],
-                                value: rowData?.images,
-                            },
-                        ]}
-
                         labelCol={{
                             span: 5,
                         }}
@@ -146,7 +115,7 @@ const CreateMenu = () => {
                     >
                         <div style={{ display: 'flex', gap: 40 }}>
                             <div style={{ width: 500 }} >
-                                <Form.Item label="Name" name='name'>
+                                <Form.Item label="Name">
                                     <Input placeholder={'Please enter '} />
                                 </Form.Item>
                                 <Form.Item label="Radio">
@@ -156,13 +125,13 @@ const CreateMenu = () => {
                                         <Radio value="Saving Packages"> Saving Packages </Radio>
                                     </Radio.Group>
                                 </Form.Item>
-                                <Form.Item label="City" name="city">
+                                <Form.Item label="City">
                                     <Input placeholder={'Please enter the city of food'} />
                                 </Form.Item>
-                                <Form.Item label="Total Calories" name={"calories"}>
+                                <Form.Item label="Total Calories">
                                     <Input placeholder={'Please enter the calories'} />
                                 </Form.Item>
-                                <Form.Item label="Price" name="price"
+                                <Form.Item label="Price"
                                 >
                                     <Input placeholder={'Please enter the price'} />
                                 </Form.Item>
@@ -174,7 +143,7 @@ const CreateMenu = () => {
                                 </Form.Item>
                             </div>
                             <div style={{ width: 150 }}>
-                                <Form.Item name='images'>
+                                <Form.Item>
                                     <Upload
                                         action='https://www.mocky.io/v2/5cc8019d300000980a055e76'
                                         listType='picture-card'
@@ -201,7 +170,6 @@ const CreateMenu = () => {
                                     borderRadius: '0%'
                                 }}
                                 onClick={showModal}
-                                loading={isLoadingCreateMenu}
                             >
                                 Save
                             </Button>
