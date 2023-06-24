@@ -1,7 +1,7 @@
 // import { gql } from "@apollo/client";
 
 // export const GET_PROFILE_BY_PK = gql`
-//   query MyQuery($id: id!) {
+//   query MyQuery($id: String!) {
 //     admin_by_pk(id: $id) {
 //       avatar
 //       username

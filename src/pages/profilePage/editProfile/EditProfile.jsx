@@ -19,7 +19,7 @@ import { Link } from "react-router-dom";
 // import { GET_PROFILE_BY_PK } from "../query/profile-query";
 import LoadingComponent from "../../../components/loadingComponent/LoadingComponent";
 import { useSingleUploader } from "../../../hooks/useSingleUploader";
-import {uploaderConfig} from '../../../config/uploaderConfig';
+// import {uploaderConfig} from '../../../config/uploaderConfig';
 
 const getBase64 = (file) =>
   new Promise((resolve, reject) => {
