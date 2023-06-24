@@ -1,6 +1,7 @@
 import { apiOrder } from "../config/apiService";
 import { baseAPI } from "../config/apiService";
 import { baseAPIand } from "../config/apiService";
+import { uploaderAPI } from '../config/apiService';
 
 export const apiOrders = {
   // API orders
@@ -32,3 +33,10 @@ export const apiMenu = {
     return baseAPIand.delete(`/menus/${id}`);
   },
 };
+
+export const apiImage ={
+  // Image Uploader
+uploader: (body) => {
+return uploaderAPI.post("/dt5fjvwg6/image/upload", body);
+},
+}

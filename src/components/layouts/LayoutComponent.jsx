@@ -58,7 +58,7 @@ const LayoutComponent = ({ children }) => {
             <Content
               className="site-layout"
               style={{
-                padding: "0px",
+                padding: "48px 0px 0px 200px",
               }}
             >
               <div
