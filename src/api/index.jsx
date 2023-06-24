@@ -1,4 +1,5 @@
 import { apiOrder } from "../config/apiService";
+import { apiPayment } from "../config/apiService";
 import { baseAPI } from "../config/apiService";
 import { baseAPIand } from "../config/apiService";
 
@@ -14,6 +15,16 @@ export const apiOrders = {
     return apiOrder.put(`/orders/${id}`, body);
   },
 };
+
+export const apiPayments = {
+  // API payments
+  getPayments: () => {
+    return apiPayment.get(`/payments`);
+  },
+  getPaymentsById: (id) => {
+    return apiPayment.get(`/payments/${id}`);
+  },
+}
 
 export const api = {
   login: (body) => {

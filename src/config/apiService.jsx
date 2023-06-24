@@ -10,6 +10,13 @@ export const apiOrder = axios.create({
     Authorization: `Bearer ${token}`,
   },
 });
+export const apiPayment = axios.create({
+  baseURL: BASE_URL2.API,
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  },
+});
 
 export const baseAPI = axios.create({
   baseURL: BASE_URL.API,

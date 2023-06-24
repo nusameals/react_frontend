@@ -15,7 +15,7 @@ import {
 } from 'antd';
 import './orderPage.css';
 import { CloseSquareFilled, LoadingOutlined } from '@ant-design/icons';
-import { useGetOrders, useUpdateOrders } from './hook/useOrder';
+import { useGetOrders, useGetPayments, useUpdateOrders } from './hook/useOrder';
 import dayjs from 'dayjs';
 
 const { useForm } = Form;
@@ -23,11 +23,20 @@ const { useForm } = Form;
 const OrderPage = () => {
   // data order
   const [isLoadingOrders, orders, getOrders] = useGetOrders();
+  const [isLoadingPayments, payments, getPayments] = useGetPayments();
+
   const [rowData, setRowData] = useState(orders);
+  const [rowDataPayments, setRowDataPayments] = useState(payments);
+
+  const getPaymentsByOrderId = (id) => {
+    const payment = payments?.find((item) => item?.id === id);
+    return payment;
+  };
 
   // call hook
   useEffect(() => {
     getOrders();
+    getPayments();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -50,8 +59,8 @@ const OrderPage = () => {
 
   // modal payment
   const [isModalPayment, setIsModalPayment] = useState(false);
-  const showModalpayment = (data) => {
-    setRowData(data)
+  const showModalpayment = (payments) => {
+    setRowDataPayments(payments)
     setIsModalPayment(true);
   };
   const handleOkPayment = () => {
@@ -91,7 +100,7 @@ const OrderPage = () => {
   };
 
   const { useForm } = Form;
-  console.log(orders);
+
 
   // form
   const [form] = Form.useForm();
@@ -164,13 +173,15 @@ const OrderPage = () => {
     },
     {
       title: 'Payment Status',
-      dataIndex: 'status',
+      dataIndex: ['status', 'id'],
       key: 'status',
       sortDirections: ["ascend", "descend"],
       sorter: (a, b) => a.status - b.status,
-      render: (_, record) => (
-        <Badge status="success" text={record.status} />
-      ),
+      render: (_, record) => {
+        return (
+          <Badge status="success" text={getPaymentsByOrderId(record.id)?.status} />
+        );
+      },
     },
     {
       title: 'Action',
@@ -298,7 +309,7 @@ const OrderPage = () => {
               <b>{rowData?.orderId}</b>
             </p>
             <p className="subrespon">
-              <b>Dine In</b>
+              <b>{rowData?.type_order}</b>
             </p>
             <p className="subrespon">
               <b>4</b>
@@ -317,9 +328,6 @@ const OrderPage = () => {
 
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div className="modalprice">
-            <ul>
-              <li className="modalpesan">Soto Ayam x 3</li>
-            </ul>
             <p className="pricee">
               <b>Total</b>
             </p>
@@ -329,11 +337,8 @@ const OrderPage = () => {
           </div>
 
           <div style={{ marginTop: 20 }}>
-            <p className="nomprice">
-              <b>Rp 75.000</b>
-            </p>
             <p className="nomprice" style={{ marginTop: '-15px' }}>
-              <b>Rp 75.000</b>
+              <b>{rowData?.total_price}</b>
             </p>
             <p
               className="paymentmet"
@@ -364,7 +369,7 @@ const OrderPage = () => {
               fields={[
                 {
                   name: ['orderStatus'],
-                  value: rowData?.orderStatus,
+                  value: rowData?.order_status,
 
                 },
               ]}
@@ -436,7 +441,7 @@ const OrderPage = () => {
 
           <div className="modalrespon">
             <p className="subrespon">
-              <b>{rowData?.customerUsername}</b>
+              <b>{rowDataPayments?.status}</b>
             </p>
             <p className="subrespon">
               <b>{rowData?.orderId}</b>
@@ -451,9 +456,6 @@ const OrderPage = () => {
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div className="modalprice">
-            <ul>
-              <li className="modalpesan">Soto Ayam x 3</li>
-            </ul>
             <p className="pricee">
               <b>Total</b>
             </p>
@@ -463,11 +465,8 @@ const OrderPage = () => {
           </div>
 
           <div style={{ marginTop: 20 }}>
-            <p className="nomprice">
-              <b>Rp 75.000</b>
-            </p>
             <p className="nomprice" style={{ marginTop: '-15px' }}>
-              <b>Rp 75.000</b>
+              <b>{rowData?.total_price}</b>
             </p>
             <p
               className="paymentmet"
