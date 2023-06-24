@@ -6,12 +6,15 @@ import { message } from "antd"
 // Get Orders
 export const useGetOrders = () => {
     const [isLoading, setIsLoading] = useState(true)
-    const [orders, setOrders] = useState()
+    const [data, setData] = useState()
 
-    const getOrders = useCallback(async () => {
+    const getData = useCallback(async (onSuccess) => {
         try {
             const res = await apiOrders.getOrders()
-            setOrders(res?.data)
+            if (res) {
+                setData(res.data);
+                onSuccess && onSuccess(res.data);
+            }
         } catch (err) {
             message.open({
                 type: 'error',
@@ -19,10 +22,14 @@ export const useGetOrders = () => {
             });
         } finally {
             setIsLoading(false);
+            message.open({
+                type: "success",
+                content: "Berhasil Fetch Data!",
+            });
         }
     }, []);
 
-    return [isLoading, orders, getOrders]
+    return [isLoading, data, getData]
 
 }
 

@@ -34,9 +34,3 @@ export const apiMenu = {
   },
 };
 
-export const apiImage ={
-  // Image Uploader
-uploader: (body) => {
-return uploaderAPI.post("/dt5fjvwg6/image/upload", body);
-},
-}
