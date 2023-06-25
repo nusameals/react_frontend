@@ -10,7 +10,6 @@ import {
   Badge,
   Space,
   Dropdown,
-  Modal,
 } from "antd";
 import {
   ArrowLeftOutlined,
@@ -27,11 +26,18 @@ const HeaderAdmin = () => {
 
   const [api, contextHolder] = notification.useNotification();
   const openNotification = () => {
-    Modal.info({
-      icon:null,
-      content: (<Button/>),
-      style: {top: 55, left: 370}
+    api.open({
+      key,
+      message: "Notification Title",
+      description: "description.",
     });
+    setTimeout(() => {
+      api.open({
+        key,
+        message: "New Title",
+        description: "New description.",
+      });
+    }, 1000);
   };
 
   const items = [

@@ -91,10 +91,20 @@ const OrderPage = () => {
   };
 
   const { useForm } = Form;
-  console.log(orders);
 
   // form
   const [form] = Form.useForm();
+
+  // const data = [];
+  // for (let i = 0; i < 100; i++) {
+  //     data.push({
+  //         key: i,
+  //         orderId: `12345${i}`,
+  //         dateOrder: '2021-02-05 08:28:36',
+  //         customerUsername: `Kim Taehyung ${i}`,
+  //         type: 'dine in',
+  //     });
+  // }
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
@@ -108,68 +118,68 @@ const OrderPage = () => {
   const TABLE_COLUMNS = [
     {
       title: 'Order ID',
-      dataIndex: 'id',
-      key: 'id',
+      dataIndex: 'orderId',
+      key: 'orderId',
       render: (_, record) => (
         <div
           style={{
             color: ' #0669BD',
           }}
         >
-          {record.id}
+          {record.orderId}
         </div>
       ),
     },
     {
       title: 'Date Order',
-      dataIndex: 'createdAt',
-      key: 'createdAt',
-      sorter: (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
+      dataIndex: 'dateOrder',
+      key: 'dateOrder',
+      sorter: (a, b) => new Date(a.dateOrder) - new Date(b.dateOrder),
       sortDirections: ["ascend", "descend"],
       render: (date) => dayjs(date).format("DD-MM-YYYY"),
     },
     {
       title: 'Customer Userame',
-      dataIndex: 'user_id',
-      key: 'user_id',
+      dataIndex: 'customerUsername',
+      key: 'customerUsername',
       filteredValue: [searchedText],
       onFilter: (value, record) => {
         return (
-          String(record.id).toLowerCase().includes(value.toLowerCase()) ||
-          String(record.createdAt)
+          String(record.orderId).toLowerCase().includes(value.toLowerCase()) ||
+          String(record.dateOrder)
             .toLowerCase()
             .includes(value.toLowerCase()) ||
-          String(record.user_id)
+          String(record.customerUsername)
             .toLowerCase()
             .includes(value.toLowerCase()) ||
-          String(record.type_order).toLowerCase().includes(value.toLowerCase())
+          String(record.type).toLowerCase().includes(value.toLowerCase())
         );
       },
     },
     {
       title: 'Type',
-      dataIndex: 'type_order',
-      key: 'type_order',
-      sorter: (a, b) => a.type_order - b.type_order,
+      dataIndex: 'type',
+      key: 'type',
+      sorter: (a, b) => a.type - b.type,
     },
     {
       title: 'Order Status',
-      dataIndex: 'order_status',
-      key: 'order_status',
+      dataIndex: 'orderStatus',
+      key: 'orderStatus',
       sortDirections: ["ascend", "descend"],
-      sorter: (a, b) => a.order_status - b.order_status,
+      sorter: (a, b) => a.orderStatus - b.orderStatus,
       render: (_, record) => (
-        <Badge status="processing" text={record.order_status} />
+        <Badge status="processing" text={record.orderStatus} />
       ),
     },
     {
       title: 'Payment Status',
-      dataIndex: 'status',
-      key: 'status',
+      dataIndex: 'paymentStatus',
+      key: 'paymentStatus',
       sortDirections: ["ascend", "descend"],
-      sorter: (a, b) => a.status - b.status,
+      sorter: (a, b) => a.paymentStatus - b.paymentStatus,
       render: (_, record) => (
-        <Badge status="success" text={record.status} />
+        <Badge status="success" text={record.paymentStatus} />
       ),
     },
     {

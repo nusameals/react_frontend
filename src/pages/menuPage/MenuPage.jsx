@@ -111,6 +111,10 @@ const MenuPage = () => {
   };
 
   const items = [
+    // {
+    //   key: "All",
+    //   label: `All`,
+    // },
     {
       key: "makanan",
       label: `Food`,

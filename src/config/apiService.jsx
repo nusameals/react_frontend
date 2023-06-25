@@ -4,12 +4,8 @@ import { BASE_URL, BASE_URL2 } from "../utils";
 const token = localStorage.getItem("token");
 
 export const apiOrder = axios.create({
-  baseURL: BASE_URL2.API,
-  headers: {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${token}`,
-  },
-});
+    baseURL: "https://6440f37f792fe886a89a01ab.mockapi.io/products",
+})
 
 export const baseAPI = axios.create({
   baseURL: BASE_URL.API,
@@ -26,6 +22,7 @@ export const baseAPIand = axios.create({
   },
 });
 
-// export const baseAPIand = axios.create({
-//   baseURL: "http://nusameals.ddns.net/",
-// });
+export const uploaderAPI = axios.create({
+  baseURL: "https://api.cloudinary.com/v1_1",
+});
+

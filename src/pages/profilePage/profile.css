@@ -51,6 +51,18 @@
   border-radius: 10px;
 }
 
+.card-edit-profile {
+  gap: 24px;
+
+  width: 776px;
+  height: 350px;
+
+  /* Dark-Light/Light-1 */
+
+  background: #ffffff;
+  border-radius: 10px;
+}
+
 .btn-back-profile {
   padding: 0px;
   width: 79px;
@@ -294,7 +306,7 @@
 
   justify-content: center !important;
   align-items: center !important;
-  padding-left: 45px;
+  margin-top: 24px;
 
   width: 445px;
   height: 293px;
@@ -302,4 +314,32 @@
 
 .container-btn-edit-profile {
   margin-left: 83px;
+}
+
+.row-content-edit {
+  /* Rows */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 24px;
+
+  width: 726px;
+  height: 337px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.btn-edit-admin-ava{
+  width: 252px;
+  height: 252px;
+  padding: 0px;
+  border-radius: 10px;
 }
