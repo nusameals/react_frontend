@@ -87,7 +87,9 @@ const DetailTable = () => {
         align="middle"
         className="container-detail-menu-card"
       >
-        <Card className="card-detail-menu" style={{height:"480px"}}>
+        <Card className="card-detail-menu" 
+        style={{height:"480px"}}
+        >
           <Link to="/reservations-page">
             <Button
               type="text"
@@ -133,7 +135,9 @@ const DetailTable = () => {
                         alt="avatar-detail-menu"
                         className="avatar-detail-menu"
                       />
-                      <Row justify="space-between" align="middle" style={{marginTop:"50px",}}>
+                      <Row justify="space-between" align="middle" 
+                      // style={{marginTop:"50px",}}
+                      >
                         <Button type="primary" className="btn-action-menu" style={{borderRadius:"2px"}}>
                           Edit Menu
                         </Button>

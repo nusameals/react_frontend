@@ -42,6 +42,7 @@ const GET_TABLE = gql`
 //   }
 // `;
 export const ReservationsPage = () => {
+  
   const { loading, error, data } = useQuery(GET_TABLE);
 
   const [dataSource, setDataSource] = useState([]);
@@ -351,20 +352,9 @@ export const ReservationsPage = () => {
   }}
   dataSource={loading ? [] : data?.table} // Use the fetched data as the data source
   columns={columnsTable}
+
   pagination={paginationConfig}
 />
-          <Table
-            style={{
-              margin: "1% 0%",
-  
-            }}
-            dataSource={dataSource}
-            columns={columnsTable.map((column) => ({
-              ...column,
-              // title: <span style={{ fontWeight: "normal" }}>{column.title}</span>,
-            }))}
-            pagination={paginationConfig}
-          />
         </Card>
         </div>      ),
     },

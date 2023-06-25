@@ -79,7 +79,7 @@ export const SIDER_ITEM = [
   {
     key: "5",
     icon: <TableOutlined />,
-    label: <Link to="/">Report</Link>,
+    label: <Link to="/report-page">Report</Link>,
   },
 
 ];
