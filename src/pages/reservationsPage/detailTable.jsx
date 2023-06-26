@@ -5,33 +5,19 @@ import {
   ArrowLeftOutlined,
   ExclamationCircleOutlined,
 } from "@ant-design/icons";
-const GET_TABLE = gql`
-  query GetTable($id: uuid!) {
-    table_by_pk(id: $id) {
-      id
-      detail
-      image
-      numberofTables
-      seats
-      type
-    }
-  }
-`;
-const DELETE_TABLE = gql`
-  mutation DeleteTable($id: uuid!) {
-    delete_table_by_pk(id: $id) {
-      id
-    }
-  }
-`;
+import { DELETE_TABLE, GET_TABLE_BY_PK} from "./query";
+import LoadingComponent from "../../components/loadingComponent/LoadingComponent";
+
+
+
 
 
 const DetailTable = () => {
   const { id } = useParams();
 
-  const { loading, error, data } = useQuery(GET_TABLE, {
+  const { loading, error, data } = useQuery(GET_TABLE_BY_PK, {
     variables: { id },
-  });
+  }); 
 
   const table = data?.table_by_pk;
 
@@ -45,7 +31,8 @@ const DetailTable = () => {
     },
   });
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return         <LoadingComponent />
+  ;
   if (error) return <p>Error: {error.message}</p>;
 
   const showConfirmModal = () => {
