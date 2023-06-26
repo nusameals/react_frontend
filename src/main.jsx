@@ -10,8 +10,10 @@ import { client } from "./config/apollo-client";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <ApolloProvider client={client}>
+  {/* //   <ConfigProvider theme={ThemeConfig}> */}
       <BrowserRouter>
         <App />
       </BrowserRouter>
-</ApolloProvider>
+  {/* //   </ConfigProvider> */}
+  </ApolloProvider>
 );

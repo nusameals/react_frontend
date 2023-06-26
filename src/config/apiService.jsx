@@ -33,6 +33,6 @@ export const baseAPIand = axios.create({
   },
 });
 
-// export const baseAPIand = axios.create({
-//   baseURL: "http://nusameals.ddns.net/",
-// });
+export const uploaderAPI = axios.create({
+  baseURL: "https://api.cloudinary.com/v1_1",
+});

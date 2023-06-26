@@ -14,33 +14,12 @@ import {
   Tabs,
 } from "antd";
 import { CloseSquareFilled } from "@ant-design/icons";
-import { Link,useParams } from "react-router-dom";
-import { INITIAL_TABLE_DATA } from "./Constant";
 
 import axios from "axios";
 import "./reservationsPage.css";
 import dayjs from 'dayjs';
-import { gql, useQuery } from '@apollo/client';
 
-const GET_TABLE = gql`
-  query table {
-    table {
-      id
-    detail
-    image
-    numberofTables
-    seats
-    type
-    }
-  }
-`;
-// export const DELETE_TABLE = gql`
-//   mutation table($uuid: uuid!) {
-//     delete_table_by_pk(uuid: $uuid) {
-//       uuid
-//     }
-//   }
-// `;
+
 export const ReservationsPage = () => {
   
   const { loading, error, data } = useQuery(GET_TABLE);
@@ -48,7 +27,6 @@ export const ReservationsPage = () => {
   const [dataSource, setDataSource] = useState([]);
   const [visible, setVisible] = useState(false);
   const [selectedId, setSelectedId] = useState(null);
-  const { id } = useParams();
 
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -79,7 +57,6 @@ export const ReservationsPage = () => {
       console.log(error);
     }
   };
-  
   const columnsData = [
     {
       title: "ID",
@@ -197,8 +174,13 @@ export const ReservationsPage = () => {
       key: "image",
       width: 170,
 
-      render: (text, record) => <img src={text} alt={record.name} style={{ width: '40px',height: '40px',objectFit: 'cover',marginBottom:"-5%", marginTop: "-2%", borderRadius:"4px" }} />,
-
+      render: (_, record, index) => (
+        <img
+          src={record.avatar}
+          alt={`avatar-${index}`}
+          style={{ height: "30px" }}
+        />
+      ),
     },
     {
       title: "Number of Tables",
@@ -234,12 +216,13 @@ export const ReservationsPage = () => {
       key: "action",
       width: 259.33,
 
-      render: (_, record) =>
-        INITIAL_TABLE_DATA.length >= 1 ? (
-          <Link to={`${record.id}`}>
-            <Button type="link">View Detail</Button>
-          </Link>
-        ) : null,
+      render: (text, record) => {
+        return (
+          <Space size="middle">
+            <a onClick={handleShowModal}>View Details</a>
+          </Space>
+        );
+      },
     },
   ];
 
@@ -293,8 +276,7 @@ export const ReservationsPage = () => {
               columns={columnsData.map((column) => ({
                 ...column,
                 // title: <span style={{ fontWeight: "normal" }}>{column.title}</span>,
-              })
-              )}
+              }))}
               pagination={paginationConfig}
             />
           </Card>
@@ -304,6 +286,7 @@ export const ReservationsPage = () => {
     {
       key: "Table List",
       label: `Table List`,
+      //buat testing aja blom rapi
       children: (
         <div className="childcard" style={{backgroundColor: "#fafafa"}}>
         <Card
@@ -371,20 +354,11 @@ export const ReservationsPage = () => {
     setActiveTabKey(key);
   };
 
-  const GET_DOGS = gql`
-  query GetDogs {
-    dogs {
-      id
-      breed
-    }
-  }
-`;
   return (
     <div>
       {/* {" "} */}
       <Row className="container-header-profile">
         <div className="reserheader">
-          
           <Breadcrumb
             items={[
               {
@@ -460,9 +434,7 @@ export const ReservationsPage = () => {
                   <p className="subdetail">Name</p>
                   <p className="subdetail">Number Phone</p>
                   <p className="subdetail">Date</p>
-                  <p className="subdetail">Time In</p>
-                  <p className="subdetail">Time Out</p>
-
+                  <p className="subdetail">Start - End</p>
                   <p className="subdetail">Agenda</p>
                   <p className="subdetail">Number of people</p>
                 </div>
@@ -471,20 +443,11 @@ export const ReservationsPage = () => {
                     <b>{record.customerName}</b>
                   </p>
                   <p className="subrespon"><b> {record.phone}</b></p>
-                  <p className="subrespon">
-                  <b>{dayjs(record.date).format("DD-MM-YYYY")}</b>
-                    </p>
-                    <p className="subrespon">
-              <b>{dayjs(record.timeIn, "HH:mm").format("HH:mm")}</b>
-            </p>
-            <p className="subrespon">
-              <b>{dayjs(record.timeOut, "HH:mm").format("HH:mm")}</b>
-            </p>
-            <p className="subrespon">
-                    <b>{record.agenda}</b>
-                  </p>                  <p className="subrespon">
-                    <b>{record.numberOfPeople}</b>
-                  </p>
+                  <p className="subrespon"><b>{record.date}</b></p>
+                  <p className="subrespon"> <b>{record.phone}</b></p>
+                  <p className="subrespon"> {record.date}</p>
+                  <p>Time In: {record.timeIn}</p>
+                  <p>Time Out: {record.timeOut}</p>
                   <Divider />
                 </div>{" "}
               </div>

@@ -2,6 +2,7 @@ import { apiOrder } from "../config/apiService";
 import { apiPayment } from "../config/apiService";
 import { baseAPI } from "../config/apiService";
 import { baseAPIand } from "../config/apiService";
+import { uploaderAPI } from '../config/apiService';
 
 export const apiOrders = {
   // API orders
@@ -44,24 +45,9 @@ export const apiMenu = {
   },
 };
 
-// // API Biodata
-// getBiodata: () => {
-//   return baseAPI.get(`/biodatas`);
-// },
-// getBiodataById: (id) => {
-//   return baseAPI.get(`/biodatas/${id}`);
-// },
-// createBiodata: (body) => {
-//   return baseAPI.post(`/biodatas`, body);
-// },
-// updateBiodata: (id, body) => {
-//   return baseAPI.put(`/biodatas/${id}`, body);
-// },
-// deleteBiodata: (id) => {
-//   return baseAPI.delete(`/biodatas/${id}`);
-// },
-
-// // Image Uploader
-// uploader: (body) => {
-//   return uploaderAPI.post("/dt5fjvwg6/image/upload", body);
-// },
+export const apiImage ={
+  // Image Uploader
+uploader: (body) => {
+return uploaderAPI.post("/dt5fjvwg6/image/upload", body);
+},
+}
