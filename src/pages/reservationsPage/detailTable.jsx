@@ -1,5 +1,5 @@
-import { useParams,gql, Link } from "react-router-dom";
-import { useQuery, useMutation } from "@apollo/client";
+import { useParams, Link} from "react-router-dom";
+import { useQuery, useMutation ,gql } from "@apollo/client";
 import { Row, Col, Card, Button, Space, Breadcrumb, Modal } from "antd";
 import {
   ArrowLeftOutlined,
@@ -14,6 +14,7 @@ import LoadingComponent from "../../components/loadingComponent/LoadingComponent
 
 const DetailTable = () => {
   const { id } = useParams();
+  const history = useHistory();
 
   const { loading, error, data } = useQuery(GET_TABLE_BY_PK, {
     variables: { id },
