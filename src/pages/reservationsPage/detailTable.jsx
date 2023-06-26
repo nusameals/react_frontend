@@ -14,7 +14,6 @@ import LoadingComponent from "../../components/loadingComponent/LoadingComponent
 
 const DetailTable = () => {
   const { id } = useParams();
-  const history = useHistory();
 
   const { loading, error, data } = useQuery(GET_TABLE_BY_PK, {
     variables: { id },
