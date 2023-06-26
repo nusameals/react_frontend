@@ -20,7 +20,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { GET_PROFILE_BY_PK, UPDATE_PROFILE } from "../query/profile-query";
 import LoadingComponent from "../../../components/loadingComponent/LoadingComponent";
 import { useSingleUploader } from "../../../hooks/useSingleUploader";
-import {uploaderConfig} from '../../../config/uploaderConfig';
+import {uploaderConfig} from '../../../config/uploader-config';
 
 const getBase64 = (file) =>
   new Promise((resolve, reject) => {
