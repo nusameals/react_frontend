@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { gql, useQuery, useMutation } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { Row, Col, Card, Button, Space, Breadcrumb, Modal } from "antd";
 import {
   ArrowLeftOutlined,
