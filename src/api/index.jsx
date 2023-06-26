@@ -21,8 +21,8 @@ export const apiPayments = {
   getPayments: () => {
     return apiPayment.get(`/payments`);
   },
-  getPaymentsById: (id) => {
-    return apiPayment.get(`/payments/${id}`);
+  getPaymentsByUsername: (username) => {
+    return apiPayment.get(`/payments/${username}`);
   },
 }
 

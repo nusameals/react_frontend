@@ -3,14 +3,41 @@ import { useState } from "react"
 import { apiOrders, apiPayments } from "../../../api"
 import { message } from "antd"
 
-// Get Orders
+// Get Payments
 export const useGetOrders = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [data, setData] = useState()
-
-    const getData = useCallback(async (onSuccess) => {
+    const getOrders = useCallback(async (onSuccess) => {
         try {
             const res = await apiOrders.getOrders()
+            if (res) {
+                setData(res.data);
+                onSuccess && onSuccess(res.data);
+            }
+        } catch (err) {
+            message.open({
+                type: 'error',
+                content: `${err?.message}`,
+            });
+        } finally {
+            setIsLoading(false);
+            message.open({
+                type: 'success',
+                content: "Berhasil Fetch Data!",
+            });
+        }
+    }, []);
+    return [isLoading, orders, getOrders]
+}
+
+// Get Orders by Id
+export const useGetOrdersById = (id) => {
+    const [isLoading, setIsLoading] = useState(true)
+    const [dataById, setData] = useState()
+
+    const getOrdersById = useCallback(async (onSuccess) => {
+        try {
+            const res = await apiOrders.getOrdersById(id)
             if (res) {
                 setData(res.data);
                 onSuccess && onSuccess(res.data);
@@ -29,8 +56,7 @@ export const useGetOrders = () => {
         }
     }, []);
 
-    return [isLoading, data, getData]
-
+    return [isLoading, dataById, getOrdersById]
 }
 
 // Get Payments
@@ -61,15 +87,16 @@ export const useGetPayments = () => {
     return [isLoading, payments, getPayments]
 }
 
-export const useGetPaymentById = () => {
+// get payment by username
+export const useGetPaymentByUsername = (username) => {
     const [isLoading, setIsLoading] = useState(true);
-    const [payments, setPayments] = useState();
+    const [data, setdata] = useState();
 
-    const getPaymentsById = useCallback(async (id, onSuccess) => {
+    const getData = useCallback(async (onSuccess) => {
         try {
-            const res = await apiPayments.getPayments(id);
+            const res = await apiMenu.getMenuById(username);
             if (res) {
-                setPayments(res.data);
+                setdata(res.data);
                 onSuccess && onSuccess(res.data);
             }
         } catch (error) {
@@ -86,8 +113,9 @@ export const useGetPaymentById = () => {
         }
     }, []);
 
-    return [isLoading, payments, getPaymentsById];
+    return [isLoading, data, getData];
 };
+
 
 // Update Orders
 export const useUpdateOrders = () => {

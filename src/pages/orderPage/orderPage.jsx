@@ -15,15 +15,19 @@ import {
 } from 'antd';
 import './orderPage.css';
 import { CloseSquareFilled, LoadingOutlined } from '@ant-design/icons';
-import { useGetOrders, useGetPayments, useUpdateOrders } from './hook/useOrder';
+import { useGetOrders, useGetOrdersById, useGetPayments, useUpdateOrders } from './hook/useOrder';
 import dayjs from 'dayjs';
-
-const { useForm } = Form;
+import { useParams } from 'react-router-dom';
 
 const OrderPage = () => {
+
+  const { id } = useParams();
+
   // data order
   const [isLoadingOrders, orders, getOrders] = useGetOrders();
+  const [isLoadingOrdersById, ordersById, getOrdersById] = useGetOrdersById(id)
   const [isLoadingPayments, payments, getPayments] = useGetPayments();
+  const [isLoadingUpdateOrders, updateOrders] = useUpdateOrders();
 
   const [rowData, setRowData] = useState(orders);
   const [rowDataPayments, setRowDataPayments] = useState(payments);
@@ -45,6 +49,7 @@ const OrderPage = () => {
 
   // modal order
   const [isModalOrder, setIsModalOrder] = useState(false);
+
 
   const showModal = (data) => {
     setRowData(data);
@@ -70,6 +75,17 @@ const OrderPage = () => {
     setIsModalPayment(false);
   };
 
+  // edit
+  const onEdit = (values) => {
+    const id = rowData.order_status;
+    updateOrders(id, values, () => {
+      getOrders();
+
+    })
+    console.log({ values })
+  }
+
+
   // loading
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -83,7 +99,9 @@ const OrderPage = () => {
         </p>
       ),
       okText: 'Done',
+      onOk: setIsModalOrder(false),
       style: { marginTop: 135 },
+      loading: { isLoadingUpdateOrders }
     });
   };
   const successPayment = () => {
@@ -95,6 +113,7 @@ const OrderPage = () => {
         </p>
       ),
       okText: 'Done',
+      onOk: setIsModalPayment(false),
       style: { marginTop: 135 },
     });
   };
@@ -131,27 +150,33 @@ const OrderPage = () => {
     },
     {
       title: 'Date Order',
-      dataIndex: 'createdAt',
-      key: 'createdAt',
-      sorter: (a, b) => new Date(a.createdAt) - new Date(b.createdAt),
+      dataIndex: 'created_at',
+      key: 'created_at',
+      sorter: (a, b) => new Date(a.created_at) - new Date(b.created_at),
       sortDirections: ["ascend", "descend"],
-      render: (date) => dayjs(date).format("DD-MM-YYYY"),
+      render: (date) => dayjs(date).format("DD-MM-YYYY hh:mm"),
     },
     {
-      title: 'Customer Userame',
+      title: 'Customer Username',
       dataIndex: 'user_id',
       key: 'user_id',
       filteredValue: [searchedText],
       onFilter: (value, record) => {
         return (
           String(record.id).toLowerCase().includes(value.toLowerCase()) ||
-          String(record.createdAt)
+          String(record.created_at)
             .toLowerCase()
             .includes(value.toLowerCase()) ||
           String(record.user_id)
             .toLowerCase()
             .includes(value.toLowerCase()) ||
-          String(record.type_order).toLowerCase().includes(value.toLowerCase())
+          String(record.type_order).toLowerCase().includes(value.toLowerCase()) ||
+          String(record.order_status)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
+          String(record.payment_status)
+            .toLowerCase()
+            .includes(record.toLowerCase())
         );
       },
     },
@@ -174,12 +199,12 @@ const OrderPage = () => {
     {
       title: 'Payment Status',
       dataIndex: ['status', 'id'],
-      key: 'status',
+      key: 'payment_status',
       sortDirections: ["ascend", "descend"],
-      sorter: (a, b) => a.status - b.status,
+      sorter: (a, b) => a.payment_status - b.payment_status,
       render: (_, record) => {
         return (
-          <Badge status="success" text={getPaymentsByOrderId(record.id)?.status} />
+          <Badge status="success" text={getPaymentsByOrderId(record.id)?.payment_status || 'Not Yet Paid'} />
         );
       },
     },
@@ -214,6 +239,7 @@ const OrderPage = () => {
   };
 
   const [currentPage, setCurrentPage] = useState(1);
+
 
   return (
     <div>
@@ -337,7 +363,7 @@ const OrderPage = () => {
           </div>
 
           <div style={{ marginTop: 20 }}>
-            <p className="nomprice" style={{ marginTop: '-15px' }}>
+            <p className="nomprice" style={{ marginTop: '-5px' }}>
               <b>{rowData?.total_price}</b>
             </p>
             <p
@@ -364,6 +390,7 @@ const OrderPage = () => {
             <Form
               name="form"
               form={form}
+              onFinish={onEdit}
               onFinishFailed={onFinishFailed}
               layout="horizontal"
               fields={[
@@ -465,7 +492,7 @@ const OrderPage = () => {
           </div>
 
           <div style={{ marginTop: 20 }}>
-            <p className="nomprice" style={{ marginTop: '-15px' }}>
+            <p className="nomprice" style={{ marginTop: '-5px' }}>
               <b>{rowData?.total_price}</b>
             </p>
             <p
