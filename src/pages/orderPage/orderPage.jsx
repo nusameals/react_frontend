@@ -98,10 +98,9 @@ const OrderPage = () => {
           Click done to continue
         </p>
       ),
-      okText: 'Done',
       onOk: setIsModalOrder(false),
+      okText: 'Done',
       style: { marginTop: 135 },
-      loading: { isLoadingUpdateOrders }
     });
   };
   const successPayment = () => {
@@ -157,7 +156,7 @@ const OrderPage = () => {
       render: (date) => dayjs(date).format("DD-MM-YYYY hh:mm"),
     },
     {
-      title: 'Customer Username',
+      title: 'User ID',
       dataIndex: 'user_id',
       key: 'user_id',
       filteredValue: [searchedText],
@@ -321,7 +320,7 @@ const OrderPage = () => {
         </p>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div className="modalisian">
-            <p className="subdetail">Customer Username</p>
+            <p className="subdetail">User ID</p>
             <p className="subdetail">Order Number</p>
             <p className="subdetail">Type</p>
             <p className="subdetail">Table Number</p>
@@ -329,10 +328,10 @@ const OrderPage = () => {
 
           <div className="modalrespon">
             <p className="subrespon">
-              <b>{rowData?.customerUsername}</b>
+              <b>{rowData?.user_id}</b>
             </p>
             <p className="subrespon">
-              <b>{rowData?.orderId}</b>
+              <b>{rowData?.id}</b>
             </p>
             <p className="subrespon">
               <b>{rowData?.type_order}</b>
@@ -460,7 +459,7 @@ const OrderPage = () => {
         </p>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
           <div className="modalisian">
-            <p className="subdetail">Customer Username</p>
+            <p className="subdetail">User ID</p>
             <p className="subdetail">Order Number</p>
             <p className="subdetail">Type</p>
             <p className="subdetail">Table Number</p>
@@ -468,13 +467,13 @@ const OrderPage = () => {
 
           <div className="modalrespon">
             <p className="subrespon">
-              <b>{rowDataPayments?.status}</b>
+              <b>{rowDataPayments?.user_id}</b>
             </p>
             <p className="subrespon">
-              <b>{rowData?.orderId}</b>
+              <b>{rowData?.id}</b>
             </p>
             <p className="subrespon">
-              <b>Dine In</b>
+              <b>{rowData?.type_order}</b>
             </p>
             <p className="subrespon">
               <b>4</b>

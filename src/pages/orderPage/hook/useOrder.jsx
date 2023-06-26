@@ -27,7 +27,7 @@ export const useGetOrders = () => {
             });
         }
     }, []);
-    return [isLoading, orders, getOrders]
+    return [isLoading, data, getOrders]
 }
 
 // Get Orders by Id
