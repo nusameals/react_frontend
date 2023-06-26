@@ -19,84 +19,16 @@ import {
   InfoCircleOutlined,
 } from "@ant-design/icons";
 import { Area, Column, Pie, TinyArea, TinyColumn } from "@ant-design/plots";
+import { data, getListData } from "./Constant";
 import PaymentsData from "./Components/PaymentsData";
 import VisitData from "./Components/VisitData";
 import OrderStatus from "./Components/OrderStatus";
 import PaymentsStatus from "./Components/PaymentsStatus";
 
-const getListData = (value) => {
-  let listData;
-  switch (value.date()) {
-    case 8:
-      listData = [
-        {
-          type: "warning",
-          content: "This is warning event.",
-        },
-        {
-          type: "success",
-          content: "This is usual event.",
-        },
-      ];
-      break;
-    case 10:
-      listData = [
-        {
-          type: "warning",
-          content: "This is warning event.",
-        },
-        {
-          type: "success",
-          content: "This is usual event.",
-        },
-        {
-          type: "error",
-          content: "This is error event.",
-        },
-      ];
-      break;
-    case 15:
-      listData = [
-        {
-          type: "warning",
-          content: "This is warning event",
-        },
-        {
-          type: "success",
-          content: "This is very long usual event。。....",
-        },
-        {
-          type: "error",
-          content: "This is error event 1.",
-        },
-        {
-          type: "error",
-          content: "This is error event 2.",
-        },
-        {
-          type: "error",
-          content: "This is error event 3.",
-        },
-        {
-          type: "error",
-          content: "This is error event 4.",
-        },
-      ];
-      break;
-    default:
-  }
-  return listData || [];
-};
-
 const AdminPage = () => {
   const { RangePicker } = DatePicker;
   const [activeTabKey2, setActiveTabKey2] = useState("Sales");
   const [activeTabKeyPayments, setActiveTabKeyPayments] = useState("Order");
-
-  const data = [
-    264, 417, 438, 887, 309, 397, 550, 575, 563, 430, 525, 592, 492, 467, 513,
-    546, 983, 340, 539, 243, 226, 192,
-  ];
 
   const config = {
     height: 44,
@@ -140,21 +72,6 @@ const AdminPage = () => {
       tab: "View Payments Detail",
     },
   ];
-
-  const dataPaymentsCard = [422, 400, 380, 180, 380, 422, 390, 200, 422, 520];
-
-  const configPaymentsCard = {
-    height: 64,
-    autoFit: false,
-    dataPaymentsCard,
-    tooltip: {
-      customContent: function (x, dataPaymentsCard) {
-        return `NO.${x}: ${dataPaymentsCard[0]?.dataPaymentsCard?.y.toFixed(
-          2
-        )}`;
-      },
-    },
-  };
 
   const contentListNoTitle = {
     Sales: <PaymentsData />,
@@ -326,7 +243,7 @@ const AdminPage = () => {
               activeTabKey={activeTabKeyPayments}
               onTabChange={onTabPaymentChange}
             >
-              <div className="card-content">
+              <div className="card-content-status">
                 {contentListStatus[activeTabKeyPayments]}
               </div>
             </Card>
