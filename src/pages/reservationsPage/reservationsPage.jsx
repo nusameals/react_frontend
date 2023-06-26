@@ -20,7 +20,7 @@ import { INITIAL_TABLE_DATA } from "./Constant";
 import axios from "axios";
 import "./reservationsPage.css";
 import dayjs from 'dayjs';
-import {  useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import { GET_TABLE} from "./query";
 
 
