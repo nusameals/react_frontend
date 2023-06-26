@@ -103,7 +103,7 @@ const MenuPage = () => {
   const handleSearch = (value) => {
     const filteredData = menu.filter((item) => {
       const isMatchMenu = value
-        ? item.category.toLowerCase().includes(value.toLowerCase())
+        ? item.name.toLowerCase().includes(value.toLowerCase())
         : true;
       return isMatchMenu;
     });
@@ -191,7 +191,7 @@ const MenuPage = () => {
             <Table
               rowKey="ID"
               columns={TABLE_COLUMNS}
-              dataSource={menu}
+              dataSource={searchData}
               loading={isLoadingMenu}
               pagination={paginationConfig}
             />
