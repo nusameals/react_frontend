@@ -1,4 +1,4 @@
-import { apiOrder } from "../config/apiService";
+import { apiOrder, uploaderAPI } from "../config/apiService";
 import { apiPayment } from "../config/apiService";
 import { baseAPI } from "../config/apiService";
 import { baseAPIand } from "../config/apiService";
@@ -30,6 +30,9 @@ export const api = {
   login: (body) => {
     return baseAPI.post("/login", body);
   },
+  uploader: (body) => {
+    return uploaderAPI.post("/dbqsoenus/image/upload", body)
+}
 };
 
 export const apiMenu = {
@@ -42,6 +45,9 @@ export const apiMenu = {
   deleteMenu: (id) => {
     return baseAPIand.delete(`/menus/${id}`);
   },
+  createMenu: (body) => {
+    return baseAPIand.post(`/menus`, body)
+  }
 };
 
 // // API Biodata

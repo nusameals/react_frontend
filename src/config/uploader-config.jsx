@@ -1,4 +1,4 @@
 export const uploaderConfig = {
-  upload_preset: "zjmqhqy9",
-  api_key: "524691237826577",
-};
+  upload_preset: "vycrofnc",
+  api_key: "117835992895267",
+}
