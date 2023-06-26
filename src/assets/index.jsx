@@ -22,9 +22,9 @@ import heroic1 from './icons/heroic1.svg';
 import heroic2 from './icons/heroic2.svg';
 import heroic3 from './icons/heroic3.svg';
 import empal from './icons/empal.png';
-
+import maintenance from './icons/maintenance.svg';
 import Heromob from './images/heromob.svg';
 
 
 
-export { Logo, GoogleButton, Customer1, Customer2, Customer3, NusantaraFood, Bulethero, Herofood, jahe, mangga, cincau, teh, iga, sateayam, satedaging, empal, Herobackground, heroic1, heroic2, heroic3, Heromob,  LoginIcon, NusaMealsLogin, ForgetPass, NewPass };
+export { Logo, GoogleButton, Customer1, Customer2, Customer3, NusantaraFood, Bulethero, Herofood, jahe, mangga, cincau, teh, iga, sateayam, satedaging, empal, Herobackground, heroic1, heroic2, heroic3, Heromob,  LoginIcon, NusaMealsLogin, ForgetPass, NewPass, maintenance };

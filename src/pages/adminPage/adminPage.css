@@ -110,3 +110,8 @@
 .card-calendar-status {
   margin-top: 24px;
 }
+
+.card-content-status {
+  padding: 0;
+  margin: 0
+}
