@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./headerAdmin.css";
 import {
   Layout,
@@ -10,21 +10,35 @@ import {
   Badge,
   Space,
   Dropdown,
+  Modal,
 } from "antd";
 import {
   ArrowLeftOutlined,
   BellOutlined,
   SettingOutlined,
+  ExclamationCircleOutlined,
 } from "@ant-design/icons";
-import { mangga, sateayam } from "../../../../assets";
-import { Link } from "react-router-dom";
+import { AvatarAdmin, mangga, sateayam } from "../../../../assets";
+import { Link, useNavigate } from "react-router-dom";
+import { useGetProfileById } from "../../../../pages/profilePage/hooks/useProfile";
 
 const HeaderAdmin = () => {
   const { Header } = Layout;
+  const { confirm } = Modal;
   const namaAdmin = localStorage.getItem("username");
   const key = "updatable";
-
   const [api, contextHolder] = notification.useNotification();
+  const navigate = useNavigate();
+
+  const id = localStorage.getItem("id");
+
+  const [isLoadingProfileById, profileById, getProfileById] =
+    useGetProfileById();
+
+  useEffect(() => {
+    getProfileById(id);
+  }, []);
+
   const openNotification = () => {
     api.open({
       key,
@@ -47,11 +61,38 @@ const HeaderAdmin = () => {
     });
   };
 
-  const ID = localStorage.getItem("id")
+  const showPromiseConfirm = () => {
+    confirm({
+      title: <div>{profileById?.username}</div>,
+      icon: <ExclamationCircleOutlined />,
+      content: (
+        <Space direction="vertical">
+          <div>Are you sure sign out from system?</div>{" "}
+          <div>Click yes to continue.</div>
+        </Space>
+      ),
+      description: "Click yes to continue",
+      okText: "Yes",
+      cancelText: "No",
+      onOk() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            localStorage.removeItem("token");
+            localStorage.removeItem("username");
+            localStorage.removeItem("id");
+            resolve();
+            navigate("/");
+          }, 1000);
+        }).catch(() => console.log("Oops errors!"));
+      },
+      onCancel() {},
+    });
+  };
+
   const items = [
     {
       label: (
-        <Link to={`/profile-setting/${ID}`}>
+        <Link to={`/profile-setting/${id}`}>
           <Button type="text" icon={<SettingOutlined />}>
             Profile Setting
           </Button>
@@ -64,15 +105,7 @@ const HeaderAdmin = () => {
     },
     {
       label: (
-        <Link
-          to="/"
-          reloadDocument
-          onClick={() => {
-            localStorage.removeItem("token");
-            localStorage.removeItem("username");
-            localStorage.removeItem("id");
-          }}
-        >
+        <Link onClick={showPromiseConfirm}>
           <Button
             type="text"
             style={{ color: "red" }}
@@ -117,7 +150,11 @@ const HeaderAdmin = () => {
             onClick={(e) => e.preventDefault()}
           >
             <Col span={12} className="container-col-admin">
-              <img src={sateayam} className="admin-avatar" alt="" />
+              <img
+                src={profileById?.picture || AvatarAdmin}
+                className="admin-avatar"
+                alt=""
+              />
             </Col>
             <Col span={12} className="container-col-admin">
               <Row justify="center" align="middle">
