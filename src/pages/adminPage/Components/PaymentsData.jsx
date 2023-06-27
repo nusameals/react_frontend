@@ -4,35 +4,31 @@ import "./components.css";
 const PaymentsData = () => {
   const data = [
     {
-      type: "家具家电",
+      type: "Januari",
       sales: 38,
     },
     {
-      type: "粮油副食",
+      type: "Februari",
       sales: 52,
     },
     {
-      type: "生鲜水果",
+      type: "Maret",
       sales: 61,
     },
     {
-      type: "美容洗护",
+      type: "April",
       sales: 145,
     },
     {
-      type: "母婴用品",
+      type: "Mei",
       sales: 48,
     },
     {
-      type: "进口食品",
+      type: "Juni",
       sales: 38,
     },
     {
-      type: "食品饮料",
-      sales: 38,
-    },
-    {
-      type: "家庭清洁",
+      type: "Juli",
       sales: 38,
     },
   ];
