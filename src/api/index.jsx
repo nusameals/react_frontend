@@ -1,4 +1,4 @@
-import { apiOrder } from "../config/apiService";
+import { apiOrder, uploaderAPI } from "../config/apiService";
 import { apiPayment } from "../config/apiService";
 import { baseAPI } from "../config/apiService";
 import { baseAPIand } from "../config/apiService";
@@ -30,6 +30,9 @@ export const api = {
   login: (body) => {
     return baseAPI.post("/login", body);
   },
+  uploader: (body) => {
+    return uploaderAPI.post("/dbqsoenus/image/upload", body)
+}
 };
 
 export const apiMenu = {
@@ -42,26 +45,13 @@ export const apiMenu = {
   deleteMenu: (id) => {
     return baseAPIand.delete(`/menus/${id}`);
   },
+  createMenu: (body) => {
+    return baseAPIand.post(`/menus`, body)
+  },
+
+  // profile
+  getProfileById: (id)=>{
+    return baseAPIand.get(`/admin/user/id?ID=${id}`);
+  }
+
 };
-
-// // API Biodata
-// getBiodata: () => {
-//   return baseAPI.get(`/biodatas`);
-// },
-// getBiodataById: (id) => {
-//   return baseAPI.get(`/biodatas/${id}`);
-// },
-// createBiodata: (body) => {
-//   return baseAPI.post(`/biodatas`, body);
-// },
-// updateBiodata: (id, body) => {
-//   return baseAPI.put(`/biodatas/${id}`, body);
-// },
-// deleteBiodata: (id) => {
-//   return baseAPI.delete(`/biodatas/${id}`);
-// },
-
-// // Image Uploader
-// uploader: (body) => {
-//   return uploaderAPI.post("/dt5fjvwg6/image/upload", body);
-// },

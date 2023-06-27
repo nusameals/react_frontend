@@ -16,35 +16,43 @@ import {
   BellOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import { sateayam } from "../../../../assets";
+import { mangga, sateayam } from "../../../../assets";
 import { Link } from "react-router-dom";
 
 const HeaderAdmin = () => {
   const { Header } = Layout;
-  const namaAdmin = localStorage.getItem("username")
+  const namaAdmin = localStorage.getItem("username");
   const key = "updatable";
 
   const [api, contextHolder] = notification.useNotification();
   const openNotification = () => {
     api.open({
       key,
-      message: "Notification Title",
-      description: "description.",
+      description: (
+        <Row style={{ marginBottom: "0px" }}>
+          <img src={mangga} alt="" style={{ width: "44px", height: "44px" }} />
+          <ul className="grid-order">
+            <li>New Order</li>
+            <p className="grid-username">12345 - trinadavis</p>
+          </ul>
+          <Divider className="divider-notif" />
+          <img src={mangga} alt="" style={{ width: "44px", height: "44px" }} />
+          <ul className="grid-order">
+            <li>New Order</li>
+            <p className="grid-username">12345 - trinadavis</p>
+          </ul>
+        </Row>
+      ),
+      style: { top: 35, right: 130 },
     });
-    setTimeout(() => {
-      api.open({
-        key,
-        message: "New Title",
-        description: "New description.",
-      });
-    }, 1000);
   };
 
+  const ID = localStorage.getItem("id")
   const items = [
     {
       label: (
-        <Link to="/profile-setting">
-          <Button type="text" x icon={<SettingOutlined />}>
+        <Link to={`/profile-setting/${ID}`}>
+          <Button type="text" icon={<SettingOutlined />}>
             Profile Setting
           </Button>
         </Link>
@@ -104,7 +112,7 @@ const HeaderAdmin = () => {
           trigger={["click"]}
         >
           <Row
-          className="btn-profile-dropdown"
+            className="btn-profile-dropdown"
             style={{ width: "118px", height: "42px" }}
             onClick={(e) => e.preventDefault()}
           >
@@ -113,7 +121,7 @@ const HeaderAdmin = () => {
             </Col>
             <Col span={12} className="container-col-admin">
               <Row justify="center" align="middle">
-              <span className="nama-admin">{namaAdmin}</span>
+                <span className="nama-admin">{namaAdmin}</span>
               </Row>
             </Col>
           </Row>

@@ -1,7 +1,35 @@
 import { useCallback, useState } from "react";
 import { Modal, message } from "antd";
-import { apiMenu } from "../../../api";
+import { api, apiMenu } from "../../../api";
 import { useParams } from "react-router-dom";
+
+export const useUploader = () => {
+  const [isLoadingUpload, setIsLoadingUpload] = useState(false)
+
+  const upload = useCallback(async (body, onSuccess) => {
+    try {
+      setIsLoadingUpload(true)
+      const res = await api.uploader(body)
+      if(res) {
+        onSuccess && onSuccess(res.data)
+      }
+    }
+    catch (err) {
+      message.open({
+        type: 'error',
+        content: `${err?.message}`,
+      })
+    }
+    finally {
+      setIsLoadingUpload(false)
+      message.open({
+        type: 'success',
+        content: 'Upload image success!'
+      })
+    }
+  }, [])
+  return [isLoadingUpload, upload]
+}
 
 export const useGetMenu = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -61,11 +89,11 @@ export const useGetMenuById = (id) => {
 
 // Create Menu
 export const usePostMenu = () => {
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoadingPostMenu, setIsLoadingPostMenu] = useState(false)
 
   const createMenu = useCallback(async (body, onSuccess) => {
     try {
-      setIsLoading(true);
+      setIsLoadingPostMenu(true);
       await apiMenu.createMenu(body)
       onSuccess && onSuccess();
       message.open({
@@ -78,11 +106,11 @@ export const usePostMenu = () => {
         content: `${err?.message}`,
       });
     } finally {
-      setIsLoading(false);
+      setIsLoadingPostMenu(false);
     }
   }, []);
 
-  return [isLoading, createMenu]
+  return [isLoadingPostMenu, createMenu]
 }
 
 export const useDeleteMenu = () => {

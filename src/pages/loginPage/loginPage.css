@@ -59,28 +59,14 @@ body {
   color: #969696;
 }
 
-.login-left {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding-top: 80px;
-  gap: 10px;
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 1;
-}
-
 .input-form {
   width: 436px;
   height: 48px;
 }
 
 .remember-me {
-  display: flex;
-  justify-content: center;
-  gap: 140px;
+  text-align: left;
+  padding-left: 30px;
 }
 
 .remember-me a {
@@ -119,4 +105,8 @@ body {
   font-size: 14px;
   line-height: 21px;
   color: #000000;
+}
+
+.modal-repass {
+  text-align: center;
 }

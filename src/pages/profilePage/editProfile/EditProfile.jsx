@@ -10,9 +10,11 @@ import {
   Radio,
   Row,
   Space,
+  Upload,
 } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { mangga } from "../../../assets";
+import { Link } from "react-router-dom";
 
 const EditProfile = () => {
   const layout = {
@@ -44,21 +46,12 @@ const EditProfile = () => {
       </Row>
 
       <Row justify="center" align="middle" className="container-profile-card">
-        <Card className="card-profile">
-          <Row className="row-content-profile" justify="center" align="middle">
-            <Col>
-              <Form {...layout} className="container-edit-form">
-                <Form.Item label="Name" name="name">
-                  <Input style={{ width: "320px" }} />
-                </Form.Item>
-
-                <Form.Item label="Role" name="role">
-                  <Radio.Group>
-                    <Space direction="horizontal">
-                      <Radio value={"Admin"}>Admin</Radio>
-                      <Radio value={"Cashier"}>Cashier</Radio>
-                    </Space>
-                  </Radio.Group>
+        <Card className="card-edit-profile">
+          <Form {...layout} className="container-edit-form">
+            <Row className="row-content-edit" justify="center" align="middle">
+              <Col>
+                <Form.Item label="Username" name="username">
+                  <Input style={{ width: "320px" }}></Input>
                 </Form.Item>
 
                 <Form.Item label="Gender" name="gender">
@@ -70,16 +63,12 @@ const EditProfile = () => {
                   </Radio.Group>
                 </Form.Item>
 
-                <Form.Item label="Username" name="username">
-                  <Input style={{ width: "320px" }} />
-                </Form.Item>
-
                 <Form.Item
                   label="Phone"
                   name="phone"
                   rules={[
                     {
-                      pattern: /^\d{11}$/,
+                      pattern: /^\d{11,12}$/,
                       message: "Phone number is not valid!",
                     },
                   ]}
@@ -90,21 +79,33 @@ const EditProfile = () => {
                   <Button type="primary" htmlType="submit">
                     Save
                   </Button>
-                  <Button type="danger">Cancel</Button>
+                  <Link to="/profile-setting">
+                    <Button type="danger">Cancel</Button>
+                  </Link>
                 </Space>
-              </Form>
-            </Col>
+              </Col>
 
-            <Col className="col-img-profile">
-              <Row>
-                <img
-                  src={mangga}
-                  alt="avatar-profile"
-                  className="avatar-profile"
-                />
-              </Row>
-            </Col>
-          </Row>
+              <Col className="col-img-profile">
+                <Row>
+                  <Form.Item>
+                    <Upload showUploadList={false} name="file" maxCount={1}>
+                      <Button
+                        className="btn-edit-admin-ava"
+                        style={{ width: "252px" }}
+                        icon={
+                          <img
+                            src={mangga}
+                            alt="avatar-profile"
+                            className="avatar-profile"
+                          />
+                        }
+                      />
+                    </Upload>
+                  </Form.Item>
+                </Row>
+              </Col>
+            </Row>
+          </Form>
         </Card>
       </Row>
     </>

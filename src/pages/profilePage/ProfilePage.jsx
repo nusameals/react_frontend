@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./profile.css";
 import { Breadcrumb, Button, Card, Col, Row, Space } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { mangga } from "../../assets";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useGetProfileById } from "./hooks/useProfile";
+import LoadingComponent from "../../components/loadingComponent/LoadingComponent";
 
 const ProfilePage = () => {
+  const { id } = useParams();
+
+  const [isLoadingProfileById, profileById, getProfileById] =
+    useGetProfileById(id);
+
+  // useEffect(() => {
+  //   getProfileById();
+  // }, []);
+
   return (
     <>
       <Row className="container-header-profile">
@@ -31,46 +42,47 @@ const ProfilePage = () => {
           >
             Back
           </Button>
-          <Row className="row-content-profile">
-            <Col className="col-text-profile">
-              <Row justify="start" className="name-profile">
-                <span className="text-name">Name</span>
-                <span className="text-profile-name">Ahmad</span>
-              </Row>
-              <Row className="role-profile">
-                <Col>
-                  <span className="text-name">Role</span>
-                  <span className="text-profile-name">Admin</span>
+          {/* {isLoadingProfileById ? (
+            <LoadingComponent />
+          ) : (
+            profileById && ( */}
+              <Row className="row-content-profile">
+                <Col className="col-text-profile">
+                  <Row className="name-profile">
+                    <span className="text-name">Username</span>
+                    <span className="text-profile-name">
+                      {/* {profileById.username} */}
+                      {localStorage.getItem("username")}
+                    </span>
+                  </Row>
+                  <Row className="name-profile">
+                    <span className="text-name">Gender</span>
+                    <span className="text-profile-name">Male</span>
+                  </Row>
+                  <Row className="name-profile">
+                    <span className="text-name">Phone</span>
+                    <span className="text-profile-name">081234567890</span>
+                  </Row>
                 </Col>
-                <Col offset={1}>
-                  <span className="text-name">Gender</span>
-                  <span className="text-profile-name">Male</span>
+                <Col className="col-img-profile">
+                  <Row>
+                    <Space direction="vertical">
+                      <img
+                        src={mangga}
+                        alt="avatar-profile"
+                        className="avatar-profile"
+                      />
+                      <Link to="/edit-profile">
+                        <Button className="btn-edit-profile">
+                          Edit Profile
+                        </Button>
+                      </Link>
+                    </Space>
+                  </Row>
                 </Col>
               </Row>
-              <Row className="name-profile">
-                <span className="text-name">Username</span>
-                <span className="text-profile-name">Ahmad321</span>
-              </Row>
-              <Row className="name-profile">
-                <span className="text-name">Phone</span>
-                <span className="text-profile-name">081234567890</span>
-              </Row>
-            </Col>
-            <Col className="col-img-profile">
-              <Row>
-                <Space direction="vertical">
-                  <img
-                    src={mangga}
-                    alt="avatar-profile"
-                    className="avatar-profile"
-                  />
-                  <Link to="/edit-profile">
-                    <Button className="btn-edit-profile">Edit Profile</Button>
-                  </Link>
-                </Space>
-              </Row>
-            </Col>
-          </Row>
+            {/* )
+          )} */}
         </Card>
       </Row>
     </>
