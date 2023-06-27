@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Breadcrumb, Button, Form, Card, Col, Row, Space } from "antd";
 import { Divider, Input, Table, Modal, Popconfirm, Pagination } from "antd";
-// import { Tooltip, Icon } from 'antd';
-// import { ChartCard, MiniBar } from '@ant-design/Charts';
-// import { Line  } from '@ant-design/charts';
-
 import { TinyColumn } from "@ant-design/plots";
-
+import { data } from "./paymentdata";
 import "./reportPage.css";
 import axios from "axios";
 
@@ -41,9 +37,9 @@ export const ReportPage = () => {
 
   const [searchedText, setSearchedText] = useState("");
 
-  const data = [
-    274, 337, 81, 497, 666, 219, 269, 274, 337, 81, 497, 666, 219, 274, 337, 81,
-  ];
+  // const data = [
+  //   274, 337, 81, 497, 666, 219, 269, 274, 337, 81, 497, 666, 219, 274, 337, 81,
+  // ];
   const config = {
     height: 64,
     autoFit: false,

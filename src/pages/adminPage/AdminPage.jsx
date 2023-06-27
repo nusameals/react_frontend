@@ -180,8 +180,8 @@ const AdminPage = () => {
               style={{ padding: "0px", marginTop: "9px", marginBottom: "0px" }}
             />
             <div className="daily-action">
-              <p className="daily-text">Daily Visits</p>
-              <p className="daily-content">1,234</p>
+            <p>Conversion Rate 60%</p>
+
             </div>
           </Card>
         </Col>
