@@ -47,27 +47,11 @@ export const apiMenu = {
   },
   createMenu: (body) => {
     return baseAPIand.post(`/menus`, body)
+  },
+
+  // profile
+  getProfileById: (id)=>{
+    return baseAPIand.get(`/admin/user/id?ID=${id}`);
   }
+
 };
-
-// // API Biodata
-// getBiodata: () => {
-//   return baseAPI.get(`/biodatas`);
-// },
-// getBiodataById: (id) => {
-//   return baseAPI.get(`/biodatas/${id}`);
-// },
-// createBiodata: (body) => {
-//   return baseAPI.post(`/biodatas`, body);
-// },
-// updateBiodata: (id, body) => {
-//   return baseAPI.put(`/biodatas/${id}`, body);
-// },
-// deleteBiodata: (id) => {
-//   return baseAPI.delete(`/biodatas/${id}`);
-// },
-
-// // Image Uploader
-// uploader: (body) => {
-//   return uploaderAPI.post("/dt5fjvwg6/image/upload", body);
-// },

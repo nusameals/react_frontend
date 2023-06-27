@@ -41,7 +41,7 @@ const RouteManagement = () => {
         <LayoutComponent>
           <Routes>
             <Route path="/dashboard" element={<AdminPage />} />
-            <Route path="/profile-setting" element={<ProfilePage />} />
+            <Route path="/profile-setting/:id" element={<ProfilePage />} />
             <Route path="/edit-profile" element={<EditProfile />} />
             <Route path="/menu-page" element={<MenuPage />} />
             <Route path="/menu-page-create" element={<CreateMenuPage />} />

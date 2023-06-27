@@ -47,11 +47,12 @@ const HeaderAdmin = () => {
     });
   };
 
+  const ID = localStorage.getItem("id")
   const items = [
     {
       label: (
-        <Link to="/profile-setting">
-          <Button type="text" x icon={<SettingOutlined />}>
+        <Link to={`/profile-setting/${ID}`}>
+          <Button type="text" icon={<SettingOutlined />}>
             Profile Setting
           </Button>
         </Link>
