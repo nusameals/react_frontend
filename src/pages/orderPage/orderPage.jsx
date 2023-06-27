@@ -52,7 +52,6 @@ const OrderPage = () => {
   const showModal = (data) => {
     setRowData(data);
     setIsModalOrder(true);
-    getPaymentsByOrderId(data.id, () => setIsModalPayment(true));
   };
   const handleOk = () => {
     setIsModalOrder(false);
@@ -76,8 +75,10 @@ const OrderPage = () => {
   };
 
   function updateOrder(values) {
-    updateOrders(values)
-    console.log({ values })
+    updateOrders(rowData.id, values, () => {
+      getOrders()
+    });
+    console.log(rowData.id)
   }
 
   // confirm
