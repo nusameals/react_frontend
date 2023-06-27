@@ -15,7 +15,7 @@ import {
 } from 'antd';
 import './orderPage.css';
 import { CloseSquareFilled, LoadingOutlined } from '@ant-design/icons';
-import { useGetOrders, useGetOrdersById, useGetPayments, useUpdateOrders } from './hook/useOrder';
+import { useGetOrders, useGetOrdersById, useGetPaymentByUsername, useGetPayments, useUpdateOrders } from './hook/useOrder';
 import dayjs from 'dayjs';
 import { useParams } from 'react-router-dom';
 
@@ -27,6 +27,7 @@ const OrderPage = () => {
   const [isLoadingOrders, orders, getOrders] = useGetOrders();
   const [isLoadingOrdersById, ordersById, getOrdersById] = useGetOrdersById(id)
   const [isLoadingPayments, payments, getPayments] = useGetPayments();
+  const [paymentsByUsername, getPaymentsByUsername] = useGetPaymentByUsername()
   const [isLoadingUpdateOrders, updateOrders] = useUpdateOrders();
 
   const [rowData, setRowData] = useState(orders);
@@ -40,7 +41,6 @@ const OrderPage = () => {
   // call hook
   useEffect(() => {
     getOrders();
-    getPayments();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -64,8 +64,9 @@ const OrderPage = () => {
 
   // modal payment
   const [isModalPayment, setIsModalPayment] = useState(false);
-  const showModalpayment = (payments) => {
-    setRowDataPayments(payments)
+  const showModalpayment = (data) => {
+    console.log({ data })
+    getPaymentsByUsername(data.username)
     setIsModalPayment(true);
   };
   const handleOkPayment = () => {
@@ -498,7 +499,7 @@ const OrderPage = () => {
               className="paymentmet"
               style={{ marginTop: 0, textAlign: 'end' }}
             >
-              <b>Cash</b>
+              <b>{paymentsByUsername?.payment_methods}</b>
             </p>
           </div>
         </div>
@@ -522,12 +523,12 @@ const OrderPage = () => {
               layout="horizontal"
               fields={[
                 {
-                  name: ['paymentStatus'],
-                  value: rowData?.paymentStatus,
+                  name: ['payment_status'],
+                  value: paymentsByUsername?.payment_status,
                 },
               ]}
             >
-              <Form.Item name="paymentStatus">
+              <Form.Item name="payment_status">
                 <Select
                   onChange={handleChange}
                   placeholder={<Badge status="default" text="Not yet paid" />}

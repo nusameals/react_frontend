@@ -92,9 +92,9 @@ export const useGetPaymentByUsername = (username) => {
     const [isLoading, setIsLoading] = useState(true);
     const [data, setdata] = useState();
 
-    const getData = useCallback(async (onSuccess) => {
+    const getPaymentsByUsername = useCallback(async (username, onSuccess) => {
         try {
-            const res = await apiMenu.getMenuById(username);
+            const res = await apiPayments.getPaymentsByUsername(username);
             if (res) {
                 setdata(res.data);
                 onSuccess && onSuccess(res.data);
@@ -113,7 +113,7 @@ export const useGetPaymentByUsername = (username) => {
         }
     }, []);
 
-    return [isLoading, data, getData];
+    return [isLoading, data, getPaymentsByUsername];
 };
 
 
