@@ -97,9 +97,8 @@ export const useGetPaymentByOrderId = () => {
         try {
             const res = await apiPayments.getPaymentsByOrderId(order_id);
             if (res) {
-                console.log({ res })
-                setdata(res.data);
-                onSuccess && onSuccess(res.data);
+                setdata(res.data[0]);
+                onSuccess && onSuccess(res.data[0]);
             }
         } catch (error) {
             message.open({
@@ -126,7 +125,7 @@ export const useUpdateOrders = () => {
     const updateOrders = useCallback(async (id, body, onSuccess) => {
         try {
             setIsLoading(true);
-            await apiOrders.updateOrders(id, body)
+            await apiOrders.updateOrderById(id, body)
             onSuccess && onSuccess();
         } catch (err) {
             message.open({

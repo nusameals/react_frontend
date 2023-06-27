@@ -11,7 +11,7 @@ export const apiOrders = {
   getOrdersById: (id) => {
     return apiOrder.get(`/orders/order-details/${id}`);
   },
-  updateOrders: (id, body) => {
+  updateOrderById: (id, body) => {
     return apiOrder.put(`/orders/${id}`, body);
   },
 };
@@ -53,7 +53,7 @@ export const apiMenu = {
   },
 
   // profile
-  getProfileById: (id)=>{
+  getProfileById: (id) => {
     return baseAPIand.get(`/admin/users/id?ID=${id}`);
   }
 };
