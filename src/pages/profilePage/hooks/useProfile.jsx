@@ -2,11 +2,11 @@ import { useCallback, useState } from "react";
 import { Modal, message } from "antd";
 import { api, apiMenu } from "../../../api";
 
-export const useGetProfileById = (id) => {
+export const useGetProfileById = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [data, setdata] = useState();
   
-    const getData = useCallback(async (onSuccess) => {
+    const getData = useCallback(async (id, onSuccess) => {
       try {
         const res = await apiMenu.getProfileById(id);
         if (res) {

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./profile.css";
 import { Breadcrumb, Button, Card, Col, Row, Space } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { mangga } from "../../assets";
+import { AvatarAdmin, mangga } from "../../assets";
 import { Link, useParams } from "react-router-dom";
 import { useGetProfileById } from "./hooks/useProfile";
 import LoadingComponent from "../../components/loadingComponent/LoadingComponent";
@@ -11,11 +11,11 @@ const ProfilePage = () => {
   const { id } = useParams();
 
   const [isLoadingProfileById, profileById, getProfileById] =
-    useGetProfileById(id);
+    useGetProfileById();
 
-  // useEffect(() => {
-  //   getProfileById();
-  // }, []);
+  useEffect(() => {
+    getProfileById(id);
+  }, []);
 
   return (
     <>
@@ -51,24 +51,26 @@ const ProfilePage = () => {
                   <Row className="name-profile">
                     <span className="text-name">Username</span>
                     <span className="text-profile-name">
-                      {/* {profileById.username} */}
-                      {localStorage.getItem("username")}
+                      {profileById?.username}
+                      
                     </span>
                   </Row>
                   <Row className="name-profile">
                     <span className="text-name">Gender</span>
-                    <span className="text-profile-name">Male</span>
+                      {profileById?.gender}
+                    <span className="text-profile-name"></span>
                   </Row>
                   <Row className="name-profile">
                     <span className="text-name">Phone</span>
-                    <span className="text-profile-name">081234567890</span>
+                      {profileById?.phone}
+                    <span className="text-profile-name"></span>
                   </Row>
                 </Col>
                 <Col className="col-img-profile">
                   <Row>
                     <Space direction="vertical">
                       <img
-                        src={mangga}
+                        src={profileById?.picture || AvatarAdmin}
                         alt="avatar-profile"
                         className="avatar-profile"
                       />

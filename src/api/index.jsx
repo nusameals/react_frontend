@@ -51,7 +51,6 @@ export const apiMenu = {
 
   // profile
   getProfileById: (id)=>{
-    return baseAPIand.get(`/admin/user/id?ID=${id}`);
+    return baseAPIand.get(`/admin/users/id?ID=${id}`);
   }
-
 };
