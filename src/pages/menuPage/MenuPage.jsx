@@ -188,6 +188,7 @@ const MenuPage = () => {
               </Tag>
               <span>Low Calories</span>
             </Card>
+            
             <Table
               rowKey="ID"
               columns={TABLE_COLUMNS}

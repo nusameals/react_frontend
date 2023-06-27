@@ -111,3 +111,19 @@
   order: 1;
   flex-grow: 0;
 }
+
+.grid-order{
+  height: 48px;
+  margin-top: 0px;
+}
+.grid-username{
+  margin-top: 0px;
+}
+
+.divider-notif{
+  margin-top: 0px;
+  margin-bottom: 20px;
+  border: 1px solid #eaeaea;
+
+}
+
