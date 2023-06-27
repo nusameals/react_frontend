@@ -43,12 +43,16 @@ const CreateMenu = () => {
 
   // form menu
   const [formMenu] = Form.useForm();
+
   const onAdd = (values) => {
-    createMenu(values, () => {
+    const body = {
+      images: images,
+      ...values,
+    };
+    createMenu(body, () => {
       showModal();
       formMenu.resetFields();
     });
-    console.log({ values });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -238,10 +242,10 @@ const CreateMenu = () => {
               >
                 Save
               </Button>
-              <Link to='/menu-page'>
-              <Button type="primary" className="buttoncancel">
-                Cancel
-              </Button>
+              <Link to="/menu-page">
+                <Button type="primary" className="buttoncancel">
+                  Cancel
+                </Button>
               </Link>
             </Space>
           </Form>
