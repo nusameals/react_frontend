@@ -15,7 +15,7 @@ import {
 } from 'antd';
 import './orderPage.css';
 import { CloseSquareFilled, LoadingOutlined } from '@ant-design/icons';
-import { useGetOrders, useGetOrdersById, useGetPaymentByOrderId, useGetPaymentByUsername, useGetPayments, useUpdateOrders } from './hook/useOrder';
+import { useGetOrders, useGetOrdersById, useGetPaymentByOrderId, useGetPayments, useUpdateOrders } from './hook/useOrder';
 import dayjs from 'dayjs';
 import { useParams } from 'react-router-dom';
 
