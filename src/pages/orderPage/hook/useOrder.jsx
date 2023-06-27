@@ -98,8 +98,8 @@ export const useGetPaymentByOrderId = () => {
             const res = await apiPayments.getPaymentsByOrderId(order_id);
             if (res) {
                 console.log({ res })
-                setdata(res.data);
-                onSuccess && onSuccess(res.data);
+                setdata(res.data[0]);
+                onSuccess && onSuccess(res.data[0]);
             }
         } catch (error) {
             message.open({

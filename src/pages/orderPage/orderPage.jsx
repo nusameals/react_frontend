@@ -25,9 +25,9 @@ const OrderPage = () => {
 
   // data order
   const [isLoadingOrders, orders, getOrders] = useGetOrders();
-  // const [isLoadingOrdersById, ordersById, getOrdersById] = useGetOrdersById()
   const [isLoadingPayments, payments, getPayments] = useGetPayments();
-  const [isLoadingPaymentsByOrderId, paymentsByOrderId, getPaymentsByOrderId] = useGetPaymentByOrderId()
+  const [isLoadingPaymentsByOrderId, paymentsByOrderId, getPaymentsByOrderId] =
+    useGetPaymentByOrderId();
   const [isLoadingUpdateOrders, updateOrders] = useUpdateOrders();
 
   const [rowData, setRowData] = useState(orders);
@@ -64,11 +64,7 @@ const OrderPage = () => {
   const [isModalPayment, setIsModalPayment] = useState(false);
   const showModalpayment = (data) => {
     console.log(data.id)
-    getPaymentsByOrderId(data.id)
-    if (paymentsByOrderId) {
-      console.log({ paymentsByOrderId })
-      setIsModalPayment(true);
-    }
+    getPaymentsByOrderId(data.id, () => setIsModalPayment(true) || setIsModalPayment(true));
   };
   const handleOkPayment = () => {
     setIsModalPayment(false);
@@ -77,36 +73,10 @@ const OrderPage = () => {
     setIsModalPayment(false);
   };
 
-  const token = localStorage.getItem("token");
-  function updateOrder() {
-    const item = rowData?.order_status
-    console.warn("item", item)
-    console.log({ item })
-    fetch(`http://nusameals.ddns.net/orders/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Accept': 'application/json',
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(item)
-    }).then((result) => {
-      result.json().then((res) => {
-        console.warn(res)
-        getOrders()
-      })
-    })
+  function updateOrder(values) {
+    updateOrders(values)
+    console.log({ values })
   }
-
-  // // edit
-  // const onEdit = (values) => {
-  //   const id = rowData.order_status;
-  //   updateOrders(id, values, () => {
-  //     getOrders();
-
-  //   })
-  //   console.log({ values })
-  // }
 
   // confirm
   const success = () => {
@@ -139,6 +109,7 @@ const OrderPage = () => {
   const { useForm } = Form;
   // form
   const [form] = Form.useForm();
+  const [form_payment] = Form.useForm();
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
@@ -222,7 +193,7 @@ const OrderPage = () => {
       sorter: (a, b) => a.payment_status - b.payment_status,
       render: (_, record) => {
         return (
-          <Badge status="success" text={getPaymentsByOrderId(record.id)?.payment_status || 'Not Yet Paid'} />
+          <Badge status="success" text={getPaymentsByOrderID(record.id)?.payment_status || 'Not Yet Paid'} />
         );
       },
     },
@@ -476,7 +447,7 @@ const OrderPage = () => {
 
           <div className="modalrespon">
             <p className="subrespon">
-              <b>{rowDataPayments?.user_id}</b>
+              <b>{rowData?.user_id}</b>
             </p>
             <p className="subrespon">
               <b>{rowData?.id}</b>
@@ -494,20 +465,20 @@ const OrderPage = () => {
             <p className="pricee">
               <b>Total</b>
             </p>
-            <p className="method" style={{ marginTop: '-0px' }}>
+            <p className="method" style={{ marginTop: '0px' }}>
               Payment method
             </p>
           </div>
 
           <div style={{ marginTop: 20 }}>
-            <p className="nomprice" style={{ marginTop: '-5px' }}>
+            <p className="nomprice" style={{ marginTop: '0px' }}>
               <b>{rowData?.total_price}</b>
             </p>
             <p
               className="paymentmet"
               style={{ marginTop: 0, textAlign: 'end' }}
             >
-              {/* <b>{paymentsByUsername?.payment_methods}</b> */}
+              <b>{paymentsByOrderId?.payment_methods}</b>
             </p>
           </div>
         </div>
@@ -525,14 +496,14 @@ const OrderPage = () => {
           </p>
           <div>
             <Form
-              name="form"
-              form={form}
+              name="form_payment"
+              form={form_payment}
               onFinishFailed={onFinishFailed}
               layout="horizontal"
               fields={[
                 {
                   name: ['payment_status'],
-                  // value: paymentsByUsername?.payment_status,
+                  value: paymentsByOrderId?.payment_status,
                 },
               ]}
             >
