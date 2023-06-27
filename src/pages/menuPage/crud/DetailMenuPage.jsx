@@ -9,7 +9,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { mangga } from "../../../assets";
 import { useDeleteMenu, useGetMenuById } from "../hooks/useMenus";
 import { useEffect } from "react";
-import LoadingComponent from '../../../components/loadingComponent/LoadingComponent';
+import LoadingComponent from "../../../components/loadingComponent/LoadingComponent";
 
 const DetailMenuPage = () => {
   const { id } = useParams();
@@ -144,9 +144,11 @@ const DetailMenuPage = () => {
                         className="avatar-detail-menu"
                       />
                       <Row justify="space-between" align="middle">
-                        <Button type="primary" className="btn-action-menu">
-                          Edit Menu
-                        </Button>
+                        <Link to={`/edit-menu/${menuById.id}`}>
+                          <Button type="primary" className="btn-action-menu">
+                            Edit Menu
+                          </Button>
+                        </Link>
                         <Button
                           type="primary"
                           className="btn-action-menu"

@@ -136,3 +136,28 @@ export const useDeleteMenu = () => {
   }, []);
   return [isLoading, deleteData];
 };
+
+export const useUpdateMenu = () => {
+  const [isLoadingUpdateMenu, setIsLoadingUpdateMenu] = useState(false)
+
+  const updateMenu = useCallback(async (id, body, onSuccess) => {
+    try {
+      setIsLoadingUpdateMenu(true);
+      await apiMenu.updateMenu(id, body)
+      onSuccess && onSuccess();
+      message.open({
+        type: 'success',
+        content: `success change a data menu`,
+      });
+    } catch (err) {
+      message.open({
+        type: 'error',
+        content: `${err?.message}`,
+      });
+    } finally {
+      setIsLoadingUpdateMenu(false);
+    }
+  }, []);
+
+  return [isLoadingUpdateMenu, updateMenu]
+}

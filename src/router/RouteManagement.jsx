@@ -44,7 +44,7 @@ const RouteManagement = () => {
             <Route path="/menu-page" element={<MenuPage />} />
             <Route path="/menu-page-create" element={<CreateMenuPage />} />
             <Route path="/menu-page/:id" element={<DetailMenuPage />} />
-            <Route path="/edit-menu" element={<EditMenu />} />
+            <Route path="/edit-menu/:id" element={<EditMenu />} />
             <Route path="/order-page" element={<OrderPage />} />
             <Route path="/reservations-page" element={<ReservationsPage />} />
             <Route path="/report-page" element={<ReportPage />} />

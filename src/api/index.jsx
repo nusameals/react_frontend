@@ -48,6 +48,9 @@ export const apiMenu = {
   createMenu: (body) => {
     return baseAPIand.post(`/menus`, body)
   },
+  updateMenu: (id, body)=>{
+    return baseAPIand.put(`/menus/${id}`, body)
+  },
 
   // profile
   getProfileById: (id)=>{
