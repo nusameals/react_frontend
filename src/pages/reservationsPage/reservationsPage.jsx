@@ -21,26 +21,10 @@ import axios from "axios";
 import "./reservationsPage.css";
 import dayjs from 'dayjs';
 import { gql, useQuery } from '@apollo/client';
+import { GET_TABLE} from "./query";
 
-const GET_TABLE = gql`
-  query table {
-    table {
-      id
-    detail
-    image
-    numberofTables
-    seats
-    type
-    }
-  }
-`;
-// export const DELETE_TABLE = gql`
-//   mutation table($uuid: uuid!) {
-//     delete_table_by_pk(uuid: $uuid) {
-//       uuid
-//     }
-//   }
-// `;
+
+
 export const ReservationsPage = () => {
   
   const { loading, error, data } = useQuery(GET_TABLE);

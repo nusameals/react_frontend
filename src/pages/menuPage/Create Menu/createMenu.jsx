@@ -43,12 +43,16 @@ const CreateMenu = () => {
 
   // form menu
   const [formMenu] = Form.useForm();
+
   const onAdd = (values) => {
-    createMenu(values, () => {
+    const body = {
+      images: images,
+      ...values,
+    };
+    createMenu(body, () => {
       showModal();
       formMenu.resetFields();
     });
-    console.log({ values });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -161,11 +165,11 @@ const CreateMenu = () => {
                 <Form.Item label="Name" name="name">
                   <Input placeholder={"Please enter "} />
                 </Form.Item>
-                <Form.Item label="Radio" name="category">
+                <Form.Item label="Radio" name="category_id">
                   <Radio.Group>
-                    <Radio value="makanan"> Foods </Radio>
-                    <Radio value="minuman"> Drinks </Radio>
-                    <Radio value="saving packages"> Saving Packages </Radio>
+                    <Radio value={6}>Foods</Radio>
+                    <Radio value={2}> Drinks </Radio>
+                    <Radio value={3}> Saving Packages </Radio>
                   </Radio.Group>
                 </Form.Item>
                 <Form.Item label="City" name="city">
@@ -238,10 +242,10 @@ const CreateMenu = () => {
               >
                 Save
               </Button>
-              <Link to='/menu-page'>
-              <Button type="primary" className="buttoncancel">
-                Cancel
-              </Button>
+              <Link to="/menu-page">
+                <Button type="primary" className="buttoncancel">
+                  Cancel
+                </Button>
               </Link>
             </Space>
           </Form>

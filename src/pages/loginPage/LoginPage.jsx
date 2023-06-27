@@ -14,7 +14,13 @@ import {
   Modal,
   Alert,
 } from "antd";
-import { ForgetPass, LoginIcon, NewPass, NusaMealsLogin, maintenance } from "../../assets";
+import {
+  ForgetPass,
+  LoginIcon,
+  NewPass,
+  NusaMealsLogin,
+  maintenance,
+} from "../../assets";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import "./loginPage.css";
 import Gap from "../../components/gap/gap";
@@ -28,6 +34,7 @@ const LoginPage = () => {
   const [forgotForm] = Form.useForm();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -116,7 +123,6 @@ const LoginPage = () => {
                   />
                 </Form.Item>
                 <div className="remember-me">
-                  <Checkbox className="checkbox">Remember me</Checkbox>
                   <a onClick={showModal}>Forgot your password?</a>
                 </div>
                 <Gap height={24} />
@@ -133,15 +139,20 @@ const LoginPage = () => {
             </div>
           </Col>
         </Row>
-        <Modal footer={null} open={isModalOpen} onCancel={handleCancel} width={864}>
-        <div className="modal-repass">
-        <h1>Sorry, this feature is under maintenance!</h1>
-        <img
-                  src={maintenance}
-                  alt="forget-pass"
-                  style={{ width: 369, height: 320 }}
-        />
-        </div>
+        <Modal
+          footer={null}
+          open={isModalOpen}
+          onCancel={handleCancel}
+          width={864}
+        >
+          <div className="modal-repass">
+            <h1>Sorry, this feature is under maintenance!</h1>
+            <img
+              src={maintenance}
+              alt="forget-pass"
+              style={{ width: 369, height: 320 }}
+            />
+          </div>
         </Modal>
       </Card>
     </div>

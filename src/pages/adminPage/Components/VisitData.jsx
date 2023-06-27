@@ -5,36 +5,28 @@ import "./components.css";
 const VisitData = () => {
   const data = [
     {
-      type: "家具家电",
+      type: "Januari",
       sales: 22,
     },
     {
-      type: "粮油副食",
+      type: "Februari",
       sales: 54,
     },
     {
-      type: "生鲜水果",
+      type: "Maret",
       sales: 23,
     },
     {
-      type: "美容洗护",
+      type: "April",
       sales: 44,
     },
     {
-      type: "母婴用品",
+      type: "Mei",
       sales: 109,
     },
     {
-      type: "进口食品",
+      type: "Juni",
       sales: 54,
-    },
-    {
-      type: "食品饮料",
-      sales: 24,
-    },
-    {
-      type: "家庭清洁",
-      sales: 56,
     },
   ];
   const config = {
