@@ -191,7 +191,7 @@ const MenuPage = () => {
             <Table
               rowKey="ID"
               columns={TABLE_COLUMNS}
-              dataSource={menu}
+              dataSource={searchData}
               loading={isLoadingMenu}
               pagination={paginationConfig}
             />
