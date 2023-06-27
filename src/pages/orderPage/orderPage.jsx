@@ -25,7 +25,7 @@ const OrderPage = () => {
 
   // data order
   const [isLoadingOrders, orders, getOrders] = useGetOrders();
-  const [isLoadingOrdersById, ordersById, getOrdersById] = useGetOrdersById(id)
+  const [isLoadingOrdersById, ordersById, getOrdersById] = useGetOrdersById()
   const [isLoadingPayments, payments, getPayments] = useGetPayments();
   const [isLoadingPaymentsByOrderId, paymentsByOrderId, getPaymentsByOrderId] = useGetPaymentByOrderId()
   const [isLoadingUpdateOrders, updateOrders] = useUpdateOrders();
@@ -66,8 +66,8 @@ const OrderPage = () => {
     console.log(data.id)
     getPaymentsByOrderId(data.id)
     if (paymentsByOrderId) {
-      setIsModalPayment(true);
       console.log({ paymentsByOrderId })
+      setIsModalPayment(true);
     }
   };
   const handleOkPayment = () => {
