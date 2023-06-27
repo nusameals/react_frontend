@@ -165,7 +165,7 @@ const CreateMenu = () => {
                 <Form.Item label="Name" name="name">
                   <Input placeholder={"Please enter "} />
                 </Form.Item>
-                <Form.Item label="Radio" name="category_id  ">
+                <Form.Item label="Radio" name="category_id">
                   <Radio.Group>
                     <Radio value={6}>Foods</Radio>
                     <Radio value={2}> Drinks </Radio>
