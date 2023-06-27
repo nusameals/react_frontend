@@ -105,14 +105,7 @@ const DetailTable = () => {
                     alt="avatar-detail-menu"
                     className="avatar-detail-menu"
                   />
-                  <Row justify="space-between" align="middle">
-                    <Button
-                      type="primary"
-                      className="btn-action-menu"
-                      style={{ borderRadius: "2px" }}
-                    >
-                      Edit Menu
-                    </Button>
+                  <Row justify="space-between" align="center">
                     <Button
                       type="primary"
                       className="btn-action-menu"

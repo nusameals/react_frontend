@@ -37,9 +37,7 @@ export const ReportPage = () => {
 
   const [searchedText, setSearchedText] = useState("");
 
-  // const data = [
-  //   274, 337, 81, 497, 666, 219, 269, 274, 337, 81, 497, 666, 219, 274, 337, 81,
-  // ];
+
   const config = {
     height: 64,
     autoFit: false,
