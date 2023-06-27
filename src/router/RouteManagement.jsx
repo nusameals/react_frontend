@@ -13,13 +13,11 @@ import ReservationsPage from "../pages/reservationsPage/reservationsPage";
 import MenuPage from "../pages/menuPage/MenuPage";
 import DetailMenuPage from "../pages/menuPage/crud/DetailMenuPage";
 import ReportPage from "../pages/reportPage/reportPage";
-// import AddTable from "../pages/reservationsPage/AddTable/Addtable";
-
 import LoginPage from "../pages/loginPage/LoginPage";
 import AdminPage from "../pages/adminPage/AdminPage";
 import AddTable from "../pages/reservationsPage/AddTable/addTable";
 import DetailTable from "../pages/reservationsPage/detailTable";
-
+// 
 const RouteManagement = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();

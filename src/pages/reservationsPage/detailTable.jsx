@@ -1,38 +1,28 @@
-import { useParams, Link} from "react-router-dom";
-import { useQuery, useMutation ,gql } from "@apollo/client";
+import { useParams, Link } from "react-router-dom";
+import { useQuery, useMutation, gql } from "@apollo/client";
 import { Row, Col, Card, Button, Space, Breadcrumb, Modal } from "antd";
 import {
   ArrowLeftOutlined,
   ExclamationCircleOutlined,
 } from "@ant-design/icons";
-import { DELETE_TABLE, GET_TABLE_BY_PK} from "./query";
+import { DELETE_TABLE, GET_TABLE_BY_PK } from "./query";
 import LoadingComponent from "../../components/loadingComponent/LoadingComponent";
-
-
-
-
 
 const DetailTable = () => {
   const { id } = useParams();
 
   const { loading, error, data } = useQuery(GET_TABLE_BY_PK, {
     variables: { id },
-  }); 
+  });
 
   const table = data?.table_by_pk;
 
   const [deleteTable] = useMutation(DELETE_TABLE, {
-    onCompleted: () => {
-      // Perform any necessary actions after deletion
-      // For example, navigate to a different page
-    },
-    onError: (error) => {
-      // Handle error in case of failure
-    },
+    onCompleted: () => {},
+    onError: (error) => {},
   });
 
-  if (loading) return         <LoadingComponent />
-  ;
+  if (loading) return <LoadingComponent />;
   if (error) return <p>Error: {error.message}</p>;
 
   const showConfirmModal = () => {
@@ -74,9 +64,7 @@ const DetailTable = () => {
         align="middle"
         className="container-detail-menu-card"
       >
-        <Card className="card-detail-menu" 
-        style={{height:"480px"}}
-        >
+        <Card className="card-detail-menu" style={{ height: "480px" }}>
           <Link to="/reservations-page">
             <Button
               type="text"
@@ -88,60 +76,50 @@ const DetailTable = () => {
           </Link>
           <Row className="row-content-detail-menu">
             <Col className="col-text-detail-menu">
-
-                                <Row className="role-detail-menu" justify="space-between">
-                    <Col>
-                      <span className="text-name">Number of table</span>
-                      <span className="text-detail-menu-name">
-                        {table.numberofTables}
-                      </span>
-                    </Col>
-                    <Col>
-                      <span className="text-name">Seats</span>
-                      <span className="text-detail-menu-name">
-                        {table.seats}
-                      </span>
-                    </Col>
-                    <Col>
-                      <span className="text-name">Type</span>
-                      <span className="text-detail-menu-name">
-                        {table.type} 
-                      </span>
-                    </Col>
-                  </Row>
-                  <Row justify="start" className="name-detail-menu">
+              <Row className="role-detail-menu" justify="space-between">
+                <Col>
+                  <span className="text-name">Number of table</span>
+                  <span className="text-detail-menu-name">
+                    {table.numberofTables}
+                  </span>
+                </Col>
+                <Col>
+                  <span className="text-name">Seats</span>
+                  <span className="text-detail-menu-name">{table.seats}</span>
+                </Col>
+                <Col>
+                  <span className="text-name">Type</span>
+                  <span className="text-detail-menu-name">{table.type}</span>
+                </Col>
+              </Row>
+              <Row justify="start" className="name-detail-menu">
                 <span className="text-name">Tables location</span>
                 <span className="text-detail-menu-name">{table.detail}</span>
               </Row>
             </Col>
             <Col className="col-img-detail-menu">
-                  <Row>
-                    <Space direction="vertical">
-                      <img
-                        src={table.image}
-                        alt="avatar-detail-menu"
-                        className="avatar-detail-menu"
-                      />
-                      <Row justify="space-between" align="middle" 
-                      // style={{marginTop:"50px",}}
-                      >
-                        <Button type="primary" className="btn-action-menu" style={{borderRadius:"2px"}}>
-                          Edit Menu
-                        </Button>
-                        <Button
-                          type="primary"
-                          className="btn-action-menu"
-                          danger style={{borderRadius:"2px"}}
-                          onClick={showConfirmModal}
-                        >
-                          Delete Menu
-                        </Button>
-                      </Row>
-                    </Space>
+              <Row>
+                <Space direction="vertical">
+                  <img
+                    src={table.image}
+                    alt="avatar-detail-menu"
+                    className="avatar-detail-menu"
+                  />
+                  <Row justify="space-between" align="center">
+                    <Button
+                      type="primary"
+                      className="btn-action-menu"
+                      danger
+                      style={{ borderRadius: "2px" }}
+                      onClick={showConfirmModal}
+                    >
+                      Delete Menu
+                    </Button>
                   </Row>
-                </Col>
+                </Space>
+              </Row>
+            </Col>
           </Row>
-          
         </Card>
       </Row>
     </div>

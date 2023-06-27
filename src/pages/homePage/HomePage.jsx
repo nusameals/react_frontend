@@ -40,8 +40,6 @@ import {
 } from "@ant-design/icons";
 
 import useMediaQuery from "./query";
-import { Link } from 'react-router-dom';
-
 
 const HomePage = () => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -53,7 +51,6 @@ const HomePage = () => {
 
   return (
     <div>
-      
       <div className="heroback">
         <h1
           style={{
@@ -595,13 +592,8 @@ function SubsForm() {
             <Button type="primary">Subscribe</Button>
           </Space.Compact>
         </div>
-         <br /> 
-         <br /> 
-
-        <Link to="/admin">
-            <Button  style={{ backgroundColor: 'transparent', border: 'none' }}>{""}</Button>
-      </Link>
-      
+        <br />
+        <br />
       </div>
     </div>
   );

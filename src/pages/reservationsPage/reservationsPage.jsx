@@ -134,7 +134,6 @@ export const ReservationsPage = () => {
       width: 120,
       sortDirections: ["ascend", "descend"],
 
-            // render: (date) => dayjs(date).format(   "HH:mm"),
 
             sorter: (a, b) => {
               const timeA = dayjs(a.timeIn, "HH:mm");
@@ -142,7 +141,6 @@ export const ReservationsPage = () => {
               return timeA - timeB;
             },
             render: (time) => dayjs(time, "HH:mm").format("HH:mm"),
-              // render: (timestamp) => dayjs(timestamp).format("HH:mm"),
 
     },
     {
@@ -227,7 +225,6 @@ export const ReservationsPage = () => {
     },
   ];
 
-  // yg diatas bisa diklik
   const [activeTab, setActiveTab] = useState("Data");
 
   const items = [
@@ -276,7 +273,6 @@ export const ReservationsPage = () => {
               dataSource={dataSource}
               columns={columnsData.map((column) => ({
                 ...column,
-                // title: <span style={{ fontWeight: "normal" }}>{column.title}</span>,
               })
               )}
               pagination={paginationConfig}
@@ -334,7 +330,7 @@ export const ReservationsPage = () => {
   style={{
     margin: '1% 0%',
   }}
-  dataSource={loading ? [] : data?.table} // Use the fetched data as the data source
+  dataSource={loading ? [] : data?.table} 
   columns={columnsTable}
 
   pagination={paginationConfig}
@@ -343,11 +339,9 @@ export const ReservationsPage = () => {
         </div>      ),
     },
   ];
-  // modal biar bisa keluar sesuai id
 
   const [rowData, setRowData] = useState(dataSource);
   const handleClose = () => {
-    // Set the visibility to false to close the modal
     setVisible(false);
   };
 

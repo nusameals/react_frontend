@@ -10,7 +10,8 @@ import {
   Col,
   Space,
   Button,
-  Spin,Card
+  Spin,
+  Card,
 } from "antd";
 import {
   CheckCircleOutlined,
@@ -18,11 +19,9 @@ import {
   PlusOutlined,
 } from "@ant-design/icons";
 import "./addTable.css";
-// import { useSingleUploader } from "../../../config/uploader-config";
 import { useMutation, gql } from "@apollo/client";
-  
+import { maintenance } from "../../../assets/index";
 
-// Create Data
 export const ADD_TABLE = gql`
   mutation user($object: table_insert_input!) {
     insert_table_one(object: $object) {
@@ -30,9 +29,6 @@ export const ADD_TABLE = gql`
     }
   }
 `;
-  // Upload Image
-  // const [isLoadingUpload, uploadFile] = useSingleUploader();
-
 
 const getBase64 = (file) =>
   new Promise((resolve, reject) => {
@@ -43,22 +39,18 @@ const getBase64 = (file) =>
   });
 
 const AddTable = () => {
-  // form menu
   const [formTable] = Form.useForm();
   const onAdd = (values) => {
     formTable.resetFields();
     console.log({ values });
   };
-  // const [AddTable, { loading: loadingAddUser }] = useMutation(ADD_TABLE , {
-  //   refetchQueries: [GET_USERS],
-  // });
+
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
 
   const { TextArea } = Input;
 
-  // form upload
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState("");
   const [previewTitle, setPreviewTitle] = useState("");
@@ -78,15 +70,13 @@ const AddTable = () => {
   const handleChangePreview = ({ fileList: newFileList }) =>
     setFileList(newFileList);
 
-  // upload button
   const uploadButton = (
-    <div >
+    <div>
       <PlusOutlined />
       <div
         style={{
           marginTop: 8,
-          width:"500px"
-          
+          width: "500px",
         }}
       >
         Upload
@@ -94,7 +84,6 @@ const AddTable = () => {
     </div>
   );
 
-  // modal
   const [modalOpen, setModalOpen] = useState(false);
   const showModal = () => {
     setModalOpen(true);
@@ -106,7 +95,6 @@ const AddTable = () => {
     setModalOpen(false);
   };
 
-  // loading
   const [loading, setLoading] = useState();
 
   const onLoading = <LoadingOutlined style={{ fontSize: 24 }} spin />;
@@ -132,164 +120,143 @@ const AddTable = () => {
 
       <Row justify="center" align="middle" style={{ marginLeft: 0 }}>
         <Col>
-        <Card style={{margin: "10% 8%",}}>
-          <Form
-            name="formTable"
-            form={formTable}
-            onFinish={onAdd}
-            onFinishFailed={onFinishFailed}
-            labelCol={{
-              span: 5,
-            }}
-            wrapperCol={{
-              span: 18,
-            }}
-            style={{
-              width: 900,
-              margin: 50,
-            }}
-          >
-            <div style={{ display: "flex", gap: 40 }}>
-              <div style={{ width: 600, textAlign: "left" }}>
-                <Form.Item label="Number of table"
-                name="numberofTables"
-                rules={[
-                  {
-                    required: true,
-                    pattern: /^\d+$/,
+          <Card style={{ margin: "10% 8%" }}>
+            <Form
+              name="formTable"
+              form={formTable}
+              onFinish={onAdd}
+              onFinishFailed={onFinishFailed}
+              labelCol={{
+                span: 5,
+              }}
+              wrapperCol={{
+                span: 18,
+              }}
+              style={{
+                width: 900,
+                margin: 50,
+              }}
+            >
+              <div style={{ display: "flex", gap: 40 }}>
+                <div style={{ width: 600, textAlign: "left" }}>
+                  <Form.Item
+                    label="Number of table"
+                    name="numberofTables"
+                    rules={[
+                      {
+                        required: true,
+                        pattern: /^\d+$/,
 
-                    message: "Please enter number of table",
-                  },
-                ]}>
-                  <Input placeholder={"Please enter the number of table"} />
-                </Form.Item>
-                <Form.Item
-                  label="Seats"
-                  name="seats"
-                  rules={[
-                    {
-                      required: true,
-                      pattern: /^\d+$/,
-                      message: "Please enter a valid number",
-                    },
-                  ]}
-                >
-                  <Input placeholder="Please enter seat quantity" />
-                </Form.Item>
-                <Form.Item label="Type"
-                                name="type"
-                                rules={[
-                                  {
-                                    required: true,
-                                    message: "Please enter a type",
-                                  },
-                                ]}
-                               >
-                  <Radio.Group>
-                    <Radio value="Indoor"> Indoor </Radio>
-                    <Radio value="Outdoor"> Outdoor </Radio>
-                  </Radio.Group>
-                </Form.Item>
-                <Form.Item label="Tables location"
-                name="detail"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please enter a location",
-                  },
-                ]}>
-                  <Input
-                    placeholder={"Please enter tables location in restaurant"}
-                  />
-                </Form.Item>
-              </div>
-              <div
-              //  style={{ width: 50 }}
-               >
-                <Form.Item 
-                              //  style={{ width: 5000 }}
-
-                >
-<div></div>
-                  <Upload
-                    action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                    listType="picture-card"
-                    fileList={fileList}
-                    onPreview={handlePreview}
-                    onChange={handleChangePreview}
-
+                        message: "Please enter number of table",
+                      },
+                    ]}
                   >
-                    {fileList.length === 1 ? null : uploadButton}
-                  </Upload>
-                  <Modal
-                    open={previewOpen}
-                    title={previewTitle}
-                    footer={null}
-                    onCancel={handleCancel}
+                    <Input placeholder={"Please enter the number of table"} />
+                  </Form.Item>
+                  <Form.Item
+                    label="Seats"
+                    name="seats"
+                    rules={[
+                      {
+                        required: true,
+                        pattern: /^\d+$/,
+                        message: "Please enter a valid number",
+                      },
+                    ]}
                   >
-                    <img
-                      alt="avatar"
-                      style={{ width: "100%" }}
-                      src={previewImage}
+                    <Input placeholder="Please enter seat quantity" />
+                  </Form.Item>
+                  <Form.Item
+                    label="Type"
+                    name="type"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please enter a type",
+                      },
+                    ]}
+                  >
+                    <Radio.Group>
+                      <Radio value="Indoor"> Indoor </Radio>
+                      <Radio value="Outdoor"> Outdoor </Radio>
+                    </Radio.Group>
+                  </Form.Item>
+                  <Form.Item
+                    label="Tables location"
+                    name="detail"
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please enter a location",
+                      },
+                    ]}
+                  >
+                    <Input
+                      placeholder={"Please enter tables location in restaurant"}
                     />
-                  </Modal>
-                </Form.Item>
+                  </Form.Item>
+                </div>
+                <div>
+                  <Form.Item>
+                    <div></div>
+                    <Upload
+                      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                      listType="picture-card"
+                      fileList={fileList}
+                      onPreview={handlePreview}
+                      onChange={handleChangePreview}
+                    >
+                      {fileList.length === 1 ? null : uploadButton}
+                    </Upload>
+                    <Modal
+                      open={previewOpen}
+                      title={previewTitle}
+                      footer={null}
+                      onCancel={handleCancel}
+                    >
+                      <img
+                        alt="avatar"
+                        style={{ width: "100%" }}
+                        src={previewImage}
+                      />
+                    </Modal>
+                  </Form.Item>
+                </div>
               </div>
-            </div>
 
-            <Space style={{ display: "flex", marginLeft: 130 }}>
-              <Button
-                type="primary"
-                htmlType="submit"
-                style={{
-                  borderRadius: "0%",
-                }}
-                onClick={showModal}
-              >
-                Save
-              </Button>
-              <Button type="primary" className="buttoncancel">
-                Cancel
-              </Button>
-            </Space>
-          </Form>
+              <Space style={{ display: "flex", marginLeft: 130 }}>
+                <Button
+                  type="primary"
+                  htmlType="submit"
+                  style={{
+                    borderRadius: "0%",
+                  }}
+                  onClick={showModal}
+                >
+                  Save
+                </Button>
+                <Button type="primary" className="buttoncancel">
+                  Cancel
+                </Button>
+              </Space>
+            </Form>
           </Card>
         </Col>
       </Row>
 
-      {/* modal confirm */}
       <Modal
-        style={{
-          marginTop: 100,
-        }}
-        open={modalOpen}
         footer={null}
-        closable={false}
-        onOk={handleOk}
+        open={modalOpen}
         onCancel={handleCancelModal}
+        width={864}
       >
-        <div>
-          <div style={{ display: "flex", gap: 10 }}>
-            <CheckCircleOutlined
-              style={{ color: "greenyellow", fontSize: 17, marginTop: 20 }}
-            />
-            <div>
-              <p style={{ fontSize: 16 }}>
-                Your data has been saved! <br />{" "}
-                <span style={{ fontSize: 14 }}>Click done to continue</span>
-              </p>
-            </div>
-          </div>
-          <span>
-            <Button
-              type="primary"
-              style={{ marginLeft: 400 }}
-              onClick={handleOk}
-              loading={loading}
-            >
-              Done
-            </Button>
-          </span>
+        <div className="modal-repass">
+          <h1>Sorry, this feature is under maintenance!</h1>
+          <img
+            src={maintenance}
+            alt="forget-pass"
+            style={{ width: 369, height: 320 }}
+          />
         </div>
       </Modal>
     </div>
