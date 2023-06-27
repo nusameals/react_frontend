@@ -31,14 +31,15 @@ export const useGetOrders = () => {
 }
 
 // Get Orders by Id
-export const useGetOrdersById = (id) => {
+export const useGetOrdersById = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [dataById, setData] = useState()
 
-    const getOrdersById = useCallback(async (onSuccess) => {
+    const getOrdersById = useCallback(async (id, onSuccess) => {
         try {
             const res = await apiOrders.getOrdersById(id)
             if (res) {
+                console.log({ res })
                 setData(res.data);
                 onSuccess && onSuccess(res.data);
             }
@@ -88,14 +89,15 @@ export const useGetPayments = () => {
 }
 
 // get payment by username
-export const useGetPaymentByUsername = (username) => {
+export const useGetPaymentByOrderId = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [data, setdata] = useState();
 
-    const getData = useCallback(async (onSuccess) => {
+    const getPaymentsByOrderId = useCallback(async (order_id, onSuccess) => {
         try {
-            const res = await apiMenu.getMenuById(username);
+            const res = await apiPayments.getPaymentsByOrderId(order_id);
             if (res) {
+                console.log({ res })
                 setdata(res.data);
                 onSuccess && onSuccess(res.data);
             }
@@ -113,7 +115,7 @@ export const useGetPaymentByUsername = (username) => {
         }
     }, []);
 
-    return [isLoading, data, getData];
+    return [isLoading, data, getPaymentsByOrderId];
 };
 
 
