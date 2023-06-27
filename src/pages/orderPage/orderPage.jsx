@@ -15,7 +15,7 @@ import {
 } from 'antd';
 import './orderPage.css';
 import { CloseSquareFilled, LoadingOutlined } from '@ant-design/icons';
-import { useGetOrders, useGetOrdersById, useGetPaymentByUsername, useGetPayments, useUpdateOrders } from './hook/useOrder';
+import { useGetOrders, useGetOrdersById, useGetPaymentByOrderId, useGetPaymentByUsername, useGetPayments, useUpdateOrders } from './hook/useOrder';
 import dayjs from 'dayjs';
 import { useParams } from 'react-router-dom';
 
@@ -27,13 +27,13 @@ const OrderPage = () => {
   const [isLoadingOrders, orders, getOrders] = useGetOrders();
   const [isLoadingOrdersById, ordersById, getOrdersById] = useGetOrdersById(id)
   const [isLoadingPayments, payments, getPayments] = useGetPayments();
-  const [paymentsByUsername, getPaymentsByUsername] = useGetPaymentByUsername()
+  const [isLoadingPaymentsByOrderId, paymentsByOrderId, getPaymentsByOrderId] = useGetPaymentByOrderId()
   const [isLoadingUpdateOrders, updateOrders] = useUpdateOrders();
 
   const [rowData, setRowData] = useState(orders);
   const [rowDataPayments, setRowDataPayments] = useState(payments);
 
-  const getPaymentsByOrderId = (id) => {
+  const getPaymentsByOrderID = (id) => {
     const payment = payments?.find((item) => item?.id === id);
     return payment;
   };
@@ -49,8 +49,6 @@ const OrderPage = () => {
 
   // modal order
   const [isModalOrder, setIsModalOrder] = useState(false);
-
-
   const showModal = (data) => {
     setRowData(data);
     setIsModalOrder(true);
@@ -65,9 +63,12 @@ const OrderPage = () => {
   // modal payment
   const [isModalPayment, setIsModalPayment] = useState(false);
   const showModalpayment = (data) => {
-    console.log({ data })
-    getPaymentsByUsername(data.username)
-    setIsModalPayment(true);
+    console.log(data.id)
+    getPaymentsByOrderId(data.id)
+    if (paymentsByOrderId) {
+      setIsModalPayment(true);
+      console.log({ paymentsByOrderId })
+    }
   };
   const handleOkPayment = () => {
     setIsModalPayment(false);
@@ -76,19 +77,36 @@ const OrderPage = () => {
     setIsModalPayment(false);
   };
 
-  // edit
-  const onEdit = (values) => {
-    const id = rowData.order_status;
-    updateOrders(id, values, () => {
-      getOrders();
-
+  const token = localStorage.getItem("token");
+  function updateOrder() {
+    const item = rowData?.order_status
+    console.warn("item", item)
+    console.log({ item })
+    fetch(`http://nusameals.ddns.net/orders/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(item)
+    }).then((result) => {
+      result.json().then((res) => {
+        console.warn(res)
+        getOrders()
+      })
     })
-    console.log({ values })
   }
 
+  // // edit
+  // const onEdit = (values) => {
+  //   const id = rowData.order_status;
+  //   updateOrders(id, values, () => {
+  //     getOrders();
 
-  // loading
-  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+  //   })
+  //   console.log({ values })
+  // }
 
   // confirm
   const success = () => {
@@ -119,8 +137,6 @@ const OrderPage = () => {
   };
 
   const { useForm } = Form;
-
-
   // form
   const [form] = Form.useForm();
 
@@ -163,7 +179,9 @@ const OrderPage = () => {
       filteredValue: [searchedText],
       onFilter: (value, record) => {
         return (
-          String(record.id).toLowerCase().includes(value.toLowerCase()) ||
+          String(record.id)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
           String(record.created_at)
             .toLowerCase()
             .includes(value.toLowerCase()) ||
@@ -176,7 +194,7 @@ const OrderPage = () => {
             .includes(value.toLowerCase()) ||
           String(record.payment_status)
             .toLowerCase()
-            .includes(record.toLowerCase())
+            .includes(value.toLowerCase())
         );
       },
     },
@@ -239,7 +257,6 @@ const OrderPage = () => {
   };
 
   const [currentPage, setCurrentPage] = useState(1);
-
 
   return (
     <div>
@@ -341,15 +358,6 @@ const OrderPage = () => {
               <b>4</b>
             </p>
           </div>
-          {/*                    
-                    {orders?.map((row_id) => (
-                        <div key={row_id} className='modalrespon'>
-                            <p className='subrespon'><b>{row_id.customerUsername}</b></p>
-                            <p className='subrespon'><b></b></p>
-                            <p className='subrespon'><b>Dine In</b></p>
-                            <p className='subrespon' ><b>4</b></p>
-                        </div>
-                    ))} */}
         </div>
 
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -390,18 +398,18 @@ const OrderPage = () => {
             <Form
               name="form"
               form={form}
-              onFinish={onEdit}
+              onFinish={updateOrder}
               onFinishFailed={onFinishFailed}
               layout="horizontal"
               fields={[
                 {
-                  name: ['orderStatus'],
+                  name: ['order_status'],
                   value: rowData?.order_status,
 
                 },
               ]}
             >
-              <Form.Item name="orderStatus">
+              <Form.Item name="order_status">
                 <Select
                   onChange={handleChange}
                   placeholder={<Badge status="default" text="New Order" />}

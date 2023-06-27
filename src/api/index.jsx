@@ -9,7 +9,7 @@ export const apiOrders = {
     return apiOrder.get(`/orders`);
   },
   getOrdersById: (id) => {
-    return apiOrder.get(`/orders/${id}`);
+    return apiOrder.get(`/orders/order-details/${id}`);
   },
   updateOrders: (id, body) => {
     return apiOrder.put(`/orders/${id}`, body);
@@ -21,8 +21,8 @@ export const apiPayments = {
   getPayments: () => {
     return apiPayment.get(`/payments`);
   },
-  getPaymentsByUsername: (username) => {
-    return apiPayment.get(`/payments/${username}`);
+  getPaymentsByOrderId: (order_id) => {
+    return apiPayment.get(`/payments/orders?ID=${order_id}`);
   },
 }
 
@@ -32,7 +32,7 @@ export const api = {
   },
   uploader: (body) => {
     return uploaderAPI.post("/dbqsoenus/image/upload", body)
-}
+  }
 };
 
 export const apiMenu = {
@@ -50,7 +50,7 @@ export const apiMenu = {
   },
 
   // profile
-  getProfileById: (id)=>{
+  getProfileById: (id) => {
     return baseAPIand.get(`/admin/user/id?ID=${id}`);
   }
 
