@@ -15,7 +15,7 @@ import {
 } from 'antd';
 import './orderPage.css';
 import { CloseSquareFilled, LoadingOutlined } from '@ant-design/icons';
-import { useGetOrders, useGetOrdersById, useGetPaymentByOrderId, useGetPayments, useUpdateOrders } from './hook/useOrder';
+import { useGetOrders, useGetPaymentByOrderId, useGetPayments, useUpdateOrders } from './hook/useOrder';
 import dayjs from 'dayjs';
 import { useParams } from 'react-router-dom';
 
@@ -25,7 +25,7 @@ const OrderPage = () => {
 
   // data order
   const [isLoadingOrders, orders, getOrders] = useGetOrders();
-  const [isLoadingOrdersById, ordersById, getOrdersById] = useGetOrdersById()
+  // const [isLoadingOrdersById, ordersById, getOrdersById] = useGetOrdersById()
   const [isLoadingPayments, payments, getPayments] = useGetPayments();
   const [isLoadingPaymentsByOrderId, paymentsByOrderId, getPaymentsByOrderId] = useGetPaymentByOrderId()
   const [isLoadingUpdateOrders, updateOrders] = useUpdateOrders();
@@ -507,7 +507,7 @@ const OrderPage = () => {
               className="paymentmet"
               style={{ marginTop: 0, textAlign: 'end' }}
             >
-              <b>{paymentsByUsername?.payment_methods}</b>
+              {/* <b>{paymentsByUsername?.payment_methods}</b> */}
             </p>
           </div>
         </div>
@@ -532,7 +532,7 @@ const OrderPage = () => {
               fields={[
                 {
                   name: ['payment_status'],
-                  value: paymentsByUsername?.payment_status,
+                  // value: paymentsByUsername?.payment_status,
                 },
               ]}
             >
